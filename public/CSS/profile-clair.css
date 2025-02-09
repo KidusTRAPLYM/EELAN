@@ -1,0 +1,21 @@
+hr{
+width: 1000px;
+color: var(--White--);
+                        }
+#body{
+display: flex;
+gap: 100px;
+}
+.profilepic {
+width: 100px;
+height: 100px;
+background-color: var(--Black--);
+border-radius: 100px;
+                    }
+section#profile-details {                 
+display: flex;
+background-color: var(--White--);
+padding: 40px;
+gap: 20px;
+align-items: center;
+ }

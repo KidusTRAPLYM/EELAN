@@ -1,0 +1,62 @@
+body{
+display: flex;
+justify-content: center;
+flex-direction: column;
+gap: 80px;
+padding: 80px;
+font-family: var(--font-family--);
+}
+#intro{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+#intro h1{
+font-size: 25px;
+color: var(--Green--);
+}
+#success  {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 230px;
+}
+#success div{
+display: flex;
+justify-content: center;
+align-items: center;                
+flex-direction: column;
+gap: 30px;     
+}
+.clair img{
+width: 269px;
+}
+.traply button{
+background-color: var(--Gray--);
+padding: 12px;
+width: 150px;
+border: 1px solid var(--Blue--);
+color: var(--Blue--);
+font-family: var(--font-family--);
+                        }
+.traply button:hover{
+background-color: var(--Blue--);
+transition: 1s ease-in-out;
+
+color: var(--White--);
+                        }
+.clair button{
+background-color: var(--Gray--);
+padding: 12px;
+width: 150px;
+border: 1px solid var(--Black--);
+color: var(--Black--);
+font-family: var(--font-family--);
+}
+.clair button:hover{
+background-color: var(--Black--);
+transition: 1s ease-in-out;
+border: 1px solid var(--White--);
+color: var(--White--);
+}

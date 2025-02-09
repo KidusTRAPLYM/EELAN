@@ -1,0 +1,81 @@
+body{
+background-color: var(--Black--);
+}
+section#posts {
+display: flex;
+gap: 30px;
+flex-direction: column;
+}
+#post {
+width: 517px;
+border-radius: 10px;
+border: 0.5px solid var(--Black--);
+height: 240px;
+padding: 12px;
+                    }
+.account{
+width: 20px;
+height: 20px;
+background-color: var(--Black--);
+color: var(--White--);
+border-radius: 100%;
+}
+#engagements{
+display: flex;
+justify-content: flex-end;
+}
+#engagements img {
+width: 27px;
+}
+#upper {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 100px
+}
+section#left {
+display: flex;
+align-items: center;
+}
+button {
+background-color: var(--Black--);
+padding: 10px;
+color: var(--White--);
+font-family: var(--font-family--);
+border: none;
+width: 100px;
+}
+.time {
+display: flex;
+flex-direction: column;
+gap: 3px;
+}
+.time span{
+font-size: 14px;
+}
+#body {
+display: flex;
+gap: 275px;
+  }
+  #slide-bar{
+height: 600px;
+  }
+  #post div{
+  display: flex;
+  align-items: center;
+  padding: 11px;
+  }
+  #down {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+}
+#like{
+  background-color: white;
+}
+input{
+font-family: var(--font-family--);
+font-size: 12px;
+}

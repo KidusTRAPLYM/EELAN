@@ -1,0 +1,38 @@
+body{
+font-family: var(--font-family--);
+background-color: var(--Black--);
+overflow-y: hidden;
+color: var(--White--);
+}
+#body{
+padding: 200px;
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+}
+#body img{
+width: 200px;
+}
+#body q{
+font-size: 20px;
+}
+#body button{
+background-color: var(--Gray--);
+padding: 12px;
+width: 150px;
+border: 1px solid var(--Black--);
+color: var(--Black--);
+font-family: var(--font-family--);
+}
+#body button:hover{
+background-color: var(--Black--);
+transition: 1s ease-in-out;
+border: 1px solid var(--White--);
+color: var(--White--);
+}
+h1{
+font-size: 50px;
+}

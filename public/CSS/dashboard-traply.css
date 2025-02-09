@@ -1,0 +1,81 @@
+section#posts {
+display: flex;
+gap: 30px;
+flex-direction: column;
+}
+#post {
+width: 600px;
+border-radius: 10px;
+border: 0.5px solid var(--Black--);
+box-shadow: 10px 10px var(--Blue--);
+height: 280px;
+  }
+
+.account{
+width: 50px;
+height: 50px;
+background-color: var(--Black--);
+color: var(--White--);
+border-radius: 100%;
+}
+#engagements{
+display: flex;
+align-items: center;
+justify-content: center; 
+}
+#engagements img {
+width: 27px;
+}
+#upper {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 10px;
+}
+section#left {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+button {
+background-color: var(--Blue--);
+padding: 10px;
+color: var(--White--);
+font-family: var(--font-family--);
+border: none;
+width: 100px;
+}
+.time {
+display: flex;
+flex-direction: column;
+gap: 3px;
+}
+.time span{
+font-size: 14px;
+}
+#down{
+padding: 20px;
+}
+#body {
+display: flex;
+gap: 275px;
+                    }
+#engagements div{
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+#engagements div button{
+  background-color: var(--White--);
+}
+
+input{
+  font-family: var(--font-family--);
+  font-size: 12px;
+  }
+  .comment textarea{
+    width: 70px;
+    height: 17px ;
+    border: 1px solid var(--Black--);
+  }
+ 

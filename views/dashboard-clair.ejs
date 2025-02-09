@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post</title>
+    <link rel="stylesheet" href="/CSS/variables.css" />
+    <link rel="stylesheet" href="/CSS/preloader.css" />
+    <link rel="stylesheet" href="/CSS/post-clair.css">
+    <link rel="stylesheet" href="/CSS/dashboard-clair.css">
+    <!--FONT FAMILY-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+   <div id="preloader">
+      <div class="spinner"></div>
+      <div class="loading">
+        <p>Loading...</p>
+      </div>
+    </div>
+    <section id="body">
+      <section id="slide-bar">
+        <div class="logo">
+              <span><b><p>CLAIR</p></b></span>
+        </div>
+      <a href="/dashboard/clair">
+<div class="dashabard">
+              <span><img src="/Images/menu-black.png" alt=""></span>
+              <span><p>Dashboard</p></span>
+</div>
+</a>
+<a href="/profile/clair">
+<div class="profile">
+              <span><img src="/Images/Account-black.png" alt=""></span>
+              <span><p>Profile</p></span>
+</div>
+</a>
+<div class="notficiation">
+              <span><img src="/Images/Notification-Black.png" alt=""></span>
+              <span><p>Notification</p></span>
+              </div>
+<div class="work">
+              <span><img src="/Images/Work-black.png" alt=""></span>
+              <span><p>Work</p></span>
+</div>
+<a href="/post/clair">
+<div class="special">
+              <span><img src="/Images/Add-post-white.png" alt=""></span>
+              <span><p>Post</p></span>
+</div>
+</a>
+</section>
+    <section id="posts">
+    <% populatedPostData.forEach(post => { %>
+      <section id="post">
+        <section id="upper">
+          <section id="left">
+            <div class="account"></div>
+            <div class="time">
+              <span><%= post.userId ? post.userId.name : 'Unknown User' %></span>
+              <span><%=post.timeago%></span>
+            </div>
+          </section>
+          <section id="right">
+            <div class="button">
+              <button>Follow</button>
+            </div>
+          </section>
+        </section>
+        <section id="down">
+          <section id="text">
+            <p><%= post.message %></p>
+          </section>
+          <section id="engagements">
+            <form action="/dashboard/clair/<%=post.id%>/like" method="POST">
+            <div class="like">
+              <button type="submit" id="like">
+                <img src="/Images/like.png" alt="">
+              </button>
+              <span><%= post.like%></span>
+            </div>
+            </form>
+            <form action="/dashboard/clair/<%=post.id%>/dislike" method="post">
+            <div class="dislike">
+              <button type="submit" id="like">
+                <img src="/Images/dislike.png" alt="">
+              </button>
+              <span><%= post.dislike%></span>
+            </div>
+            </form>
+            <div class="comment">
+              <img src="/Images/comment.png" alt="">
+            </div>
+            <div class="share">
+              <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/clair/<%=post.id%>/">
+            </div>
+          </section>
+        </section>
+      </section>
+    <% }) %>
+    </section>
+                        </section>
+    </section>
+    </section>
+    <script src="/js/loading2.js"></script>
+    </body>
+</html>

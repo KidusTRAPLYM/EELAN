@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post</title>
+    <link rel="stylesheet" href="/CSS/variables.css" />
+    <link rel="stylesheet" href="/CSS/preloader.css" />
+    <link rel="stylesheet" href="/CSS/post-traply.css" />
+    <!--FONT FAMILY-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="spinner"></div>
+      <div class="loading">
+        <p>Loading...</p>
+      </div>
+    </div>
+    <section id="header">
+      <div class="left">
+        <img src="/Images/Traply.png" alt="" />
+      </div>
+      <div class="right">
+        <img src="/Images/Search-black.png" alt="" />
+        <img src="/Images/Account-black.png" alt="" />
+      </div>
+    </section>
+    <section id="body">
+      <section id="slide-bar">
+        <a href="/dashboard/traply">
+          <div class="special">
+            <span><img src="/Images/menu-black.png" alt="" /></span>
+            <span><p>Dashboard</p></span>
+          </div>
+        </a>
+        <a href="/profile/traply">
+          <div class="profile">
+            <span><img src="/Images/Account-black.png" alt="" /></span>
+            <span><p>Profile</p></span>
+          </div>
+        </a>
+        <div class="notficiation">
+          <span><img src="/Images/Notification-Black.png" alt="" /></span>
+          <span><p>Notification</p></span>
+        </div>
+        <div class="work">
+          <span><img src="/Images/Work-black.png" alt="" /></span>
+          <span><p>Work</p></span>
+        </div>
+        <a href="/post/traply">
+          <div class="post">
+            <span><img src="/Images/Add-post-black.png" alt="" /></span>
+            <span><p>Post</p></span>
+          </div>
+        </a>
+      </section>
+      <section id="post">
+        <form action="/post/traply" method="Post">
+          <div class="up">
+            <h1>Create a post</h1>
+            <button>Post</button>
+          </div>
+          <div class="down">
+            <textarea name="message" id="message">
+Write your post here.</textarea
+            >
+          </div>
+        </form>
+      </section>
+    </section>
+    <script src="/js/loading2.js"></script>
+  </body>
+</html>

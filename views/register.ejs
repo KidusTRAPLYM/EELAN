@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register εlan</title>
+    <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/variables.css" />
+    <link rel="stylesheet" href="/CSS/preloader.css" />
+    <!--FONT FAMILY-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="spinner"></div>
+      <div class="loading">
+        <p>Loading...</p>
+      </div>
+    </div>
+    <section id="register">
+      <section id="video">
+        <video
+          src="/Images/original-0242acdc69146d4472fc5e69b48616dc.mp4"
+          loop
+          autoplay
+          muted
+        ></video>
+        <p>"Entering a new realm"</p>
+      </section>
+      <section id="signup">
+        <form action="/register" method="post">
+          <img src="/Images/Elan.png" alt="" />
+          <p>Create Your Account</p>
+          <span class="name">
+            <input type="text" name="name" id="name" placeholder="Username" />
+            <input type="email" name="email" id="email" placeholder="Email" />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
+          </span>
+          <p>Already have an account? <a href="/signin">Sign in</a></p>
+          <a href=""><button>Register</button></a>
+        </form>
+      </section>
+    </section>
+
+    <script src="/Js/loading.js"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+.profilepic {
+width: 100px;
+height: 100px;
+background: var(--Black--);
+border-radius: 100px;
+display: flex ;
+justify-content: align;                                    
+}
+h1{
+font-size: 20px;
+}
+hr{
+width: 1000px;
+color: var(--Blue--);
+}
+section#profile-details {
+display: flex;
+align-items: center;
+gap: 30px;
+}
+.engagements .engagments {
+    display: flex
+;
+    align-items: center;
+    gap: 20px;
+}
+#body{
+ display: flex;
+ gap: 150px;   
+}
