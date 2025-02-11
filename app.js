@@ -68,7 +68,7 @@ app.get("/dashboard/clair", async (req, res) => {
     });
 
     console.log(postData);
-    res.json(populatedPostData);
+    res.render("dashboard-clair", { populatedPostData, PORT });
   } catch (err) {
     console.log(`An error has occurred. ${err}`);
     res.status(500).json({ error: "Error fetching data" });
@@ -97,6 +97,12 @@ app.get("/profile/clair", async (req, res) => {
   const userId = decoded.id;
   const user = await User.findById(userId);
   res.render("profile-clair", { user });
+});
+app.get("/work/clair ", (req, res) => {
+  res.render("work-clair");
+});
+app.get("/work/traply", (req, res) => {
+  res.render("work-traply");
 });
 // Post functions
 app.post("/post/clair", async (req, res) => {
