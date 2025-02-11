@@ -41,11 +41,27 @@ const createToken = (id) => {
 app.get("/", (req, res) => {
   res.render("register");
 });
-app.get("/traply", (req, res) => {
-  res.render("Traply");
+
+app.get("/home", async (req, res) => {
+  try {
+    const postData = await TraplyP.aggregate([{ $sample: { size: 5 } }]);
+    const populatedPostData = await TraplyP.populate(postData, {
+      path: "userId",
+      select: "name",
+    });
+
+    console.log(postData);
+    res.render("dashboard", { populatedPostData, PORT, postData });
+  } catch (err) {
+    console.log(`An error has occurred. ${err}`);
+    res.status(500).json({ error: "Error fetching data" });
+  }
 });
-app.get("/clair", (req, res) => {
-  res.render("Clair");
+app.get("/landing", (req, res) => {
+  res.redirect("/home");
+});
+app.get("/dashboard", (req, res) => {
+  res.redirect("/home");
 });
 app.get("/signin", (req, res) => {
   res.render("Signin");
@@ -53,51 +69,18 @@ app.get("/signin", (req, res) => {
 app.get("/register", (req, res) => {
   res.redirect("/");
 });
-app.get("/post/traply", (req, res) => {
-  res.render("post-traply");
+app.get("/post", (req, res) => {
+  res.render("post");
 });
-app.get("/post/clair", (req, res) => {
-  res.render("post-clair");
-});
-app.get("/dashboard/clair", async (req, res) => {
-  try {
-    const postData = await ClairP.aggregate([{ $sample: { size: 5 } }]);
-    const populatedPostData = await ClairP.populate(postData, {
-      path: "userId",
-      select: "name",
-    });
 
-    console.log(postData);
-    res.render("dashboard-clair", { populatedPostData, PORT });
-  } catch (err) {
-    console.log(`An error has occurred. ${err}`);
-    res.status(500).json({ error: "Error fetching data" });
-  }
-});
-app.get("/dashboard/traply", async (req, res) => {
-  try {
-    const postData = await TraplyP.find();
-    console.log(postData);
-    res.render("dashboard-traply", { postData, PORT });
-  } catch (err) {
-    console.log(`An error has occurred. ${err}`);
-    res.render("error");
-  }
-});
-app.get("/profile/traply", async (req, res) => {
+app.get("/profile", async (req, res) => {
   const token = req.cookies.User;
   const decoded = jwt.verify(token, "sec");
   const userId = decoded.id;
   const user = await User.findById(userId);
-  res.render("profile-traply", { user });
+  res.render("profile", { user });
 });
-app.get("/profile/clair", async (req, res) => {
-  const token = req.cookies.User;
-  const decoded = jwt.verify(token, "sec");
-  const userId = decoded.id;
-  const user = await User.findById(userId);
-  res.render("profile-clair", { user });
-});
+
 app.get("/work/clair ", (req, res) => {
   res.render("work-clair");
 });
@@ -105,26 +88,8 @@ app.get("/work/traply", (req, res) => {
   res.render("work-traply");
 });
 // Post functions
-app.post("/post/clair", async (req, res) => {
-  const { message } = req.body;
 
-  try {
-    const token = req.cookies.User;
-    const decoded = jwt.verify(token, "sec");
-    const userId = decoded.id;
-    const newPost = new ClairP({
-      message,
-      userId,
-    });
-    await newPost.save();
-
-    res.redirect("/dashboard/clair");
-  } catch (err) {
-    console.log(`An error has occured:${err}`);
-    res.render("error");
-  }
-});
-app.post("/post/Traply", async (req, res) => {
+app.post("/post", async (req, res) => {
   const { message } = req.body;
   try {
     const token = req.cookies.User;
@@ -135,7 +100,7 @@ app.post("/post/Traply", async (req, res) => {
       userId,
     });
     await newPost.save();
-    res.render("dashboard-traply");
+    res.render("dashboard");
   } catch (err) {
     console.log("An error has occured. ");
     res.render("error");
@@ -152,7 +117,7 @@ app.post("/signin", async (req, res) => {
       httpOnly: true,
       secure: false,
     });
-    res.render("Success");
+    res.redirect("/home");
   } catch (err) {
     let errorMessage = "An error has occured";
     res.render("signinerr", { errorMessage });
@@ -169,7 +134,7 @@ app.post("/register", async (req, res) => {
       httpOnly: true,
       secure: false,
     });
-    res.render("success");
+    res.redirect("/home");
   } catch (err) {
     let errorMessage = "An error has occurred.";
     if (err.code === 11000) {
@@ -180,60 +145,8 @@ app.post("/register", async (req, res) => {
     console.log(errorMessage);
   }
 });
-app.post("/dashboard/clair/:id", async (req, res) => {
-  const userId = req.cookies.User;
-  if (!userId) {
-    console.log("UserId is not found");
-  }
-  try {
-    const postId = req.params.id;
-    const postFetch = await ClairP.findById(postId);
-    if (!postId) {
-      console.log("PostId is not found");
-    }
 
-    res.redirect("/dashboard/clair", { PORT, postFetch, userId });
-  } catch (err) {
-    console.log(`An error has occured`);
-    res.render("error");
-  }
-});
-app.post("/dashboard/clair/:id/like", async (req, res) => {
-  const postId = req.params.id;
-  const userId = req.cookies.User;
-  const post = await ClairP.findById(postId);
-  if (post.likedBy.includes(userId)) {
-    post.likedBy = post.likedBy.filter((id) => id !== userId);
-    post.like--;
-  } else {
-    if (post.dislikedBy.includes(userId)) {
-      post.dislikedBy = post.dislikedBy.filter((id) => id !== userId);
-      post.dislike--;
-    }
-    post.likedBy.push(userId);
-    post.like++;
-  }
-  await post.save();
-  res.redirect("/dashboard/clair");
-});
-app.post("/dashboard/clair/:id/dislike", async (req, res) => {
-  const userId = req.cookies.User;
-  const postId = req.params.id;
-  const post = await ClairP.findById(postId);
-  if (post.dislikedBy.includes(userId)) {
-    post.dislikedBy = post.dislikedBy.filter((id) => id !== userId);
-    post.dislike--;
-  } else {
-    if (post.likedBy.includes(userId)) {
-      post.likedBy = post.likedBy.filter((id) => id !== userId);
-    }
-    post.dislikedBy.push(userId);
-    post.dislike++;
-  }
-  await post.save();
-  res.redirect("/dashboard/clair");
-});
-app.post("/dashboard/traply/:id", async (req, res) => {
+app.post("/dashboard/:id", async (req, res) => {
   const userId = req.cookies.User;
   if (!userId) {
     console.log("User not found");
@@ -244,12 +157,12 @@ app.post("/dashboard/traply/:id", async (req, res) => {
       console.log("The post is not found");
     }
     const post = await TraplyP.findById(postId);
-    res.redirect("/dashboard/traply", { userId, post });
+    res.redirect("/dashboard", { userId, post });
   } catch (err) {
     console.log(`An error has occured: ${err}`);
   }
 });
-app.post("/dashboard/traply/:id/like", async (req, res) => {
+app.post("/dashboard/:id/like", async (req, res) => {
   const userId = req.cookies.User;
   const postId = req.params.id;
   const post = await TraplyP.findById(postId);
@@ -265,9 +178,9 @@ app.post("/dashboard/traply/:id/like", async (req, res) => {
     post.like++;
   }
   await post.save();
-  res.redirect("/dashboard/traply");
+  res.redirect("/dashboard");
 });
-app.post("/dashboard/traply/:id/dislike", async (req, res) => {
+app.post("/dashboard/:id/dislike", async (req, res) => {
   const userId = req.cookies.User;
   const postId = req.params.id;
   const post = await TraplyP.findById(postId);
@@ -283,9 +196,9 @@ app.post("/dashboard/traply/:id/dislike", async (req, res) => {
     post.dislike++;
   }
   await post.save();
-  res.redirect("/dashboard/traply");
+  res.redirect("/dashboard");
 });
-app.post("/dashboard/traply/:id/comment", async (req, res) => {
+app.post("/dashboard/:id/comment", async (req, res) => {
   const postId = req.params.id;
   const post = await TraplyP.findByIdAndUpdate(postId, {
     $push: { comment: { text } },
