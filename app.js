@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const User = require("./models/user");
 const jwt = require("jsonwebtoken");
-const ClairP = require("./models/post-clair");
+//const ClairP = require("./models/post-clair");
 const TraplyP = require("./models/post-traply");
 const app = express();
 const PORT = 4447;
@@ -44,19 +44,29 @@ app.get("/", (req, res) => {
 
 app.get("/home", async (req, res) => {
   try {
-    const postData = await TraplyP.aggregate([{ $sample: { size: 5 } }]);
-    const populatedPostData = await TraplyP.populate(postData, {
+    // Use aggregate to sample 100 posts
+    const postData = await TraplyP.aggregate([{ $sample: { size: 100 } }]);
+
+    // Convert postData into a Mongoose model instance to enable virtuals
+    const hydratedPosts = postData.map((doc) => new TraplyP(doc));
+
+    // Populate userId in the posts
+    const populatedPostData = await TraplyP.populate(hydratedPosts, {
       path: "userId",
       select: "name",
     });
 
-    console.log(postData);
-    res.render("dashboard", { populatedPostData, PORT, postData });
+    // Debug: log the result to ensure virtuals are present
+    console.log(populatedPostData.map((post) => post.timeago));
+
+    // Render the dashboard
+    res.render("dashboard", { populatedPostData, PORT });
   } catch (err) {
     console.log(`An error has occurred. ${err}`);
-    res.status(500).json({ error: "Error fetching data" });
+    res.render("error");
   }
 });
+
 app.get("/landing", (req, res) => {
   res.redirect("/home");
 });
@@ -162,22 +172,27 @@ app.post("/dashboard/:id", async (req, res) => {
   }
 });
 app.post("/dashboard/:id/like", async (req, res) => {
-  const userId = req.cookies.User;
-  const postId = req.params.id;
-  const post = await TraplyP.findById(postId);
-  if (post.likedBy.includes(userId)) {
-    post.likedBy = post.likedBy.filter((id) => id !== userId);
-    post.like--;
-  } else {
-    if (post.dislikedBy.includes(userId)) {
-      post.dislikedBy = post.dislikedBy.filter((id) => id !== userId);
-      post.dislike--;
+  try {
+    const userId = req.cookies.User;
+    const postId = req.params.id;
+    const post = await TraplyP.findById(postId);
+    console.log(postId);
+    if (post.likedBy.includes(userId)) {
+      post.likedBy = post.likedBy.filter((id) => id !== userId);
+      post.like--;
+    } else {
+      if (post.dislikedBy.includes(userId)) {
+        post.dislikedBy = post.dislikedBy.filter((id) => id !== userId);
+        post.dislike--;
+      }
+      post.likedBy.push(userId);
+      post.like++;
     }
-    post.likedBy.push(userId);
-    post.like++;
+    await post.save();
+    res.redirect("/dashboard");
+  } catch (err) {
+    console.log(`An error has occured. `);
   }
-  await post.save();
-  res.redirect("/dashboard");
 });
 app.post("/dashboard/:id/dislike", async (req, res) => {
   const userId = req.cookies.User;

@@ -76,21 +76,19 @@
                           </a>
     </section>
     <section id="posts">
-    <% postData.forEach(post => { %>
+    <% populatedPostData.forEach(post => { %>
       <section id="post">
         <section id="upper">
           <section id="left">
             <div class="account"></div>
             <div class="time">
-              <span>Username</span>
-              <span>2 hours ago</span>
+              <span><span><%= post.userId?.name || 'Unknown User' %></span>
+            </span>
+            <span><%= post.timeago || 'N/A' %></span>
+
             </div>
           </section>
-          <section id="right">
-            <div class="button">
-              <button>Follow</button>
-            </div>
-          </section>
+      
         </section>
         <section id="down">
           <section id="text">
@@ -98,7 +96,7 @@
           </section>
           <section id="engagements">
             <div class="like">
-              <form action="/dashboard/<%= post.id%>/like" method="post">
+              <form action="/dashboard/<%= post._id%>/like" method="post">
               <button type="submit" id="like">
                        <img src="/Images/like.png" alt="">
                 
@@ -107,7 +105,7 @@
             <span><%= post.like%></span>
             </div>
             <div class="dislike">
-              <form action="/dashboard/<%= post.id%>/dislike" method="post">
+              <form action="/dashboard/<%= post._id%>/dislike" method="post">
               <button type="submit" id="like">
                 <img src="/Images/dislike.png" alt="">
               </button>
@@ -115,10 +113,10 @@
               <span> <%= post.dislike%></span>
             </div>
             <div class="share">
-              <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post.id%>/">
+              <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
             </div>
             <div class="comment">
-                   <form action="/dashboard<%= post.id%>/comment" method="post">
+                   <form action="/dashboard<%= post._id%>/comment" method="post">
                 <input name="text" id="text">
                 
                </form>
