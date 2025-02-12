@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Post</title>
+    <title>Monami</title>
     <link rel="stylesheet" href="/CSS/variables.css" />
     <link rel="stylesheet" href="/CSS/preloader.css" />
     <link rel="stylesheet" href="/CSS/post-traply.css">
     <link rel="stylesheet" href="/CSS/dashboard-traply.css">
+    <link rel="stylesheet" href="/CSS/profile-traply.css">
+    <link rel="stylesheet" href="/CSS/under-construction.css">
     <!--FONT FAMILY-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +19,7 @@
     />
   </head>
   <body>
-   <div id="preloader">
+    <div id="preloader">
       <div class="spinner"></div>
       <div class="loading">
         <p>Loading...</p>
@@ -25,38 +27,36 @@
     </div>
     <section id="header">
                         <div class="left">
-                        <img src="/Images/Elan.png" alt="">
+                        <img src="/Images/Traply.png" alt="">
                         </div>
                         <div class="right">
                         <img src="/Images/Search-black.png" alt="">
-                        <a href="/profile">
                         <img src="/Images/Account-black.png" alt="">
-                        </a>
                         </div>
 
     </section>
     <section id="body">
     <section id="slide-bar">
       <a href="/dashboard">
-      <div class="special">
-                        <span><img src="/Images/menu-black.png" alt=""></span>
-                        <span><p>Dashboard</p></span>
-      </div>
-      </a>
-      <a href="/profile">
-      <div class="profile">
-                        <span><img src="/Images/Account-black.png" alt=""></span>
-                        <span><p>Profile</p></span>
-      </div>
-      </a>
-      <a href="/notification">
+        <div class="dashboard">
+                          <span><img src="/Images/menu-black.png" alt=""></span>
+                          <span><p>Dashboard</p></span>
+        </div>
+        </a>
+        <a href="/profile">
+        <div class="profile">
+                          <span><img src="/Images/Account-black.png" alt=""></span>
+                          <span><p>Profile</p></span>
+        </div>
+        </a>
+        <a href="/notification">
         <div class="notficiation">
                           <span><img src="/Images/Notification-Black.png" alt=""></span>
                           <span><p>Notification</p></span>
                           </div>
                           </a>
                           <a href="/work">
-                            <div class="work">
+                            <div class="special">
                               <span><img src="/Images/Work-black.png" alt="" /></span>
                               <span><p>Work</p></span>
                             </div>
@@ -75,59 +75,12 @@
                             </div>
                           </a>
     </section>
-    <section id="posts">
-    <% postData.forEach(post => { %>
-      <section id="post">
-        <section id="upper">
-          <section id="left">
-            <div class="account"></div>
-            <div class="time">
-              <span>Username</span>
-              <span>2 hours ago</span>
-            </div>
-          </section>
-          <section id="right">
-            <div class="button">
-              <button>Follow</button>
-            </div>
-          </section>
-        </section>
-        <section id="down">
-          <section id="text">
-            <p><%= post.message %></p>
-          </section>
-          <section id="engagements">
-            <div class="like">
-              <form action="/dashboard/<%= post.id%>/like" method="post">
-              <button type="submit" id="like">
-                       <img src="/Images/like.png" alt="">
-                
-              </button>
-            </form>
-            <span><%= post.like%></span>
-            </div>
-            <div class="dislike">
-              <form action="/dashboard/<%= post.id%>/dislike" method="post">
-              <button type="submit" id="like">
-                <img src="/Images/dislike.png" alt="">
-              </button>
-              </form>
-              <span> <%= post.dislike%></span>
-            </div>
-            <div class="share">
-              <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post.id%>/">
-            </div>
-            <div class="comment">
-                   <form action="/dashboard<%= post.id%>/comment" method="post">
-                <input name="text" id="text">
-                
-               </form>
-            </div>
-           
-          </section>
-        </section>
+    <section id="main">
+                        <h1>Page is under construction!</h1>
+                        <p>Work will be an AI product which will enhance job searching and performing work related tasks. </p>
+    </section>
       </section>
-    <% }) %>
+
     </section>
                         </section>
     </section>

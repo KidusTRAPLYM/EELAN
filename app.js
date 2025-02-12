@@ -80,12 +80,11 @@ app.get("/profile", async (req, res) => {
   const user = await User.findById(userId);
   res.render("profile", { user });
 });
-
-app.get("/work/clair ", (req, res) => {
-  res.render("work-clair");
+app.get("/work", (req, res) => {
+  res.render("work");
 });
-app.get("/work/traply", (req, res) => {
-  res.render("work-traply");
+app.get("/monami", (req, res) => {
+  res.render("monami");
 });
 // Post functions
 
@@ -100,7 +99,7 @@ app.post("/post", async (req, res) => {
       userId,
     });
     await newPost.save();
-    res.render("dashboard");
+    res.redirect("/home");
   } catch (err) {
     console.log("An error has occured. ");
     res.render("error");

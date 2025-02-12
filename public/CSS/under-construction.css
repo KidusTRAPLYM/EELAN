@@ -1,0 +1,14 @@
+h1 {
+color: var(--Blue--);
+font-size: 50px;
+}
+#main p {
+font-size: 20px;
+width: 800px;
+}
+#main{
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 100px
+}
