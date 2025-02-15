@@ -98,6 +98,9 @@ app.get("/work", (req, res) => {
 app.get("/monami", (req, res) => {
   res.render("monami");
 });
+app.get("/notification", (req, res) => {
+  res.render("notification");
+});
 // Post functions
 
 app.post("/post", async (req, res) => {

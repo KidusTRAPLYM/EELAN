@@ -2,6 +2,7 @@ section#posts {
 display: flex;
 gap: 30px;
 flex-direction: column;
+padding: 175px;
 }
 #post {
 width: 600px;

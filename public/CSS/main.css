@@ -10,18 +10,26 @@ font-family: var(--font-family--);
 background-color:var(--Clear-white--);
 }
 
-#header{
+#header {
     position: fixed;
     top: 0%;
-    left: 50%;
-    width: 100%;
+    left: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 25px;
-    }
+    background: white;
+}
     #header img{
-    width: 175px;
+    width: 130px;
+    }
+    .img {
+        background: white;
+        width: 93rem;
+        display: flex
+    ;
+        justify-content: center;
+        align-items: center;
     }
     #body{
     display: flex;
@@ -51,7 +59,7 @@ background-color:var(--Clear-white--);
     }
     #slide-bar div span{
     margin-left: 14px;
-    color: var(--White--);
+    color: var(--Black--);
     }
     #slide-bar div img{
     width: 40px;
@@ -62,5 +70,5 @@ background-color:var(--Clear-white--);
         width: 200px;
         border-radius: 10px;
         background-color: var(--Blue--);
-        color: var(--White--);
+        color: var(--Black--);
         }
