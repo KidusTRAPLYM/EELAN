@@ -1,9 +1,8 @@
 #preloader{
-/*position: fixed;
+position: fixed;
 top: 30%;
-left: 45%;*/
+left: 45%;
 z-index: 999;
-padding: 150px;
 display: flex;
 flex-direction: column;
 gap: 20px;

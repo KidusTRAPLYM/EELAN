@@ -1,0 +1,183 @@
+body{
+overflow-y: hidden;
+}
+#register{
+                        display: flex;
+                       flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 40px;
+                        gap: 200px;
+                    }
+                    #video{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    }
+                    #video p{
+                    font-size: 20px;
+                    }
+                    #signup{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    }
+                    #signup span{
+                    display: flex;
+                    gap: 20px;
+                    }
+                    input{
+                    padding: 12px;
+                    border-radius: 10px;
+                    font-family:var(--font-family--);
+                    width: 350px;
+                    border: 1px solid var(--Black--);
+                    color: var(--Blue--);
+                    }
+                    span.name {
+                    display: flex;
+                    flex-direction: column;
+                    }                    
+                    button {
+                    background-color: var(--Blue--);
+                    color: Var(--White--);
+                    padding: 12px;
+                    font-family: var(--Font-family--);
+                    border: 1px solid var(--Black--);
+                    width: 100px;
+                    }
+                    video{
+                        width: 800px;
+                    }
+                    form {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        gap: 20px;
+                    }
+                    .elan-signin{
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    padding: 10px;
+                    border: 1px solid var(--Black--);
+                    border-radius: 10px;
+                    }
+                    img{
+                        width: 250px;
+                    }
+                    /*media quries*/
+                    
+                    @media(max-width:1429px){
+                        #video{
+                            display: none;
+                         }
+                         #register{
+                             display: block;
+                         }
+                        #video p{
+                             display: none;
+                         }
+                         #signup{
+                             display: flex;
+                         flex-direction: column;
+                         justify-content: center;
+                         align-items: center;
+                         transform: none;
+                         }
+                         body{
+                             padding: 20px;
+                         }
+                         form{
+                             gap: 30px;
+                         }
+                    }
+                    @media(max-width:1024px){
+                        #video{
+                           display: none;
+                        }
+                        #register{
+                            display: block;
+                        }
+                       #video p{
+                            display: none;
+                        }
+                        #signup{
+                            display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        transform: none;
+                        }
+                        body{
+                            padding: 20px;
+                        }
+                        form{
+                            gap: 30px;
+                        }
+                        #preloader{
+                            position: fixed;
+                            left: 40% !important;
+                            top: 30%;
+                        }
+                    }
+                    
+                    @media(max-width:768px){
+                        body{
+                            padding: 0;
+                        }
+                        video{
+                            width: 300px;
+                        }
+                        #video p{
+                            display: none;
+                        }
+                        image{
+                            width: 160px;
+                        }
+                        #signup{
+                            transform: none;
+                        }
+                        #register{
+                            display: flex;
+                            gap: 20px;
+                            padding: 60px;
+                        }
+                        #preloader{
+                            position: fixed;
+                            left: 38% !important;
+                            top: 30%;
+                        }
+                    }
+                    
+                    @media(max-width:426px){
+                        video{
+                            width: 160px;
+                        }
+                        #video p{
+                          display: none;
+                        }
+                        #signup{
+                            transform: none;
+                        }
+                        #register{
+                            padding: 60px;
+                            gap: 20px;
+                        }
+                        img{
+                            width: 160px;
+                        }
+                        #preloader{
+                            position: fixed;
+                            left: 27% !important;
+                            top: 30%;
+                        }
+                        }
+                        @media(max-width:375px){
+                        input{
+                            width: 315px;
+                        }
+                        }

@@ -55,10 +55,6 @@ font-size: 14px;
 #down{
 padding: 20px;
 }
-#body {
-display: flex;
-gap: 275px;
-                    }
 #engagements div{
 display: flex;
 align-items: center;
