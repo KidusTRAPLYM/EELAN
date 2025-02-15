@@ -20,8 +20,8 @@ background-color:var(--Clear-white--);
     padding: 25px;
     background: white;
 }
-    #header img{
-    width: 130px;
+    #slide-bar img{
+    width: 50px;
     }
     .img {
         background: white;
@@ -40,17 +40,20 @@ background-color:var(--Clear-white--);
     #slide-bar {
         display: flex;
         flex-direction: column;
-        padding: 28px;
+        align-items: center;
+        padding: 13px;
         position: fixed;
         gap: 20px;
         top: 20%;
     }
     #slide-bar div:not(.special) {
-    display: flex;
-    align-items: center;
-    background-color: var(--Gray--);
-    width: 200px;
-    border-radius: 10px;
+        display: flex;
+        align-items: center;
+        background-color: var(--Gray--);
+        width: 60px;
+        border-radius: 10px;
+        justify-content: center;
+        padding: 3px;
     }
     #slide-bar div:not(.special):hover{
     background-color: var(--Blue--);
@@ -66,9 +69,11 @@ background-color:var(--Clear-white--);
     }
     .special{
         display: flex;
+        justify-content: center;
         align-items: center;
-        width: 200px;
+        width: 60px;
         border-radius: 10px;
         background-color: var(--Blue--);
         color: var(--Black--);
+        padding: 3px;
         }
