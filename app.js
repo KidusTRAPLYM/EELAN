@@ -88,7 +88,9 @@ app.get("/profile", async (req, res) => {
   const decoded = jwt.verify(token, "sec");
   const userId = decoded.id;
   const user = await User.findById(userId);
-  res.render("profile", { user });
+  // Fetch posts created by this user
+  const posts = await TraplyP.find({ userId: userId });
+  res.render("profile", { user, posts, PORT });
 });
 app.get("/work", (req, res) => {
   res.render("work");

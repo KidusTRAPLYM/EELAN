@@ -8,7 +8,6 @@ box-sizing: border-box;
 body{
 font-family: var(--font-family--);
 background-color:var(--Clear-white--);
-overflow-y: hidden;
 }
 #register{
     display: flex;
@@ -32,7 +31,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-transform: translate(-12rem,40px)
 }
 #signup span{
 display: flex;
@@ -79,28 +77,35 @@ border-radius: 10px;
 img{
     width: 250px;
 }
-@media(max-width:500px){
-video{
-    width: 160px;
-}
-#video p{
-  display: none;
-}
-#signup{
+@media(max-width:1024px){
+    #video{
+       display: none;
+    }
+    #register{
+        display: block;
+    }
+   #video p{
+        display: none;
+    }
+    #signup{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     transform: none;
+    }
+    body{
+        padding: 20px;
+    }
+    form{
+        gap: 30px;
+    }
 }
-#register{
-    padding: 10px;
-    gap: 20px;
-}
-img{
-    width: 160px;
-}
-#preloader{
-    left: 38% ;
-}
-}
+
 @media(max-width:768px){
+    body{
+        padding: 0;
+    }
     video{
         width: 300px;
     }
@@ -119,3 +124,29 @@ img{
         padding: 60px;
     }
 }
+@media(max-width:425px){
+    video{
+        width: 160px;
+    }
+    #video p{
+      display: none;
+    }
+    #signup{
+        transform: none;
+    }
+    #register{
+        padding: 10px;
+        gap: 20px;
+    }
+    img{
+        width: 160px;
+    }
+    #preloader{
+        left: 38% ;
+    }
+    }
+    @media(max-width:375px){
+    input{
+        width: 315px;
+    }
+    }

@@ -1,8 +1,9 @@
 #preloader{
-position: fixed;
+/*position: fixed;
 top: 30%;
-left: 45%;
+left: 45%;*/
 z-index: 999;
+padding: 150px;
 display: flex;
 flex-direction: column;
 gap: 20px;
@@ -11,9 +12,10 @@ align-items: center;
 
 }
 .spinner{
-display: relative;
-
+display: flex;
 width: 200px;
+justify-content: center;
+align-items: center;
 height: 200px;
 border: 5px solid var(--White--);
 border-top: 5px solid var(--Blue--);
@@ -27,15 +29,5 @@ transform: rotate(0deg);
 }
 100%{
 transform: rotate(360deg);
-}
-}
-@media(max-width:500px){
-#preloader{
-left: 32%;
-top: 35%;
-}
-.spinner{
-width: 150px;
-height: 150px;
 }
 }
