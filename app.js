@@ -98,8 +98,30 @@ app.get("/work", (req, res) => {
 app.get("/monami", (req, res) => {
   res.render("monami");
 });
-app.get("/notification", (req, res) => {
-  res.render("notification");
+app.get("/notification", async (req, res) => {
+  const token = req.cookies.User;
+  const decoded = jwt.verify(token, "sec");
+  const userId = decoded.id;
+  const user = await User.findById(userId);
+  const posts = await TraplyP.find({ userId: userId });
+  const populatedPosts = await TraplyP.populate(posts, {
+    path: "likedBy", // Populate likedBy field
+    select: "name", // Select only the name field
+  });
+  const notifications = populatedPosts.map((post) => {
+    const likedUserNames = post.likedBy.map((user) => user.name);
+    return {
+      postTitle: post.message, // or any other field representing the post's title/message
+      likedBy: likedUserNames,
+    };
+  });
+
+  res.render("notification", {
+    user,
+    posts: populatedPosts,
+    notifications,
+    PORT,
+  });
 });
 // Post functions
 

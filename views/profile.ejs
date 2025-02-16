@@ -24,49 +24,48 @@
         <p>Loading...</p>
       </div>
     </div>
-    <section id="header">  
-      <div class="img">
-        <img src="/Images/Elan.png" alt="">     
-      </div>   
-      </section> 
-      <section id="slide-bar">
-      <a href="/dashboard">
-        <div class="dashboard">
-                          <span><img src="/Images/menu-black.png" alt=""></span>
-                          <span><p>Dashboard</p></span>
-        </div>
-        </a>
-        <a href="/profile">
-        <div class="special">
-                          <span><img src="/Images/Account-black.png" alt=""></span>
-                          <span><p>Profile</p></span>
-        </div>
-        </a>
-        <a href="/notification">
-          <div class="notficiation">
-                            <span><img src="/Images/Notification-Black.png" alt=""></span>
-                            <span><p>Notification</p></span>
-                            </div>
-                            </a>
-                            <a href="/work">
-                              <div class="work">
-                                <span><img src="/Images/Work-black.png" alt="" /></span>
-                                <span><p>Work</p></span>
+   
+    
+    <section id="slide-bar">
+      <section id="logo">
+        <a href="/dashboard">
+          <img src="/Images/Clair (2).png" alt="">     
+         </a>
+      </section>
+       <section id="icons">
+        <a href="/dashboard">
+          <div class="special">
+            <img src="/Images/home.png" alt="">
+          </div>
+          </a>
+          <a href="/profile">
+          <div class="profile">
+            <img src="/Images/Account-black.png" alt="">
+          </div>
+          </a>
+          <a href="/notification">
+            <div class="notficiation">
+              <img src="/Images/Notification-Black.png" alt="">
                               </div>
-                            </a>
-                    
-                            <a href="/post">
-                              <div class="post">
-                                <span><img src="/Images/Add-post-black.png" alt="" /></span>
-                                <span><p>Post</p></span>
-                              </div>
-                            </a>
-                            <a href="/Monami">
-                              <div class="monami">
-                                <span><img src="/Images/monami.png" alt="" /></span>
-                                <span><p>Monami</p></span>
-                              </div>
-                            </a>
+                              </a>
+                              <a href="/work">
+                                <div class="work">
+                                  <img src="/Images/Work-black.png" alt="" />
+                                </div>
+                              </a>
+                      
+                              <a href="/post">
+                                <div class="post">
+                                  <img src="/Images/Add-post-black.png" alt="" />
+                                </div>
+                              </a>
+                              <a href="/Monami">
+                                <div class="monami">
+                                  <img src="/Images/monami.png" alt="" />
+                                </div>
+                              </a>
+       </section>
+     
     </section>
     <section id="body">
    
@@ -79,7 +78,7 @@
                         <span><b>1K</b>  Posts</span>
                         <span><b>3M</b> Followers</span>
                         <span>
-                          <form action="/signout" method="post">
+                          <form action="/signout" method="post" id="signout">
                             <button>Sign out</button></a>
                           </form>
                           
@@ -129,12 +128,15 @@
                                     <span> <%= post.dislike%></span>
                                   </div>
                                   <div class="share">
-                                    <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
+                                   <!--
+                                  <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
+                                -->
+                                  <img src="/Images/share.png" alt="">
                                   </div>
                                   <div class="comment">
-                                         <form action="/dashboard<%= post._id%>/comment" method="post">
-                                      <input name="text" id="text">
-                                      
+                                        <!--- <form action="/dashboard<%= post._id%>/comment" method="post">
+                                      <input name="text" id="text">-->
+                                      <img src="/Images/comment.png" alt="">
                                      </form>
                                   </div>
                                  

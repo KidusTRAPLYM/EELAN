@@ -20,6 +20,9 @@ border-radius: 10px;
 font-family: var(--font-family--);
 border: none;
 }
+section#post {
+                        padding: 110px;
+                    }
 textarea{
 padding: 20px;
 font-family: var(--font-family--);

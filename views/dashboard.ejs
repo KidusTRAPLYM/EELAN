@@ -24,47 +24,45 @@
       </div>
     </div> 
     <section id="slide-bar">
-      
-      <section id="header">  
-    
-        
-                        
-                  
-  </section>
-       <a href="/dashboard">
-        <img src="/Images/Clair (2).png" alt="">     
-       </a>
-      <a href="/dashboard">
-      <div class="special">
-        <img src="/Images/menu-black.png" alt="">
-      </div>
-      </a>
-      <a href="/profile">
-      <div class="profile">
-        <img src="/Images/Account-black.png" alt="">
-      </div>
-      </a>
-      <a href="/notification">
-        <div class="notficiation">
-          <img src="/Images/Notification-Black.png" alt="">
-                          </div>
-                          </a>
-                          <a href="/work">
-                            <div class="work">
-                              <img src="/Images/Work-black.png" alt="" />
-                            </div>
-                          </a>
-                  
-                          <a href="/post">
-                            <div class="post">
-                              <img src="/Images/Add-post-black.png" alt="" />
-                            </div>
-                          </a>
-                          <a href="/Monami">
-                            <div class="monami">
-                              <img src="/Images/monami.png" alt="" />
-                            </div>
-                          </a>
+      <section id="logo">
+        <a href="/dashboard">
+          <img src="/Images/Clair (2).png" alt="">     
+         </a>
+      </section>
+       <section id="icons">
+        <a href="/dashboard">
+          <div class="special">
+            <img src="/Images/home.png" alt="">
+          </div>
+          </a>
+          <a href="/profile">
+          <div class="profile">
+            <img src="/Images/Account-black.png" alt="">
+          </div>
+          </a>
+          <a href="/notification">
+            <div class="notficiation">
+              <img src="/Images/Notification-Black.png" alt="">
+                              </div>
+                              </a>
+                              <a href="/work">
+                                <div class="work">
+                                  <img src="/Images/Work-black.png" alt="" />
+                                </div>
+                              </a>
+                      
+                              <a href="/post">
+                                <div class="post">
+                                  <img src="/Images/Add-post-black.png" alt="" />
+                                </div>
+                              </a>
+                              <a href="/Monami">
+                                <div class="monami">
+                                  <img src="/Images/monami.png" alt="" />
+                                </div>
+                              </a>
+       </section>
+     
     </section>
     <section id="body">
    
@@ -101,16 +99,21 @@
               <form action="/dashboard/<%= post._id%>/dislike" method="post">
               <button type="submit" id="like">
                 <img src="/Images/dislike.png" alt="">
+                
               </button>
               </form>
-              <span> <%= post.dislike%></span>
+           <div class="span">
+            <span> <%= post.dislike%></span>
+           </div>
             </div>
             <div class="share">
-              <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
+              <img src="/Images/share.png" alt="">
+         <!--<input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">-->
             </div>
             <div class="comment">
-                   <form action="/dashboard<%= post._id%>/comment" method="post">
-                <input name="text" id="text">
+                  <!-- <form action="/dashboard<%= post._id%>/comment" method="post">-->
+                    <img src="/Images/comment.png" alt="">
+               <!--<input name="text" id="text">-->
                 
                </form>
             </div>

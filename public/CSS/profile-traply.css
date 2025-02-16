@@ -9,10 +9,11 @@ justify-content: align;
 section#profile {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
     gap: 20px;
-    padding: 150px;
+    padding: 40px;
+    padding-top: 126px;
 }
 h1{
 font-size: 20px;
@@ -33,6 +34,38 @@ gap: 30px;
     gap: 20px;
 }
 #body{
- display: flex;
+ display: flex !important;
+ justify-content: center;
+ align-items: center;
  gap: 150px;   
+ padding: 0;
+}
+#signout button{
+    width: 100px;
+}
+@media(max-width:425px){
+#slide-bar{
+   position: fixed;
+   top: 0;
+   left: -22%;
+}
+section#profile-details{
+    flex-direction:column
+}
+.engagements {
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+}
+@media(max-width:375px){
+    #slide-bar{
+        width: 109%;
+    }
+    section#profile{
+        padding-left: 28px;
+    }
 }

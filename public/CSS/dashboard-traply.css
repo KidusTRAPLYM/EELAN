@@ -2,13 +2,16 @@ section#posts {
 display: flex;
 gap: 30px;
 flex-direction: column;
-padding: 175px;
+padding: 25px;
 }
 #post {
 width: 600px;
 border-radius: 10px;
 border: 0.5px solid var(--Black--);
 box-shadow: 10px 10px var(--Blue--);
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
   }
 
 .account{
@@ -21,7 +24,12 @@ border-radius: 100%;
 #engagements{
 display: flex;
 align-items: center;
-justify-content: center; 
+justify-content: space-around; 
+}
+#engagements div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #engagements img {
 width: 27px;
@@ -43,7 +51,7 @@ padding: 10px;
 color: var(--White--);
 font-family: var(--font-family--);
 border: none;
-width: 100px;
+width: 40px;
 }
 .time {
 display: flex;
@@ -56,10 +64,17 @@ font-size: 14px;
 #down{
 padding: 20px;
 }
+.dislike form {
+  display: inline-block;
+}
+
+.dislike button {
+  display: inline-block;
+}
 #engagements div{
 display: flex;
 align-items: center;
-flex-direction: column;
+flex-direction: row;
 }
 #engagements div button{
   background-color: var(--White--);
@@ -85,9 +100,6 @@ input{
   justify-content: center !important;
   align-items: center !important;
 }
-.img{
-  width: 64rem;
-}
  }
  @media(max-width:768px){
   .img {
@@ -108,6 +120,44 @@ p {
   font-size: 14px;
 }
  }
+ @media(max-width:681px){
+  #slide-bar {
+    padding: 13px !important;
+    gap: 16px !important;
+    flex-direction: column !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: white !important;
+    padding-right: 52px !important;
+    width: 100% !important;
+    top: 0;
+  }
+  #slide-bar #icons{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+  }
+  }
+ @media(max-width:531px){
+  #post{
+    width: 471px !important;
+  }
+  #slide-bar{
+    width: 108% !important;
+  }
+ }
+ @media(max-width:496px){
+  #post{
+    width: 384px !important;
+  }
+  #slide-bar #icons{
+    gap: 10px !important;
+  }
+  #slide-bar div{
+    width: 53px !important;
+  }
+ }
  @media (max-width: 426px) {
   .img {
     width: 33rem !important;
@@ -124,11 +174,6 @@ p {
   #body {
     padding-top: 190px !important;
   }
-  #slide-bar {
-    padding: 1px !important;
-    gap: 10px !important;
-    flex-direction: row !important;
-  }
   #slide-bar div img {
     width: 33px !important;
   }
@@ -142,14 +187,40 @@ p {
     width: 25rem !important;
   }
   #slide-bar {
-    padding: 1px !important;
-    gap: 10px !important;
-    flex-direction: row !important;
+    padding: 13px !important;
+    gap: 16px !important;
+    flex-direction: column !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     background: white !important;
     padding-right: 52px !important;
-    width: 100% !important;
+    width: 109% !important;
+    
+  }
+  #slide-bar #icons{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+  }
+}
+@media(max-width:376px){
+  #slide-bar{
+    gap: 16px !important;
+    width: 111% !important;
+  }
+  #slide-bar #icons{
+    gap: 11px;
+  }
+  #post{
+    width: 327px !important;
+  }
+}
+@media(max-width:320px){
+  #post{
+    width:292px !important;
+  }
+  #slide-bar #icons{
+    gap: 5px;
   }
 }

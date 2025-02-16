@@ -10,5 +10,35 @@ width: 800px;
 display: flex;
 flex-direction: column;
 justify-content: center;
-padding: 200px
+padding: 200px;
+flex-wrap: wrap;
+}
+@media(max-width:768px){
+#slide-bar{
+left: 11%;
+top: 0;
+flex-direction: row;
+}
+h1{
+width: 654px;
+}
+#main p {
+font-size: 20px;
+width: 627px;
+text-align: center;
+                    }
+}
+@media(max-width:426px){
+#slide-bar {
+left: -18%;
+top: 20px;
+}
+h1{
+                        font-size: 25px;
+}
+#main p{
+                        font-size: 15px;
+                        width: 407px;
+                
+}
 }
