@@ -1,40 +1,117 @@
-body{
-font-family: var(--font-family--);
+/* Post Header (Title + Button) */
+#post .up {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; /* ✅ Just enough space */
+  flex-wrap: nowrap; /* ✅ Prevents column stacking */
+  padding-bottom: 20px;
+  width: 100%;
 }
 
+/* Title */
+#post .up h1 {
+  font-size: 30px;
+  flex: 1;
+  white-space: nowrap; /* ✅ Prevents weird stacking */
+  margin: 0;
+}
 
-#post .up{
-display: flex;
-align-items: center;
-justify-content: space-between;
+/* Post Button */
+#post .up button {
+  background-color: var(--Blue--);
+  color: var(--White--);
+  padding: 12px;
+  width: 120px;
+  border-radius: 10px;
+  font-family: var(--font-family--);
+  border: none;
+  cursor: pointer;
 }
-#post .up h1{
-font-size: 30px;
-}
-#post .up button{
-background-color: var(--Blue--);
-color: var(--White--);
-padding: 15px;
-width: 100px;
-border-radius: 10px;
-font-family: var(--font-family--);
-border: none;
-}
+
+/* Post Section */
 section#post {
-                        padding: 110px;
-                    }
-textarea{
-padding: 20px;
-font-family: var(--font-family--);
-resize: none;
-width: 1150px;
-height: 440px;
-border: var(--White--);
+  padding: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-textarea:focus{
-outline: none;
+
+/* Text Area */
+textarea {
+  padding: 20px;
+  font-family: var(--font-family--);
+  resize: none;
+  width: 90%;
+  max-width: 1150px;
+  height: 440px;
+  border: 2px solid var(--White--);
+  border-radius: 10px;
 }
-a{
-color:inherit;
-text-decoration: none;
+
+/* RESPONSIVENESS */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  section#post {
+    padding: 80px;
+  }
+
+  #post .up {
+    flex-wrap: wrap; /* ✅ Ensures row layout */
+    gap: 28rem; /* ✅ Adjusted spacing */
+  }
+
+  #post .up h1 {
+    font-size: 28px;
+    flex-shrink: 0; /* ✅ Prevents squishing */
+  }
+
+  textarea {
+    width: 95%;
+    height: 400px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  section#post {
+    padding: 50px;
+  }
+
+  #post .up {
+    flex-direction: row; /* ✅ Keep row layout */
+    justify-content: space-between;
+    gap: 20rem;
+  }
+
+  #post .up h1 {
+    font-size: 24px;
+  }
+
+  #post .up button {
+    width: 100px;
+    padding: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 350px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 426px) {
+  section#post {
+    padding: 30px;
+  }
+
+  #post .up h1 {
+    font-size: 20px;
+  }
+
+  textarea {
+    height: 300px;
+  }
 }

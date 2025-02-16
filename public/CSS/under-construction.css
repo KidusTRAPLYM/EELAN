@@ -6,39 +6,53 @@ font-size: 50px;
 font-size: 20px;
 width: 800px;
 }
-#main{
-display: flex;
-flex-direction: column;
-justify-content: center;
-padding: 200px;
-flex-wrap: wrap;
-}
-@media(max-width:768px){
-#slide-bar{
-left: 11%;
-top: 0;
-flex-direction: row;
-}
-h1{
-width: 654px;
-}
-#main p {
-font-size: 20px;
-width: 627px;
-text-align: center;
-                    }
-}
-@media(max-width:426px){
-#slide-bar {
-left: -18%;
-top: 20px;
-}
-h1{
-                        font-size: 25px;
-}
-#main p{
-                        font-size: 15px;
-                        width: 407px;
-                
-}
-}
+h1 {
+                        color: var(--Blue--);
+                        font-size: 3vw; /* Scales with viewport width */
+                        text-align: center;
+                      }
+                      
+                      #main p {
+                        font-size: 1.2em; 
+                        max-width: 90%;
+                        margin: auto;
+                        text-align: center;
+                      }
+                      
+                      #main {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 15vh 5vw; /* Responsive padding */
+                      }
+                      
+                      /* Tablet */
+                      @media (max-width: 1024px) {
+                        #main p {
+                          width: 90%;
+                        }
+                      }
+                      
+                      /* Mobile */
+                      @media (max-width: 768px) {
+                        h1 {
+                          font-size: 5vw;
+                        }
+                        #main p {
+                          font-size: 1em;
+                        }
+                      }
+                      
+                      /* Small Mobile */
+                      @media (max-width: 426px) {
+                        h1 {
+                          font-size: 6vw;
+                        }
+                        #main p {
+                          font-size: 0.9em;
+                          width: 100%;
+                          padding: 0 10px;
+                        }
+                      }
+                      
