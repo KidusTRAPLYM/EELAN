@@ -7,8 +7,11 @@ const jwt = require("jsonwebtoken");
 const TraplyP = require("./models/post-traply");
 const app = express();
 const PORT = 4447;
-const URL =
-  "mongodb+srv://Traply_user:traply_ninja_1234@traply.lnv0ipt.mongodb.net/Elan?retryWrites=true&w=majority&appName=Traply";
+require("dotenv").config();
+
+// 2. MongoDB connection URL from .env
+const URL = process.env.MONGO_URI;
+
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 // middleware
