@@ -1,0 +1,14 @@
+section#body {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 120px;
+}
+img {
+width: 435px;
+}
+p {
+font-size: 1.2rem;
+font-family: var(--font-family--);
+}

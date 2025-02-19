@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comment</title>
+    <link rel="stylesheet" href="/CSS/variables.css" />
+    <link rel="stylesheet" href="/CSS/preloader.css" />
+    <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/dashboard-traply.css" />
+    <!--FONT FAMILY-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="comment-area">
+      <span id="close-btn-<%=postId%>" class="close-btn">&times;</span>
+      <h1>Comment here</h1>
+      <form action="/dashboard/<%=postId%>/comment" method="post">
+        <input type="text" name="message" id="message" />
+        <input type="submit" value="Submit" id="submit" />
+      </form>
+    </div>
+    <%comments.forEach(comment=>{%>
+    <div class="comment-fetch">
+      <h1><%= comment.userId.name%></h1>
+      <p><%= comment.message%></p>
+    </div>
+    <%})%>
+  </body>
+</html>

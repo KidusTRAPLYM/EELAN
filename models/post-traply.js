@@ -71,5 +71,5 @@ newSchema.virtual("timeago").get(function () {
   }
 });
 newSchema.set("toJSON", { virtuals: true });
-const model = mongoose.model("TraplyP", newSchema);
+const model = mongoose.model("Post", newSchema);
 module.exports = model;

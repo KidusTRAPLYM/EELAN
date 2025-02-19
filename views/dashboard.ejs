@@ -64,6 +64,7 @@
        </section>
      
     </section>
+
     <section id="body">
    
     <section id="posts">
@@ -107,25 +108,45 @@
            </div>
             </div>
             <div class="share">
-              <img src="/Images/share.png" alt="">
-         <!--<input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">-->
-            </div>
+              
+              <button type="submit" id="share-btn-<%= post._id %>" class="share-btn">
+              <img src="/Images/share.png" alt="" > 
+              </button>
+            
+              </div>
+              <section id="share-popup-<%= post._id %>" class="share-popup">
+                <section id="share-popup-content">
+                  <span id="close-popup-<%= post._id %>" class="close-btn">&times;</span>
+
+                  <h1>Share this file</h1>
+                  <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
+                </section>
+              </section>
+            
             <div class="comment">
-                  <!-- <form action="/dashboard<%= post._id%>/comment" method="post">-->
-                    <img src="/Images/comment.png" alt="">
-               <!--<input name="text" id="text">-->
-                
-               </form>
+              <a href="/comment/<%=post._id%>">
+              <button id="comment-<%=post._id%>" class="comment-btn">
+                <img src="/Images/comment.png" alt="">         
+              </button>           
+            </a>   
             </div>
-           
+            
+        
           </section>
         </section>
       </section>
     <% }) %>
+    <script>
+      
+    </script>
+    
+    
     </section>
                         </section>
     </section>
     </section>
+    <script src="/js/popup.js"></script>
     <script src="/js/loading2.js"></script>
+    <script src="/js/comment.js"></script>
     </body>
 </html>

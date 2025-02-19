@@ -4,9 +4,10 @@ const express = require("express");
 const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 //const ClairP = require("./models/post-clair");
+const comment = require("./models/comment.js");
 const TraplyP = require("./models/post-traply");
 const app = express();
-const PORT = 4447;
+const PORT = 9999;
 require("dotenv").config();
 
 // 2. MongoDB connection URL from .env
@@ -47,22 +48,13 @@ app.get("/", (req, res) => {
 
 app.get("/home", async (req, res) => {
   try {
-    // Use aggregate to sample 100 posts
     const postData = await TraplyP.aggregate([{ $sample: { size: 100 } }]);
-
-    // Convert postData into a Mongoose model instance to enable virtuals
     const hydratedPosts = postData.map((doc) => new TraplyP(doc));
-
-    // Populate userId in the posts
     const populatedPostData = await TraplyP.populate(hydratedPosts, {
       path: "userId",
       select: "name",
     });
-
-    // Debug: log the result to ensure virtuals are present
     console.log(populatedPostData.map((post) => post.timeago));
-
-    // Render the dashboard
     res.render("dashboard", { populatedPostData, PORT });
   } catch (err) {
     console.log(`An error has occurred. ${err}`);
@@ -126,6 +118,17 @@ app.get("/notification", async (req, res) => {
     PORT,
   });
 });
+app.get("/comment/:postId", async (req, res) => {
+  const postId = req.params.postId;
+  const token = req.cookies.User;
+  const decoded = jwt.verify(token, "sec");
+  const userId = decoded.id;
+  const comments = await comment.find({ postId }).populate("userId", "name");
+  console.log(postId);
+  console.log(userId);
+  console.log(comments);
+  res.render("comments", { comments, userId, postId });
+});
 // Post functions
 
 app.post("/post", async (req, res) => {
@@ -187,6 +190,7 @@ app.post("/register", async (req, res) => {
 
 app.post("/dashboard/:id", async (req, res) => {
   const userId = req.cookies.User;
+
   if (!userId) {
     console.log("User not found");
   }
@@ -242,14 +246,35 @@ app.post("/dashboard/:id/dislike", async (req, res) => {
   await post.save();
   res.redirect("/dashboard");
 });
-app.post("/dashboard/:id/comment", async (req, res) => {
-  const postId = req.params.id;
-  const post = await TraplyP.findByIdAndUpdate(postId, {
-    $push: { comment: { text } },
+app.post("/dashboard/:postId/comment", async (req, res) => {
+  const postId = req.params.postId;
+  const { message } = req.body; // Extract the comment message
+  const token = req.cookies.User;
+
+  if (!token) {
+    return res.redirect("/login"); // Redirect if not authenticated
+  }
+
+  const decoded = jwt.verify(token, "sec");
+  const userId = decoded.id;
+
+  // Create a new comment and save it to the database
+  const newComment = new comment({
+    postId: postId,
+    userId: userId,
+    message: message,
   });
-  await post.save();
-  res.redirect("/dashabord/traply");
+
+  try {
+    await newComment.save();
+    console.log("New comment saved:", newComment);
+    res.redirect(`/home`); // Redirect back to the comment page
+  } catch (error) {
+    console.error("Error saving comment:", error);
+    res.status(500).send("Failed to save comment");
+  }
 });
+
 app.post("/signout", async (req, res) => {
   try {
     res.clearCookie("User");
