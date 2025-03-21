@@ -151,20 +151,33 @@ section#comment-popup-content {
   border-radius: 20px;
   padding: 28px;
 }
-.comment-area {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 20px;
-}
-form {
-  display: flex
-;
+section#comment-area {
+  display: flex;
   flex-direction: column;
   gap: 20px;
 }
+.comment-fetch {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: baseline;
+  gap: 7px;
+  padding: 37px;
+}
+section#comments {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
 input#message {
-  width: 234%;
+  width: 56%;
   border-top: none;
   border-left: none;
   border-right: none;

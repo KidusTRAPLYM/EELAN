@@ -118,11 +118,7 @@ overflow-y: hidden;
                         form{
                             gap: 30px;
                         }
-                        #preloader{
-                            position: fixed;
-                            left: 40% !important;
-                            top: 30%;
-                        }
+                       
                     }
                     
                     @media(max-width:768px){
@@ -146,12 +142,9 @@ overflow-y: hidden;
                             gap: 20px;
                             padding: 60px;
                         }
-                        #preloader{
-                            position: fixed;
-                            left: 38% !important;
-                            top: 30%;
+                      
                         }
-                    }
+                    
                     
                     @media(max-width:426px){
                         video{
@@ -170,11 +163,7 @@ overflow-y: hidden;
                         img{
                             width: 160px;
                         }
-                        #preloader{
-                            position: fixed;
-                            left: 27% !important;
-                            top: 30%;
-                        }
+                     
                         }
                         @media(max-width:375px){
                         input{

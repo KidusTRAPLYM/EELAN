@@ -34,20 +34,16 @@
       </section>
        <section id="icons">
         <a href="/dashboard">
-          <div class="special">
+          <div class="dashboard">
             <img src="/Images/home.png" alt="">
           </div>
           </a>
           <a href="/profile">
-          <div class="profile">
+          <div class="special">
             <img src="/Images/Account-black.png" alt="">
           </div>
           </a>
-          <a href="/notification">
-            <div class="notficiation">
-              <img src="/Images/Notification-Black.png" alt="">
-                              </div>
-                              </a>
+      
                               <a href="/work">
                                 <div class="work">
                                   <img src="/Images/Work-black.png" alt="" />
@@ -97,7 +93,7 @@
                                 <section id="left">
                                   <div class="account"></div>
                                   <div class="time">
-                                    <span><span><%= post.userId?.name || 'Unknown User' %></span>
+                                    <span><span><%= user?.name || 'Unknown User' %></span>
                                   </span>
                                   <span><%= post.timeago || 'N/A' %></span>
                       
@@ -123,23 +119,38 @@
                                     <form action="/dashboard/<%= post._id%>/dislike" method="post">
                                     <button type="submit" id="like">
                                       <img src="/Images/dislike.png" alt="">
+                                      
                                     </button>
                                     </form>
-                                    <span> <%= post.dislike%></span>
+                                 <div class="span">
+                                  <span> <%= post.dislike%></span>
+                                 </div>
                                   </div>
                                   <div class="share">
-                                   <!--
-                                  <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
-                                -->
-                                  <img src="/Images/share.png" alt="">
-                                  </div>
+                                    
+                                    <button type="submit" id="share-btn-<%= post._id %>" class="share-btn">
+                                    <img src="/Images/share.png" alt="" > 
+                                    </button>
+                                  
+                                    </div>
+                                    <section id="share-popup-<%= post._id %>" class="share-popup">
+                                      <section id="share-popup-content">
+                                        <span id="close-popup-<%= post._id %>" class="close-btn">&times;</span>
+                      
+                                        <h1>Share this file</h1>
+                                        <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
+                                      </section>
+                                    </section>
+                                  
                                   <div class="comment">
-                                        <!--- <form action="/dashboard<%= post._id%>/comment" method="post">
-                                      <input name="text" id="text">-->
-                                      <img src="/Images/comment.png" alt="">
-                                     </form>
+                                    <a href="/comment/<%=post._id%>">
+                                    <button id="comment-<%=post._id%>" class="comment-btn">
+                                      <img src="/Images/comment.png" alt="">         
+                                    </button>           
+                                  </a>   
                                   </div>
-                                 
+                                  
+                              
                                 </section>
                               </section>
                             </section>

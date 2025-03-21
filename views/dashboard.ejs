@@ -40,11 +40,7 @@
             <img src="/Images/Account-black.png" alt="">
           </div>
           </a>
-          <a href="/notification">
-            <div class="notficiation">
-              <img src="/Images/Notification-Black.png" alt="">
-                              </div>
-                              </a>
+        
                               <a href="/work">
                                 <div class="work">
                                   <img src="/Images/Work-black.png" alt="" />
@@ -69,72 +65,61 @@
    
     <section id="posts">
     <% populatedPostData.forEach(post => { %>
-      <section id="post">
-        <section id="upper">
-          <section id="left">
-            <div class="account"></div>
-            <div class="time">
-              <span><span><%= post.userId?.name || 'Unknown User' %></span>
-            </span>
-            <span><%= post.timeago || 'N/A' %></span>
-
-            </div>
-          </section>
-      
-        </section>
-        <section id="down">
-          <section id="text">
-            <p><%= post.message %></p>
-          </section>
-          <section id="engagements">
-            <div class="like">
-              <form action="/dashboard/<%= post._id%>/like" method="post">
-              <button type="submit" id="like">
-                       <img src="/Images/like.png" alt="">
-                
-              </button>
-            </form>
-            <span><%= post.like%></span>
-            </div>
-            <div class="dislike">
-              <form action="/dashboard/<%= post._id%>/dislike" method="post">
-              <button type="submit" id="like">
-                <img src="/Images/dislike.png" alt="">
-                
-              </button>
-              </form>
-           <div class="span">
-            <span> <%= post.dislike%></span>
-           </div>
-            </div>
-            <div class="share">
-              
-              <button type="submit" id="share-btn-<%= post._id %>" class="share-btn">
-              <img src="/Images/share.png" alt="" > 
-              </button>
-            
-              </div>
-              <section id="share-popup-<%= post._id %>" class="share-popup">
-                <section id="share-popup-content">
-                  <span id="close-popup-<%= post._id %>" class="close-btn">&times;</span>
-
-                  <h1>Share this file</h1>
-                  <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6"> 
+            <section id="post">
+              <section id="upper">
+                <section id="left">
+                  <div class="account"></div>
+                  <div class="time">
+                    <span><%= post.userId?.name || 'Unknown User' %></span>
+                    <span><%= post.timeago || 'N/A' %></span>
+                  </div>
                 </section>
               </section>
-            
-            <div class="comment">
-              <a href="/comment/<%=post._id%>">
-              <button id="comment-<%=post._id%>" class="comment-btn">
-                <img src="/Images/comment.png" alt="">         
-              </button>           
-            </a>   
-            </div>
-            
-        
-          </section>
-        </section>
-      </section>
+              <section id="down">
+                <section id="text">
+                  <p><%= post.message %></p>
+                </section>
+                <section id="engagements">
+                  <div class="like">
+                    <form action="/dashboard/<%= post._id%>/like" method="post">
+                      <button type="submit" id="like">
+                        <img src="/Images/like.png" alt="">
+                      </button>
+                    </form>
+                    <span><%= post.like%></span>
+                  </div>
+                  <div class="dislike">
+                    <form action="/dashboard/<%= post._id%>/dislike" method="post">
+                      <button type="submit" id="like">
+                        <img src="/Images/dislike.png" alt="">
+                      </button>
+                    </form>
+                    <div class="span">
+                      <span><%= post.dislike%></span>
+                    </div>
+                  </div>
+                  <div class="share">
+                    <button type="submit" id="share-btn-<%= post._id %>" class="share-btn">
+                      <img src="/Images/share.png" alt="">
+                    </button>
+                  </div>
+                  <div class="comment">
+                    <a href="/comment/<%=post._id%>">
+                      <button id="comment-<%=post._id%>" class="comment-btn">
+                        <img src="/Images/comment.png" alt="">
+                      </button>
+                    </a>
+                  </div>
+                </section>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+      
     <% }) %>
     <script>
       

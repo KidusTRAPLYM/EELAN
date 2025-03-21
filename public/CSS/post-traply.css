@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px; /* ✅ Just enough space */
-  flex-wrap: nowrap; /* ✅ Prevents column stacking */
+  gap: 10px; 
+  flex-wrap: nowrap; 
   padding-bottom: 20px;
   width: 100%;
 }
@@ -13,7 +13,7 @@
 #post .up h1 {
   font-size: 30px;
   flex: 1;
-  white-space: nowrap; /* ✅ Prevents weird stacking */
+  white-space: nowrap;
   margin: 0;
 }
 
@@ -43,7 +43,7 @@ textarea {
   padding: 20px;
   font-family: var(--font-family--);
   resize: none;
-  width: 90%;
+  width: 910px;
   max-width: 1150px;
   height: 440px;
   border: 2px solid var(--White--);
@@ -59,13 +59,12 @@ textarea {
   }
 
   #post .up {
-    flex-wrap: wrap; /* ✅ Ensures row layout */
-    gap: 28rem; /* ✅ Adjusted spacing */
+    flex-wrap: wrap; 
   }
 
   #post .up h1 {
     font-size: 28px;
-    flex-shrink: 0; /* ✅ Prevents squishing */
+    flex-shrink: 0; 
   }
 
   textarea {
@@ -81,9 +80,8 @@ textarea {
   }
 
   #post .up {
-    flex-direction: row; /* ✅ Keep row layout */
+    flex-direction: row;
     justify-content: space-between;
-    gap: 20rem;
   }
 
   #post .up h1 {

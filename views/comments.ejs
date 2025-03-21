@@ -15,21 +15,33 @@
       href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
       rel="stylesheet"
     />
-  </head>
+  </head style="
+    body { 
+    display: grid;
+    place-items: center; 
+    min-height: 100vh;
+    margin: 0;
+  }">
   <body>
-    <div class="comment-area">
-      <span id="close-btn-<%=postId%>" class="close-btn">&times;</span>
-      <h1>Comment here</h1>
-      <form action="/dashboard/<%=postId%>/comment" method="post">
-        <input type="text" name="message" id="message" />
-        <input type="submit" value="Submit" id="submit" />
-      </form>
-    </div>
-    <%comments.forEach(comment=>{%>
-    <div class="comment-fetch">
-      <h1><%= comment.userId.name%></h1>
-      <p><%= comment.message%></p>
-    </div>
-    <%})%>
+    <section id="comment-area">
+
+        <h1>Comment here</h1>
+        <form action="/dashboard/<%=postId%>/comment" method="post">
+          <input type="text" name="message" id="message" />
+          <input type="submit" value="Submit" id="submit" />
+        </form>
+
+    </section>
+    
+    <section id="comments">
+      <h1>Comments</h1>
+      <%comments.forEach(comment=>{%>
+
+      <div class="comment-fetch">
+        <h1><%= comment.userId.name%></h1>
+        <p><%= comment.message%></p>
+      </div>
+      <%})%>
+    </section>
   </body>
 </html>
