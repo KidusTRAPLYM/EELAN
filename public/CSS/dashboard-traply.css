@@ -13,7 +13,11 @@ display: flex;
 flex-wrap: wrap;
 flex-direction: column;
   }
-
+.brightness{
+display: flex;
+justify-content: flex-end;
+padding: 20px;
+}
 .account{
 width: 50px;
 height: 50px;
@@ -24,15 +28,17 @@ border-radius: 100%;
 #engagements{
 display: flex;
 align-items: center;
-justify-content: space-around; 
+justify-content: flex-end;
 }
 #engagements div{
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 #engagements img {
 width: 27px;
+cursor: pointer;
 }
 #upper {
 display: flex;
@@ -155,9 +161,11 @@ section#comment-area {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-top: 100px;
 }
 .comment-fetch {
-  display: flex;
+  display: flex
+;
   flex-direction: column;
   justify-content: left;
   align-items: baseline;

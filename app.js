@@ -370,6 +370,94 @@ app.post("/monami", async (req, res) => {
     ];
 
     const words = {
+      cussingWords: [
+        "arse",
+        "arsehead",
+        "arsehole",
+        "ass",
+        "ass hole",
+        "asshole",
+        "bastard",
+        "bitch",
+        "bloody",
+        "bollocks",
+        "brotherfucker",
+        "bugger",
+        "bullshit",
+        "child-fucker",
+        "Christ on a bike",
+        "Christ on a cracker",
+        "cock",
+        "cocksucker",
+        "crap",
+        "cunt",
+        "dammit",
+        "damn",
+        "damned",
+        "damn it",
+        "dick",
+        "dick-head",
+        "dickhead",
+        "dumb ass",
+        "dumb-ass",
+        "dumbass",
+        "dyke",
+        "fag",
+        "faggot",
+        "father-fucker",
+        "fatherfucker",
+        "fuck",
+        "fucked",
+        "fucker",
+        "fucking",
+        "god dammit",
+        "goddammit",
+        "God damn",
+        "god damn",
+        "goddamn",
+        "Goddamn",
+        "goddamned",
+        "goddamnit",
+        "godsdamn",
+        "hell",
+        "holy shit",
+        "horseshit",
+        "in shit",
+        "jackarse",
+        "jack-ass",
+        "jackass",
+        "Jesus Christ",
+        "Jesus fuck",
+        "Jesus Harold Christ",
+        "Jesus H. Christ",
+        "Jesus, Mary and Joseph",
+        "Jesus wept",
+        "kike",
+        "mental",
+        "mother fucker",
+        "mother-fucker",
+        "motherfucker",
+        "nigga",
+        "nigra",
+        "pigfucker",
+        "piss",
+        "prick",
+        "pussy",
+        "shit",
+        "shit ass",
+        "shite",
+        "sibling fucker",
+        "sisterfuck",
+        "sisterfucker",
+        "slut",
+        "son of a bitch",
+        "son of a whore",
+        "spastic",
+        "sweet Jesus",
+        "tranny",
+        "twat",
+        "wanker",
+      ],
       happiness: [
         "happy",
         "joy",
@@ -570,8 +658,14 @@ app.post("/monami", async (req, res) => {
       greetings.some((greet) => normalizedMessage.includes(greet.toLowerCase()))
     ) {
       response = "Hey there! Anything bothering you? Please talk to me.";
+    } else if (
+      words.cussingWords.some((word) => normalizedMessage.includes(word))
+    ) {
+      response =
+        "I sense some frustration. If something’s on your mind, feel free to share. Let’s keep the conversation respectful.";
     } else {
-      response = "Yeah...";
+      response =
+        "Yeah..." || "Sorry I didn't catch that!" || "Sure..." || "Huh";
     }
 
     console.log(response);

@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 :root{
-                        --font-family--: "Prata" , serif;
+                        --font-family--:   "Bricolage Grotesque", sans-serif;
                         --Black--: #111111;
                         --White--: #fefefe;
                         --Gray--: #bfc1c3;
                         --Clear-white--:#fff;
-                        --Blue--: #00a0f5;
+                        --Blue--: #0872ff;
                         --Green--:green;
                         }
                         

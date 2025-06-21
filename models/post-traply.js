@@ -26,7 +26,7 @@ const newSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 newSchema.virtual("timeago").get(function () {

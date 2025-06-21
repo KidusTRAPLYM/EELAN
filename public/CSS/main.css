@@ -32,11 +32,14 @@ overflow-x: hidden;
         justify-content: center;
         align-items: center;
     }
-    #body{
+    #body  {
     display: flex;
     justify-content: center;
     align-content: center;
     padding: 30px;
+    }
+    .body{
+      padding: 94px !important;
     }
     #slide-bar {
         display: flex;
@@ -79,10 +82,14 @@ overflow-x: hidden;
       padding: 3px;
         }
 section#icons {
-    display: flex
-;
+    display: flex;
     gap: 17px;
     flex-direction: column;
+}
+h6{
+ position: fixed;
+ top: 95%;
+ left: 25%;
 }
 @media(max-width:1025px){
     #slide-bar p {

@@ -29,7 +29,7 @@ button {
 span {
   color: var(--White--);
   font-size: 1rem;
-  width: 495px;
+  width: 361px;
   text-align: justify;
   background-color: var(--Blue--);
   padding: 20px;
@@ -95,14 +95,20 @@ h1 {
     padding: 0 10px;
   }
 }
+
 textarea {
+  display: flex;
+  justify-content: center;
+  align-items:normal;
   resize: none;
-  width: 500px;
+  width:400px;
+  max-width: 500px;
   height: 188px;
   border-radius: 9px;
   padding: 10px;
   font-family: var(--font-family--);
+ 
 }
-texarea:focus{
+textarea:focus{
   outline: none;
 }

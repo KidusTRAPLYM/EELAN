@@ -8,7 +8,9 @@
   padding-bottom: 20px;
   width: 100%;
 }
-
+textarea:focus{
+outline: none;
+}
 /* Title */
 #post .up h1 {
   font-size: 30px;
@@ -16,9 +18,15 @@
   white-space: nowrap;
   margin: 0;
 }
+.down {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: self-end;
 
+}
 /* Post Button */
-#post .up button {
+#post  button {
   background-color: var(--Blue--);
   color: var(--White--);
   padding: 12px;
@@ -68,34 +76,33 @@ textarea {
   }
 
   textarea {
-    width: 95%;
+    width: 600px;
     height: 400px;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  section#post {
-    padding: 50px;
-  }
+ section#post{
+  padding: 50px;
+  margin-left: 151px;
+ }
 
-  #post .up {
-    flex-direction: row;
-    justify-content: space-between;
-  }
 
-  #post .up h1 {
-    font-size: 24px;
-  }
-
-  #post .up button {
+  #post  button {
     width: 100px;
     padding: 10px;
   }
 
   textarea {
-    width: 100%;
     height: 350px;
+        margin-top: 50px;
+        margin-left: -103px;
+        width: 451px;
+
+  }
+  .up{
+    display: none !important;
   }
 }
 
@@ -103,13 +110,18 @@ textarea {
 @media (max-width: 426px) {
   section#post {
     padding: 30px;
+    margin-left: 30px;
   }
 
   #post .up h1 {
     font-size: 20px;
   }
-
+ .down{
+  margin-left: 72px;
+  margin-top: 48px;
+ }
   textarea {
     height: 300px;
+    width: 345px;
   }
 }
