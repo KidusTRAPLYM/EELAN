@@ -50,10 +50,7 @@ overflow-x: hidden;
         gap: 20px;
         top: 20%;
     }
-    header{
-      display: flex;
-      justify-content: center;
-    }
+    
     #slide-bar div:not(.special) {
         display: flex;
         align-items: center;
@@ -107,6 +104,10 @@ h6{
     }
 }
 @media(max-width:681px){
+   header{
+      display: flex;
+      justify-content: center;
+    }
           #slide-bar #icons{
         display: flex;
         gap: 20px;
