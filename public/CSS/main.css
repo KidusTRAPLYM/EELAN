@@ -36,7 +36,7 @@ overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: 30px;
+    padding: 120px !important;
     }
     .body{
       padding: 94px !important;
@@ -49,6 +49,10 @@ overflow-x: hidden;
         position: fixed;
         gap: 20px;
         top: 20%;
+    }
+    header{
+      display: flex;
+      justify-content: center;
     }
     #slide-bar div:not(.special) {
         display: flex;
@@ -103,19 +107,7 @@ h6{
     }
 }
 @media(max-width:681px){
-    #slide-bar {
-        padding: 13px !important;
-        gap: 16px !important;
-        flex-direction: column !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        background: white !important;
-        padding-right: 52px !important;
-        width: 100% !important;
-        top: 0;
-      }
-      #slide-bar #icons{
+          #slide-bar #icons{
         display: flex;
         gap: 20px;
         flex-direction: row;

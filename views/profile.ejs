@@ -18,7 +18,7 @@
   </head>
   <body>
    
-    
+    <header>
     <section id="slide-bar">
       <section id="logo">
         <a href="/dashboard">
@@ -56,6 +56,7 @@
        </section>
      
     </section>
+  </header>
     <section id="body">
    
      <section id="profile">
@@ -64,8 +65,7 @@
                         <div class="engagements">
                         <h1><%= user.name%></h1>
                         <div class="engagments">
-                        <span><b>1K</b>  Posts</span>
-                        <span><b>3M</b> Followers</span>
+                      
                         <span>
                           <form action="/signout" method="post" id="signout">
                             <button>Sign out</button></a>
@@ -79,7 +79,7 @@
                       
 
                         </section>
-                     
+                        <hr>
                           <%posts.forEach(post=>{%>
                             <section id="post">
                               <section id="upper">
@@ -149,7 +149,7 @@
                             </section>
                           <%})%>
                         
-   <hr>
+
      </section>
         </section>
       </section>
