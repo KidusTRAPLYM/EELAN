@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monami</title>
     <link rel="stylesheet" href="/CSS/variables.css" />
-    <link rel="stylesheet" href="/CSS/main.css">
-    <link rel="stylesheet" href="/CSS/under-construction.css">
+
+    <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/under-construction.css" />
     <!--FONT FAMILY-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,25 +17,38 @@
     />
   </head>
   <body>
-   
-    <section id="body">
-     <h1>What's Wrong?</h1>
-     
-    <section id="main">
-                       <form action="/monami" method="post">
-                        <textarea name="message" id="message">Type your emotions</textarea>
-                     
-                        <button>Send</button>
-                       </form>
-                       
-                 
-    </section>
-      </section>
+    
+    <section id="body" class="body">
+      <h1>Monami</h1>
+      <section id="main">
+       <h4 style="color:red">Before continuing using monami, please read the terms of use by clicking <a href="/terms-of-use"> &nbsp; here.</a> </h4>
+        </div>
+        <% if (userChats && userChats.length > 0) { %>
+  <% userChats.forEach(chat => { %>
+    <div class="chat-entry">
+      <p class="chat-settings"><strong>You:</strong> <%= chat.message %></p>
+      <p class="chat-settings"><strong>Monami:</strong> <%= chat.response %></p>
+    </div>
+  <% }) %>
+<% } else { %>
+  <p>No past chats found.</p>
+<% } %>
 
+        <form action="/monami" method="post">
+
+          <div class="message-box">
+            <textarea
+              name="message"
+              id="messages"
+              style="width: 479px; height: 58px"
+            >
+What's wrong?</textarea
+            >
+
+            <button>➤</button>
+          </div>
+        </form>
+      </section>
     </section>
-                        </section>
-    </section>
-    </section>
-    <script src="/js/loading2.js"></script>
-    </body>
+  </body>
 </html>

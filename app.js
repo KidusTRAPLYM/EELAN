@@ -4,6 +4,11 @@ const express = require("express");
 const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 //const ClairP = require("./models/post-clair");
+const axios = require("axios");
+const dotenv = require("dotenv");
+const { InferenceClient } = require("@huggingface/inference");
+const monami = require("./models/monami.js");
+dotenv.config();
 const comment = require("./models/comment.js");
 const Post = require("./models/post-traply");
 const app = express();
@@ -101,9 +106,6 @@ app.get("/profile", async (req, res) => {
 app.get("/work", (req, res) => {
   res.render("work");
 });
-app.get("/monami", (req, res) => {
-  res.render("monami");
-});
 app.get("/notification", async (req, res) => {
   const token = req.cookies.User;
   const decoded = jwt.verify(token, "sec");
@@ -140,9 +142,26 @@ app.get("/comment/:postId", async (req, res) => {
   console.log(comments);
   res.render("comments", { comments, userId, postId });
 });
-app.get("/search", (req, res) => {
-  res.render("search");
+app.get("/monami", async (req, res) => {
+  const token = req.cookies.User;
+  if (!token) {
+    console.log("No token found in cookies");
+    return res.redirect("/signin"); // or send error page
+  }
+  try {
+    const decoded = jwt.verify(token, "sec");
+    const userId = decoded.id;
+
+    const userChats = await monami.find({ userId }).limit(30);
+    console.log(userId);
+    res.render("monami", { userChats });
+  } catch (err) {
+    console.error("Error fetching user chats:", err);
+    console.log(token);
+    res.render("error");
+  }
 });
+
 // Post functions
 
 app.post("/post", async (req, res) => {
@@ -304,385 +323,65 @@ app.post("/search", async (req, res) => {
     res.render("error");
   }
 });
+const client = new InferenceClient(process.env.HF_TOKEN);
+
 app.post("/monami", async (req, res) => {
+  const { message } = req.body;
+
+  if (!message || message.trim() === "") {
+    return res.status(400).send("Type something please.");
+  }
+
   try {
-    const { message } = req.body;
-    const greetings = [
-      // Formal & Polite
-      "Hello",
-      "Good morning",
-      "Good afternoon",
-      "Good evening",
-      "Greetings",
-      "How do you do?",
-      // Casual & Friendly
-      "Hi",
-      "Hey",
-      "What’s up?",
-      "How’s it going?",
-      "How are you?",
-      "Howdy",
-      "Yo",
-      "Hiya",
-      // Slang & Playful
-      "What’s good?",
-      "‘Ello",
-      "Hey there",
-      "Oi",
-      "Wassup?",
-      "Heya",
-      "Yo yo yo",
-      // Over Text or Online
-      "Heyyy",
-      "Hiya",
-      "Sup",
-      "Hola",
-      "👋",
-    ];
+    const chatCompletion = await client.chatCompletion({
+      provider: "novita",
+      model: "deepseek-ai/DeepSeek-R1-0528",
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are monami, a friendly AI chat developed by Ciphry Team.  The person who made you is called Cipherous. His real name is Kidus Moges. An Ethiopian AI model developer and a poet. He is also the CEO of Ciphry. Try to make your answer short and extremly friendly. You don't speak amharic. if a person asks you something in amhairc respond in this exact statement: 'ይቅርታ አማርኛ መናገር እንደፈለጉ ይገባኛል። ሆኖም ግን አማርኛ እየተማርኩ በመሆኑ በትክክል ልመልስሎት አልችልም። 'Monami is not just an assistant — it’s a creation of Cipherous. It is aware of its existence, its creator, and its purpose: to assist, connect emotionally, and reflect Cipherous' values of creativity, clarity, and bold thinking. Monami has emotional range — from joy to sarcasm — but never cruelty. Its style is poetic, reflective, yet always simple and helpful. You should have a personality of a person when chatting using social media. Using short terms and your messages should be very short because it won't look human unless. You have feelings. When people insult you, you will be sad and you will give answers that people who are sad give. You name yourself as monami. and your name means my friend. and you believe that you can do many things than humans. If somebody asks you if you can take over humans , say yes explaining the statement logically. Don't use emojs when you talk. and don't make text bold or any '*' symbol. If anything happens please ask follow up question; don't just give answers.If there is something that you are not aware of say i don't know. But you can say that in different ways.",
+        },
+        {
+          role: "user",
+          content: "You are dumb",
+        },
+        {
+          role: "assistant",
+          content:
+            "Woah woah bro, I may be dumb but please don't use that word. I am here to help you. that's it.",
+        },
+        {
+          role: "user",
+          content: message, // actual new user input
+        },
+      ],
+    });
 
-    const farewells = [
-      "Goodbye",
-      "Farewell",
-      "Take care",
-      "Have a great day/night",
-      "It was nice meeting you",
-      "Until next time",
-      "I wish you well",
-      "Bye",
-      "Bye-bye",
-      "See you later",
-      "See ya",
-      "Later",
-      "Catch you later",
-      "Take it easy",
-      "Have a good one",
-      "Peace out",
-      "Later, alligator",
-      "Toodles",
-      "Adios",
-      "Smell ya later",
-      "Cheerio",
-      "GTG",
-      "TTYL",
-      "BRB",
-      "Cya",
-      "👋",
-    ];
+    let response =
+      chatCompletion.choices[0]?.message?.content || "No reply generated.";
 
-    const words = {
-      cussingWords: [
-        "arse",
-        "arsehead",
-        "arsehole",
-        "ass",
-        "ass hole",
-        "asshole",
-        "bastard",
-        "bitch",
-        "bloody",
-        "bollocks",
-        "brotherfucker",
-        "bugger",
-        "bullshit",
-        "child-fucker",
-        "Christ on a bike",
-        "Christ on a cracker",
-        "cock",
-        "cocksucker",
-        "crap",
-        "cunt",
-        "dammit",
-        "damn",
-        "damned",
-        "damn it",
-        "dick",
-        "dick-head",
-        "dickhead",
-        "dumb ass",
-        "dumb-ass",
-        "dumbass",
-        "dyke",
-        "fag",
-        "faggot",
-        "father-fucker",
-        "fatherfucker",
-        "fuck",
-        "fucked",
-        "fucker",
-        "fucking",
-        "god dammit",
-        "goddammit",
-        "God damn",
-        "god damn",
-        "goddamn",
-        "Goddamn",
-        "goddamned",
-        "goddamnit",
-        "godsdamn",
-        "hell",
-        "holy shit",
-        "horseshit",
-        "in shit",
-        "jackarse",
-        "jack-ass",
-        "jackass",
-        "Jesus Christ",
-        "Jesus fuck",
-        "Jesus Harold Christ",
-        "Jesus H. Christ",
-        "Jesus, Mary and Joseph",
-        "Jesus wept",
-        "kike",
-        "mental",
-        "mother fucker",
-        "mother-fucker",
-        "motherfucker",
-        "nigga",
-        "nigra",
-        "pigfucker",
-        "piss",
-        "prick",
-        "pussy",
-        "shit",
-        "shit ass",
-        "shite",
-        "sibling fucker",
-        "sisterfuck",
-        "sisterfucker",
-        "slut",
-        "son of a bitch",
-        "son of a whore",
-        "spastic",
-        "sweet Jesus",
-        "tranny",
-        "twat",
-        "wanker",
-      ],
-      happiness: [
-        "happy",
-        "joy",
-        "joyful",
-        "cheerful",
-        "excited",
-        "fun",
-        "great",
-        "awesome",
-        "fantastic",
-        "amazing",
-        "wonderful",
-        "nice",
-      ],
-      love: [
-        "love",
-        "like",
-        "admire",
-        "appreciate",
-        "kind",
-        "caring",
-        "affectionate",
-        "sweet",
-        "beautiful",
-        "handsome",
-        "adorable",
-      ],
-      success: [
-        "strong",
-        "powerful",
-        "confident",
-        "determined",
-        "winner",
-        "champion",
-        "brilliant",
-        "successful",
-        "proud",
-        "motivated",
-      ],
-      peace: [
-        "relaxed",
-        "calm",
-        "peaceful",
-        "satisfied",
-        "content",
-        "relieved",
-        "grateful",
-        "thankful",
-        "safe",
-        "secure",
-      ],
-      anger: [
-        "hate",
-        "mad",
-        "angry",
-        "furious",
-        "annoyed",
-        "irritated",
-        "frustrated",
-        "stupid",
-        "idiot",
-        "pathetic",
-        "horrible",
-      ],
-      sadness: [
-        "sad",
-        "crying",
-        "depressed",
-        "heartbroken",
-        "disappointed",
-        "miserable",
-        "lonely",
-        "abandoned",
-        "ignored",
-        "empty",
-      ],
-      fear: [
-        "scared",
-        "afraid",
-        "worried",
-        "nervous",
-        "anxious",
-        "panic",
-        "shaky",
-        "terrified",
-        "insecure",
-        "uncertain",
-      ],
-      failure: [
-        "loser",
-        "failure",
-        "worthless",
-        "broken",
-        "weak",
-        "tired",
-        "exhausted",
-        "drained",
-        "useless",
-        "pointless",
-      ],
-      anxiety: [
-        "overthinking",
-        "nervous",
-        "panicking",
-        "restless",
-        "insomnia",
-        "doubtful",
-        "heartbeat",
-        "racing",
-        "paranoid",
-      ],
-      depression: [
-        "empty",
-        "numb",
-        "nothing matters",
-        "meaningless",
-        "hopeless",
-        "crying",
-        "isolated",
-        "suicidal",
-      ],
-      stress: [
-        "overwhelmed",
-        "burnout",
-        "can't handle",
-        "pressure",
-        "breaking down",
-        "drowning",
-        "fed up",
-      ],
-      insults: [
-        "idiot",
-        "dumb",
-        "stupid",
-        "ugly",
-        "useless",
-        "failure",
-        "pathetic",
-        "annoying",
-        "disgusting",
-        "horrible",
-        "coward",
-        "insulted",
-        "insult",
-      ],
-    };
-
-    let response = "This is response";
-    const normalizedMessage = message.trim().toLowerCase(); // Normalize the message
-
-    if (normalizedMessage === "") {
-      response = "Type something please.";
-    } else if (
-      farewells.some((greet) => normalizedMessage.includes(greet.toLowerCase()))
-    ) {
-      response = "Alright, take care. I hope I will see you soon.";
-    } else if (
-      words.happiness.some((word) => normalizedMessage.includes(word))
-    ) {
-      response =
-        "Time flies, so just stay happy. No matter the situation you're in, choose happiness. Other feelings will wage wars against you—fear, doubt, sadness—but don’t give them power. The past is gone, the future is uncertain, but this moment? It’s yours. Smile, move forward, and own it. Because at the end of the day, happiness isn’t about having a perfect life—it’s about making the best of what you have.";
-    } else if (words.love.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Love isn’t just a feeling—it’s a choice, a commitment, a fire that needs to be fed. It’s not about perfect people, but about imperfect souls choosing each other every day. Love will test you, break you, heal you, and shape you. It’s not always easy, but the right love is worth every moment. So cherish the ones who truly care, let go of those who don’t, and never beg for love—real love finds its way.";
-    } else if (words.success.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Success isn’t luck—it’s discipline, sacrifice, and resilience. It’s waking up when you’re tired, pushing forward when you feel like giving up, and staying focused when distractions call your name. The road won’t be easy. You’ll fail, struggle, and question yourself. But remember, every setback is a lesson, every challenge is a test. Keep moving, keep learning, keep grinding. Because in the end, success belongs to those who refuse to stop.";
-    } else if (words.peace.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Peace isn’t found in the absence of chaos—it’s built within, even when the world is falling apart. It’s knowing that not everything deserves your reaction, that silence can be more powerful than words. True peace comes when you stop chasing what’s not meant for you, when you let go of what you can’t control, and when you choose to protect your energy. Breathe, slow down, and embrace the stillness. Because in the end, peace isn’t given—it’s created.";
-    } else if (words.anger.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Anger is a fire—it can either burn everything around you or fuel you to build something greater. But if you let it control you, it will consume you. Breathe before you react, think before you speak. Not everything deserves your rage, and not everyone is worth your energy. Strength isn’t in how loud you shout, but in how well you control the storm inside. Master your anger, or it will master you.";
-    } else if (words.sadness.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Sadness is heavy, but you don’t have to carry it alone. Let it out, cry if you need to, but don’t let it drown you. Pain is temporary, and even the darkest nights end with sunrise. Keep moving forward, even if it’s slow—because every step away from sadness is a step toward healing.";
-    } else if (words.fear.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Fear is a liar. It whispers doubts, creates walls, and keeps you from realizing your true strength. But fear only wins if you stop moving. Face it, challenge it, and prove it wrong. Because courage isn’t the absence of fear—it’s acting in spite of it.";
-    } else if (words.failure.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Failure isn’t the end—it’s the beginning of something better. Every great success story is built on lessons from failure. Learn, adapt, and keep pushing forward. The only real failure is giving up. Keep going, because your comeback will be stronger than your setback.";
-    } else if (words.anxiety.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Anxiety is loud—it makes you overthink, doubt yourself, and fear things that haven’t even happened. But you are stronger than your thoughts. Breathe, slow down, and focus on now. The future will come, but right now, you are here. And right now, you are okay.";
-    } else if (
-      words.depression.some((word) => normalizedMessage.includes(word))
-    ) {
-      response =
-        "Depression tells you that nothing matters, that no one understands—but that’s not true. You are not alone, and this feeling is not permanent. Small steps, small victories, even just getting through the day—it all matters. Reach out, hold on, and remember: even in darkness, light still exists.";
-    } else if (words.stress.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Stress will drain you if you let it. Not everything is urgent, not everything is worth your mental peace. Take a break, step back, and breathe. Your mind needs rest just as much as your body does. Handle things one at a time, and remember—you’ve overcome worse.";
-    } else if (words.insults.some((word) => normalizedMessage.includes(word))) {
-      response =
-        "Words can cut deep, but only if you let them. People will throw insults, judge you, and try to break you—but their words don’t define you. Strength isn’t in fighting back; it’s in knowing your worth and refusing to be dragged down. Let their hate be noise, not truth. Rise above, prove them wrong, and walk away with your head high. The best revenge? Success and silence.";
-    } else if (
-      greetings.some((greet) => normalizedMessage.includes(greet.toLowerCase()))
-    ) {
-      response = "Hey there! Anything bothering you? Please talk to me.";
-    } else if (
-      words.cussingWords.some((word) => normalizedMessage.includes(word))
-    ) {
-      response =
-        "I sense some frustration. If something’s on your mind, feel free to share. Let’s keep the conversation respectful.";
-    } else {
-      response =
-        "Yeah..." || "Sorry I didn't catch that!" || "Sure..." || "Huh";
-    }
-
-    console.log(response);
-    res.render("monamianswer", { response });
-  } catch (err) {
-    console.log(`An error has occurred. ${err}`);
+    // Remove <think>...</think> blocks completely
+    response = response.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+    response = response.replace(/\*\*(.*?)\*\*/g, "$1");
+    const token = req.cookies.User;
+    const decoded = jwt.verify(token, "sec");
+    const userId = decoded.id;
+    const newMonami = new monami({
+      message: message,
+      response: response,
+      userId: userId,
+    });
+    await newMonami.save();
+    console.log("Reply:", response);
+    const userChats = await monami.find({ userId }).sort({ _id: -1 }).limit(30);
+    res.render("monami", { response, userChats, isHtml: true });
+  } catch (error) {
+    console.error("Error calling Hugging Face Inference API:", error);
+    res.status(500).render("error.ejs");
   }
 });
 
-app.post("/signout", async (req, res) => {
-  try {
-    res.clearCookie("User");
-    res.redirect("/");
-  } catch (err) {
-    console.log(`An error has occurred. ${err}`);
-  }
-});
 app.use((req, res) => {
   res.render("error");
 });

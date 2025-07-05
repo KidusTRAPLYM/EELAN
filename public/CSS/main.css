@@ -92,6 +92,11 @@ h6{
  top: 95%;
  left: 25%;
 }
+h4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media(max-width:1025px){
     #slide-bar p {
         display: none;
