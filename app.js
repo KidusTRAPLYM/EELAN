@@ -374,7 +374,7 @@ app.post("/monami", async (req, res) => {
     });
     await newMonami.save();
     console.log("Reply:", response);
-    const userChats = await monami.find({ userId }).sort({ _id: -1 }).limit(30);
+    const userChats = await monami.find({ userId }).limit(30);
     res.render("monami", { response, userChats, isHtml: true });
   } catch (error) {
     console.error("Error calling Hugging Face Inference API:", error);
