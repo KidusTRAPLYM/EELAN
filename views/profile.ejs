@@ -120,21 +120,8 @@
                                   <span> <%= post.dislike%></span>
                                  </div>
                                   </div>
-                                  <div class="share">
+                                
                                     
-                                    <button type="submit" id="share-btn-<%= post._id %>" class="share-btn">
-                                    <img src="/Images/share.png" alt="" > 
-                                    </button>
-                                  
-                                    </div>
-                                    <section id="share-popup-<%= post._id %>" class="share-popup">
-                                      <section id="share-popup-content">
-                                        <span id="close-popup-<%= post._id %>" class="close-btn">&times;</span>
-                      
-                                        <h1>Share this file</h1>
-                                        <input type="text" readonly value="http://localhost:<%= PORT%>/dashboard/<%=post._id%>/">
-                                      </section>
-                                    </section>
                                   
                                   <div class="comment">
                                     <a href="/comment/<%=post._id%>">
