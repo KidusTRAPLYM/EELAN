@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Post</title>
     <link rel="stylesheet" href="/CSS/variables.css" />
-    <link rel="stylesheet" href="/CSS/post-traply.css" />
+    <link rel="stylesheet" href="/CSS/post.css" />
     <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/dashboard.css" />
     <!--FONT FAMILY-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,43 +18,93 @@
   </head>
   <body>
     <header>
-      <section id="slide-bar">
-        <section id="logo">
-          <a href="/dashboard">
-            <img src="/Images/Ciphry_logo.png" alt="" />
-          </a>
-        </section>
-        <section id="icons">
-          <a href="/dashboard">
-            <div class="dashboard">
-              <img src="/Images/home.png" alt="" />
-            </div>
-          </a>
-          <a href="/profile">
-            <div class="profile">
-              <img src="/Images/Account-black.png" alt="" />
-            </div>
-          </a>
-
-          <a href="/work">
-            <div class="work">
-              <img src="/Images/Work-black.png" alt="" />
-            </div>
-          </a>
-
-          <a href="/post">
-            <div class="special">
-              <img src="/Images/Add-post-black.png" alt="" />
-            </div>
-          </a>
-          <a href="/Monami">
-            <div class="monami">
-              <img src="/Images/monami.png" alt="" />
-            </div>
-          </a>
-        </section>
+      <section id="logo">
+        <a href="/dashboard">
+          <img src="/Images/Ciphry_logo.png" alt="" />
+        </a>
       </section>
     </header>
+    <div class="icons">
+      <!--Home-->
+      <a href="/landing">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="size-6"
+        >
+          <path
+            d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z"
+          />
+          <path
+            d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z"
+          />
+        </svg>
+      </a>
+      <!--Search-->
+      <a href="/search">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="size-6"
+        >
+          <path
+            d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+      <!--Create-->
+      <a href="/post">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="size-6"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+      <!--Monami-->
+      <a href="/monami">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="size-6"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.337 21.718a6.707 6.707 0 0 1-.533-.074.75.75 0 0 1-.44-1.223 3.73 3.73 0 0 0 .814-1.686c.023-.115-.022-.317-.254-.543C3.274 16.587 2.25 14.41 2.25 12c0-5.03 4.428-9 9.75-9s9.75 3.97 9.75 9c0 5.03-4.428 9-9.75 9-.833 0-1.643-.097-2.417-.279a6.721 6.721 0 0 1-4.246.997Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+      <!--Profile-->
+      <a href="/profile">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="size-6"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
     <section id="body">
       <section id="post">
         <form action="/post" method="Post">
@@ -61,15 +112,72 @@
             <h1>Create a post</h1>
           </div>
           <div class="down">
-            <textarea name="message" id="message">
-Write your post here.</textarea
-            >
-            <button>Post</button>
-          </div>
+            <textarea
+              name="message"
+              id="monami-input"
+              maxlength="500"
+              placeholder="Write your post here."
+            ></textarea>
+            <p id="char-count">0 / 500</p>
+            <!-- Character counter display -->
+          <input list="post-types" name="type" placeholder="Choose the post type (no other options are allowed)" />
+<datalist id="post-types">
+  <option value="Articles">
+  <option value="Posts">
+</datalist>
+     <button>Post</button>
         </form>
       </section>
     </section>
+    <script>
+  const textarea = document.getElementById("monami-input");
+  const charCount = document.getElementById("char-count");
+  const typeInput = document.querySelector('input[name="type"]');
+
+  // Initial character counter
+  textarea.addEventListener("input", () => {
+    charCount.textContent = textarea.maxLength
+      ? `${textarea.value.length} / ${textarea.maxLength}`
+      : `${textarea.value.length} characters`;
+  });
+
+  // Change maxlength based on post type
+  typeInput.addEventListener("input", () => {
+    if (typeInput.value === "Articles") {
+      textarea.removeAttribute("maxlength");
+    } else {
+      textarea.setAttribute("maxlength", "500");
+      if (textarea.value.length > 500) {
+        textarea.value = textarea.value.slice(0, 500); // trim it instantly
+      }
+    }
+
+    // Force update count when switching type
+    charCount.textContent = textarea.maxLength
+      ? `${textarea.value.length} / ${textarea.maxLength}`
+      : `${textarea.value.length} characters`;
+  });
+</script>
+<script>
+  const allowed = ["Articles", "Posts"];
+  typeInput.addEventListener("input", () => {
+    if (!allowed.includes(typeInput.value)) {
+      typeInput.setCustomValidity("Choose one of the allowed post types.");
+    } else {
+      typeInput.setCustomValidity("");
+    }
+  });
+</script>
+
 
     <script src="/js/loading2.js"></script>
   </body>
 </html>
+<style>
+  #char-count {
+    font-size: 14px;
+    color: #888;
+    text-align: right;
+    margin-top: 4px;
+  }
+</style>

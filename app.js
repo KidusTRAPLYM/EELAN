@@ -47,11 +47,8 @@ const createToken = (id) => {
 };
 //routing
 // Get route functions
-app.get("/", (req, res) => {
-  res.render("register");
-});
 
-app.get("/home", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const postData = await Post.aggregate([{ $sample: { size: 100 } }]);
     const hydratedPosts = postData.map((doc) => new Post(doc));
@@ -68,10 +65,13 @@ app.get("/home", async (req, res) => {
 });
 
 app.get("/landing", (req, res) => {
-  res.redirect("/home");
+  res.redirect("/");
 });
 app.get("/dashboard", (req, res) => {
-  res.redirect("/home");
+  res.redirect("/");
+});
+app.get("/home", (req, res) => {
+  res.redirect("/");
 });
 app.get("/dashboard/:id", async (req, res) => {
   try {
@@ -88,10 +88,36 @@ app.get("/signin", (req, res) => {
   res.render("Signin");
 });
 app.get("/register", (req, res) => {
-  res.redirect("/");
+  res.render("register");
+});
+app.get("/signup", (req, res) => {
+  res.redirect("/register");
 });
 app.get("/post", (req, res) => {
   res.render("post");
+});
+app.get("/terms-of-use", (req, res) => {
+  res.render("policy");
+});
+// Adjust path accordingly
+
+app.get("/search", async (req, res) => {
+  const query = req.query.q;
+
+  if (!query) {
+    return res.render("search", { results: [], query: "" });
+  }
+
+  try {
+    const results = await Post.find({
+      $text: { $search: query },
+    });
+
+    res.render("search", { results, query });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.get("/profile", async (req, res) => {
@@ -106,34 +132,12 @@ app.get("/profile", async (req, res) => {
 app.get("/work", (req, res) => {
   res.render("work");
 });
-app.get("/notification", async (req, res) => {
-  const token = req.cookies.User;
-  const decoded = jwt.verify(token, "sec");
-  const userId = decoded.id;
-  const user = await User.findById(userId);
-  const posts = await Post.find({ userId: userId });
-  const populatedPosts = await Post.populate(posts, {
-    path: "likedBy",
-    select: "name",
-  });
-  const notifications = populatedPosts.map((post) => {
-    const likedUserNames = post.likedBy.map((user) => user.name);
-    return {
-      postTitle: post.message,
-      likedBy: likedUserNames,
-    };
-  });
-
-  res.render("notification", {
-    user,
-    posts: populatedPosts,
-    notifications,
-    PORT,
-  });
-});
 app.get("/comment/:postId", async (req, res) => {
   const postId = req.params.postId;
   const token = req.cookies.User;
+  if (!token) {
+    return res.redirect("/signin"); // Redirect if not authenticated
+  }
   const decoded = jwt.verify(token, "sec");
   const userId = decoded.id;
   const comments = await comment.find({ postId }).populate("userId", "name");
@@ -165,7 +169,7 @@ app.get("/monami", async (req, res) => {
 // Post functions
 
 app.post("/post", async (req, res) => {
-  const { message } = req.body;
+  const { message, type } = req.body;
   try {
     const token = req.cookies.User;
     const decoded = jwt.verify(token, "sec");
@@ -173,6 +177,7 @@ app.post("/post", async (req, res) => {
     const newPost = new Post({
       message,
       userId,
+      type,
     });
     await newPost.save();
     res.redirect("/home");
@@ -385,6 +390,6 @@ app.post("/monami", async (req, res) => {
 app.use((req, res) => {
   res.render("error");
 });
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`PORT IS RUNNING ON PORT ${PORT}`);
 });

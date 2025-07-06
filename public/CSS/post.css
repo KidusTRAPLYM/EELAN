@@ -1,0 +1,62 @@
+#post {
+  width: 100%;           
+  max-width: 544px;      
+  height: auto;          
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: #fff;      
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 0 auto;        
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.down {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;          /* 20px gap */
+  width: 100%;
+}
+
+button {
+  width: 100px !important;
+  max-width: 80px;   
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: #1c5fef;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1554cc;
+}
+
+textarea#monami-input {
+  width: 100%;           /* full width textarea */
+  max-width: 405px;      /* max width limit */
+  height: 15rem;         /* flexible height */
+  padding: 0.625rem;     /* 10px */
+  border-radius: 10px;
+  resize: none;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;          /* 20px gap */
+  align-items: center;
+  padding: 2.5rem;       /* 40px */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 544px;
+  margin: 0 auto;
+}

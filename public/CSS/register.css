@@ -2,12 +2,9 @@ body{
 overflow-y: hidden;
 }
 #register{
-                        display: flex;
-                       flex-wrap: wrap;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 40px;
-                        gap: 200px;
+                        display: grid;
+                        place-content: center;
+                          height: 100vh
                     }
                     #video{
                     display: flex;
@@ -23,22 +20,30 @@ overflow-y: hidden;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
+                    width: 100%;
                     }
-                    #signup span{
-                    display: flex;
+                   #signup span {
+                      display: flex;
+                    min-width: 151px;
+                    max-width: 400px;
+                    width: 80%;
                     gap: 20px;
-                    }
+                    flex-wrap: wrap;
+                    margin: 0 auto 
+                 
+                }
                     input{
                     padding: 12px;
                     border-radius: 10px;
                     font-family:var(--font-family--);
-                    width: 350px;
+                    width: 100%;
                     border: 1px solid var(--Black--);
                     color: var(--Blue--);
                     }
                     span.name {
                     display: flex;
                     flex-direction: column;
+                      width: 100%;
                     }                    
                     button {
                     background-color: var(--Blue--);
@@ -52,6 +57,9 @@ overflow-y: hidden;
                         width: 800px;
                     }
                     form {
+                        width: 90%;
+                        max-width: 500px;
+                        min-width: 354px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -69,104 +77,3 @@ overflow-y: hidden;
                     img{
                         width: 200px;
                     }
-                    /*media quries*/
-                    
-                    @media(max-width:1429px){
-                        #video{
-                            display: none;
-                         }
-                         #register{
-                             display: block;
-                         }
-                        #video p{
-                             display: none;
-                         }
-                         #signup{
-                             display: flex;
-                         flex-direction: column;
-                         justify-content: center;
-                         align-items: center;
-                         transform: none;
-                         }
-                         body{
-                             padding: 20px;
-                         }
-                         form{
-                             gap: 30px;
-                         }
-                    }
-                    @media(max-width:1024px){
-                        #video{
-                           display: none;
-                        }
-                        #register{
-                            display: block;
-                        }
-                       #video p{
-                            display: none;
-                        }
-                        #signup{
-                            display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        transform: none;
-                        }
-                        body{
-                            padding: 20px;
-                        }
-                        form{
-                            gap: 30px;
-                        }
-                       
-                    }
-                    
-                    @media(max-width:768px){
-                        body{
-                            padding: 0;
-                        }
-                        video{
-                            width: 300px;
-                        }
-                        #video p{
-                            display: none;
-                        }
-                        image{
-                            width: 160px;
-                        }
-                        #signup{
-                            transform: none;
-                        }
-                        #register{
-                            display: flex;
-                            gap: 20px;
-                            padding: 60px;
-                        }
-                      
-                        }
-                    
-                    
-                    @media(max-width:426px){
-                        video{
-                            width: 160px;
-                        }
-                        #video p{
-                          display: none;
-                        }
-                        #signup{
-                            transform: none;
-                        }
-                        #register{
-                            padding: 60px;
-                            gap: 20px;
-                        }
-                        img{
-                            width: 160px;
-                        }
-                     
-                        }
-                        @media(max-width:375px){
-                        input{
-                            width: 315px;
-                        }
-                        }

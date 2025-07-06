@@ -48,31 +48,7 @@ span {
     /* padding: 20px; */
     border-radius: 20px;
 }
-.message-box {
-    position: fixed;
-    top: 88%;
-    /* left: 13%; */
-    background: white;
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 622px;
-    border: 1px solid black;
-    border-radius: 17px;
-    box-shadow: 10px 10px var(--Blue--);
-    gap: 39px;
-    resize: none;
-}
-textarea#messages {
-    padding: 20px;
-    border-radius: 10px;
-    border: none;
-    width: 84%;
-    font-family: var(--font-family--);
-    font-size: 14px;
-    box-shadow: none;
-}
+
 .chat-entry {
     gap: 20px;
     display: flex;
@@ -99,12 +75,15 @@ h1 {
 }
 
 #main p {
-  font-size: 1.2em; 
-  max-width: 90%;
-  margin: auto;
-  text-align: center;
+    font-size: 1.2em;
+    max-width: 90%;
+    margin: auto;
+    text-align: center;
+    flex-wrap: wrap;
+    display: flex;
+    width:auto
+;
 }
-
 #main {
   display: flex;
   flex-direction: column;
@@ -112,49 +91,13 @@ h1 {
   align-items: center;
   padding: 15vh 5vw; /* Responsive padding */
 }
-
-/* Tablet */
-@media (max-width: 1024px) {
-  #main p {
-    width: 90%;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 5vw;
-  }
-  #main p {
-    font-size: 1em;
-  }
-}
-
-/* Small Mobile */
-@media (max-width: 426px) {
-  h1 {
-    font-size: 6vw;
-  }
-  #main p {
-    font-size: 0.9em;
-    width: 100%;
-    padding: 0 10px;
-  }
-}
-
-textarea {
-  display: flex;
-  justify-content: center;
-  align-items:normal;
-  resize: none;
-  width:400px;
-  max-width: 500px;
-  height: 168px;
-  border-radius: 9px;
-  padding: 10px;
-  font-family: var(--font-family--);
-  box-shadow: 10px 10px var(--Blue--);
-}
-textarea:focus{
-  outline: none;
+form {
+    display: flex
+;
+    /* padding: 41px; */
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    /* width: 500px; */
 }

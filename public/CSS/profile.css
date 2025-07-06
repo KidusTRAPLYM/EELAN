@@ -1,0 +1,107 @@
+#body {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+#signout button{
+    width: 100px;
+    padding: 12px
+}
+#profile-details {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: var(--font-family--);
+  flex-wrap: wrap; /* allow wrapping on small screens */
+}
+
+.profilepic {
+  width: 80px;
+  height: 80px;
+  background: #1c5fef;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(28, 95, 239, 0.5);
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  margin-bottom: 10px; /* spacing when wrapped */
+}
+
+.engagements h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+.engagements h4 {
+  margin: 4px 0 0 0;
+  font-weight: normal;
+  color: #666;
+  font-size: 1rem;
+}
+
+.actions {
+  margin-left: auto; /* push to right on large screens */
+  margin-top: 0;
+}
+
+.actions form {
+  margin: 0;
+}
+
+.actions button {
+  background-color: #1c5fef;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: inherit;
+}
+
+.actions button:hover {
+  background-color: #1554cc;
+}
+
+
+section#posts-list {
+    display: flex
+;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+section#container {
+    width: 100%;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+}
+#post {
+    border-radius: 10px;
+    border: 0.5px solid var(--Blue--);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex
+;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+}
+#body,
+#container,
+#posts-list {
+  padding-bottom: 80px; /* Enough space so the last post isn't hidden under .icons */
+}

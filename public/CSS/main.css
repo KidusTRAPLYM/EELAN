@@ -21,9 +21,7 @@ overflow-x: hidden;
     padding: 25px;
     background: white;
 }
-    #slide-bar img{
-    width: 50px;
-    }
+
     .img {
         background: white;
         width: 93rem;
@@ -36,57 +34,8 @@ overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: 120px !important;
-    }
-    .body{
-      padding: 94px !important;
-    }
-    #slide-bar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 13px;
-        position: fixed;
-        gap: 20px;
-        top: 20%;
     }
     
-    #slide-bar div:not(.special) {
-        display: flex;
-        align-items: center;
-        background-color: var(--Gray--);
-        width: 60px;
-        border-radius: 10px;
-        justify-content: center;
-        padding: 3px;
-    }
-    #slide-bar div:not(.special):hover{
-    background-color: var(--Blue--);
-    color: var(--White--);
-    transition: 0.5s ease-in;
-    }
-    #slide-bar div span{
-    margin-left: 14px;
-    color: var(--Black--);
-    }
-    #slide-bar div img{
-    width: 40px;
-    }
-    .special{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 60px;
-      border-radius: 10px;
-      background-color: var(--Blue--);
-      color: var(--Black--);
-      padding: 3px;
-        }
-section#icons {
-    display: flex;
-    gap: 17px;
-    flex-direction: column;
-}
 h6{
  position: fixed;
  top: 95%;
@@ -97,77 +46,34 @@ h4{
   justify-content: center;
   align-items: center;
 }
-@media(max-width:1025px){
-    #slide-bar p {
-        display: none;
-    }
-    #slide-bar div{
-      width: 65px !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-    }
+#logo{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 20px;
 }
-@media(max-width:681px){
-   header{
-      display: flex;
-      justify-content: center;
-    }
-          #slide-bar #icons{
-        display: flex;
-        gap: 20px;
-        flex-direction: row;
-      }
+#logo img {
+    width: 75px;
 }
-@media(max-width:531px){
-    #slide-bar{
-        width: 108% !important;
-      }
+.icons {
+    background: white;
+    position: fixed;
+    top: 92%;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
 }
-@media(max-width:496px){
-    #slide-bar #icons{
-        gap: 10px !important;
-      }
-      #slide-bar div{
-        width: 53px !important;
-      }
+svg.ionicon {
+    width: 38px;
 }
-@media(max-width:426px){
-    #slide-bar div img {
-        width: 33px !important;
-      }
-      #slide-bar div {
-        width: 45px !important;
-      }
-      #slide-bar {
-        padding: 13px !important;
-        gap: 16px !important;
-        flex-direction: column !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        background: white !important;
-        padding-right: 52px !important;
-        width: 109% !important;
-        
-      }
-      #slide-bar #icons{
-        display: flex;
-        gap: 20px;
-        flex-direction: row;
-      }
+svg.size-6 {
+    width: 38px;
+    color: var(--Blue--);
 }
-@media(max-width:376px){
-    #slide-bar{
-      gap: 16px !important;
-      width: 111% !important;
-    }
-    #slide-bar #icons{
-      gap: 11px;
-    }
-  }
-  @media(max-width:320px){
-    #slide-bar #icons{
-      gap: 5px;
-    }
-  }
+.icons {
+  color: var(--Blue--); /* or blue, #1c5fef, white, etc. */
+  font-weight: 100;
+}

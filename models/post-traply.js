@@ -4,6 +4,9 @@ const newSchema = new Schema({
   message: {
     type: String,
   },
+  type: {
+    type: String,
+  },
   like: {
     type: Number,
     default: 0,
@@ -70,6 +73,9 @@ newSchema.virtual("timeago").get(function () {
     return `${years} years ago`;
   }
 });
+// Add text index on message for text search
+newSchema.index({ message: "text" });
+
 newSchema.set("toJSON", { virtuals: true });
 const model = mongoose.model("Post", newSchema);
 module.exports = model;

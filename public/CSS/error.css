@@ -1,12 +1,10 @@
 section#body {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 120px;
+display: grid;
+place-items: center;
+padding: 200px;
 }
 img {
-width: 435px;
+    width: 175px;
 }
 p {
 font-size: 1.2rem;
