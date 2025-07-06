@@ -29,17 +29,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 // mongodb connection
-async function connectMongodb() {
+async function connectDB() {
   try {
-    mongoose.connect(URL);
-    console.log("Mongodb connection has successfully been set");
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 30000,
+    });
+    console.log("MongoDB connected");
   } catch (err) {
-    console.log(
-      `An error has occcured while connecting to the database ${err}`
-    );
+    console.error("MongoDB connection error:", err);
   }
 }
-connectMongodb();
+connectDB();
 // create token
 const maxAge = 3 * 24 * 60 * 60 * 100;
 const createToken = (id) => {
@@ -122,6 +124,9 @@ app.get("/search", async (req, res) => {
 
 app.get("/profile", async (req, res) => {
   const token = req.cookies.User;
+  if (!token) {
+    return res.redirect("/signin"); // Redirect if not authenticated
+  }
   const decoded = jwt.verify(token, "sec");
   const userId = decoded.id;
   const user = await User.findById(userId);
@@ -172,6 +177,9 @@ app.post("/post", async (req, res) => {
   const { message, type } = req.body;
   try {
     const token = req.cookies.User;
+    if (!token) {
+      return res.redirect("/signin"); // Redirect if not authenticated
+    }
     const decoded = jwt.verify(token, "sec");
     const userId = decoded.id;
     const newPost = new Post({
@@ -385,6 +393,11 @@ app.post("/monami", async (req, res) => {
     console.error("Error calling Hugging Face Inference API:", error);
     res.status(500).render("error.ejs");
   }
+});
+
+app.post("/signout", (req, res) => {
+  res.clearCookie("User"); // if you’re using cookies
+  return res.redirect("/signin");
 });
 
 app.use((req, res) => {
