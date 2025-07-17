@@ -36,7 +36,7 @@ width: 269px;
 background-color: var(--Gray--);
 padding: 12px;
 width: 150px;
-border: 1px solid var(--Blue--);
+box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
 color: var(--Blue--);
 font-family: var(--font-family--);
                         }
@@ -50,13 +50,13 @@ color: var(--White--);
 background-color: var(--Gray--);
 padding: 12px;
 width: 150px;
-border: 1px solid var(--Black--);
+box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
 color: var(--Black--);
 font-family: var(--font-family--);
 }
 .clair button:hover{
 background-color: var(--Black--);
 transition: 1s ease-in-out;
-border: 1px solid var(--White--);
+box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
 color: var(--White--);
 }

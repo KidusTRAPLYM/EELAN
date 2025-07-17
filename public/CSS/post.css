@@ -45,7 +45,7 @@ textarea#monami-input {
   resize: none;
   font-family: 'Bricolage Grotesque', sans-serif;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
   font-size: 1rem;
 }
 

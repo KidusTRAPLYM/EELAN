@@ -16,13 +16,28 @@
     />
   </head>
   <body>
+    <div id="loader" class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <script>
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = 0; // fade out
+        setTimeout(() => {
+          loader.style.display = "none"; // remove from DOM flow
+        }, 400); // match with CSS transition
+      });
+    </script>
+
     <section id="register">
       <section id="signup">
         <form action="/signin" method="Post">
           <img src="/Images/Ciphry_logo_with_text.png" alt="" />
           <p>Sign-in to your Account</p>
           <span class="name"
-            ><input type="email" name="email" id="email" placeholder="Email" />
+            ><input type="text" name="name" id="name" placeholder="name" />
           </span>
           <p>Don't have an account? <a href="/">Sign up</a></p>
           <a href=""><button>Sign-in</button></a>

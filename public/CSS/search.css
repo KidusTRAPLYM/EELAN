@@ -5,6 +5,9 @@
   background: white !important;
   padding: 30px !important;
   border-radius: 10px !important;
+  display: flex;
+    flex-direction: column;
+    gap: 20px;
 
 }
 

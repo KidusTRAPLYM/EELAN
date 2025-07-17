@@ -11,6 +11,7 @@ const monami = require("./models/monami.js");
 dotenv.config();
 const comment = require("./models/comment.js");
 const Post = require("./models/post-traply");
+const journals = require("./models/journal.js");
 const app = express();
 const PORT = 9999;
 require("dotenv").config();
@@ -20,6 +21,7 @@ const URL = process.env.MONGO_URI;
 
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const journal = require("./models/journal.js");
 // middleware
 
 app.use(cors());
@@ -34,7 +36,7 @@ async function connectDB() {
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 30000,
+      serverSelectionTimeoutMS: 3000000,
     });
     console.log("MongoDB connected");
   } catch (err) {
@@ -69,6 +71,9 @@ app.get("/", async (req, res) => {
 app.get("/landing", (req, res) => {
   res.redirect("/");
 });
+app.get("/about", (req, res) => {
+  res.render("about");
+});
 app.get("/dashboard", (req, res) => {
   res.redirect("/");
 });
@@ -101,6 +106,17 @@ app.get("/post", (req, res) => {
 app.get("/terms-of-use", (req, res) => {
   res.render("policy");
 });
+app.get("/journal", async (req, res) => {
+  let messages = "The message field is empty";
+  const token = req.cookies.User;
+  const decoded = jwt.verify(token, "sec");
+  const userId = decoded.id;
+  const fetchJournal = await journal
+    .find({ userId })
+    .sort({ date: -1 })
+    .limit(3);
+  res.render("journal", { messages, fetchJournal });
+});
 // Adjust path accordingly
 
 app.get("/search", async (req, res) => {
@@ -121,7 +137,17 @@ app.get("/search", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
+app.get("/see-journals", async (req, res) => {
+  let messages = "The message field is empty";
+  const token = req.cookies.User;
+  const decoded = jwt.verify(token, "sec");
+  const userId = decoded.id;
+  const fetchJournal = await journal
+    .find({ userId })
+    .sort({ date: -1 })
+    .limit(3);
+  res.render("seejournals", { messages, fetchJournal });
+});
 app.get("/profile", async (req, res) => {
   const token = req.cookies.User;
   if (!token) {
@@ -137,11 +163,16 @@ app.get("/profile", async (req, res) => {
 app.get("/work", (req, res) => {
   res.render("work");
 });
+app.get("/comments", (req, res) => {
+  res.render("comments");
+});
 app.get("/comment/:postId", async (req, res) => {
   const postId = req.params.postId;
+  const posts = await Post.findById(postId).populate("userId", "name");
+
   const token = req.cookies.User;
   if (!token) {
-    return res.redirect("/signin"); // Redirect if not authenticated
+    return res.redirect("/signin");
   }
   const decoded = jwt.verify(token, "sec");
   const userId = decoded.id;
@@ -149,7 +180,7 @@ app.get("/comment/:postId", async (req, res) => {
   console.log(postId);
   console.log(userId);
   console.log(comments);
-  res.render("comments", { comments, userId, postId });
+  res.render("comments", { postId, userId, posts, comments });
 });
 app.get("/monami", async (req, res) => {
   const token = req.cookies.User;
@@ -172,7 +203,28 @@ app.get("/monami", async (req, res) => {
 });
 
 // Post functions
-
+app.post("/journal", (req, res) => {
+  const { message, name, date } = req.body;
+  try {
+    const token = req.cookies.User;
+    if (!token) {
+      return res.redirect("/signin");
+    }
+    const decoded = jwt.verify(token, "sec");
+    const userId = decoded.id;
+    const newJournal = new journal({
+      message,
+      name,
+      date,
+      userId,
+    });
+    newJournal.save();
+    res.redirect("/home");
+  } catch (err) {
+    console.log(`An error has occured , ${err}`);
+    res.redirect("/error");
+  }
+});
 app.post("/post", async (req, res) => {
   const { message, type } = req.body;
   try {
@@ -195,9 +247,9 @@ app.post("/post", async (req, res) => {
   }
 });
 app.post("/signin", async (req, res) => {
-  const { email } = req.body;
+  const { name } = req.body;
   try {
-    const user = await User.login(email);
+    const user = await User.login(name);
     const token = createToken(user._id);
     console.log(user);
     res.cookie("User", token, {
@@ -207,15 +259,15 @@ app.post("/signin", async (req, res) => {
     });
     res.redirect("/home");
   } catch (err) {
-    let errorMessage = "An error has occured";
+    let errorMessage = "There is no account with this name";
     res.render("signinerr", { errorMessage });
     console.log(err);
   }
 });
 app.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name } = req.body;
   try {
-    const user = await User.create({ name, email, password });
+    const user = await User.create({ name });
     const token = createToken(user._id);
     res.cookie("User", token, {
       maxAge: maxAge,
@@ -224,9 +276,9 @@ app.post("/register", async (req, res) => {
     });
     res.redirect("/home");
   } catch (err) {
-    let errorMessage = "An error has occurred.";
+    let errorMessage = "The name is taken";
     if (err.code === 11000) {
-      errorMessage = "The email is taken. ";
+      errorMessage = "The name is taken ";
     }
     console.log(`An error has occurred. ${err}`);
     res.render("registererr", { errorMessage });
@@ -234,24 +286,50 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.post("/dashboard/:id", async (req, res) => {
-  const userId = req.cookies.User;
+app.post("/comments/:postId/comment", async (req, res) => {
+  const postId = req.params.postId;
+  const { message } = req.body;
+  const token = req.cookies.User;
+  if (!token) return res.redirect("/signin");
 
-  if (!userId) {
-    console.log("User not found");
-  }
   try {
-    const postId = req.params.id;
-    if (!postId) {
-      console.log("The post is not found");
-    }
-    const post = await Post.findById(postId);
-    res.redirect("/dashboard", { userId, post });
-  } catch (err) {
-    console.log(`An error has occured: ${err}`);
+    const decoded = jwt.verify(token, "sec");
+    const userId = decoded.id;
+
+    const newComment = new comment({
+      postId,
+      userId,
+      message,
+    });
+    await newComment.save();
+    console.log("New comment saved:", newComment);
+    res.redirect(`/comments/${postId}`); // Use actual postId here
+  } catch (error) {
+    console.error("Error saving comment:", error);
+    res.status(500).send("Failed to save comment");
   }
 });
-app.post("/dashboard/:id/like", async (req, res) => {
+app.get("/comments/:postId", async (req, res) => {
+  try {
+    const postId = req.params.postId;
+    const token = req.cookies.User;
+    if (!token) return res.redirect("/signin");
+
+    const decoded = jwt.verify(token, "sec");
+    const userId = decoded.id;
+
+    const post = await Post.findById(postId).populate("userId", "name");
+    if (!post) return res.redirect("/error");
+
+    const comments = await comment.find({ postId }).populate("userId", "name");
+
+    res.render("comments", { postId, userId, post, comments });
+  } catch (err) {
+    console.error(err);
+    res.render("error");
+  }
+});
+app.post("/comments/:id/like", async (req, res) => {
   try {
     const userId = req.cookies.User;
     const postId = req.params.id;
@@ -269,12 +347,12 @@ app.post("/dashboard/:id/like", async (req, res) => {
       post.like++;
     }
     await post.save();
-    res.redirect("/dashboard");
+    res.redirect(`/comments/${postId}`);
   } catch (err) {
     console.log(`An error has occured. `);
   }
 });
-app.post("/dashboard/:id/dislike", async (req, res) => {
+app.post("/comments/:id/dislike", async (req, res) => {
   const userId = req.cookies.User;
   const postId = req.params.id;
   const post = await Post.findById(postId);
@@ -290,9 +368,9 @@ app.post("/dashboard/:id/dislike", async (req, res) => {
     post.dislike++;
   }
   await post.save();
-  res.redirect("/dashboard");
+  res.redirect(`/comments/${postId}`);
 });
-app.post("/dashboard/:postId/comment", async (req, res) => {
+app.post("/comments/:postId/comment", async (req, res) => {
   const postId = req.params.postId;
   const { message } = req.body; // Extract the comment message
   const token = req.cookies.User;
@@ -314,7 +392,7 @@ app.post("/dashboard/:postId/comment", async (req, res) => {
   try {
     await newComment.save();
     console.log("New comment saved:", newComment);
-    res.redirect(`/home`); // Redirect back to the comment page
+    res.redirect("/comments/:id"); // Redirect back to the comment page
   } catch (error) {
     console.error("Error saving comment:", error);
     res.status(500).send("Failed to save comment");

@@ -17,20 +17,31 @@
     />
   </head>
   <body>
+    <div id="loader" class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <script>
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = 0; // fade out
+        setTimeout(() => {
+          loader.style.display = "none"; // remove from DOM flow
+        }, 400); // match with CSS transition
+      });
+    </script>
+
     <section id="register">
       <section id="signup">
         <form action="/register" method="post">
           <img src="/Images/Ciphry_logo_with_text.png" alt="" />
           <p>Create Your Account</p>
+          <h3>
+            For the purpose of secuirty, we recommend you to use anonymus names.
+          </h3>
           <span class="name">
-            <input type="text" name="name" id="name" placeholder="Username" />
-            <input type="email" name="email" id="email" placeholder="Email" />
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-            />
+            <input type="text" name="name" id="name" placeholder="Name" />
           </span>
           <p>Already have an account? <a href="/signin">Sign in</a></p>
           <a href=""><button>Register</button></a>

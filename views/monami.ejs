@@ -17,34 +17,38 @@
     />
   </head>
   <body>
-    
+    <div id="loader" class="loader"> 
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+<script>
+  window.addEventListener("load", function () {
+    const loader = document.getElementById("loader");
+    loader.style.opacity = 0; // fade out
+    setTimeout(() => {
+      loader.style.display = "none"; // remove from DOM flow
+    }, 400); // match with CSS transition
+  });
+</script>
+
     <section id="body" class="body">
       <h1>Monami</h1>
-      <section id="main">
-         <a href="/terms-of-use">
-       <h4 style="color:red">Before continuing using monami, please read the terms of use by clicking here.</h4></a>
-        </div>
-        <% if (userChats && userChats.length > 0) { %>
-  <% userChats.forEach(chat => { %>
-    <div class="chat-entry">
-      <p class="chat-settings"><strong>You:</strong> <%= chat.message %></p>
-      <p class="chat-settings"><strong>Monami:</strong> <%= chat.response %></p>
-    </div>
-  <% }) %>
-<% } else { %>
-  <p>No past chats found.</p>
-<% } %>
-<form action="/monami" method="post" class="chat-form">
-  <textarea
-    name="message"
-    id="messages"
-    placeholder="What's wrong?"
-  ></textarea>
-  <button>➤</button>
-</form>
-
+        <h2>We are out of order</h2>
+        <p>Monami2 is arriving with higher speed and greater efficiency.
+For privacy and security reasons, Monami 1.5 has been officially discontinued. </p>
       </section>
       
     </section>
   </body>
 </html>
+<style>
+  h1,p,h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h1{
+    font-size: 50px;
+  }
+</style>

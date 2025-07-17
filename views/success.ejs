@@ -14,20 +14,24 @@
     />
   </head>
   <body>
-    <section id="intro">
-      <h1>Registration Successful</h1>
-      <p>Check out our products</p>
-    </section>
+    <div id="loader" class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <script>
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = 0; // fade out
+        setTimeout(() => {
+          loader.style.display = "none"; // remove from DOM flow
+        }, 400); // match with CSS transition
+      });
+    </script>
 
-    <section id="success">
-      <div class="traply">
-        <img src="/Images/Traply-edited.png" alt="" />
-        <a href="/dashboard/traply"><button>Get started</button></a>
-      </div>
-      <div class="clair">
-        <img src="/Images/Clair-white.png" alt="" />
-        <a href="/dashboard/clair"><button>Get started</button></a>
-      </div>
+    <section id="intro">
+      <h1>Success</h1>
+      <p>Check out our products</p>
     </section>
   </body>
 </html>

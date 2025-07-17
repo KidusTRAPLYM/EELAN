@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="TMW5Dt1bYDDzmsriK1iovdFSDoP8geZCU9EdrmTY3M0" />
-
-    <title>Ciphry</title>
+    <title>Journal</title>
     <link rel="stylesheet" href="/CSS/variables.css" />
-    <link rel="stylesheet" href="/CSS/main.css">
-    <link rel="stylesheet" href="/CSS/dashboard.css">
+    <link rel="stylesheet" href="/CSS/main.css" />
+
+    <link rel="stylesheet" href="/CSS/journal.css" />
     <!--FONT FAMILY-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,11 +15,9 @@
       href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
       rel="stylesheet"
     />
-    
   </head>
   <body>
-  <header>
-<div id="loader" class="loader"> 
+                        <div id="loader" class="loader"> 
   <div class="dot"></div>
   <div class="dot"></div>
   <div class="dot"></div>
@@ -35,13 +32,12 @@
   });
 </script>
 
+    <header>
       <section id="logo">
         <h1>Ciphry</h1>
       </section>
-
-     
-</header>
- <div class="icons">
+    </header>
+   <div class="icons">
    <!--Home-->
    <a href="/landing">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -82,82 +78,22 @@
 </svg>
  </a>
  </div>
-    <section id="body">
-  
-    <section id="posts">
-        <a href="/terms-of-use">
-     <h4 style="color:var(--Blue--)"> We would recommend you to read the terms of use by clicking here. </h4>
-    </a>
-        <a href="/about">
-     <h4 style="color:var(--Blue--)"> Are you new to Ciphry? Click the link to know about our platform.</h4>
-    </a>
-              <% populatedPostData.forEach(post => { %>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-8 col-lg-6"> 
-            <section id="post">
-              <section id="upper">
-                <section id="left">
-                  <div class="account"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-</svg>
-</div>
-                  <div class="time">
-                    <span><%= post.userId?.name || 'Unknown User' %></span>
-                    <span><%= post.timeago || 'N/A' %></span>
-                  </div>
-                </section>
-              </section>
-              <section id="down">
-                <section id="text">
-                  <h1><%=post.type%></h1>
-                  <p><%= post.message %></p>
-                </section>
-                <section id="engagements">
-                  <div class="like">
-                    <form action="/comments/<%= post._id%>/like" method="post">
-                      <button type="submit" id="like">
-                        <img src="/Images/like.png" alt="">
-                      </button>
-                    </form>
-                    <span><%= post.like%></span>
-                  </div>
-                  <div class="dislike">
-                    <form action="/comments/<%= post._id%>/dislike" method="post">
-                      <button type="submit" id="like">
-                        <img src="/Images/dislike.png" alt="">
-                      </button>
-                    </form>
-                    <div class="span">
-                      <span><%= post.dislike%></span>
-                    </div>
-                  </div>
-                  <div class="comment">
-                    <a href="/comments/<%=post._id%>">
-                      <button id="comment-<%=post._id%>" class="comment-btn">
-                        <img src="/Images/comment.png" alt="">
-                      </button>
-                    </a>
-                  </div>
-                </section>
-              </section>
-            </section>
-          </div>
-        </div>
-      </div>
-      
-    <% }) %>
-    <script>
-      
-    </script>
-       
+      <section id="journals">
+        <h2>These are your latest journals</h2>
+        
+        <%fetchJournal.forEach(journal=>{%>
+          <section id="journal_lists" style="width:90%">
+          <h1>Name: <span><%=journal.name%></span> </h1>
+          <h4>Date: <span><%=journal.date%></span></h4>
+         
+        
+        </section>
+     
+          <%})%>
+     
+        
+      </section>
     </section>
-                        </section>
-    </section>
-    </section>
-    <footer>
- 
-    </footer>
-  
-    </body>
+         </section>
+  </body>
 </html>

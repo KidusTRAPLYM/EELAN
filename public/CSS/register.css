@@ -29,15 +29,15 @@ overflow-y: hidden;
                     width: 80%;
                     gap: 20px;
                     flex-wrap: wrap;
-                    margin: 0 auto 
-                 
+                    margin: 0 auto ;
+                 justify-content: center;
                 }
                     input{
                     padding: 12px;
                     border-radius: 10px;
                     font-family:var(--font-family--);
                     width: 100%;
-                    border: 1px solid var(--Black--);
+                    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
                     color: var(--Blue--);
                     }
                     span.name {
@@ -50,7 +50,7 @@ overflow-y: hidden;
                     color: Var(--White--);
                     padding: 12px;
                     font-family: var(--Font-family--);
-                    border: 1px solid var(--Black--);
+                   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
                     width: 100px;
                     }
                     video{
@@ -71,9 +71,12 @@ overflow-y: hidden;
                     align-items: center;
                     flex-direction: column;
                     padding: 10px;
-                    border: 1px solid var(--Black--);
+                    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
                     border-radius: 10px;
                     }
                     img{
                         width: 200px;
+                    }
+                    h3{
+                      font-size: 10px
                     }

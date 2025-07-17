@@ -1,0 +1,861 @@
+[{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61633"
+  },
+  "message": "Sometimes I feel like I’m running on fumes, trying to keep up with life’s demands. It’s like no matter how hard I try, I’m always falling short. Anyone else out there feeling this? How do you keep going? #Relatable",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61634"
+  },
+  "message": "I’m so overwhelmed with work and life that I just want to crawl into bed and shut the world out. My to-do list feels like a mountain, and my brain’s begging for a pause. How do you guys handle this kind of mental overload? #MentalHealth",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61635"
+  },
+  "message": "I can’t stop overthinking every choice I make, from what to say in a meeting to what to eat for dinner. It’s like my brain’s stuck in a loop of doubt. Anyone else deal with this? How do you learn to trust your gut? #Overthinking",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61636"
+  },
+  "message": "Why do I feel so drained after social events? Even when I have fun, I need hours alone to recharge. Is this just me, or do others feel this too? #IntrovertLife",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61637"
+  },
+  "message": "I get so anxious before making phone calls, even for simple stuff like scheduling an appointment. My heart races, and I rehearse what to say a million times. Anyone else find this hard? #SocialAnxiety",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61638"
+  },
+  "message": "Does anyone else feel like they’re faking it through life sometimes? Like you’re pretending to have it all together, but inside you’re a mess? How do you deal with that? #ImposterSyndrome",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61639"
+  },
+  "message": "I feel so guilty taking time for myself when there’s so much to do. But I’m burning out. How do you balance self-care with responsibilities? #SelfCareStruggle",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6163a"
+  },
+  "message": "Why is it so hard to say no to people? I end up overcommitting and stressing myself out. Anyone have tips for setting boundaries? #PeoplePleaser",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6163b"
+  },
+  "message": "I keep comparing myself to others on social media, and it’s making me feel worse. I know it’s not real, but it’s hard to stop. Anyone else stuck in this cycle? #ComparisonTrap",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6163c"
+  },
+  "message": "I feel so stuck in my routine, like every day is the same. How do you break out of that rut and find some excitement again? #LifeFeelsFlat",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6163d"
+  },
+  "message": "I’m terrified of failing at work, even though I know I’m doing okay. It’s like I’m waiting for the other shoe to drop. Anyone else feel this pressure? #FearOfFailure",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6163e"
+  },
+  "message": "I’m so tired of pretending I’m fine when I’m really not. It’s exhausting to keep up the act. How do you open up without feeling judged? #KeepingItReal",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6163f"
+  },
+  "message": "I get so nervous speaking up in meetings, even when I know my ideas are good. It’s like my voice gets stuck. Anyone have tips for building confidence? #WorkAnxiety",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61640"
+  },
+  "message": "I feel like I’m always waiting for the next bad thing to happen. It’s hard to enjoy the good moments. How do you stay positive when you’re so used to worrying? #AnxietyStruggles",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61641"
+  },
+  "message": "I am scared to try new things because I might mess up. But staying in my comfort zone feels so limiting. How do you push past that fear? #FearOfChange",
+  "type": "Posts",
+  "like": [],
+  "dislike": 0,
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61642"
+  },
+  "message": "I feel so much pressure to be perfect all the time. It’s like I can’t make a single mistake. How do you let go of that need to be flawless? #Perfectionism",
+  "type": "Posts",
+  "like": 1,
+  "dislike": 0,
+  "likedBy": [
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzgyZjhlYTA4NzZjYzZkYzNlOWQ5MiIsImlhdCI6MTc1MjcwNjk3NiwiZXhwIjoxNzc4NjI2OTc2fQ.DtJvGYFcIAgOdYgyku3N0MQ8_tWsmws6VMEk0GrwdZI"
+  ],
+  "dislikedBy": [],
+  "__v": 1,
+  "createdAt": {
+    "$date": "2025-07-16T23:27:24.482Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61643"
+  },
+  "message": "I’m always worried about what others think of me. It’s exhausting trying to please everyone. How do you stop caring so much? #SelfConscious",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61644"
+  },
+  "message": "I feel so lost sometimes, like I don’t know who I am anymore. Life’s moving so fast, and I’m just trying to keep up. Anyone else feel this way? #IdentityCrisis",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61645"
+  },
+  "message": "I’m always second-guessing my decisions, even the small ones. It’s like I don’t trust myself. How do you build that confidence to just go with it? #DecisionFatigue",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61646"
+  },
+  "message": "I feel so much pressure to have my life figured out by now, but I’m still figuring out what I want. Anyone else feel behind? #LifePressure",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61647"
+  },
+  "message": "I get so anxious when plans change last minute. It throws me off completely. How do you stay calm when things don’t go as expected? #ControlIssues",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61648"
+  },
+  "message": "I’m so hard on myself when I make mistakes. It’s like I can’t forgive myself. How do you move on from screwing up? #SelfForgiveness",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61649"
+  },
+  "message": "I feel like I’m always chasing happiness, but it’s never enough. Why is it so hard to just be content? Anyone else feel this? #ChasingHappiness",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6164a"
+  },
+  "message": "I’m so tired of feeling like I’m not enough. Work, relationships, everything—it’s like I’m always falling short. How do you deal with that? #NotEnough",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 1,
+  "likedBy": [],
+  "dislikedBy": [
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzgyZjhlYTA4NzZjYzZkYzNlOWQ5MiIsImlhdCI6MTc1MjcwNjk3NiwiZXhwIjoxNzc4NjI2OTc2fQ.DtJvGYFcIAgOdYgyku3N0MQ8_tWsmws6VMEk0GrwdZI"
+  ],
+  "__v": 1,
+  "createdAt": {
+    "$date": "2025-07-16T23:27:51.385Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6164b"
+  },
+  "message": "I get so anxious in crowds, like I’m being watched or judged. It makes going out so hard. Anyone have tips for dealing with this? #SocialOverload",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6164c"
+  },
+  "message": "I feel so drained after arguing with someone, even if it’s minor. It sticks with me for hours. How do you let go of that tension? #ConflictStress",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6164d"
+  },
+  "message": "I’m so scared of letting people down. It’s like I’m always trying to meet everyone’s expectations. How do you handle that pressure? #PeoplePleasing",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6164e"
+  },
+  "message": "I feel so awkward in new social situations. It’s like I don’t know how to act. How do you get more comfortable meeting new people? #SocialAwkwardness",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb6164f"
+  },
+  "message": "I’m always worried I said the wrong thing after a conversation. It replays in my head for days. How do you stop obsessing over it? #OverthinkingConversations",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61650"
+  },
+  "message": "I feel so much guilt when I take time for myself. It’s like I’m letting everyone down. How do you make self-care feel okay? #GuiltTrip",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61651"
+  },
+  "message": "I’m so tired of feeling like I have to prove myself to everyone. It’s exhausting. How do you just be yourself without worrying? #Authenticity",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61652"
+  },
+  "message": "I feel so restless, like I need to do something big but don’t know what. Anyone else get that itch for change? #RestlessMind",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61653"
+  },
+  "message": "I’m always worried I’m not doing enough, even when I’m busy all day. How do you feel accomplished without burning out? #ProductivityPressure",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61654"
+  },
+  "message": "I feel so much pressure to say yes to everything, but I’m spreading myself too thin. How do you learn to prioritize? #Overcommitted",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61655"
+  },
+  "message": "I’m so tired of feeling like I’m not where I’m supposed to be in life. How do you stay patient with yourself? #LifeJourney",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61656"
+  },
+  "message": "I feel so overwhelmed by choices sometimes, like I’m paralyzed by options. How do you make decisions without stressing out? #ChoiceOverload",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61657"
+  },
+  "message": "I’m so tired of feeling like I have to be ‘on’ all the time. It’s exhausting pretending to be upbeat. How do you just relax and be? #AlwaysOn",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61658"
+  },
+  "message": "I feel so disconnected from people lately, even my close friends. It’s like I’m in my own bubble. How do you reconnect? #FeelingIsolated",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878354d6c39a1ab6fb61659"
+  },
+  "message": "I’m so afraid of making the wrong career choice. What if I pick something and regret it? How do you figure out what’s right for you? #CareerDoubts",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "687835e97955fbe8b4e42da4"
+  },
+  "message": "Hey world!",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": [],
+  "userId": {
+    "$oid": "68782f8ea0876cc6dc3e9d92"
+  },
+  "createdAt": {
+    "$date": "2025-07-16T23:29:45.171Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6165a"
+  },
+  "message": "Sometimes I feel like I’m running on fumes, trying to keep up with life’s demands. It’s like no matter how hard I try, I’m always falling short. Anyone else out there feeling this? How do you keep going?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6165b"
+  },
+  "message": "I’m so overwhelmed with work and life that I just want to crawl into bed and shut the world out. My to-do list feels like a mountain, and my brain’s begging for a pause. How do you guys handle this kind of mental overload?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6165c"
+  },
+  "message": "I can’t stop overthinking every choice I make, from what to say in a meeting to what to eat for dinner. It’s like my brain’s stuck in a loop of doubt. Anyone else deal with this? How do you learn to trust your gut?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6165d"
+  },
+  "message": "Why do I feel so drained after social events? Even when I have fun, I need hours alone to recharge. Is this just me, or do others feel this too?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6165e"
+  },
+  "message": "I get so anxious before making phone calls, even for simple stuff like scheduling an appointment. My heart races, and I rehearse what to say a million times. Anyone else find this hard?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6165f"
+  },
+  "message": "Does anyone else feel like they’re faking it through life sometimes? Like you’re pretending to have it all together, but inside you’re a mess? How do you deal with that?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61660"
+  },
+  "message": "I feel so guilty taking time for myself when there’s so much to do. But I’m burning out. How do you balance self-care with responsibilities?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61661"
+  },
+  "message": "Why is it so hard to say no to people? I end up overcommitting and stressing myself out. Anyone have tips for setting boundaries?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61662"
+  },
+  "message": "I keep comparing myself to others on social media, and it’s making me feel worse. I know it’s not real, but it’s hard to stop. Anyone else stuck in this cycle?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61663"
+  },
+  "message": "I feel so stuck in my routine, like every day is the same. How do you break out of that rut and find some excitement again?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61664"
+  },
+  "message": "I’m terrified of failing at work, even though I know I’m doing okay. It’s like I’m waiting for the other shoe to drop. Anyone else feel this pressure?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61665"
+  },
+  "message": "I’m so tired of pretending I’m fine when I’m really not. It’s exhausting to keep up the act. How do you open up without feeling judged?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61666"
+  },
+  "message": "I get so nervous speaking up in meetings, even when I know my ideas are good. It’s like my voice gets stuck. Anyone have tips for building confidence?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61667"
+  },
+  "message": "I feel like I’m always waiting for the next bad thing to happen. It’s hard to enjoy the good moments. How do you stay positive when you’re so used to worrying?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61668"
+  },
+  "message": "I’m scared to try new things because I might mess up. But staying in my comfort zone feels so limiting. How do you push past that fear?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61669"
+  },
+  "message": "I feel so much pressure to be perfect all the time. It’s like I can’t make a single mistake. How do you let go of that need to be flawless?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6166a"
+  },
+  "message": "I’m always worried about what others think of me. It’s exhausting trying to please everyone. How do you stop caring so much?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6166b"
+  },
+  "message": "I feel so lost sometimes, like I don’t know who I am anymore. Life’s moving so fast, and I’m just trying to keep up. Anyone else feel this way?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6166c"
+  },
+  "message": "I’m always second-guessing my decisions, even the small ones. It’s like I don’t trust myself. How do you build that confidence to just go with it?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6166d"
+  },
+  "message": "I feel so much pressure to have my life figured out by now, but I’m still figuring out what I want. Anyone else feel behind?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6166e"
+  },
+  "message": "I get so anxious when plans change last minute. It throws me off completely. How do you stay calm when things don’t go as expected?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6166f"
+  },
+  "message": "I’m so hard on myself when I make mistakes. It’s like I can’t forgive myself. How do you move on from screwing up?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61670"
+  },
+  "message": "I feel like I’m always chasing happiness, but it’s never enough. Why is it so hard to just be content? Anyone else feel this?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61671"
+  },
+  "message": "I’m so tired of feeling like I’m not enough. Work, relationships, everything—it’s like I’m always falling short. How do you deal with that?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61672"
+  },
+  "message": "I get so anxious in crowds, like I’m being watched or judged. It makes going out so hard. Anyone have tips for dealing with this?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61673"
+  },
+  "message": "I feel so drained after arguing with someone, even if it’s minor. It sticks with me for hours. How do you let go of that tension?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61674"
+  },
+  "message": "I’m so scared of letting people down. It’s like I’m always trying to meet everyone’s expectations. How do you handle that pressure?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61675"
+  },
+  "message": "I feel so awkward in new social situations. It’s like I don’t know how to act. How do you get more comfortable meeting new people?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61676"
+  },
+  "message": "I’m always worried I said the wrong thing after a conversation. It replays in my head for days. How do you stop obsessing over it?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61677"
+  },
+  "message": "I feel so much guilt when I take time for myself. It’s like I’m letting everyone down. How do you make self-care feel okay?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61678"
+  },
+  "message": "I’m so tired of feeling like I have to prove myself to everyone. It’s exhausting. How do you just be yourself without worrying?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb61679"
+  },
+  "message": "I feel so restless, like I need to do something big but don’t know what. Anyone else get that itch for change?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6167a"
+  },
+  "message": "I’m always worried I’m not doing enough, even when I’m busy all day. How do you feel accomplished without burning out?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6167b"
+  },
+  "message": "I feel so much pressure to say yes to everything, but I’m spreading myself too thin. How do you learn to prioritize?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878367e6c39a1ab6fb6167c"
+  },
+  "message": "I’m so tired of feeling like I’m not where I’m supposed to be in life. How do you stay patient with yourself?",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": []
+},
+{
+  "_id": {
+    "$oid": "6878428f1535df9f21dfac14"
+  },
+  "message": "Hello world",
+  "type": "Posts",
+  "like": 0,
+  "dislike": 0,
+  "likedBy": [],
+  "dislikedBy": [],
+  "userId": {
+    "$oid": "68782f8ea0876cc6dc3e9d92"
+  },
+  "createdAt": {
+    "$date": "2025-07-17T00:23:43.808Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,78 @@
+section#form {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    padding: 20px;
+    gap: 18px;
+}
+section#main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+input, textarea {
+    padding: 10px;
+    font-family: var(--font-family--);
+}
+button {
+    padding: 12px;
+    font-family: var(--font-family--);
+    background-color: var(--Blue--);
+    color: var(--White--);
+    border: none;
+}
+textarea{
+    resize:none
+}
+textarea:focus{
+    outline: none;
+}
+form {
+    display: flex
+;
+    flex-direction: column;
+    gap: 10px;
+}
+h2 {
+    font-size: 23px;
+}
+h4{
+    display: flex
+;
+    justify-content: normal;
+    align-items: center;
+}
+section#journal_lists {
+    display: flex
+;
+    justify-content: center;
+    flex-direction: column;
+    /* gap: 20px; */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    border-top: 10px;
+    padding: 17px;
+    border-left: none;
+    border-right: none;
+}
+section#journals {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+p {
+    width: 364px;
+}
+section#journal_lists {
+    display: flex;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    flex-direction: column;
+    border-radius: 10px;
+}
+span {
+    font-weight: 100;
+}

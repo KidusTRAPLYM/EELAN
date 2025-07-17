@@ -16,6 +16,21 @@
     />
   </head>
   <body>
+    <div id="loader" class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <script>
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = 0; // fade out
+        setTimeout(() => {
+          loader.style.display = "none"; // remove from DOM flow
+        }, 400); // match with CSS transition
+      });
+    </script>
+
     <section id="main">
       <h1>Terms of Use & Fair Usage Policy</h1>
 

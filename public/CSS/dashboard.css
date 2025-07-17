@@ -8,8 +8,7 @@ flex-wrap: wrap;
 }
 #post {
 border-radius: 10px;
-border: 0.5px solid var(--Blue--);
-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
 display: flex;
 flex-wrap: wrap;
 flex-direction: column;
@@ -25,6 +24,17 @@ height: 50px;
 background-color: var(--Blue--);
 color: var(--White--);
 border-radius: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.account svg.size-6 {
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex
+;
+    width: 50px;
 }
 #engagements{
 display: flex;
@@ -94,7 +104,7 @@ input{
   .comment textarea{
     width: 70px;
     height: 17px ;
-    border: 1px solid var(--Black--);
+box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
   }
   .share-popup {
     position: fixed;
@@ -119,7 +129,7 @@ input {
   font-size: 12px;
   padding: 10px;
   border-radius: 7px;
-  border: 1px solid var(--Black--);
+box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
 }
 section.comment-popup {
   position: fixed;
@@ -135,7 +145,7 @@ section#comment-popup-content {
   background: var(--White--);
   width: 474px;
   height: 417px;
-  border: 1px solid var(--Black--);
+box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   padding: 28px;
 }
@@ -179,8 +189,8 @@ input#message:focus{
 input#submit {
   background-color: var(--Blue--);
   color: white;
-  border: 1px solid;
-  width: 90px;
+ box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+  width: 140px;
 }
 h1 {
     font-size: 16px;
