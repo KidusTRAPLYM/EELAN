@@ -30,6 +30,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.use("/robots.txt", express.static("robots.txt"));
+
 // mongodb connection
 async function connectDB() {
   try {
