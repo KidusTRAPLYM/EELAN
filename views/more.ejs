@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Ciphree</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --font-family--: "Poppins", sans-serif;
+        --White--: #f8fafc;
+        --Black--: #1a202c;
+        --Blue--: #3b82f6;
+        --Blue-Light--: #60a5fa;
+        --Gradient--: linear-gradient(135deg, #3b82f6, #a855f7);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-family--);
+        background: var(--Gradient--);
+        color: var(--Black--);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+      }
+
+      main {
+        flex: 1;
+        max-width: 900px;
+        margin: 80px auto;
+        padding: 32px;
+        background: var(--White--);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-out;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        background: var(--Gradient--);
+
+        -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        animation: slideIn 0.8s ease-out;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        margin-top: 3.5em;
+        margin-bottom: 1.2rem;
+        color: var(--Blue--);
+        font-weight: 600;
+        border-bottom: 3px solid var(--Blue-Light--);
+        padding-bottom: 0.6em;
+        letter-spacing: 0.05em;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--Gradient--);
+        transition: width 0.4s ease;
+      }
+
+      h2:hover::after {
+        width: 100%;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-top: 2em;
+        margin-bottom: 1em;
+        color: var(--Black--);
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5em;
+        color: var(--Black--);
+        transition: transform 0.3s ease;
+      }
+
+      p:hover {
+        transform: translateX(5px);
+      }
+
+      blockquote {
+        font-style: italic;
+        padding: 1.5em 2em;
+        margin: 2.5em 0;
+        border-left: 5px solid var(--Blue--);
+        color: var(--Black--);
+        font-size: 1.2rem;
+        background: rgba(59, 130, 246, 0.1);
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      blockquote::before {
+        content: "“";
+        font-size: 3rem;
+        color: var(--Blue-Light--);
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        opacity: 0.3;
+      }
+
+      ul {
+        list-style-type: none;
+        margin-left: 1.8em;
+        margin-bottom: 1.8em;
+        font-size: 1.1rem;
+        color: var(--Black--);
+      }
+
+      ul li {
+        margin-bottom: 0.8em;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 1.5em;
+      }
+
+      ul li::before {
+        content: "•";
+        color: var(--Blue--);
+        font-size: 1.5em;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      a {
+        color: var(--Blue--);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--Blue-Light--);
+        transform: translateY(-2px);
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 16px;
+        font-size: 0.9rem;
+        color: var(--White--);
+        background: var(--Gradient--);
+        margin-top: 80px;
+        font-style: italic;
+        border-top: none;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        main {
+          margin: 40px auto;
+          padding: 24px;
+        }
+        h1 {
+          font-size: 2.8rem;
+        }
+        h2 {
+          font-size: 1.9rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+        }
+        p,
+        ul,
+        blockquote {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        main {
+          margin: 20px auto;
+          padding: 16px;
+        }
+        h1 {
+          font-size: 2.2rem;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        h3 {
+          font-size: 1.2rem;
+        }
+        blockquote {
+          padding: 1em 1.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>About Ciphree</h1>
+
+      <section>
+        <h2>Mission</h2>
+        <blockquote>
+          To create a safe, honest space where emotions can be expressed without
+          judgment, identity can shift freely, and AI understands the human
+          behind the words.
+        </blockquote>
+        <p>
+          Ciphree exists to <strong>restore meaning to expression</strong> in a
+          world where social media rewards performance over truth. It’s not
+          about going viral. It’s about feeling heard - even when silent.
+        </p>
+      </section>
+
+      <section>
+        <h2>Vision & Goal</h2>
+        <blockquote>
+          Build an emotionally intelligent digital space that empowers
+          self-expression, self-awareness, and human connection through
+          anonymity, AI, and emotional resonance.
+        </blockquote>
+        <ul>
+          <li>Normalize emotional expression — not hide it.</li>
+          <li>Replace toxic performance culture with honest storytelling.</li>
+          <li>
+            Use AI to help people understand themselves, not manipulate them.
+          </li>
+          <li>
+            Give users tools to track, reflect, and grow emotionally — all
+            privately.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What Makes Ciphree Unique</h2>
+        <h3>1. Emotion First, Not Popularity</h3>
+        <ul>
+          <li>No likes. No follower counts.</li>
+          <li>What matters is <em>how it feels</em>, not how it performs.</li>
+        </ul>
+        <h3>2. Anonymous Posting by Default</h3>
+        <ul>
+          <li>Safe space for real thoughts — especially the hard ones.</li>
+          <li>Identity is optional. Honesty isn’t.</li>
+        </ul>
+        <h3>3. Explore by Resonance</h3>
+        <ul>
+          <li>
+            Discover posts that reflect <em>your emotional state</em>, not
+            what’s trending.
+          </li>
+          <li>AI groups emotional tone, not hashtags or clout.</li>
+        </ul>
+        <h3>4. Monami – The Emotional AI</h3>
+        <ul>
+          <li>Monami reads emotional patterns in your writing.</li>
+          <li>
+            Tracks moods, detects emotional states (e.g., anxiety, sadness,
+            peace).
+          </li>
+          <li>Offers insights, soft prompts, and emotional reflections.</li>
+          <li>It’s not therapy — it’s companionship with intelligence.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Who Leads Ciphree?</h2>
+        <blockquote>
+          <strong>Cipherous</strong> – 17-year-old Ethiopian full stack
+          developer, designer, and visionary.<br />
+        </blockquote>
+      </section>
+
+      <section>
+        <h2>Connect With Us</h2>
+        <p>
+          While Ciphree emphasizes anonymity on its platform, you can still
+          connect with us and the broader Ciphree community through our social
+          channels:
+        </p>
+        <ul>
+          <li>
+            Threads:
+            <a
+              href="https://www.threads.com/@ciphry_"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Follow Ciphree on Threads"
+              >@ciphry_</a
+            >
+          </li>
+          <li>
+            Instagram:
+            <a
+              href="https://www.instagram.com/ciphry_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Follow Ciphree on Instagram"
+              >@ciphry_</a
+            >
+          </li>
+          <li>
+            X:
+            <a
+              href="https://x.com/Ciphry_"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Follow Ciphree on X"
+              >@Ciphry_</a
+            >
+          </li>
+        </ul>
+        <p>We're here to listen and support. Your voice matters.</p>
+      </section>
+    </main>
+
+    <footer>© 2025 Ciphree — Built with heart by Cipherous</footer>
+  </body>
+</html>

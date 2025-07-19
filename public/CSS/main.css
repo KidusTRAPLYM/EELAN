@@ -160,6 +160,7 @@ transition: 1s all ease-in-out;
     color: white;
     transition: 1s all ease-in-out;
 }
+
 main {
   margin-left: 250px; /* shift main content right to avoid sidebar overlap */
   min-height: 100vh;
@@ -213,6 +214,10 @@ ul{
         width: 100%;
         
   }
+  svg.size-6 {
+    width: 29px;
+    color: var(--Blue--);
+}
 }
 
 @media (max-width: 480px) {
@@ -237,7 +242,7 @@ ul{
   ul {
     flex-direction: row;
     padding: 0 !important;
-    gap: 1px;
+    gap: 0.01px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -263,9 +268,9 @@ ul{
     overflow-x: hidden;
     min-height: calc(100vh - 50px);
   }
-  svg.size-6 {
-    width: 28px;
-  }
+    svg.size-6 {
+        width: 25px;
+    }
 }
 
 input{

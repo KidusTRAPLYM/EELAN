@@ -52,7 +52,7 @@ overflow-y: hidden;
                     background-color: var(--Blue--);
                     color: Var(--White--);
                     padding: 12px;
-                    font-family: var(--Font-family--);
+                    font-family: var(--font-family--);
                    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
                     width: 100px;
                     border: none;
@@ -86,7 +86,7 @@ overflow-y: hidden;
                     }
                     input#name {
                     padding: 10px;
-                    font-family: 'Bricolage Grotesque';
+                    font-family: var(--font-family--);
                     border: 1px solid rgba(0, 0, 0, 0.1);
                     border-radius: 10px;
 }

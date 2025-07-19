@@ -68,7 +68,9 @@ app.get("/", async (req, res) => {
     res.render("error");
   }
 });
-
+app.get("/more", (req, res) => {
+  res.render("more");
+});
 app.get("/landing", (req, res) => {
   res.redirect("/");
 });
