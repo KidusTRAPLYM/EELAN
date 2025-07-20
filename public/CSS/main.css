@@ -9,6 +9,8 @@ body{
 font-family: var(--font-family--);
 background-color:var(--Clear-white--);
 overflow-x: hidden;
+min-height: 100vh;
+min-height: 100dvh;
 }
 
 #header {
@@ -60,15 +62,24 @@ h4{
     width: 75px;
 }
 .icons {
-    background: white;
+    display: flex
+;
+    /* flex-direction: column; */
     position: fixed;
-    top: 92%;
+    background: var(--White--);
+    /* gap: 50px; */
     width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: space-evenly;
+    /* height: 100vh; */
+    padding: 20px;
+    bottom: 0;
+    justify-content: space-around;
+}
+a {
+    display: flex
+;
+    gap: 20px;
     align-items: center;
-    flex-wrap: wrap;
+    color: black;
 }
 svg.ionicon {
     width: 38px;
@@ -109,4 +120,183 @@ svg.size-6 {
   40% { 
     opacity: 1; 
     transform: scale(1.2); }
+}
+nav#slide-bar {
+    width: 250px;
+    height: 100vh;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 5px 1rem;
+    background-color: var(--White--);
+    position: fixed;
+    overflow-x: hidden;
+        overflow-y: hidden;
+}
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+    /* align-items: center; */
+
+    padding-left: 8px;
+}
+li {
+    display: flex
+;
+    justify-content: flex-start;
+}
+#slide-bar li a{
+   width: 300px;
+    border-radius: 40px;
+    padding: 10px;
+}
+#slide-bar li a:hover{
+color: var(--White--);
+background-color: var(--Blue--);
+transition: 1s all ease-in-out;
+}
+#slide-bar li a:hover svg{
+    color: white;
+    transition: 1s all ease-in-out;
+}
+main {
+  margin-left: 250px; /* shift main content right to avoid sidebar overlap */
+  min-height: 100vh;
+  padding: 20px; /* optional: add some inner spacing */
+  box-sizing: border-box;
+}
+ul{
+      padding-top: 119px !important;
+}
+/* Responsive: on smaller screens, remove the margin-left and adjust sidebar */
+
+@media (max-width: 900px) {
+  nav#slide-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 67px;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 5px 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    overflow-x: auto;
+     box-sizing: border-box; 
+  }
+
+  ul {
+    flex-direction: row;
+    padding-top: 0;
+    padding-left: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    gap: 10px;
+  }
+
+  #slide-bar li a {
+    width: auto !important;
+    padding: 10px 15px;
+    border-radius: 20px !important;
+  }
+  #slide-bar li a span{
+    display: none;
+  }
+  main {
+    margin-left: 0;
+    margin-top: 60px; /* account for top navbar height */
+    padding: 10px 15px;
+        width: 100%;
+        
+  }
+}
+
+@media (max-width: 480px) {
+  nav#slide-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;          /* full viewport width */
+    height: 50px;          /* slightly shorter for phones */
+    padding: 5px 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    z-index: 1500;
+  }
+
+  ul {
+    flex-direction: row;
+    padding: 0 !important;
+    gap: 1px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #slide-bar li a {
+    width: auto !important;
+    padding: 8px 12px;
+    border-radius: 16px !important;
+    white-space: nowrap;
+  }
+
+  #slide-bar li a span {
+    display: none;  /* hide text on super small */
+  }
+
+  main {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 50px; /* ensure content not hidden behind bottom nav */
+    padding: 5px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    min-height: calc(100vh - 50px);
+  }
+  svg.size-6 {
+    width: 28px;
+  }
+}
+
+input{
+  border: 1px solid rgba(0, 0, 0, 0.1) ;
+  box-shadow: none !important;
+  font-family: var(--font-family--);
+
+}
+input:focus{
+  outline: none !important;
+}
+button{
+  cursor: pointer !important;
+}
+button:hover{
+  background-color: var(--White--);
+  color: var(--Blue--);
+  border: nnoe
+}
+#signup span{
+  font-size: 14px;
+  text-align: center;
+}
+input#password{
+  padding: 10px;
+}
+#signup p {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+#formPost{
+border: none !important;
 }

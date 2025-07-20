@@ -32,14 +32,17 @@ overflow-y: hidden;
                     margin: 0 auto ;
                  justify-content: center;
                 }
-                    input{
-                    padding: 12px;
-                    border-radius: 10px;
-                    font-family:var(--font-family--);
-                    width: 100%;
-                    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
-                    color: var(--Blue--);
-                    }
+                  
+                   input {
+    padding: 12px;
+    border-radius: 10px;
+    font-family: var(--font-family--);
+    width: 100%;
+    /* box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15); */
+    color: var(--Blue--);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+                    
                     span.name {
                     display: flex;
                     flex-direction: column;
@@ -52,6 +55,7 @@ overflow-y: hidden;
                     font-family: var(--Font-family--);
                    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
                     width: 100px;
+                    border: none;
                     }
                     video{
                         width: 800px;
@@ -80,3 +84,9 @@ overflow-y: hidden;
                     h3{
                       font-size: 10px
                     }
+                    input#name {
+                    padding: 10px;
+                    font-family: 'Bricolage Grotesque';
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+}

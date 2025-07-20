@@ -24,9 +24,22 @@ button {
 }
 textarea{
     resize:none
+    
+}
+section#journal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
 }
 textarea:focus{
     outline: none;
+}
+main {
+    margin-top: 0 !important;
 }
 form {
     display: flex
@@ -49,7 +62,7 @@ section#journal_lists {
     justify-content: center;
     flex-direction: column;
     /* gap: 20px; */
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+  
     border-top: 10px;
     padding: 17px;
     border-left: none;
@@ -66,13 +79,97 @@ p {
 }
 section#journal_lists {
     display: flex;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
     padding: 10px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
     width: 100%;
     flex-direction: column;
     border-radius: 10px;
 }
-span {
-    font-weight: 100;
+section#main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+section#journal {
+  flex: 1 1 320px;
+  min-width: 280px;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+  position: relative;
+  align-items: center; /* center children horizontally */
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  font-family: var(--font-family--);
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  min-height: 50px;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+button {
+  padding: 12px;
+  font-family: var(--font-family--);
+  background-color: var(--Blue--);
+  color: var(--White--);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--Blue--)
+}
+
+@media (max-width: 768px) {
+  section#journal {
+    max-width: 100%;
+    min-width: auto;
+  }
+  textarea {
+    min-height: 120px;
+  }
+  button {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section#main {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  section#journal {
+    padding: 15px;
+  }
 }

@@ -53,6 +53,7 @@ const createToken = (id) => {
 // Get route functions
 
 app.get("/", async (req, res) => {
+  let messages = "The message field is empty";
   try {
     const postData = await Post.aggregate([{ $sample: { size: 100 } }]);
     const hydratedPosts = postData.map((doc) => new Post(doc));
@@ -61,7 +62,7 @@ app.get("/", async (req, res) => {
       select: "name",
     });
     console.log(populatedPostData.map((post) => post.timeago));
-    res.render("dashboard", { populatedPostData, PORT });
+    res.render("dashboard", { populatedPostData, PORT, messages });
   } catch (err) {
     console.log(`An error has occurred. ${err}`);
     res.render("error");
@@ -109,6 +110,9 @@ app.get("/terms-of-use", (req, res) => {
 app.get("/journal", async (req, res) => {
   let messages = "The message field is empty";
   const token = req.cookies.User;
+  if (!token) {
+    res.redirect("/signin");
+  }
   const decoded = jwt.verify(token, "sec");
   const userId = decoded.id;
   const fetchJournal = await journal
@@ -120,6 +124,7 @@ app.get("/journal", async (req, res) => {
 // Adjust path accordingly
 
 app.get("/search", async (req, res) => {
+  let messages = "The message field is empty";
   const query = req.query.q;
 
   if (!query) {
@@ -131,37 +136,35 @@ app.get("/search", async (req, res) => {
       $text: { $search: query },
     });
 
-    res.render("search", { results, query });
+    res.render("search", { results, query, messages });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
   }
 });
-app.get("/see-journals", async (req, res) => {
-  let messages = "The message field is empty";
-  const token = req.cookies.User;
-  const decoded = jwt.verify(token, "sec");
-  const userId = decoded.id;
-  const fetchJournal = await journal
-    .find({ userId })
-    .sort({ date: -1 })
-    .limit(3);
-  res.render("seejournals", { messages, fetchJournal });
-});
 app.get("/profile", async (req, res) => {
+  let messages = "The message field is empty";
   const token = req.cookies.User;
   if (!token) {
     return res.redirect("/signin"); // Redirect if not authenticated
   }
   const decoded = jwt.verify(token, "sec");
   const userId = decoded.id;
+  const postId = req.params.postId;
   const user = await User.findById(userId);
   // Fetch posts created by this user
   const posts = await Post.find({ userId: userId });
-  res.render("profile", { user, posts, PORT });
-});
-app.get("/work", (req, res) => {
-  res.render("work");
+  const fetchJournal = await journal.find({ userId });
+  const comments = await comment.find({ userId }).populate("userId", "name");
+  res.render("profile", {
+    user,
+    posts,
+    PORT,
+    messages,
+    postId,
+    fetchJournal,
+    comments,
+  });
 });
 app.get("/comments", (req, res) => {
   res.render("comments");
@@ -247,9 +250,9 @@ app.post("/post", async (req, res) => {
   }
 });
 app.post("/signin", async (req, res) => {
-  const { name } = req.body;
+  const { name, password } = req.body;
   try {
-    const user = await User.login(name);
+    const user = await User.login(password, name);
     const token = createToken(user._id);
     console.log(user);
     res.cookie("User", token, {
@@ -259,15 +262,15 @@ app.post("/signin", async (req, res) => {
     });
     res.redirect("/home");
   } catch (err) {
-    let errorMessage = "There is no account with this name";
+    let errorMessage = "The password or the name was incorrect.";
     res.render("signinerr", { errorMessage });
     console.log(err);
   }
 });
 app.post("/register", async (req, res) => {
-  const { name } = req.body;
+  const { name, password } = req.body;
   try {
-    const user = await User.create({ name });
+    const user = await User.create({ name, password });
     const token = createToken(user._id);
     res.cookie("User", token, {
       maxAge: maxAge,

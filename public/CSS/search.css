@@ -1,6 +1,5 @@
 
 .container {
-  max-width: 600px !important;
   margin: auto !important;
   background: white !important;
   padding: 30px !important;
@@ -8,32 +7,48 @@
   display: flex;
     flex-direction: column;
     gap: 20px;
+        justify-content: center;
+    align-items: center;
 
 }
 
 form {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 10px !important;
-  margin-bottom: 20px !important;
+    display: flex !important
+;
+    flex-wrap: wrap !important;
+    gap: 22px !important;
+    margin-bottom: 20px !important;
+    align-items: center;
+    border: 1px solid black !important;
+    border-radius: 100px !important;
+    justify-content: space-evenly !important;
+   
+        width: 77%;
 }
-
 input[type="text"] {
-  flex: 1 !important;
-  padding: 10px !important;
-  font-size: 16px !important;
+    flex: 1 !important;
+    padding: 16px !important;
+    font-size: 16px !important;
+     box-shadow: none !important;
+    /* border-radius: 100px; */
+    border: none;
+    /* width: 90%; */
+    border-radius: 100px;
 }
-
+input[type=text]:focus{
+  outline: none;
+}
+.search {
+    display: flex
+;
+    justify-content: flex-end;
+    margin: 10px;
+}
 button {
-  padding: 10px 20px !important;
-  background: var(--Blue--) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  font-family: var(--font-family--) !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
 }
-
 .results .card {
   background: #fff !important;
   padding: 15px !important;
@@ -52,4 +67,17 @@ button {
 }
 body{
   padding-bottom: 80px; 
+}
+input[type="text"]{
+  width: 98% !important;
+}
+
+@media (max-width: 900px) {
+    main {
+        margin-left: 0;
+        margin-top: 60px;
+        padding: 10px 15px;
+        width: 105% !important;
+    }
+  
 }

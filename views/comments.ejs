@@ -6,156 +6,229 @@
     <title>Posts</title>
     <link rel="stylesheet" href="/CSS/variables.css" />
     <link rel="stylesheet" href="/CSS/main.css" />
-    <link rel="stylesheet" href="/CSS/postpost.css">
+    <link rel="stylesheet" href="/CSS/postpost.css" />
     <link rel="stylesheet" href="/CSS/dashboard.css" />
+    <link rel="icon" href="/Images/ciphry.png" />
     <!--FONT FAMILY-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-  </head style="
-    body { 
-    display: grid;
-    place-items: center; 
-    min-height: 100vh;
-    margin: 0;
-  }">
-  
+  </head>
+
+  <body>
+    <nav id="slide-bar">
+      <ul>
+        <li></li>
+        <li>
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z"
+              />
+              <path
+                d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z"
+              />
+            </svg>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/search">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span>Search</span>
+          </a>
+        </li>
+        <li>
+          <a href="#formPost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span>Post</span>
+          </a>
+        </li>
+        <li>
+          <a href="/monami">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.337 21.718a6.707 6.707 0 0 1-.533-.074.75.75 0 0 1-.44-1.223 3.73 3.73 0 0 0 .814-1.686c.023-.115-.022-.317-.254-.543C3.274 16.587 2.25 14.41 2.25 12c0-5.03 4.428-9 9.75-9s9.75 3.97 9.75 9c0 5.03-4.428 9-9.75 9-.833 0-1.643-.097-2.417-.279a6.721 6.721 0 0 1-4.246.997Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span>Monami</span>
+          </a>
+        </li>
+        <li>
+          <a href="/profile">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span>Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="/journal">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z"
+              />
+              <path
+                d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z"
+              />
+            </svg>
+            <span>Journal</span>
+          </a>
+        </li>
+        <li>
+          <a href=""></a>
+        </li>
+      </ul>
+    </nav>
+    <main>
       <section id="logo">
         <h1>Ciphry</h1>
       </section>
-       <div class="icons">
-   <!--Home-->
-   <a href="/landing">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-  <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-  <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-</svg>
-</a>
-<!--Search-->
-<a href="/search">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-  <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
-  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z" clip-rule="evenodd" />
-</svg>
-</a>
-<!--Create-->
-<a href="/post">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
-</svg>
-</a>
-<!--Monami-->
-<a href="/monami">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-  <path fill-rule="evenodd" d="M5.337 21.718a6.707 6.707 0 0 1-.533-.074.75.75 0 0 1-.44-1.223 3.73 3.73 0 0 0 .814-1.686c.023-.115-.022-.317-.254-.543C3.274 16.587 2.25 14.41 2.25 12c0-5.03 4.428-9 9.75-9s9.75 3.97 9.75 9c0 5.03-4.428 9-9.75 9-.833 0-1.643-.097-2.417-.279a6.721 6.721 0 0 1-4.246.997Z" clip-rule="evenodd" />
-</svg>
-</a>
-<!--Profile-->
-<a href="/profile">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-  <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
-</svg>
- </a>
- <!--journal-->
- <a href="/journal">
-   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-  <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
-  <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
-</svg>
- </a>
- </div>
-  <body>
-    <div id="loader" class="loader"> 
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-</div>
-<script>
-  window.addEventListener("load", function () {
-    const loader = document.getElementById("loader");
-    loader.style.opacity = 0; // fade out
-    setTimeout(() => {
-      loader.style.display = "none"; // remove from DOM flow
-    }, 400); // match with CSS transition
-  });
-</script>
-<section class="posts">
-  <% const p = post; %>
-
-
-                            <section id="post">
-                              <section id="upper">
-                                <section id="left">
-                                  <div class="account"><svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-</svg>
-</div>
-                                  <div class="time">
-                                    <span><span><%= post.userId?.name || 'Unknown User' %>
-</span>
-                                  </span>
-                                  <span><%= post.timeago || 'N/A' %></span>
-                      
-                                  </div>
-                                </section>
-                            
-                              </section>
-                              <section id="down">
-                                <section id="text">
-                                  <p><%= post.message %></p>
-                                </section>
-                                <section id="engagements">
-                                  <div class="like">
-                                    <form action="/comments/<%= post._id%>/like" method="post">
-                                    <button type="submit" id="like">
-                                             <img src="/Images/like.png" alt="">
-                                      
-                                    </button>
-                                  </form>
-                                  <span><%= post.like%></span>
-                                  </div>
-                                  <div class="dislike">
-                                    <form action="/comments/<%= post._id%>/dislike" method="post">
-                                    <button type="submit" id="like">
-                                      <img src="/Images/dislike.png" alt="">
-                                      
-                                    </button>
-                                    </form>
-                                 <div class="span">
-                                  <span> <%= post.dislike%></span>
-                                 </div>
-                                  </div>
-                                
-                      </section>               
-                                  </section>
-                      </section>         
-                      </section>
-<section class="comment">
-    <section id="comment-area">
-        
-        <h1>Comment here</h1>
-        <form action="/comments/<%= post._id %>/comment" method="post">
-
-          <input type="text" name="message" id="message" />
-          <input type="submit" value="Submit" id="submit" />
-        </form>
-
-    </section>
-
-    <section id="comments">
-      <h1>Comments</h1>
-      <%comments.forEach(comment=>{%>
-
-      <div class="comment-fetch">
-        <h1><%= comment.userId.name%></h1>
-        <p><%= comment.message%></p>
+      <div id="loader" class="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
       </div>
-      <%})%>
-    </section>
-    </section>
+      <script>
+        window.addEventListener("load", function () {
+          const loader = document.getElementById("loader");
+          loader.style.opacity = 0; // fade out
+          setTimeout(() => {
+            loader.style.display = "none"; // remove from DOM flow
+          }, 400); // match with CSS transition
+        });
+      </script>
+      <section class="posts">
+        <% const p = post; %>
 
+        <section id="post">
+          <section id="upper">
+            <section id="left">
+              <div class="account">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="white"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  />
+                </svg>
+              </div>
+              <div class="time">
+                <span
+                  ><span><%= post.userId?.name || 'Unknown User' %> </span>
+                </span>
+                <span><%= post.timeago || 'N/A' %></span>
+              </div>
+            </section>
+          </section>
+          <section id="down">
+            <section id="text">
+              <p><%= post.message %></p>
+            </section>
+            <section id="engagements">
+              <div class="like">
+                <form action="/comments/<%= post._id%>/like" method="post">
+                  <button type="submit" id="like">
+                    <img src="/Images/like.png" alt="" />
+                  </button>
+                </form>
+                <span><%= post.like%></span>
+              </div>
+              <div class="dislike">
+                <form action="/comments/<%= post._id%>/dislike" method="post">
+                  <button type="submit" id="like">
+                    <img src="/Images/dislike.png" alt="" />
+                  </button>
+                </form>
+                <div class="span">
+                  <span> <%= post.dislike%></span>
+                </div>
+              </div>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section class="comment">
+        <section id="comment-area">
+          <h1>Comment here</h1>
+          <form action="/comments/<%= post._id %>/comment" method="post">
+            <input type="text" name="message" id="message" />
+            <input type="submit" value="Submit" id="submit" />
+          </form>
+        </section>
+
+        <section id="comments">
+          <h1>Comments</h1>
+          <%comments.forEach(comment=>{%>
+
+          <div class="comment-fetch">
+            <h1><%= comment.userId.name%></h1>
+            <p><%= comment.message%></p>
+          </div>
+          <%})%>
+        </section>
+      </section>
+    </main>
   </body>
 </html>

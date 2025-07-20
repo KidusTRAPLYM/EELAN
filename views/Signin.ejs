@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="/CSS/main.css" />
     <link rel="stylesheet" href="/CSS/variables.css" />
     <link rel="stylesheet" href="/CSS/register.css" />
+    <link rel="icon" href="/Images/ciphry.png" />
     <!--FONT FAMILY-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -34,12 +35,18 @@
     <section id="register">
       <section id="signup">
         <form action="/signin" method="Post">
-          <img src="/Images/Ciphry_logo_with_text.png" alt="" />
-          <p>Sign-in to your Account</p>
-          <h3>For your security, we recommend using anonymous names.</h3>
+          <section id="logo">
+            <h1>Ciphry</h1>
+          </section>
 
           <span class="name"
             ><input type="name" name="name" id="name" placeholder="Name" />
+            <input
+              type="text"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
           </span>
           <p>Don't have an account? <a href="/register">Sign up</a></p>
           <button>Sign-in</button>

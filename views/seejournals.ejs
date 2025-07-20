@@ -6,15 +6,12 @@
     <title>Journal</title>
     <link rel="stylesheet" href="/CSS/variables.css" />
     <link rel="stylesheet" href="/CSS/main.css" />
-
+  <link rel="icon" href="/Images/ciphry.png">
     <link rel="stylesheet" href="/CSS/journal.css" />
     <!--FONT FAMILY-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
-      rel="stylesheet"
-    />
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
                         <div id="loader" class="loader"> 
@@ -78,21 +75,7 @@
 </svg>
  </a>
  </div>
-      <section id="journals">
-        <h2>These are your latest journals</h2>
-        
-        <%fetchJournal.forEach(journal=>{%>
-          <section id="journal_lists" style="width:90%">
-          <h1>Name: <span><%=journal.name%></span> </h1>
-          <h4>Date: <span><%=journal.date%></span></h4>
-         
-        
-        </section>
      
-          <%})%>
-     
-        
-      </section>
     </section>
          </section>
   </body>

@@ -81,6 +81,7 @@ section#container {
   align-items: center;
   padding: 1rem;
   box-sizing: border-box;
+  flex-direction: column;
 }
 
 /* Posts list uses column flex and adapts width */
@@ -97,18 +98,18 @@ section#posts-list {
 
 /* Each post card styling */
 #post {
-  border-radius: 10px;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-  background: white;
-  padding: 1rem;
-  box-sizing: border-box;
+    /* border-radius: 10px; */
+    /* box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15); */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex
+;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    background: white;
+    padding: 1rem;
+    box-sizing: border-box;
 }
-
 /* Upper section: flex layout for left part */
 #upper {
   display: flex;
