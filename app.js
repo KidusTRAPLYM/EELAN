@@ -115,7 +115,7 @@ app.get("/journal", async (req, res) => {
   let messages = "The message field is empty";
   const token = req.cookies.User;
   if (!token) {
-    res.redirect("/signin");
+    return res.redirect("/signin");
   }
   const decoded = jwt.verify(token, "sec");
   const userId = decoded.id;
