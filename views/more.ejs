@@ -2,375 +2,700 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Ciphree</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" href="/Images/ciphry.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ciphree — Where your mind speaks</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
-      :root {
-        --font-family--: "Poppins", sans-serif;
-        --White--: #f8fafc;
-        --Black--: #1a202c;
-        --Blue--: #3b82f6;
-        --Blue-Light--: #60a5fa;
-        --Gradient--: linear-gradient(135deg, #3b82f6, #a855f7);
-      }
-
-      * {
+      /* Reset */
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
+      }
+      body,
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      li,
+      nav,
+      header,
+      main,
+      section,
+      footer {
         margin: 0;
         padding: 0;
       }
-
       body {
-        font-family: var(--font-family--);
-        background: var(--Gradient--);
-        color: var(--Black--);
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #d9e2ff 0%, #f0f4ff 100%);
+        color: #1e293b;
         line-height: 1.6;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+        scroll-behavior: smooth;
         overflow-x: hidden;
       }
-
-      main {
-        flex: 1;
-        max-width: 900px;
-        margin: 80px auto;
-        padding: 32px;
-        background: var(--White--);
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        animation: fadeIn 1s ease-out;
-      }
-
-      h1 {
-        font-size: 3.5rem;
-        text-align: center;
-        margin-bottom: 2.5rem;
-        background: var(--White--);
-        color: var(--Blue--);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-weight: 700;
-        animation: slideIn 0.8s ease-out;
-      }
-
-      h2 {
-        font-size: 2.2rem;
-        margin-top: 3.5em;
-        margin-bottom: 1.2rem;
-        color: var(--Blue--);
-        font-weight: 600;
-        border-bottom: 3px solid var(--Blue-Light--);
-        padding-bottom: 0.6em;
-        letter-spacing: 0.05em;
-        position: relative;
+      a {
+        text-decoration: none;
+        color: #2563eb;
         transition: color 0.3s ease;
       }
-
-      h2::after {
+      a:hover,
+      a:focus {
+        color: #1d4ed8;
+        outline: none;
+      }
+      /* Container */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
+        z-index: 9999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        font-weight: 600;
+        font-size: 1.05rem;
+        letter-spacing: 0.03em;
+      }
+      nav h1 {
+        font-weight: 900;
+        font-size: 1.7rem;
+        color: #2563eb;
+        cursor: default;
+        user-select: none;
+      }
+      nav a.cta {
+        background: linear-gradient(45deg, #2563eb, #1c74e4);
+        color: #fff;
+        padding: 0.5rem 1.5rem;
+        border-radius: 30px;
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+        transition: all 0.3s ease;
+        font-weight: 700;
+        user-select: none;
+      }
+      nav a.cta:hover,
+      nav a.cta:focus-visible {
+        background: linear-gradient(45deg, #1c74e4, #145dbf);
+        box-shadow: 0 12px 30px rgba(28, 116, 228, 0.6);
+        color: white;
+        transform: translateY(-2px);
+        outline-offset: 4px;
+        outline: 2px solid #1c74e4;
+      }
+      /* Hero Section */
+      header {
+        position: relative;
+        height: 100vh;
+        background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80")
+          center center/cover no-repeat fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 1rem;
+        overflow: hidden;
+        perspective: 1500px;
+      }
+      header::before {
         content: "";
         position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: var(--Gradient--);
-        transition: width 0.4s ease;
+        inset: 0;
+        background: rgba(37, 99, 235, 0.75);
+        mix-blend-mode: multiply;
+        z-index: 1;
+        backdrop-filter: blur(6px);
+        transition: background-color 0.5s ease;
       }
-
-      h2:hover::after {
-        width: 100%;
+      header .content {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+        color: #fff;
+        animation: fadeInUp 1.6s ease forwards;
+        will-change: transform;
       }
-
-      h3 {
-        font-size: 1.5rem;
-        margin-top: 2em;
-        margin-bottom: 1em;
-        color: var(--Black--);
-        font-weight: 600;
+      header h1 {
+        font-weight: 900;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.07em;
       }
-
-      p {
-        font-size: 1.1rem;
-        margin-bottom: 1.5em;
-        color: var(--Black--);
-        transition: transform 0.3s ease;
+      header p {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.6;
+        margin-bottom: 3rem;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       }
-
-      p:hover {
-        transform: translateX(5px);
-      }
-
-      blockquote {
-        font-style: italic;
-        padding: 1.5em 2em;
-        margin: 2.5em 0;
-        border-left: 5px solid var(--Blue--);
-        color: var(--Black--);
-        font-size: 1.2rem;
-        background: rgba(59, 130, 246, 0.1);
-        border-radius: 8px;
+      .btn-primary {
+        display: inline-block;
+        background: linear-gradient(45deg, #2563eb, #1c74e4);
+        color: white;
+        padding: 1rem 4rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.35rem;
+        cursor: pointer;
+        box-shadow: 0 12px 28px rgba(37, 99, 235, 0.6);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease,
+          transform 0.3s ease;
+        user-select: none;
         position: relative;
         overflow: hidden;
-        animation: fadeIn 1.2s ease-out;
       }
-
-      blockquote::before {
-        content: "“";
-        font-size: 3rem;
-        color: var(--Blue-Light--);
+      .btn-primary::after {
+        content: "";
         position: absolute;
-        top: -10px;
-        left: 10px;
-        opacity: 0.3;
+        top: 50%;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transform: translateY(-50%) skewX(-20deg);
+        transition: left 0.5s ease;
+        pointer-events: none;
       }
-
-      ul {
-        list-style-type: none;
-        margin-left: 1.8em;
-        margin-bottom: 1.8em;
-        font-size: 1.1rem;
-        color: var(--Black--);
+      .btn-primary:hover::after,
+      .btn-primary:focus-visible::after {
+        left: 100%;
       }
-
-      ul li {
-        margin-bottom: 0.8em;
-        line-height: 1.6;
-        position: relative;
-        padding-left: 1.5em;
+      .btn-primary:hover,
+      .btn-primary:focus-visible {
+        background: linear-gradient(45deg, #1c74e4, #145dbf);
+        box-shadow: 0 18px 40px rgba(28, 116, 228, 0.8);
+        transform: translateY(-5px);
+        outline-offset: 5px;
+        outline: 3px solid #1c74e4;
       }
-
-      ul li::before {
-        content: "•";
-        color: var(--Blue--);
-        font-size: 1.5em;
-        position: absolute;
-        left: 0;
-        top: 0;
+      /* Sections */
+      main {
+        padding: 6rem 0 10rem;
       }
-
-      a {
-        color: var(--Blue--);
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.3s ease, transform 0.3s ease;
+      section {
+        margin-bottom: 6rem;
+        padding: 0 1rem;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
       }
-
-      a:hover {
-        color: var(--Blue-Light--);
-        transform: translateY(-2px);
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
-
-      footer {
+      section h2 {
+        font-size: 2.9rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin-bottom: 1.5rem;
         text-align: center;
-        padding: 40px 16px;
-        font-size: 0.9rem;
-        color: var(--White--);
-        background: var(--Gradient--);
-        margin-top: 80px;
-        font-style: italic;
-        border-top: none;
+        position: relative;
+        letter-spacing: 0.04em;
+        user-select: none;
+      }
+      section h2::after {
+        content: "";
+        display: block;
+        width: 75px;
+        height: 6px;
+        background: #2563eb;
+        margin: 0.75rem auto 0;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(37, 99, 235, 0.5);
+      }
+      section p {
+        max-width: 720px;
+        margin: 1.5rem auto;
+        font-size: 1.25rem;
+        color: #475569;
+        line-height: 1.9;
+        user-select: text;
+      }
+      ul {
+        margin: 2.5rem auto 0;
+        list-style: none;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+      ul li {
+        background: #fff;
+        padding: 2.25rem 3rem;
+        border-radius: 24px;
+        box-shadow: 0 14px 38px rgba(0, 0, 0, 0.12);
+        color: #1e293b;
+        font-weight: 700;
+        font-size: 1.15rem;
+        cursor: default;
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+          background-color 0.3s ease, color 0.3s ease;
+        position: relative;
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      ul li:hover,
+      ul li:focus-within {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 60px rgba(37, 99, 235, 0.45);
+        background: #2563eb;
+        color: #fff;
+        outline: none;
       }
 
+      /* Footer */
+      footer {
+        background: #2563eb;
+        color: white;
+        text-align: center;
+        padding: 3rem 1rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        user-select: none;
+        box-shadow: inset 0 4px 6px rgb(0 0 0 / 0.15);
+      }
       /* Animations */
-      @keyframes fadeIn {
-        from {
+      @keyframes fadeInUp {
+        0% {
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(40px);
         }
-        to {
+        100% {
           opacity: 1;
           transform: translateY(0);
         }
       }
-
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      /* Responsive Design */
+      /* Responsive */
       @media (max-width: 768px) {
-        main {
-          margin: 40px auto;
-          padding: 24px;
+        header h1 {
+          font-size: 3.3rem;
         }
-        h1 {
-          font-size: 2.8rem;
-        }
-        h2 {
-          font-size: 1.9rem;
-        }
-        h3 {
+        header p {
           font-size: 1.3rem;
         }
-        p,
-        ul,
-        blockquote {
-          font-size: 1rem;
+        ul {
+          grid-template-columns: 1fr;
+        }
+        ul li {
+          font-size: 1.2rem;
+          padding: 1.8rem 2.4rem;
+        }
+      }
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 2.4rem;
+          letter-spacing: 0.03em;
+        }
+        header p {
+          font-size: 1.1rem;
         }
       }
 
-      @media (max-width: 480px) {
-        main {
-          margin: 20px auto;
-          padding: 16px;
-        }
-        h1 {
-          font-size: 2.2rem;
-        }
-        h2 {
-          font-size: 1.6rem;
-        }
-        h3 {
-          font-size: 1.2rem;
-        }
-        blockquote {
-          padding: 1em 1.5em;
-        }
+      /* Back to Top Button */
+      #backToTop {
+        position: fixed;
+        bottom: 2.5rem;
+        right: 2.5rem;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        display: none;
+        user-select: none;
+        z-index: 10000;
+      }
+      #backToTop:hover,
+      #backToTop:focus-visible {
+        background: #1c74e4;
+        transform: translateY(-4px);
+        outline-offset: 3px;
+        outline: 3px solid #1c74e4;
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>About Ciphree</h1>
+    <nav>
+      <h1>Ciphree</h1>
+      <a href="/register" class="cta">Get Started</a>
+    </nav>
 
-      <section>
-        <h2>Mission</h2>
-        <blockquote>
-          To create a safe, honest space where emotions can be expressed without
-          judgment, identity can shift freely, and AI understands the human
-          behind the words.
-        </blockquote>
+    <header>
+      <div
+        class="content"
+        aria-label="Hero content with heading and description"
+      >
+        <h1>Ciphree — Where your mind speaks</h1>
         <p>
-          Ciphree exists to <strong>restore meaning to expression</strong> in a
-          world where social media rewards performance over truth. It’s not
-          about going viral. It’s about feeling heard - even when silent.
+          In a world of fake perfection and endless scrolling, Ciphree is
+          different, a safe space for real emotions and honest connection.
         </p>
-      </section>
-
-      <section>
-        <h2>Vision & Goal</h2>
-        <blockquote>
-          Build an emotionally intelligent digital space that empowers
-          self-expression, self-awareness, and human connection through
-          anonymity, AI, and emotional resonance.
-        </blockquote>
-        <ul>
-          <li>Normalize emotional expression — not hide it.</li>
-          <li>Replace toxic performance culture with honest storytelling.</li>
-          <li>
-            Use AI to help people understand themselves, not manipulate them.
-          </li>
-          <li>
-            Give users tools to track, reflect, and grow emotionally — all
-            privately.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>What Makes Ciphree Unique</h2>
-        <h3>1. Emotion First, Not Popularity</h3>
-        <ul>
-          <li>No likes. No follower counts.</li>
-          <li>What matters is <em>how it feels</em>, not how it performs.</li>
-        </ul>
-        <h3>2. Anonymous Posting by Default</h3>
-        <ul>
-          <li>Safe space for real thoughts — especially the hard ones.</li>
-          <li>Identity is optional. Honesty isn’t.</li>
-        </ul>
-        <h3>3. Explore by Resonance</h3>
-        <ul>
-          <li>
-            Discover posts that reflect <em>your emotional state</em>, not
-            what’s trending.
-          </li>
-          <li>AI groups emotional tone, not hashtags or clout.</li>
-        </ul>
-        <h3>4. Monami – The Emotional AI</h3>
-        <ul>
-          <li>Monami reads emotional patterns in your writing.</li>
-          <li>
-            Tracks moods, detects emotional states (e.g., anxiety, sadness,
-            peace).
-          </li>
-          <li>Offers insights, soft prompts, and emotional reflections.</li>
-          <li>It’s not therapy — it’s companionship with intelligence.</li>
-        </ul>
-      </section>
-      <blockquote>
-        <strong
-          >The AI feature mentioned above is currently under development and
-          being tested with users.</strong
+        <a
+          href="#what-is"
+          class="btn-primary"
+          aria-label="Learn more about Ciphree"
+          >Discover More</a
         >
-      </blockquote>
+      </div>
+    </header>
 
-      <section>
-        <h2>Who Leads Ciphree?</h2>
-        <blockquote>
-          <strong>Cipherous</strong> – 17-year-old Ethiopian full stack
-          developer, designer, and visionary.<br />
-        </blockquote>
+    <main class="container" role="main">
+      <section id="idea" aria-label="Idea Behind Ciphree" tabindex="-1">
+        <h2>The Idea Behind Ciphree</h2>
+        <p>
+          Ciphree was born from a simple but powerful realization — people are
+          hurting, but there’s nowhere real to speak. Traditional social
+          platforms encourage noise, performance, and popularity. They don’t
+          allow you to speak when you feel empty, anxious, sad, or overwhelmed.
+          And if you do — you’re ignored or judged. Ciphree changes that. Our
+          platform is designed around emotional connection. Whether you’re
+          feeling lost, overjoyed, tired, numb, or hopeful, this is your space.
+          You don’t have to fake a smile. You don’t have to fit into an
+          algorithm. You just have to be real.
+        </p>
       </section>
 
-      <section>
-        <h2>Connect With Us</h2>
-        <p>
-          While Ciphree emphasizes anonymity on its platform, you can still
-          connect with us and the broader Ciphree community through our social
-          channels:
-        </p>
+      <section id="security" aria-label="Key Features of Ciphree" tabindex="-1">
+        <h2>Key Features</h2>
         <ul>
           <li>
-            Threads:
-            <a
-              href="https://www.threads.com/@ciphree_"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Follow Ciphree on Threads"
-              >@ciphree_</a
-            >
+            <strong>Anonymous posts</strong>
+            Write what you feel, freely. No emails, just you and your thoughts.
           </li>
           <li>
-            Instagram:
-            <a
-              href="https://www.instagram.com/ciphree_/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Follow Ciphree on Instagram"
-              >@ciphree_</a
-            >
+            <strong>Emotion-Based Discussions:</strong> Deep replies that
+            encourage empathy and care.
           </li>
           <li>
-            X:
-            <a
-              href="https://x.com/Ciphree_"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Follow Ciphree on X"
-              >@Ciphree_</a
-            >
+            <strong>Emotion Analysis (Coming Soon):</strong> AI models to help
+            identify emotional distress for awareness and reflection.
+          </li>
+          <li>
+            <strong>No Algorithms, No Popularity Contests:</strong> Every voice
+            matters equally here.
           </li>
         </ul>
-        <p>We're here to listen and support. Your voice matters.</p>
+      </section>
+
+      <section
+        id="security"
+        aria-label="Security and Privacy Promise"
+        tabindex="-1"
+      >
+        <h2>Our Security & Privacy Promise</h2>
+        <ul>
+          <li>
+            <strong>Secure journals</strong> Your journal is private and not
+            shared online.
+          </li>
+          <li>
+            <strong>Anonymity First:</strong> We don’t collect personal
+            information just your chosen username and password.
+          </li>
+          <li>
+            <strong>No Data Selling. Ever.</strong> Your data is yours and yours
+            alone.
+          </li>
+          <li>
+            <strong>Secure Backends:</strong> Following best practices for
+            Node.js, databases, and sessions.
+          </li>
+        </ul>
+      </section>
+
+      <section id="unique" aria-label="What Makes Us Unique" tabindex="-1">
+        <h2>What Makes Us Unique?</h2>
+        <ul>
+          <li>
+            <strong> Built for the Misunderstood:</strong>
+            For quiet kids, tired workers, lonely students, brave souls.
+          </li>
+          <li>
+            <strong> No Trending, No Noise</strong>
+            You only see what people feel, not what’s trending. We don’t push
+            content for views.
+          </li>
+
+          <li>
+            <strong> Community Before Scale:</strong>
+            Caring first, growing second, our early users are family.
+          </li>
+          <li>
+            <strong>No Algorithm Control:</strong>
+            We don’t decide what you should see. No feeds controlled by AI: only
+            raw, real posts.
+          </li>
+        </ul>
+      </section>
+
+      <section id="about" aria-label="About Us" tabindex="-1">
+        <h2>About Us — The Heart of Ciphree</h2>
+        <p>
+          Created by a 17-year-old visionary from Ethiopia who believes
+          emotional expression isn’t a privilege it’s a right. Built with code,
+          courage, and care, this platform is the result of long nights, real
+          tears, and an unstoppable vision to change online communication. No
+          sales teams, no corporate investors. Every line, every button, every
+          word done by one person who believed emotions deserve a home.
+        </p>
+      </section>
+
+      <section id="what-is" aria-label="What is Ciphree" tabindex="-1">
+        <h2>So What is Ciphree?</h2>
+        <p>
+          It’s not just an app. It’s not just a journal. It’s not just a
+          startup. Ciphree is you. Your thoughts. Your feelings. Your story. And
+          finally, you have a place to tell it.
+        </p>
+      </section>
+
+      <section
+        id="call-to-action"
+        aria-label="Call to Action"
+        style="text-align: center; margin-top: 3rem"
+      >
+        <a
+          href="/register"
+          class="btn-primary"
+          style="font-size: 1.4rem; padding: 1.1rem 4.5rem"
+          tabindex="0"
+          aria-label="Join Ciphree today — Be real, be heard"
+        >
+          Join Ciphree Today — Be Real, Be Heard
+        </a>
       </section>
     </main>
 
-    <footer>© 2025 Ciphree — Built with heart by Cipherous</footer>
+    <button id="backToTop" aria-label="Back to top" title="Back to top">
+      ↑
+    </button>
+
+    <footer>&copy; 2025 Ciphree — Emotional Connection in a Digital Age</footer>
+
+    <script>
+      // Animate sections on scroll
+      const sections = document.querySelectorAll("main section");
+      const options = {
+        threshold: 0.15,
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, options);
+      sections.forEach((section) => observer.observe(section));
+
+      // Back to Top Button
+      const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+          backToTop.style.display = "block";
+        } else {
+          backToTop.style.display = "none";
+        }
+      });
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // Parallax effect on header background (subtle)
+      const header = document.querySelector("header");
+      window.addEventListener("scroll", () => {
+        let offset = window.pageYOffset;
+        header.style.backgroundPositionY = offset * 0.5 + "px";
+      });
+    </script>
   </body>
 </html>
+<style>
+  /* Base container spacing */
+  main.container {
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+  }
+
+  /* Section headers */
+  main h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  /* Text paragraphs */
+  main p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+  }
+
+  /* General section box style */
+  main section {
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    transition: all 0.3s ease;
+  }
+
+  /* IDEA section */
+  #idea {
+    background: linear-gradient(to right, #e0f7fa, #f1f8ff);
+  }
+
+  /* FEATURES section */
+  #features {
+    background: #fefefe;
+    border-left: 5px solid #90caf9;
+  }
+
+  #features ul li {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  /* SECURITY section */
+  #security {
+    background: #f3f4f6;
+    border-left: 5px solid #66bb6a;
+  }
+
+  /* UNIQUE section */
+  #unique {
+    background: #fff3e0;
+    border-left: 5px solid #ffb74d;
+  }
+
+  /* ABOUT section */
+  #about {
+    background: #ede7f6;
+    border-left: 5px solid #ab47bc;
+  }
+
+  /* WHAT IS section */
+  #what-is {
+    background: #e3f2fd;
+    border-left: 5px solid #42a5f5;
+  }
+
+  /* CTA Button section */
+  #call-to-action {
+    background: #ffffff;
+    box-shadow: none;
+  }
+
+  #call-to-action a.btn-primary {
+    background: #5c6bc0;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  #call-to-action a.btn-primary:hover {
+    background: #3f51b5;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    main.container {
+      padding: 2rem 1.2rem;
+    }
+
+    main h2 {
+      font-size: 1.8rem;
+    }
+
+    #call-to-action a.btn-primary {
+      font-size: 1.1rem;
+      padding: 0.8rem 2rem;
+    }
+  }
+</style>
+<style>
+  #features,
+  #security,
+  #unique {
+    width: 100vw; /* Full viewport width */
+    margin-left: 50%; /* Shift right by half container */
+    transform: translateX(-50%); /* Pull left by half container width */
+    padding-left: 2rem; /* Optional: Padding to offset from edges */
+    padding-right: 2rem;
+    border-left-width: 8px; /* Thicker accent line for full width */
+    box-shadow: none; /* Optional: remove shadow if too wide */
+  }
+  #features ul {
+    display: flex;
+    gap: 1.5rem; /* spacing between items */
+    overflow-x: auto; /* horizontal scrolling */
+    padding-bottom: 1rem; /* space below for scroll bar */
+    scroll-padding: 1rem;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  }
+
+  #features ul li {
+    min-width: 280px; /* fixed minimum width */
+    flex: 0 0 auto; /* prevent shrinking/growing */
+  }
+  #features,
+  #security,
+  #unique {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-left-width: 8px;
+    box-shadow: none;
+  }
+
+  #features ul {
+    display: flex !important;
+    gap: 1.5rem !important;
+    overflow-x: auto !important;
+    padding-bottom: 1rem !important;
+    scroll-padding: 1rem !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #features ul li {
+    min-width: 280px;
+    flex: 0 0 auto;
+  }
+  ul {
+    width: 100% !important;
+  }
+</style>

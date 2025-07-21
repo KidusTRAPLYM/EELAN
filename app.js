@@ -55,6 +55,10 @@ const createToken = (id) => {
 // Get route functions
 
 app.get("/", async (req, res) => {
+  res.render("more");
+});
+
+app.get("/landing", async (req, res) => {
   let messages = "The message field is empty";
   try {
     const postData = await Post.aggregate([{ $sample: { size: 100 } }]);
@@ -70,20 +74,14 @@ app.get("/", async (req, res) => {
     res.render("error");
   }
 });
-app.get("/more", (req, res) => {
-  res.render("more");
-});
-app.get("/landing", (req, res) => {
-  res.redirect("/");
-});
 app.get("/about", (req, res) => {
   res.render("about");
 });
 app.get("/dashboard", (req, res) => {
-  res.redirect("/");
+  res.redirect("/landing");
 });
 app.get("/home", (req, res) => {
-  res.redirect("/");
+  res.redirect("/landing");
 });
 app.get("/dashboard/:id", async (req, res) => {
   try {
