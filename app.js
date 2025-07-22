@@ -57,8 +57,18 @@ const createToken = (id) => {
 app.get("/", async (req, res) => {
   res.render("more");
 });
-
 app.get("/landing", async (req, res) => {
+  const token = req.cookies.User;
+  if (!token) {
+    return res.redirect("/signin"); // Redirect if not authenticated
+  }
+  const decoded = jwt.verify(token, "sec");
+  const userId = decoded.id;
+  const user = await User.findById(userId);
+  res.render("landing", { user });
+});
+
+app.get("/feed", async (req, res) => {
   let messages = "The message field is empty";
   try {
     const postData = await Post.aggregate([{ $sample: { size: 100 } }]);
@@ -68,7 +78,7 @@ app.get("/landing", async (req, res) => {
       select: "name",
     });
     console.log(populatedPostData.map((post) => post.timeago));
-    res.render("dashboard", { populatedPostData, PORT, messages });
+    res.render("feed", { populatedPostData, PORT, messages });
   } catch (err) {
     console.log(`An error has occurred. ${err}`);
     res.render("error");
