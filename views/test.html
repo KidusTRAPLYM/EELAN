@@ -3,398 +3,162 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+
+    <!-- Google Sign-In client ID -->
     <meta
-      name="description"
-      content="Ciphry is a human-centered platform built to express emotion, connect deeply, and reflect reality through AI, design, and heart."
+      name="google-signin-client_id"
+      content="YOUR_CLIENT_ID.apps.googleusercontent.com"
     />
 
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"
-    ></script>
-    <title>Ciphree Dashboard</title>
+    <!-- Google Platform Library -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <title>Chat with Google Sign-In</title>
+
     <style>
-      /* Reset & basic */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+      body {
         font-family: "Poppins", sans-serif;
+        margin: 2rem;
+        background: #f9f9f9;
+        color: #111;
       }
-      body,
-      html {
-        height: 100%;
-        background: #f5f7fa;
-        color: #333;
+      #chatContainer {
+        max-width: 500px;
+        margin-top: 2rem;
       }
-      .container {
-        display: flex;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      /* Sidebar */
-      .sidebar {
-        width: 220px;
-        background: #1e293b;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-      }
-      .sidebar h2 {
-        margin-bottom: 40px;
-        font-weight: 700;
-        font-size: 1.6rem;
-        letter-spacing: 1px;
-      }
-      .menu-item {
-        padding: 15px 10px;
-        cursor: pointer;
-        border-radius: 6px;
-        margin-bottom: 12px;
-        transition: background 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .menu-item:hover,
-      .menu-item.active {
-        background: #334155;
-      }
-      .menu-item i {
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1.2rem;
-        width: 25px;
-        text-align: center;
-        user-select: none;
-      }
-
-      /* Main content */
-      .main-content {
-        flex-grow: 1;
-        padding: 40px 50px;
+      #messageList {
+        list-style: none;
+        padding: 0;
+        height: 200px;
+        overflow-y: auto;
         background: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+      #messageList li {
+        padding: 8px 12px;
+        border-bottom: 1px solid #eee;
+      }
+      #form {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        gap: 0.5rem;
       }
-      .greeting {
-        font-size: 2rem;
-        margin-bottom: 20px;
+      #text {
+        flex-grow: 1;
+        padding: 10px 15px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
       }
-      .question {
-        font-size: 1.3rem;
-        margin-bottom: 30px;
-        color: #555;
-      }
-      .actions {
-        background: #e0e7ff; /* Light blue box background */
-        border-radius: 15px;
-        padding: 30px 40px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
-        gap: 25px 40px; /* vertical and horizontal spacing */
-        max-width: 500px; /* optional max width */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
-      }
-
-      .action-btn {
+      #sendBtn {
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: none;
         background: #2563eb;
         color: white;
-        border: none;
-        padding: 20px 0;
-        border-radius: 12px;
+        font-weight: bold;
         cursor: pointer;
-        font-size: 1.2rem;
-        font-weight: 700;
-        transition: background 0.3s;
-        width: 100%;
-        text-align: center;
-        box-shadow: 0 3px 6px rgba(37, 99, 235, 0.5);
-      }
-
-      .action-btn:hover {
-        background: #1e40af;
-        box-shadow: 0 6px 12px rgba(30, 64, 175, 0.7);
-      }
-      .actions {
-        background: #e0e7ff; /* Light blue box background */
-        border-radius: 15px;
-        padding: 40px 50px;
-        max-width: 520px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
-        display: flex;
-        gap: 40px;
-        justify-content: center;
-      }
-
-      .actions-1,
-      .actions-2 {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        flex: 1;
-        flex-wrap: wrap;
-      }
-      .action-btn {
-        background: #2563eb;
-        color: white;
-        border: none;
-        padding: 22px 0;
-        border-radius: 14px;
-        cursor: pointer;
-        font-size: 1.25rem;
-        font-weight: 700;
-        transition: background 0.3s, box-shadow 0.3s;
-        width: 100%;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
-      }
-
-      .action-btn:hover {
-        background: #1e40af;
-        box-shadow: 0 8px 18px rgba(30, 64, 175, 0.7);
-      }
-
-      @media (max-width: 600px) {
-        .actions {
-          flex-direction: column;
-          max-width: 100%;
-          padding: 30px 20px;
-          gap: 25px;
-        }
-        .actions-1,
-        .actions-2 {
-          flex-direction: row;
-          gap: 20px;
-        }
-        .action-btn {
-          flex: 1;
-          padding: 18px 0;
-          font-size: 1.1rem;
-        }
-      }
-      section#actions {
-        display: flex;
-        justify-content: center;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <nav id="slide-bar">
-        <ul>
-          <li></li>
-          <li>
-            <a href="/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-6"
-              >
-                <path
-                  d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z"
-                />
-                <path
-                  d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z"
-                />
-              </svg>
-              <span>Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="/search">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-6"
-              >
-                <path
-                  d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span>Search</span>
-            </a>
-          </li>
-          <li>
-            <a href="#formPost">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-6"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span>Post</span>
-            </a>
-          </li>
-          <li>
-            <a href="/monami">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-6"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.337 21.718a6.707 6.707 0 0 1-.533-.074.75.75 0 0 1-.44-1.223 3.73 3.73 0 0 0 .814-1.686c.023-.115-.022-.317-.254-.543C3.274 16.587 2.25 14.41 2.25 12c0-5.03 4.428-9 9.75-9s9.75 3.97 9.75 9c0 5.03-4.428 9-9.75 9-.833 0-1.643-.097-2.417-.279a6.721 6.721 0 0 1-4.246.997Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span>Monami</span>
-            </a>
-          </li>
-          <li>
-            <a href="/profile">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-6"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span>Profile</span>
-            </a>
-          </li>
-          <li>
-            <a href="/journal">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-6"
-              >
-                <path
-                  d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z"
-                />
-                <path
-                  d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z"
-                />
-              </svg>
-              <span>Journal</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <main class="main-content" id="main-content">
-        <div class="greeting" id="greeting">Hi, Kidus!</div>
-        <div class="question">What do you want to do today?</div>
-        <section id="actions">
-          <div class="actions">
-            <div class="actions-1">
-              <button class="action-btn" data-section="journal">
-                Journaling
-              </button>
-              <button class="action-btn" data-section="talk">
-                Talk with People
-              </button>
-            </div>
-            <div class="actions-2">
-              <button class="action-btn" data-section="find">
-                Find a Post
-              </button>
-              <button class="action-btn" data-section="profile">
-                Profile &amp; Settings
-              </button>
-            </div>
-          </div>
-        </section>
-      </main>
+    <h2>Sign in to chat</h2>
+
+    <!-- Google Sign-In button -->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <!-- Sign out button -->
+    <button
+      onclick="signOut()"
+      style="margin-top: 10px; display: none"
+      id="signOutBtn"
+    >
+      Sign Out
+    </button>
+
+    <div id="chatContainer" style="display: none">
+      <ul id="messageList"></ul>
+      <form id="form">
+        <input
+          type="text"
+          id="text"
+          autocomplete="off"
+          placeholder="Type a message..."
+        />
+        <button type="submit" id="sendBtn">Send</button>
+      </form>
     </div>
 
     <script>
-      // For demo, replace 'User' with a sample name
-      const greeting = document.getElementById("greeting");
-      const username = "Kidus"; // You can replace this dynamically
-      greeting.textContent = `Hi, ${username}!`;
+      let currentUser = null;
 
-      // Handle sidebar and button clicks to highlight active and change content
-      const menuItems = document.querySelectorAll(".menu-item");
-      const actionBtns = document.querySelectorAll(".action-btn");
-      const mainContent = document.getElementById("main-content");
-
-      function setActive(section) {
-        menuItems.forEach((item) => {
-          item.classList.toggle("active", item.dataset.section === section);
-        });
-        actionBtns.forEach((btn) => {
-          btn.classList.toggle("active", btn.dataset.section === section);
-        });
-        // For now just update main content heading for demo
-        const sectionNames = {
-          journal: "Start Journaling",
-          talk: "Connect and Talk with People",
-          find: "Find Posts That Resonate",
-          profile: "View and Edit Your Profile",
+      function onSignIn(googleUser) {
+        const profile = googleUser.getBasicProfile();
+        currentUser = {
+          id: profile.getId(),
+          name: profile.getName(),
+          email: profile.getEmail(),
         };
-        mainContent.innerHTML = `
-        <div class="greeting" id="greeting">Hi, ${username}!</div>
-        <div class="question">${sectionNames[section]}</div>
-        <div>
-          <p>Feature coming soon...</p>
-          <button class="action-btn" onclick="showDashboard()">Back to Dashboard</button>
-        </div>
-      `;
+        console.log("User signed in:", currentUser);
+
+        // Show chat UI and sign out button
+        document.getElementById("chatContainer").style.display = "block";
+        document.getElementById("signOutBtn").style.display = "inline-block";
+        // Hide sign in button
+        document.querySelector(".g-signin2").style.display = "none";
+
+        addSystemMessage(`Welcome, ${currentUser.name}! You can now chat.`);
       }
 
-      function showDashboard() {
-        mainContent.innerHTML = `
-        <div class="greeting" id="greeting">Hi, ${username}!</div>
-        <div class="question">What do you want to do today?</div>
-        <div class="actions">
-          <button class="action-btn" data-section="journal">Journaling</button>
-          <button class="action-btn" data-section="talk">Talk with People</button>
-          <button class="action-btn" data-section="find">Find a Post</button>
-          <button class="action-btn" data-section="profile">Profile & Settings</button>
-        </div>
-      `;
-        // Re-attach event listeners to new buttons
-        attachButtonListeners();
-      }
-
-      function attachButtonListeners() {
-        document.querySelectorAll(".action-btn").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const section = btn.dataset.section;
-            setActive(section);
-          });
+      function signOut() {
+        const auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(() => {
+          console.log("User signed out.");
+          currentUser = null;
+          document.getElementById("chatContainer").style.display = "none";
+          document.getElementById("signOutBtn").style.display = "none";
+          document.querySelector(".g-signin2").style.display = "block";
+          clearMessages();
         });
       }
 
-      menuItems.forEach((item) => {
-        item.addEventListener("click", () => {
-          setActive(item.dataset.section);
-        });
+      // Chat message handling
+      const form = document.getElementById("form");
+      const messageList = document.getElementById("messageList");
+      const input = document.getElementById("text");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!currentUser) {
+          alert("Please sign in first!");
+          return;
+        }
+        const msg = input.value.trim();
+        if (msg === "") return;
+        addMessage(currentUser.name, msg);
+        input.value = "";
       });
 
-      attachButtonListeners();
+      function addMessage(user, text) {
+        const li = document.createElement("li");
+        li.textContent = `${user}: ${text}`;
+        messageList.appendChild(li);
+        messageList.scrollTop = messageList.scrollHeight;
+      }
+
+      function addSystemMessage(text) {
+        const li = document.createElement("li");
+        li.textContent = text;
+        li.style.fontStyle = "italic";
+        li.style.color = "#555";
+        messageList.appendChild(li);
+        messageList.scrollTop = messageList.scrollHeight;
+      }
+
+      function clearMessages() {
+        messageList.innerHTML = "";
+      }
     </script>
   </body>
 </html>

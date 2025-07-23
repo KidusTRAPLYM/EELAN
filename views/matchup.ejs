@@ -3,38 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ciphree | Journal</title>
-    <link rel="stylesheet" href="/CSS/variables.css" />
-    <link rel="stylesheet" href="/CSS/main.css" />
-   <link rel="stylesheet" href="/CSS/post.css">
-    <link rel="stylesheet" href="/CSS/journal.css" />
-      <link rel="icon" href="/Images/ciphry.png">
-    <!--FONT FAMILY-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
- <meta name="description" content="Explore personal journals and deep emotional stories shared through Ciphree’s unique lens.">
+    <title>Search</title>
 
+    <link rel="stylesheet" href="/CSS/post.css">
+    <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/variables.css" />
+      <link rel="icon" href="/Images/ciphry.png">
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <div id="loader" class="loader"> 
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-</div>
-<script>
-  window.addEventListener("load", function () {
-    const loader = document.getElementById("loader");
-    loader.style.opacity = 0; // fade out
-    setTimeout(() => {
-      loader.style.display = "none"; // remove from DOM flow
-    }, 400); // match with CSS transition
-  });
-</script>
-
-
-    </header>
+    <div id="loader" class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <script>
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = 0; // fade out
+        setTimeout(() => {
+          loader.style.display = "none"; // remove from DOM flow
+        }, 400); // match with CSS transition
+      });
+    </script>
   <nav id="slide-bar">
       <ul>
         <li>
@@ -114,7 +105,7 @@
               />
             </svg>
 
-            <span>Matchup</span>
+            <span>Monami</span>
           </a>
         </li>
         <li>
@@ -177,39 +168,115 @@
             <span>Feed</span>
           </a>
         </li>
-      
-
       </ul>
     </nav>
- <main>
-    <section id="logo">
+<div id="page-wrapper">
+
+
+<main>
+<section id="logo">
         <h1>Ciphree</h1>
       </section>
-    <section id="main">
-      <section id="journal">
-    <form action="/journal" method="post">
-        <h2>Journal</h2>
+    <div class="container">
+                        <h1>Resonate</h1>
+      <form action="/chat" id="form" method="post">
+      <input type="text" name="username" id="username" />
+      <section id="tag">
+        <label for="tagSelect">How are you feeling?</label>
+       
         <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Name of Journal"
+          list="tags"
+          id="tagInput"
+          name="tagInput"
+          placeholder="Type or select a tag"
         />
-        <input
-          type="text"
-          name="date"
-          id="date"
-          placeholder="Name of Journal"
-        />
-        <textarea name="message" id="message" style="height: 212px;">Write what happened!</textarea>
-        <button>Submit journal</button>
-        <span><%=messages%></span>
-        </form>
-      </section>
 
-    </section>
-         </section>
-              <section id="formPost">
+   <datalist id="tags">
+  <!-- Positive Emotions -->
+  <option value="Joy"></option>
+  <option value="Happiness"></option>
+  <option value="Excitement"></option>
+  <option value="Gratitude"></option>
+  <option value="Hope"></option>
+  <option value="Relief"></option>
+  <option value="Peace"></option>
+  <option value="Love"></option>
+  <option value="Affection"></option>
+  <option value="Elation"></option>
+  <option value="Pride"></option>
+  <option value="Amusement"></option>
+  <option value="Confidence"></option>
+  <option value="Satisfaction"></option>
+  <option value="Fulfillment"></option>
+  <option value="Compassion"></option>
+  <option value="Empathy"></option>
+  <option value="Admiration"></option>
+  <option value="Awe"></option>
+  <option value="Serenity"></option>
+  <option value="Zeal"></option>
+  <option value="Fondness"></option>
+  <option value="Affirmation"></option>
+  <option value="Trust"></option>
+  <option value="Inspiration"></option>
+  <option value="Motivation"></option>
+  <option value="Courage"></option>
+  <option value="Empowerment"></option>
+  <option value="Security"></option>
+
+  <!-- Negative Emotions -->
+  <option value="Anxiety"></option>
+  <option value="Fear"></option>
+  <option value="Sadness"></option>
+  <option value="Depression"></option>
+  <option value="Loneliness"></option>
+  <option value="Anger"></option>
+  <option value="Frustration"></option>
+  <option value="Guilt"></option>
+  <option value="Shame"></option>
+  <option value="Disgust"></option>
+  <option value="Envy"></option>
+  <option value="Jealousy"></option>
+  <option value="Grief"></option>
+  <option value="Remorse"></option>
+  <option value="Embarrassment"></option>
+  <option value="Insecurity"></option>
+  <option value="Resentment"></option>
+  <option value="Disappointment"></option>
+  <option value="Exhaustion"></option>
+  <option value="Overwhelm"></option>
+  <option value="Panic"></option>
+  <option value="Isolation"></option>
+  <option value="Helplessness"></option>
+  <option value="Bitterness"></option>
+  <option value="Hopelessness"></option>
+  <option value="Distrust"></option>
+  <option value="Tension"></option>
+  <option value="Numbness"></option>
+  <option value="Self-doubt"></option>
+  <option value="Rejection"></option>
+  <option value="Betrayal"></option>
+  <option value="Disapproval"></option>
+  <option value="Contempt"></option>
+  <option value="Antipathy"></option>
+  <option value="Horror"></option>
+
+  <!-- Neutral or Mixed Emotions -->
+  <option value="Confusion"></option>
+  <option value="Ambivalence"></option>
+  <option value="Curiosity"></option>
+  <option value="Nostalgia"></option>
+  <option value="Surprise"></option>
+  <option value="Indifference"></option>
+  <option value="Apprehension"></option>
+  <option value="Conflicted"></option>
+</datalist>
+
+      </section>
+      <button type="submit">Resonate</button>
+    </form>
+     
+    </div>
+         <section id="formPost">
         <form action="/post" method="Post" class="formPost">
           <div class="up">
             <h1>Create a post</h1>
@@ -276,12 +343,108 @@
   });
 </script>
   <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash === '#formPost') {
-      history.replaceState(null, null, window.location.pathname);
-    }
-  });
+   function toggleBodyScroll() {
+  if (window.location.hash === '#formPost') {
+    document.body.style.overflow = 'hidden';   // Disable scroll when popup opened via hash
+  } else {
+    document.body.style.overflow = '';          // Enable scroll when hash removed
+  }
+}
+
+// Initial check when page loads
+window.addEventListener('DOMContentLoaded', toggleBodyScroll);
+
+// Listen for any hash changes (like closing popup removes hash)
+window.addEventListener('hashchange', toggleBodyScroll);
 </script>
 </main>
+</div>
   </body>
 </html>
+<style>
+    
+
+.container {
+    max-width: 450px;
+    margin: 3rem auto;
+    padding: 2.5rem 2rem 3rem;
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #0b1e44;
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+form#form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+form#form input[type="text"],
+form#form input[list] {
+  padding: 0.9rem 1.3rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: white;
+  color: #1c74e4;
+  font-weight: 600;
+  outline-offset: 2px;
+}
+
+
+
+#tag label {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #1c74e4;
+  letter-spacing: 0.02em;
+}
+
+#tag br {
+  line-height: 0.3;
+}
+
+button {
+    padding: 12px;
+    font-family: var(--font-family--);
+    background-color: var(--Blue--);
+    color: var(--White--);
+    border: none;
+}
+button:hover{
+                        background-color: var(--Blue--);
+                        color: var(--White--);
+}
+/* Optional: datalist styling (limited browser support) */
+datalist option {
+  color: #1c74e4;
+}
+
+/* Responsive tweak */
+@media (max-width: 480px) {
+  .container {
+    margin: 2rem 1rem;
+    padding: 2rem 1.5rem 2.5rem;
+  }
+}
+form#form input[type="text"], form#form input[list] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 12px;
+    background: white;
+    color: #1c74e4;
+    font-weight: 600;
+    outline-offset: 2px;
+    width: 100%;
+}
+form#form{
+                        width: 100%;
+}
+</style>

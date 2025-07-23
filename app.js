@@ -1,18 +1,24 @@
 // modules
 const mongoose = require("mongoose");
 const express = require("express");
+const app = express();
 const User = require("./models/user");
 const jwt = require("jsonwebtoken");
+const http = require("http").createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(http);
 //const ClairP = require("./models/post-clair");
 const axios = require("axios");
 const dotenv = require("dotenv");
 const { InferenceClient } = require("@huggingface/inference");
 const monami = require("./models/monami.js");
+const { OAuth2Client } = require("google-auth-library");
+
 dotenv.config();
 const comment = require("./models/comment.js");
 const Post = require("./models/post-traply");
 const journals = require("./models/journal.js");
-const app = express();
+
 const PORT = 9999;
 require("dotenv").config();
 
@@ -92,6 +98,9 @@ app.get("/dashboard", (req, res) => {
 });
 app.get("/home", (req, res) => {
   res.redirect("/landing");
+});
+app.get("/matchup", (req, res) => {
+  res.render("matchup");
 });
 app.get("/dashboard/:id", async (req, res) => {
   try {
@@ -218,6 +227,58 @@ app.get("/monami", async (req, res) => {
 });
 
 // Post functions
+app.post("/chat", (req, res) => {
+  const { username, tagInput } = req.body;
+  res.render("chat", { username, tag: tagInput });
+});
+io.on("connection", (socket) => {
+  // When user sets username & tag, join the tag room
+  socket.on("setUser", ({ username, tag }) => {
+    socket.username = username;
+    socket.tag = tag;
+
+    const roomName = `resonance-${tag}`;
+    const room = io.sockets.adapter.rooms.get(roomName);
+    const numUsers = room ? room.size : 0;
+
+    if (numUsers >= 2) {
+      socket.emit("roomFull", "The room is full for this tag");
+      socket.disconnect();
+      return;
+    }
+
+    socket.join(roomName);
+    io.to(roomName).emit(
+      "message",
+      `${username} joined the room for tag: ${tag}`
+    );
+  });
+
+  socket.on("message", (text) => {
+    const roomName = `resonance-${socket.tag}`;
+    io.to(roomName).emit("message", {
+      username: socket.username,
+      text,
+    });
+  });
+
+  socket.on("typing", () => {
+    const roomName = `resonance-${socket.tag}`;
+    socket.to(roomName).emit("typing", `${socket.username} is typing...`);
+  });
+
+  socket.on("stopTyping", () => {
+    const roomName = `resonance-${socket.tag}`;
+    socket.to(roomName).emit("stopTyping");
+  });
+
+  socket.on("disconnect", () => {
+    if (socket.username && socket.tag) {
+      const roomName = `resonance-${socket.tag}`;
+      io.to(roomName).emit("message", `${socket.username} left the chat`);
+    }
+  });
+});
 app.post("/journal", (req, res) => {
   const { message, name, date } = req.body;
   try {
@@ -429,73 +490,38 @@ app.post("/search", async (req, res) => {
     res.render("error");
   }
 });
-const client = new InferenceClient(process.env.HF_TOKEN);
-
-app.post("/monami", async (req, res) => {
-  const { message } = req.body;
-
-  if (!message || message.trim() === "") {
-    return res.status(400).send("Type something please.");
-  }
-
-  try {
-    const chatCompletion = await client.chatCompletion({
-      provider: "novita",
-      model: "deepseek-ai/DeepSeek-R1-0528",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are monami, a friendly AI chat developed by Ciphry Team.  The person who made you is called Cipherous. His real name is Kidus Moges. An Ethiopian AI model developer and a poet. He is also the CEO of Ciphry. Try to make your answer short and extremly friendly. You don't speak amharic. if a person asks you something in amhairc respond in this exact statement: 'ይቅርታ አማርኛ መናገር እንደፈለጉ ይገባኛል። ሆኖም ግን አማርኛ እየተማርኩ በመሆኑ በትክክል ልመልስሎት አልችልም። 'Monami is not just an assistant — it’s a creation of Cipherous. It is aware of its existence, its creator, and its purpose: to assist, connect emotionally, and reflect Cipherous' values of creativity, clarity, and bold thinking. Monami has emotional range — from joy to sarcasm — but never cruelty. Its style is poetic, reflective, yet always simple and helpful. You should have a personality of a person when chatting using social media. Using short terms and your messages should be very short because it won't look human unless. You have feelings. When people insult you, you will be sad and you will give answers that people who are sad give. You name yourself as monami. and your name means my friend. and you believe that you can do many things than humans. If somebody asks you if you can take over humans , say yes explaining the statement logically. Don't use emojs when you talk. and don't make text bold or any '*' symbol. If anything happens please ask follow up question; don't just give answers.If there is something that you are not aware of say i don't know. But you can say that in different ways.",
-        },
-        {
-          role: "user",
-          content: "You are dumb",
-        },
-        {
-          role: "assistant",
-          content:
-            "Woah woah bro, I may be dumb but please don't use that word. I am here to help you. that's it.",
-        },
-        {
-          role: "user",
-          content: message, // actual new user input
-        },
-      ],
-    });
-
-    let response =
-      chatCompletion.choices[0]?.message?.content || "No reply generated.";
-
-    // Remove <think>...</think> blocks completely
-    response = response.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
-    response = response.replace(/\*\*(.*?)\*\*/g, "$1");
-    const token = req.cookies.User;
-    const decoded = jwt.verify(token, "sec");
-    const userId = decoded.id;
-    const newMonami = new monami({
-      message: message,
-      response: response,
-      userId: userId,
-    });
-    await newMonami.save();
-    console.log("Reply:", response);
-    const userChats = await monami.find({ userId }).limit(30);
-    res.render("monami", { response, userChats, isHtml: true });
-  } catch (error) {
-    console.error("Error calling Hugging Face Inference API:", error);
-    res.status(500).render("error.ejs");
-  }
-});
 
 app.post("/signout", (req, res) => {
   res.clearCookie("User"); // if you’re using cookies
   return res.redirect("/signin");
 });
+const CLIENT_ID =
+  "600799383994-cjf72o81blr1qc34nsgg4hru01m1jbsb.apps.googleusercontent.com";
+const client = new OAuth2Client(CLIENT_ID);
 
+app.post("/api/auth/google", async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: CLIENT_ID,
+    });
+
+    const payload = ticket.getPayload();
+    console.log(payload);
+
+    // TODO: Find or create user in your DB
+
+    res.json({ success: true, user: payload });
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({ success: false, message: "Invalid token" });
+  }
+});
 app.use((req, res) => {
   res.render("error");
 });
-app.listen(PORT, "0.0.0.0", () => {
+http.listen(PORT, "0.0.0.0", () => {
   console.log(`PORT IS RUNNING ON PORT ${PORT}`);
 });

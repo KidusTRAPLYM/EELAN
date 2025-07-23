@@ -54,5 +54,30 @@
       </section>
     </section>
     <script src="/Js/loading.js"></script>
+    <script>
+      function handleCredentialResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+
+        // Send token to backend
+        fetch("/api/auth/google", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: response.credential }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              window.location.href = "/landing";
+            } else {
+              alert("Login failed, please try again.");
+            }
+          })
+          .catch((err) => {
+            console.error("Login error:", err);
+            alert("Something went wrong.");
+          });
+      }
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </body>
 </html>

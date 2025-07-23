@@ -8,339 +8,6 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      /* Reset */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-      body,
-      h1,
-      h2,
-      h3,
-      p,
-      ul,
-      li,
-      nav,
-      header,
-      main,
-      section,
-      footer {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #d9e2ff 0%, #f0f4ff 100%);
-        color: #1e293b;
-        line-height: 1.6;
-        scroll-behavior: smooth;
-        overflow-x: hidden;
-      }
-      a {
-        text-decoration: none;
-        color: #2563eb;
-        transition: color 0.3s ease;
-      }
-      a:hover,
-      a:focus {
-        color: #1d4ed8;
-        outline: none;
-      }
-      /* Container */
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
-      /* Navigation */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: #fff;
-        box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
-        z-index: 9999;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        font-weight: 600;
-        font-size: 1.05rem;
-        letter-spacing: 0.03em;
-      }
-      nav h1 {
-        font-weight: 900;
-        font-size: 1.7rem;
-        color: #2563eb;
-        cursor: default;
-        user-select: none;
-      }
-      nav a.cta {
-        background: linear-gradient(45deg, #2563eb, #1c74e4);
-        color: #fff;
-        padding: 0.5rem 1.5rem;
-        border-radius: 30px;
-        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-        transition: all 0.3s ease;
-        font-weight: 700;
-        user-select: none;
-      }
-      nav a.cta:hover,
-      nav a.cta:focus-visible {
-        background: linear-gradient(45deg, #1c74e4, #145dbf);
-        box-shadow: 0 12px 30px rgba(28, 116, 228, 0.6);
-        color: white;
-        transform: translateY(-2px);
-        outline-offset: 4px;
-        outline: 2px solid #1c74e4;
-      }
-      /* Hero Section */
-      header {
-        position: relative;
-        height: 100vh;
-        background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80")
-          center center/cover no-repeat fixed;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 0 1rem;
-        overflow: hidden;
-        perspective: 1500px;
-      }
-      header::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(37, 99, 235, 0.75);
-        mix-blend-mode: multiply;
-        z-index: 1;
-        backdrop-filter: blur(6px);
-        transition: background-color 0.5s ease;
-      }
-      header .content {
-        position: relative;
-        z-index: 2;
-        max-width: 700px;
-        color: #fff;
-        animation: fadeInUp 1.6s ease forwards;
-        will-change: transform;
-      }
-      header h1 {
-        font-weight: 900;
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
-        letter-spacing: 0.07em;
-      }
-      header p {
-        font-weight: 400;
-        font-size: 1.4rem;
-        line-height: 1.6;
-        margin-bottom: 3rem;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      }
-      .btn-primary {
-        display: inline-block;
-        background: linear-gradient(45deg, #2563eb, #1c74e4);
-        color: white;
-        padding: 1rem 4rem;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1.35rem;
-        cursor: pointer;
-        box-shadow: 0 12px 28px rgba(37, 99, 235, 0.6);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease,
-          transform 0.3s ease;
-        user-select: none;
-        position: relative;
-        overflow: hidden;
-      }
-      .btn-primary::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: -100%;
-        width: 200%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transform: translateY(-50%) skewX(-20deg);
-        transition: left 0.5s ease;
-        pointer-events: none;
-      }
-      .btn-primary:hover::after,
-      .btn-primary:focus-visible::after {
-        left: 100%;
-      }
-      .btn-primary:hover,
-      .btn-primary:focus-visible {
-        background: linear-gradient(45deg, #1c74e4, #145dbf);
-        box-shadow: 0 18px 40px rgba(28, 116, 228, 0.8);
-        transform: translateY(-5px);
-        outline-offset: 5px;
-        outline: 3px solid #1c74e4;
-      }
-      /* Sections */
-      main {
-        padding: 6rem 0 10rem;
-      }
-      section {
-        margin-bottom: 6rem;
-        padding: 0 1rem;
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-      section.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      section h2 {
-        font-size: 2.9rem;
-        font-weight: 800;
-        color: #1e293b;
-        margin-bottom: 1.5rem;
-        text-align: center;
-        position: relative;
-        letter-spacing: 0.04em;
-        user-select: none;
-      }
-      section h2::after {
-        content: "";
-        display: block;
-        width: 75px;
-        height: 6px;
-        background: #2563eb;
-        margin: 0.75rem auto 0;
-        border-radius: 8px;
-        box-shadow: 0 3px 10px rgba(37, 99, 235, 0.5);
-      }
-      section p {
-        max-width: 720px;
-        margin: 1.5rem auto;
-        font-size: 1.25rem;
-        color: #475569;
-        line-height: 1.9;
-        user-select: text;
-      }
-      ul {
-        margin: 2.5rem auto 0;
-        list-style: none;
-        padding-left: 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-      }
-      ul li {
-        background: #fff;
-        padding: 2.25rem 3rem;
-        border-radius: 24px;
-        box-shadow: 0 14px 38px rgba(0, 0, 0, 0.12);
-        color: #1e293b;
-        font-weight: 700;
-        font-size: 1.15rem;
-        cursor: default;
-        transition: transform 0.3s ease, box-shadow 0.3s ease,
-          background-color 0.3s ease, color 0.3s ease;
-        position: relative;
-        user-select: none;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      ul li:hover,
-      ul li:focus-within {
-        transform: translateY(-12px);
-        box-shadow: 0 25px 60px rgba(37, 99, 235, 0.45);
-        background: #2563eb;
-        color: #fff;
-        outline: none;
-      }
-
-      /* Footer */
-      footer {
-        background: #2563eb;
-        color: white;
-        text-align: center;
-        padding: 3rem 1rem;
-        font-size: 1.1rem;
-        font-weight: 700;
-        letter-spacing: 0.07em;
-        user-select: none;
-        box-shadow: inset 0 4px 6px rgb(0 0 0 / 0.15);
-      }
-      /* Animations */
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      /* Responsive */
-      @media (max-width: 768px) {
-        header h1 {
-          font-size: 3.3rem;
-        }
-        header p {
-          font-size: 1.3rem;
-        }
-        ul {
-          grid-template-columns: 1fr;
-        }
-        ul li {
-          font-size: 1.2rem;
-          padding: 1.8rem 2.4rem;
-        }
-      }
-      @media (max-width: 480px) {
-        header h1 {
-          font-size: 2.4rem;
-          letter-spacing: 0.03em;
-        }
-        header p {
-          font-size: 1.1rem;
-        }
-      }
-
-      /* Back to Top Button */
-      #backToTop {
-        position: fixed;
-        bottom: 2.5rem;
-        right: 2.5rem;
-        background: #2563eb;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 2rem;
-        cursor: pointer;
-        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        display: none;
-        user-select: none;
-        z-index: 10000;
-      }
-      #backToTop:hover,
-      #backToTop:focus-visible {
-        background: #1c74e4;
-        transform: translateY(-4px);
-        outline-offset: 3px;
-        outline: 3px solid #1c74e4;
-      }
-    </style>
   </head>
   <body>
     <nav>
@@ -353,10 +20,11 @@
         class="content"
         aria-label="Hero content with heading and description"
       >
-        <h1>Ciphree — Where your mind speaks</h1>
+        <h1>Welcome to Ciphree!</h1>
         <p>
-          In a world of fake perfection and endless scrolling, Ciphree is
-          different, a safe space for real emotions and honest connection.
+          Express every emotion—joy, sadness, hope, or frustration—in a safe
+          space. Ciphree connects you with others who feel the same and uses AI
+          to help you understand and navigate your emotions.
         </p>
         <a
           href="#what-is"
@@ -371,15 +39,12 @@
       <section id="idea" aria-label="Idea Behind Ciphree" tabindex="-1">
         <h2>The Idea Behind Ciphree</h2>
         <p>
-          Ciphree was born from a simple but powerful realization — people are
-          hurting, but there’s nowhere real to speak. Traditional social
-          platforms encourage noise, performance, and popularity. They don’t
-          allow you to speak when you feel empty, anxious, sad, or overwhelmed.
-          And if you do — you’re ignored or judged. Ciphree changes that. Our
-          platform is designed around emotional connection. Whether you’re
-          feeling lost, overjoyed, tired, numb, or hopeful, this is your space.
-          You don’t have to fake a smile. You don’t have to fit into an
-          algorithm. You just have to be real.
+          Ciphree was born from a simple but powerful realization—people need a
+          real space to share their emotions, whether they’re soaring with joy,
+          grappling with sadness, or feeling hopeful. Unlike traditional social
+          platforms that prioritize popularity and performance, Ciphree focuses
+          on authentic emotional connection. Share your feelings through posts,
+          connect with others who understand, and find support without judgment.
         </p>
       </section>
 
@@ -436,8 +101,9 @@
         <h2>What Makes Us Unique?</h2>
         <ul>
           <li>
-            <strong> Built for the Misunderstood:</strong>
-            For quiet kids, tired workers, lonely students, brave souls.
+            <strong> Built for Everyone</strong>
+            For joyful dreamers, quiet kids, tired workers, hopeful students,
+            brave souls—anyone ready to share their true emotions.
           </li>
           <li>
             <strong> No Trending, No Noise</strong>
@@ -462,22 +128,23 @@
       <section id="about" aria-label="About Us" tabindex="-1">
         <h2>About Us — The Heart of Ciphree</h2>
         <p>
-          I’m a 17-year-old from Ethiopia learning to build technology that
-          helps people express their feelings honestly. I believe everyone
-          deserves a safe space to share what’s really on their mind without
-          being judged or ignored. I’m still growing and figuring things out,
-          but I’m passionate about creating something meaningful—something that
-          puts real emotions first, not likes or popularity.
+          I’m passionate about building technology that lets people express
+          their true emotions. Ciphree is my vision for a platform where
+          everyone—happy, sad, hopeful, or lost—can connect authentically and
+          find support through AI-driven insights. It’s about real feelings, not
+          likes or popularity.
         </p>
       </section>
 
       <section id="what-is" aria-label="What is Ciphree" tabindex="-1">
         <h2>So What is Ciphree?</h2>
         <p>
-          Ciphree is a platform that helps improve communication between people
-          by reducing emotional challenges. It uses AI to scientifically
-          understand and identify emotions, creating a safe space for real
-          emotional connection.
+          Ciphree is a platform for everyone to share emotions—joy, sadness,
+          hope, or anything in between. Through community posts, comments, and
+          AI-powered Match Up, we connect you with others who feel the same. Our
+          AI scientifically analyzes emotions to help you understand and
+          navigate your feelings, creating a safe space for authentic
+          connection.
         </p>
       </section>
 
@@ -502,7 +169,18 @@
       ↑
     </button>
 
-    <footer>&copy; 2025 Ciphree — Emotional Connection in a Digital Age</footer>
+    <footer>
+      <span>&copy; 2025 Ciphree — Emotional Connection in a Digital Age</span>
+      <span
+        ><label for="social media">Social Media</label>
+        <ul class="socials">
+          <a href="https://x.com/Ciphree_">Twitter</a>
+          <a href="https://www.instagram.com/ciphree_">Instagram</a>
+          <a href="https://www.threads.com/@ciphree_">Threads</a>
+          <a href="mailto:ciphreous@ciphree.com">Email</a>
+        </ul></span
+      >
+    </footer>
 
     <script>
       // Animate sections on scroll
@@ -541,6 +219,341 @@
     </script>
   </body>
 </html>
+<style>
+  /* Reset */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  body,
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  li,
+  nav,
+  header,
+  main,
+  section,
+  footer {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #d9e2ff 0%, #f0f4ff 100%);
+    color: #1e293b;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  a:hover,
+  a:focus {
+    background-color: white;
+    color: #1d4ed8;
+    outline: none;
+    padding: 10px;
+  }
+  /* Container */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  /* Navigation */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+  }
+  nav h1 {
+    font-weight: 900;
+    font-size: 1.7rem;
+    color: #2563eb;
+    cursor: default;
+    user-select: none;
+  }
+  nav a.cta {
+    background: linear-gradient(45deg, #2563eb, #1c74e4);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    transition: all 0.3s ease;
+    font-weight: 700;
+    user-select: none;
+  }
+  nav a.cta:hover,
+  nav a.cta:focus-visible {
+    background: linear-gradient(45deg, #1c74e4, #145dbf);
+    box-shadow: 0 12px 30px rgba(28, 116, 228, 0.6);
+    color: white;
+    transform: translateY(-2px);
+    outline-offset: 4px;
+    outline: 2px solid #1c74e4;
+  }
+  /* Hero Section */
+  header {
+    position: relative;
+    height: 100vh;
+    background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80")
+      center center/cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    overflow: hidden;
+    perspective: 1500px;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(37, 99, 235, 0.75);
+    mix-blend-mode: multiply;
+    z-index: 1;
+    backdrop-filter: blur(6px);
+    transition: background-color 0.5s ease;
+  }
+  header .content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    color: #fff;
+    animation: fadeInUp 1.6s ease forwards;
+    will-change: transform;
+  }
+  header h1 {
+    font-weight: 900;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.07em;
+  }
+  header p {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(45deg, #2563eb, #1c74e4);
+    color: white;
+    padding: 1rem 4rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.35rem;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.6);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease,
+      transform 0.3s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transform: translateY(-50%) skewX(-20deg);
+    transition: left 0.5s ease;
+    pointer-events: none;
+  }
+  .btn-primary:hover::after,
+  .btn-primary:focus-visible::after {
+    left: 100%;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    background: linear-gradient(45deg, #1c74e4, #145dbf);
+    box-shadow: 0 18px 40px rgba(28, 116, 228, 0.8);
+    transform: translateY(-5px);
+    outline-offset: 5px;
+    outline: 3px solid #1c74e4;
+  }
+  /* Sections */
+  main {
+    padding: 6rem 0 10rem;
+  }
+  section {
+    margin-bottom: 6rem;
+    padding: 0 1rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section h2 {
+    font-size: 2.9rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    letter-spacing: 0.04em;
+    user-select: none;
+  }
+  section h2::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 6px;
+    background: #2563eb;
+    margin: 0.75rem auto 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.5);
+  }
+  section p {
+    max-width: 720px;
+    margin: 1.5rem auto;
+    font-size: 1.25rem;
+    color: #475569;
+    line-height: 1.9;
+    user-select: text;
+  }
+  ul {
+    margin: 2.5rem auto 0;
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  ul li {
+    background: #fff;
+    padding: 2.25rem 3rem;
+    border-radius: 24px;
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.12);
+    color: #1e293b;
+    font-weight: 700;
+    font-size: 1.15rem;
+    cursor: default;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+      background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  ul li:hover,
+  ul li:focus-within {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 60px rgba(37, 99, 235, 0.45);
+    background: #2563eb;
+    color: #fff;
+    outline: none;
+  }
+
+  /* Footer */
+  footer {
+    background: #2563eb;
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    user-select: none;
+    box-shadow: inset 0 4px 6px rgb(0 0 0 / 0.15);
+  }
+  /* Animations */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 3.3rem;
+    }
+    header p {
+      font-size: 1.3rem;
+    }
+    ul {
+      grid-template-columns: 1fr;
+    }
+    ul li {
+      font-size: 1.2rem;
+      padding: 1.8rem 2.4rem;
+    }
+  }
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 2.4rem;
+      letter-spacing: 0.03em;
+    }
+    header p {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Back to Top Button */
+  #backToTop {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: none;
+    user-select: none;
+    z-index: 10000;
+  }
+  #backToTop:hover,
+  #backToTop:focus-visible {
+    background: #1c74e4;
+    transform: translateY(-4px);
+    outline-offset: 3px;
+    outline: 3px solid #1c74e4;
+  }
+</style>
 <style>
   /* Base container spacing */
   main.container {
@@ -708,5 +721,14 @@
     width: 393px;
     height: 218px;
     border-radius: 24px;
+  }
+  ul.socials {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .socials li {
+    width: 200px !important;
+    padding: 10px !important;
   }
 </style>
