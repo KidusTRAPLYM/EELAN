@@ -1,0 +1,52 @@
+<!-- offline.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Offline</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: sans-serif;
+        margin-top: 15rem;
+        padding: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        border: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-direction: column;
+      }
+      img {
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>You're Offline</h1>
+    <p>Please check your internet connection and try again.</p>
+  </body>
+</html>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((reg) => {
+          console.log("✅ Service Worker registered:", reg);
+        })
+        .catch((err) => {
+          console.error("❌ Service Worker registration failed:", err);
+        });
+    });
+  }
+</script>

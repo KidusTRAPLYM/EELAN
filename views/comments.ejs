@@ -21,6 +21,13 @@
   <body>
     <nav id="slide-bar">
       <ul>
+        <span
+          class="logo-span"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <img src="/Images/ciphry.png" alt="Ciphry Logo" width="80px" />
+        </span>
+
         <li>
           <a href="/landing">
             <svg
@@ -82,7 +89,7 @@
           </a>
         </li>
         <li>
-          <a href="/monami">
+          <a href="/matchup">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -98,7 +105,7 @@
               />
             </svg>
 
-            <span>Monami</span>
+            <span>Matchup</span>
           </a>
         </li>
         <li>
@@ -164,9 +171,6 @@
       </ul>
     </nav>
     <main>
-      <section id="logo">
-        <h1>Ciphree</h1>
-      </section>
       <div id="loader" class="loader">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -215,26 +219,7 @@
             <section id="text">
               <p><%= post.message %></p>
             </section>
-            <section id="engagements">
-              <div class="like">
-                <form action="/comments/<%= post._id%>/like" method="post">
-                  <button type="submit" id="like">
-                    <img src="/Images/like.png" alt="" />
-                  </button>
-                </form>
-                <span><%= post.like%></span>
-              </div>
-              <div class="dislike">
-                <form action="/comments/<%= post._id%>/dislike" method="post">
-                  <button type="submit" id="like">
-                    <img src="/Images/dislike.png" alt="" />
-                  </button>
-                </form>
-                <div class="span">
-                  <span> <%= post.dislike%></span>
-                </div>
-              </div>
-            </section>
+            <section id="engagements"></section>
           </section>
         </section>
       </section>

@@ -10,6 +10,7 @@ section#main {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    padding-top: 65px !important;
 }
 input, textarea {
     padding: 10px;

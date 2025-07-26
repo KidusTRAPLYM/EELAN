@@ -30,6 +30,11 @@
   <body>
       <nav id="slide-bar">
       <ul>
+      
+          <span  class="logo-span" style="display: flex;justify-content: center;align-items: center;">
+            <img src="/Images/ciphry.png" alt="Ciphry Logo" width="80px">
+          </span>
+       
         <li>
           <a href="/landing">
             <svg
@@ -91,7 +96,7 @@
           </a>
         </li>
         <li>
-          <a href="/monami">
+          <a href="/matchup">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -181,7 +186,7 @@
         <div class="actions">
           <a href="/journal">
             <button class="action-btn" data-section="journal">
-              Journaling
+              Journal
             </button>
           </a>
           <a href="#formPost">
@@ -192,8 +197,8 @@
           <a href="/search">
             <button class="action-btn" data-section="find">Find a Post</button>
           </a>
-          <a href="/journal">
-            <button class="action-btn" data-section="profile">Journal</button>
+          <a href="/matchup">
+            <button class="action-btn" data-section="profile">Find a person</button>
           </a>
         </div>
       </section>
@@ -254,10 +259,11 @@
   /* Main content */
   .main-content {
     flex-grow: 1;
-    padding: 40px 50px;
+    
     background: white;
     display: flex;
     flex-direction: column;
+    margin-top: 0 !important;
     justify-content: center;
     align-items: center; /* This centers the actions box */
   }
@@ -313,6 +319,9 @@
     }
   }
   a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
   }
   section#actions {

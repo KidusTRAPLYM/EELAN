@@ -168,7 +168,7 @@ main {
   box-sizing: border-box;
 }
 ul{
-         padding-top:140px !important;
+         padding-top:28px !important
 }
 /* Responsive: on smaller screens, remove the margin-left and adjust sidebar */
 
@@ -204,8 +204,11 @@ ul{
     padding: 10px 15px;
     border-radius: 20px !important;
   }
-  #slide-bar li a span{
+  #slide-bar li a span {
     display: none;
+  }
+  .logo-span{
+    display: none  !important;
   }
   main {
     margin-left: 0;
@@ -259,9 +262,6 @@ ul{
   }
 
   main {
-    margin-left: 0;
-    margin-top: 0;
-    margin-bottom: 50px; /* ensure content not hidden behind bottom nav */
     padding: 5px 10px;
     width: 100%;
     box-sizing: border-box;

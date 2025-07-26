@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
- <meta name="description" content="Ciphry is a human-centered platform built to express emotion, connect deeply, and reflect reality through AI, design, and heart.">
+ <meta name="description" content="Discover real stories and emotions shared by the Ciphree community. Feel less alone, post what matters.">
       
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"></script>
@@ -49,6 +49,11 @@
 </header>
     <nav id="slide-bar">
       <ul>
+      
+          <span style="display: flex;justify-content: center;align-items: center;"  class="logo-span">
+            <img src="/Images/ciphry.png" alt="Ciphry Logo" width="80px">
+          </span>
+       
         <li>
           <a href="/landing">
             <svg
@@ -196,9 +201,7 @@
 <div id="page-wrapper">
    <main>
 
-      <section id="logo">
-        <h1>Ciphree</h1>
-      </section>
+      
     <section id="body">
   
     <section id="posts">
@@ -226,28 +229,24 @@
                   <p><%= post.message %></p>
                 </section>
                 <section id="engagements">
-                  <div class="like">
-                    <form action="/comments/<%= post._id%>/like" method="post">
-                      <button type="submit" id="like">
-                        <img src="/Images/like.png" alt="">
-                      </button>
-                    </form>
-                    <span><%= post.like%></span>
-                  </div>
-                  <div class="dislike">
-                    <form action="/comments/<%= post._id%>/dislike" method="post">
-                      <button type="submit" id="like">
-                        <img src="/Images/dislike.png" alt="">
-                      </button>
-                    </form>
-                    <div class="span">
-                      <span><%= post.dislike%></span>
-                    </div>
-                  </div>
+               
                   <div class="comment">
                     <a href="/comments/<%=post._id%>">
                       <button id="comment-<%=post._id%>" class="comment-btn">
-                        <img src="/Images/comment.png" alt="">
+                        <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
+              />
+            </svg>
                       </button>
                     </a>
                   </div>
