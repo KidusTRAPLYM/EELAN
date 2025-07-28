@@ -4,20 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/Images/ciphry.png" />
-    <title>Ciphree — Where your mind speaks</title>
+
+    <title>Ciphree — Share Your True Feelings, Connect, and Heal</title>
+    <link rel="canonical" href="https://ciphree.com/" />
+
+    <meta
+      name="description"
+      content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
+    />
+  <!-- Open Graph / Facebook -->
+<meta property="og:title" content="Ciphree — Share Your True Feelings, Connect, and Heal" />
+<meta property="og:description" content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people." />
+<meta property="og:url" content="https://ciphree.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://ciphree.com/Images/ciphry.png" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ciphree — Share Your True Feelings, Connect, and Heal" />
+<meta name="twitter:description" content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people." />
+<meta name="twitter:image" content="https://ciphree.com/Images/ciphry.png" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <meta
-      name="description"
-      content="   Express every emotion—joy, sadness, hope, or frustration—in a safe
-          space."
-    />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MM8VSWME23');
+</script>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://ciphree.com/</loc>
+<lastmod>2025-07-28T11:07:13+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://ciphree.com/register</loc>
+<lastmod>2025-07-28T11:07:13+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://ciphree.com/signin</loc>
+<lastmod>2025-07-28T11:07:13+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciphree.com/feed</loc>
+  <lastmod>2025-07-28T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciphree.com/journal</loc>
+  <lastmod>2025-07-28T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+</urlset>
   </head>
   <body>
     <nav>
-      <h1>Ciphree</h1>
+      <span>Ciphree</span>
       <a href="/register" class="cta">Get Started</a>
     </nav>
 
@@ -26,11 +78,10 @@
         class="content"
         aria-label="Hero content with heading and description"
       >
-        <h1>Welcome to Ciphree!</h1>
+        <h1>This Is Your Emotional Space.</h1>
         <p>
-          Express every emotion—joy, sadness, hope, or frustration—in a safe
-          space. Ciphree connects you with others who feel the same and uses AI
-          to help you understand and navigate your emotions.
+          From happiness to heartbreak, Ciphree helps you share and explore
+          every feeling with people who understand.
         </p>
         <a
           href="#what-is"
@@ -54,7 +105,7 @@
         </p>
       </section>
 
-      <section id="security" aria-label="Key Features of Ciphree" tabindex="-1">
+      <section id="feature" aria-label="Key Features of Ciphree" tabindex="-1">
         <h2>Key Features</h2>
         <ul>
           <li>
@@ -176,14 +227,23 @@
     </button>
 
     <footer>
-      <span>&copy; 2025 Ciphree — Emotional Connection in a Digital Age</span>
-      <span
-        ><label for="social media">Social Media</label>
+       <span>&copy; 2025 Ciphree — Emotional Connection in a Digital Age</span>
+  <h3 class="sr-only">Social Media</h3>
         <ul class="socials">
-          <a href="https://x.com/Ciphree_">Twitter</a>
-          <a href="https://www.instagram.com/ciphree_">Instagram</a>
-          <a href="https://www.threads.com/@ciphree_">Threads</a>
-          <a href="mailto:ciphreous@ciphree.com">Email</a>
+          <li><a href="https://x.com/Ciphree_" rel="nofollow">Twitter</a></li>
+          <li>
+            <a href="https://www.instagram.com/ciphree_" rel="nofollow"
+              >Instagram</a
+            >
+          </li>
+          <li>
+            <a href="https://www.threads.com/@ciphree_" rel="nofollow"
+              >Threads</a
+            >
+          </li>
+          <li>
+            <a href="mailto:ciphreous@ciphree.com" rel="nofollow">Email</a>
+          </li>
         </ul></span
       >
     </footer>
@@ -290,7 +350,7 @@
     font-size: 1.05rem;
     letter-spacing: 0.03em;
   }
-  nav h1 {
+  nav span {
     font-weight: 900;
     font-size: 1.7rem;
     color: #2563eb;
@@ -610,7 +670,8 @@
   }
 
   /* SECURITY section */
-  #security {
+  #security,
+  #feature {
     background: #f3f4f6;
     border-left: 5px solid #66bb6a;
   }
@@ -669,7 +730,7 @@
   }
 </style>
 <style>
-  #features,
+  #feature,
   #security,
   #unique {
     width: 100vw; /* Full viewport width */
@@ -693,7 +754,7 @@
     min-width: 280px; /* fixed minimum width */
     flex: 0 0 auto; /* prevent shrinking/growing */
   }
-  #features,
+  #feature,
   #security,
   #unique {
     width: 100vw;
@@ -732,9 +793,41 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+    width: auto;
   }
-  .socials li {
-    width: 200px !important;
-    padding: 10px !important;
+  ul.socials li {
+    width: 126px;
+    height: 10px;
+    padding: 20px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  ul.socials li a {
+    color: black;
+  }
+  ul.socials li:hover {
+    background-color: white;
+  }
+  ul.socials li a:hover {
+    width: auto !important;
+    height: auto !important;
+  }
+  ul.socials li a:hover {
+    padding: 0;
+  }
+  .sr-only {
+  position: absolute;
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px; 
+  overflow: hidden; 
+  clip: rect(0,0,0,0); 
+  border: 0;
+}
+
 </style>
