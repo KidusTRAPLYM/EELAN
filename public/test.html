@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>No Exit Without Feedback</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body.blocked {
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        color: white;
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      textarea {
+        width: 80%;
+        height: 100px;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        border: none;
+        resize: none;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #16a34a;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      p.warning {
+        color: #f87171;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Welcome to this beautiful prison 😈</h2>
+    <p>Try closing the tab, we dare you.</p>
+
+    <div id="overlay">
+      <h2>Hold up! 😳 Before you leave...</h2>
+      <p>Please give us your feedback first.</p>
+      <textarea
+        id="feedbackInput"
+        placeholder="What can we improve?"
+      ></textarea>
+      <button id="submitBtn">Submit Feedback</button>
+      <p class="warning" id="warn">You must write something first.</p>
+    </div>
+
+    <script>
+      let interacted = false;
+      let feedbackGiven = false;
+
+      const overlay = document.getElementById("overlay");
+      const textarea = document.getElementById("feedbackInput");
+      const warn = document.getElementById("warn");
+
+      // Track user interaction
+      window.addEventListener("click", () => (interacted = true));
+      window.addEventListener("mousemove", () => (interacted = true));
+      window.addEventListener("scroll", () => (interacted = true));
+
+      // Show overlay when trying to leave
+      window.addEventListener("beforeunload", function (e) {
+        if (!feedbackGiven && interacted) {
+          overlay.style.display = "flex";
+          document.body.classList.add("blocked");
+
+          // Block exit
+          e.preventDefault();
+          e.returnValue = "";
+          return "";
+        }
+      });
+
+      // Submit feedback button
+      document.getElementById("submitBtn").onclick = () => {
+        const val = textarea.value.trim();
+        if (val.length === 0) {
+          warn.style.display = "block";
+        } else {
+          feedbackGiven = true;
+          alert("Thanks for your feedback. You may now close the tab.");
+          overlay.style.display = "none";
+          document.body.classList.remove("blocked");
+        }
+      };
+    </script>
+  </body>
+</html>
