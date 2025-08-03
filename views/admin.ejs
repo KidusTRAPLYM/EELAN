@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My admin page - Ciphree</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="w-full min-h-screen flex items-center justify-center flex-col font-poppins"
+  >
+    <div
+      id="password-sec"
+      class="flex flex-col gap-4 justify-center items-center"
+    >
+      <h1 class="text-3xl">Sign-up</h1>
+      <input
+        type="text"
+        placeholder="Enter the password"
+        class="border px-4 py-3 w-full focus:outline-none max-w-md"
+        id="password"
+      />
+      <button
+        id="submit"
+        class="bg-blue-500 text-white hover:bg-blue-300 px-4 py-2"
+      >
+        Submit
+      </button>
+      <h5 class="text-poppins text-red-500 p-4">
+        Unless you are an admin, you should not be here. This page is for
+        administrative purposes only.
+      </h5>
+    </div>
+    <section
+      id="output"
+      class="<%= feedbacks && feedbacks.length ? '' : 'hidden' %>hidden"
+    >
+      <h2 class="text-2xl font-bold">Welcome, Admin!</h2>
+      <ul>
+        <% feedbacks.forEach(feedback => { %>
+        <li style="list-style: decimal !important"><%= feedback.message %></li>
+        <% }); %>
+      </ul>
+    </section>
+
+    <script>
+      const form = document.getElementById("password-sec");
+      const input = document.getElementById("password");
+      const submit = document.getElementById("submit");
+      const output = document.getElementById("output");
+
+      submit.addEventListener("click", (e) => {
+        e.preventDefault();
+        const password = input.value;
+        if (password === "Ciphreewasonceciphry") {
+          form.style.display = "none";
+          output.classList.remove("hidden");
+        } else {
+          alert("Wrong password!");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -11,6 +11,7 @@ const io = new Server(http);
 //const ClairP = require("./models/post-clair");
 const axios = require("axios");
 const dotenv = require("dotenv");
+const feedback = require("./models/feedback.js");
 const { InferenceClient } = require("@huggingface/inference");
 const monami = require("./models/monami.js");
 const { OAuth2Client } = require("google-auth-library");
@@ -120,6 +121,7 @@ app.get("/signin", (req, res) => {
 app.get("/register", (req, res) => {
   res.render("register");
 });
+
 app.get("/signup", (req, res) => {
   res.redirect("/register");
 });
@@ -207,6 +209,10 @@ app.get("/comment/:postId", async (req, res) => {
   console.log(comments);
   res.render("comments", { postId, userId, posts, comments });
 });
+app.get("/admin", async (req, res) => {
+  let feedbacks = await feedback.find();
+  res.render("admin", { feedbacks });
+});
 app.get("/monami", async (req, res) => {
   const token = req.cookies.User;
   if (!token) {
@@ -279,6 +285,18 @@ io.on("connection", (socket) => {
       io.to(roomName).emit("message", `${socket.username} left the chat`);
     }
   });
+});
+app.post("/feedback", async (req, res) => {
+  const { message } = req.body;
+  try {
+    const newFeedback = new feedback({ message });
+    await newFeedback.save();
+    console.log("Feedback saved successfully");
+    res.render("morewithoutform");
+  } catch (err) {
+    console.log("Error saving feedback:", err);
+    res.render("error");
+  }
 });
 app.post("/journal", (req, res) => {
   const { message, name, date } = req.body;

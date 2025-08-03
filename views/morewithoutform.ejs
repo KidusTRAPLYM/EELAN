@@ -168,66 +168,7 @@
         </ul></span
       >
     </footer>
-<!-- Feedback Popup -->
- <form action="/feedback" method="post">
-<div id="exitPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" >
-  <div class="bg-white text-black p-6 rounded-xl max-w-md w-full shadow-lg text-center space-y-4">
-    <h2 class="text-xl font-bold">Wait! Before you go...</h2>
-    <p>Could you share a quick thought about your experience on Ciphree?</p>
-    <textarea class="w-full border border-gray-300 rounded p-2" rows="3" placeholder="Type here..." name="message"></textarea>
-    <div class="flex justify-end gap-4">
-      <button onclick="closePopup()" class="text-sm px-4 py-2 rounded bg-gray-200" type="button">Close</button>
-      <button class="text-sm px-4 py-2 rounded bg-blue-600 text-white" type="submit">Send</button>
-    </div>
-  </div>
-</div>
- </form>
 
-<script>
-  let popupShown = false;
-  let scrolledToBottom = false;
-  let lastScrollY = window.scrollY;
-
-  function showPopup() {
-    if (!popupShown) {
-      document.getElementById("exitPopup").classList.remove("hidden");
-      popupShown = true;
-    }
-  }
-
-  function closePopup() {
-    document.getElementById("exitPopup").classList.add("hidden");
-  }
-
-  // Exit intent — top of screen
-  document.addEventListener("mouseout", function (e) {
-    if (e.clientY < 10) {
-      showPopup();
-    }
-  });
-
-  // Scroll detection
-  window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
-    const scrollHeight = document.documentElement.scrollHeight;
-    const windowHeight = window.innerHeight;
-
-    // User has scrolled down far enough
-    if (currentScrollY > 100) {
-      scrolledToBottom = true;
-    }
-
-    // Scrolled down and now scrolling up → show popup
-    if (
-      scrolledToBottom &&
-      currentScrollY < lastScrollY
-    ) {
-      showPopup();
-    }
-
-    lastScrollY = currentScrollY;
-  });
-</script>
 
 
     <script>
