@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dicuss</title>
+    <title>Discuss</title>
     <link rel="stylesheet" href="/CSS/variables.css" />
     <link rel="stylesheet" href="/CSS/main.css" />
     <link rel="stylesheet" href="/CSS/postpost.css" />
@@ -291,3 +291,30 @@
     </main>
   </body>
 </html>
+ <section id="formPost">
+        <form action="/post" method="Post" class="formPost">
+          <div class="up">
+            <h1>Create a post</h1>
+          </div>
+          <div class="down">
+            <textarea
+              name="message"
+              id="monami-input"
+              maxlength="500"
+              placeholder="Write your post here."
+            ></textarea>
+            <span>  <p id="char-count">0 / 500</p></span>
+          
+            <!-- Character counter display -->
+          <input list="post-types" name="type" placeholder="Choose the post type" />
+<datalist id="post-types">
+  <option value="Articles">
+  <option value="Posts">
+</datalist>
+<div class="btns">
+     <button>Post</button>
+    <a href="#"><button class="cancel" type="button">Cancel</button></a>
+</div>
+
+        </form>
+      </section>
