@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/CSS/variables.css" />
     <link rel="stylesheet" href="/CSS/main.css" />
     <link rel="stylesheet" href="/CSS/postpost.css" />
+        <link rel="stylesheet" href="/CSS/post.css" />
     <link rel="stylesheet" href="/CSS/dashboard.css" />
     <link rel="icon" href="/Images/ciphry.png" />
     <!--FONT FAMILY-->
@@ -289,9 +290,7 @@
         </section>
       </section>
     </main>
-  </body>
-</html>
- <section id="formPost">
+     <section id="formPost">
         <form action="/post" method="Post" class="formPost">
           <div class="up">
             <h1>Create a post</h1>
@@ -318,3 +317,52 @@
 
         </form>
       </section>
+      
+     <script>
+  const textarea = document.getElementById("monami-input");
+  const charCount = document.getElementById("char-count");
+  const typeInput = document.querySelector('input[name="type"]');
+
+  // Initial character counter
+  textarea.addEventListener("input", () => {
+    charCount.textContent = textarea.maxLength
+      ? `${textarea.value.length} / ${textarea.maxLength}`
+      : `${textarea.value.length} characters`;
+  });
+
+  // Change maxlength based on post type
+  typeInput.addEventListener("input", () => {
+    if (typeInput.value === "Articles") {
+      textarea.removeAttribute("maxlength");
+    } else {
+      textarea.setAttribute("maxlength", "500");
+      if (textarea.value.length > 500) {
+        textarea.value = textarea.value.slice(0, 500); // trim it instantly
+      }
+    }
+
+    // Force update count when switching type
+    charCount.textContent = textarea.maxLength
+      ? `${textarea.value.length} / ${textarea.maxLength}`
+      : `${textarea.value.length} characters`;
+  });
+</script>
+<script>
+  const allowed = ["Articles", "Posts"];
+  typeInput.addEventListener("input", () => {
+    if (!allowed.includes(typeInput.value)) {
+      typeInput.setCustomValidity("Choose one of the allowed post types.");
+    } else {
+      typeInput.setCustomValidity("");
+    }
+  });
+</script>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#formPost') {
+      history.replaceState(null, null, window.location.pathname);
+    }
+  });
+</script>
+  </body>
+</html>
