@@ -174,3 +174,8 @@ button:hover {
     padding: 15px;
   }
 }
+.hover-btn:hover{
+  background-color: var(--White--);
+  color: var(--Blue--);
+  border: 1px solid rgba(0,0,0,0.1);
+}

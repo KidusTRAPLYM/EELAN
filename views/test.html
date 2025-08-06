@@ -2,163 +2,1125 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Google Sign-In client ID -->
-    <meta
-      name="google-signin-client_id"
-      content="YOUR_CLIENT_ID.apps.googleusercontent.com"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dicuss</title>
+    <link rel="stylesheet" href="/CSS/variables.css" />
+    <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/postpost.css" />
+    <link rel="stylesheet" href="/CSS/dashboard.css" />
+    <link rel="icon" href="/Images/ciphry.png" />
+    <!--FONT FAMILY-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
     />
-
-    <!-- Google Platform Library -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-    <title>Chat with Google Sign-In</title>
-
-    <style>
-      body {
-        font-family: "Poppins", sans-serif;
-        margin: 2rem;
-        background: #f9f9f9;
-        color: #111;
-      }
-      #chatContainer {
-        max-width: 500px;
-        margin-top: 2rem;
-      }
-      #messageList {
-        list-style: none;
-        padding: 0;
-        height: 200px;
-        overflow-y: auto;
-        background: white;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-      }
-      #messageList li {
-        padding: 8px 12px;
-        border-bottom: 1px solid #eee;
-      }
-      #form {
-        display: flex;
-        gap: 0.5rem;
-      }
-      #text {
-        flex-grow: 1;
-        padding: 10px 15px;
-        border-radius: 25px;
-        border: 1px solid #ccc;
-        font-size: 1rem;
-      }
-      #sendBtn {
-        padding: 10px 20px;
-        border-radius: 25px;
-        border: none;
-        background: #2563eb;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-      }
-    </style>
   </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+    :root {
+      --font-family--: "Poppins", sans-serif;
+      --Black--: #111111;
+      --White--: #fefefe;
+      --Gray--: #bfc1c3;
+      --Clear-white--: #fff;
+      --Blue--: #1c74e4;
+      --Green--: green;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family--);
+      background-color: var(--Clear-white--);
+      overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    #header {
+      position: fixed;
+      top: 0%;
+      left: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+      background: white;
+    }
+
+    .img {
+      background: white;
+      width: 93rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #body {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+
+    h6 {
+      position: fixed;
+      top: 95%;
+      left: 25%;
+    }
+    h4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    #logo h1 {
+      font-size: 42px;
+      color: var(--Blue--);
+    }
+    #logo img {
+      width: 75px;
+    }
+    .icons {
+      display: flex;
+      /* flex-direction: column; */
+      position: fixed;
+      background: var(--White--);
+      /* gap: 50px; */
+      width: 100%;
+      /* height: 100vh; */
+      padding: 20px;
+      bottom: 0;
+      justify-content: space-around;
+    }
+    a {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      color: black;
+    }
+    svg.ionicon {
+      width: 38px;
+    }
+    svg.size-6 {
+      width: 34px;
+      color: var(--Blue--);
+    }
+    .icons {
+      color: var(--Blue--); /* or blue, #1c5fef, white, etc. */
+      font-weight: 100;
+    }
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: var(--Blue--);
+      width: 100%;
+      height: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.4s ease;
+    }
+    .dot {
+      width: 70px;
+      height: 70px;
+      animation: blink 90.2s infinite;
+      background-color: var(--White--);
+      border-radius: 50px;
+    }
+    @keyframes blink {
+      0%,
+      80%,
+      100% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      40% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+    nav#slide-bar {
+      width: 250px;
+      height: 100vh;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 5px 1rem;
+      background-color: var(--White--);
+      position: fixed;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 25px;
+      /* align-items: center; */
+
+      padding-left: 8px;
+    }
+    li {
+      display: flex;
+      justify-content: flex-start;
+    }
+    #slide-bar li a {
+      width: 100%;
+      border-radius: 40px;
+      padding: 10px;
+      transition: all 0.3s ease; /* smooth hover effect */
+    }
+
+    #slide-bar li a:hover {
+      color: white;
+      background-color: var(--Blue--);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* box shadow on hover */
+    }
+
+    #slide-bar li a:hover .size-6 {
+      color: white !important;
+    }
+
+    main {
+      margin-left: 250px; /* shift main content right to avoid sidebar overlap */
+      min-height: 100vh;
+      padding: 20px; /* optional: add some inner spacing */
+      box-sizing: border-box;
+    }
+
+    ul {
+      padding-top: 28px !important;
+      padding-left: 30px;
+    }
+
+    /* Responsive: on smaller screens, remove the margin-left and adjust sidebar */
+
+    @media (max-width: 900px) {
+      nav#slide-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 67px;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 5px 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        overflow-x: auto;
+        box-sizing: border-box;
+      }
+
+      ul {
+        flex-direction: row;
+        padding-top: 0;
+        padding-left: 0;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        gap: 10px;
+      }
+
+      #slide-bar li a {
+        width: auto !important;
+        padding: 10px 15px;
+        border-radius: 20px !important;
+      }
+      #slide-bar li a span {
+        display: none;
+      }
+      .logo-span {
+        display: none !important;
+      }
+      main {
+        margin-left: 0;
+        margin-top: 60px; /* account for top navbar height */
+        padding: 10px 15px;
+        width: 100%;
+      }
+      svg.size-6 {
+        width: 29px;
+        color: var(--Blue--);
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav#slide-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw; /* full viewport width */
+        height: 50px; /* slightly shorter for phones */
+        padding: 5px 0.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        z-index: 1500;
+      }
+
+      ul {
+        flex-direction: row;
+        padding: 0 !important;
+        gap: 0.01px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #slide-bar li a {
+        width: auto !important;
+        padding: 8px 12px;
+        border-radius: 16px !important;
+        white-space: nowrap;
+      }
+
+      #slide-bar li a span {
+        display: none; /* hide text on super small */
+      }
+
+      main {
+        padding: 5px 10px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        min-height: calc(100vh - 50px);
+      }
+      svg.size-6 {
+        width: 25px;
+      }
+    }
+
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: none !important;
+      font-family: var(--font-family--);
+    }
+    input:focus {
+      outline: none !important;
+    }
+    button {
+      cursor: pointer !important;
+    }
+    button:hover {
+      background-color: var(--White--);
+      color: var(--Blue--);
+      border: nnoe;
+    }
+    #signup span {
+      font-size: 14px;
+      text-align: center;
+    }
+    input#password {
+      padding: 10px;
+    }
+    #signup p {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+    }
+    #formPost {
+      border: none !important;
+    }
+    /* Base resets and typography */
+    body {
+      font-family: var(--font-family--);
+      background-color: var(--White--);
+      color: var(--Black--);
+      margin: 0;
+      padding: 20px 12px 40px;
+      min-height: 100vh;
+      gap: 40px;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--Blue--);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+
+    #loader .dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--White--);
+      animation: blink 1.2s infinite ease-in-out;
+    }
+
+    #loader .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    #loader .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    @keyframes blink {
+      0%,
+      80%,
+      100% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      40% {
+        opacity: 1;
+        transform: scale(1.3);
+      }
+    }
+
+    /* Posts container */
+    .posts {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Single post */
+    #post {
+      background-color: var(--White--);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Upper section - user info */
+    #upper {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    #left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .account svg.size-6 {
+      width: 36px;
+      height: 36px;
+      stroke: var(--Blue--);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .time {
+      font-size: 0.9rem;
+      color: var(--Blue--);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .time span:first-child {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    /* Down section - post content & engagement */
+    #down {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    #text p {
+      font-size: 1.15rem;
+      color: var(--Black--);
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    /* Engagement buttons container */
+    #engagements {
+      display: flex;
+      gap: 24px;
+    }
+
+    /* Like and dislike sections */
+    #engagements > div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Buttons */
+    #like button,
+    #dislike button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    #like button:hover,
+    #dislike button:hover {
+      background-color: var(--Blue--);
+    }
+
+    #like button img,
+    #dislike button img {
+      width: 24px;
+      height: 24px;
+      filter: invert(15%) sepia(70%) saturate(2500%) hue-rotate(190deg)
+        brightness(95%) contrast(105%);
+      /* Slight color tint */
+    }
+
+    #engagements span {
+      font-weight: 600;
+      font-size: 1rem;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    /* Comment Section */
+    .comment {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Comment area form */
+    #comment-area {
+      background-color: var(--White--);
+      padding: 24px 28px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    #comment-area h1 {
+      font-size: 19px;
+      color: var(--Blue--);
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+
+    #comment-area form {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    #comment-area input[type="text"] {
+      flex-grow: 1;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    #comment-area input[type="text"]:focus {
+      outline: none;
+    }
+
+    #submit {
+      background-color: var(--Blue--);
+      color: var(--White--);
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    #submit:hover {
+      background-color: #0046bb;
+    }
+
+    /* Comments display */
+    #comments {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #comments h1 {
+      font-size: 19px;
+      color: var(--Blue--);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      user-select: none;
+    }
+
+    /* Individual comment card */
+    .comment-fetch {
+      background-color: var(--White--);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .comment-fetch h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--Blue--);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .comment-fetch p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--Black--);
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      #post,
+      #comment-area {
+        padding: 18px 20px;
+      }
+
+      #comment-area form {
+        flex-direction: column;
+      }
+
+      #comment-area input[type="text"] {
+        width: 100%;
+      }
+
+      #submit {
+        width: 100%;
+      }
+
+      #engagements {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+    }
+    section#posts {
+      display: flex;
+      gap: 30px;
+      flex-direction: column;
+      padding: 25px;
+      width: 700px;
+      flex-wrap: wrap;
+    }
+    #post {
+      /* border-radius: 10px; */
+      /* box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15); */
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .brightness {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+    .account {
+      width: 50px;
+      height: 50px;
+      background-color: var(--Blue--);
+      color: var(--White--);
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .account svg.size-6 {
+      color: white;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      width: 50px;
+    }
+    #engagements {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    #engagements div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    #engagements img {
+      width: 27px;
+      cursor: pointer;
+    }
+    #upper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+    }
+    section#left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    button {
+      background-color: var(--Blue--);
+      padding: 10px;
+      color: var(--White--);
+      font-family: var(--font-family--);
+      border: none;
+      width: 40px;
+    }
+    .time {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .time span {
+      font-size: 14px;
+    }
+    #down {
+      padding: 20px;
+    }
+    .dislike form {
+      display: inline-block;
+    }
+
+    .dislike button {
+      display: inline-block;
+    }
+    #engagements div {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+    #engagements div button {
+      background-color: var(--White--);
+    }
+
+    input {
+      font-family: var(--font-family--);
+      font-size: 12px;
+    }
+    .comment textarea {
+      width: 70px;
+      height: 17px;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .share-popup {
+      position: fixed;
+      left: 40%;
+      top: 30%;
+      display: none;
+    }
+
+    .share-btn {
+      cursor: pointer;
+      color: var(--Blue--);
+    }
+    h1 {
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    input {
+      font-family: var(--font-family--);
+      font-size: 12px;
+      padding: 10px;
+      border-radius: 7px;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    section.comment-popup {
+      position: fixed;
+      display: none;
+      top: 20%;
+      left: 34%;
+    }
+    section#comment-popup-content {
+      display: flex;
+      flex-direction: column;
+      background: var(--White--);
+      width: 474px;
+      height: 417px;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    section#comment-area {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 100px;
+    }
+    .comment-fetch {
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      align-items: baseline;
+      gap: 7px;
+      padding: 37px;
+    }
+    section#comments {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    input#message {
+      width: 56%;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+    input#message:focus {
+      outline: none;
+    }
+    input#submit {
+      background-color: var(--Blue--);
+      color: white;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+      width: 140px;
+    }
+    h1 {
+      font-size: 16px;
+      display: flex;
+      justify-content: normal !important;
+    }
+    #body {
+      padding-bottom: 80px;
+    }
+
+    @media (max-width: 900px) {
+      ul {
+        padding-bottom: none !important;
+      }
+
+      main {
+        margin-left: 0;
+        margin-top: 60px; /* height of top nav */
+        padding: 10px 15px;
+        max-width: 100vw;
+      }
+
+      section#posts {
+        max-width: 100%;
+        padding: 15px;
+      }
+    }
+  </style>
   <body>
-    <h2>Sign in to chat</h2>
+    <nav id="slide-bar">
+      <ul>
+        <span
+          class="logo-span"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <img src="/Images/ciphry.png" alt="Ciphry Logo" width="80px" />
+        </span>
 
-    <!-- Google Sign-In button -->
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <li>
+          <a href="/landing">
+            <svg
+              class="size-6"
+              style="color: #1c74e4"
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-school-icon lucide-school"
+            >
+              <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+              <path d="M18 5v16" />
+              <path d="m4 6 7.106-3.79a2 2 0 0 1 1.788 0L20 6" />
+              <path
+                d="m6 11-3.52 2.147a1 1 0 0 0-.48.854V19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a1 1 0 0 0-.48-.853L18 11"
+              />
+              <path d="M6 5v16" />
+              <circle cx="12" cy="9" r="2" />
+            </svg>
 
-    <!-- Sign out button -->
-    <button
-      onclick="signOut()"
-      style="margin-top: 10px; display: none"
-      id="signOutBtn"
-    >
-      Sign Out
-    </button>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/search">
+            <svg
+              class="size-6"
+              style="color: #1c74e4"
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search-icon lucide-search"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
 
-    <div id="chatContainer" style="display: none">
-      <ul id="messageList"></ul>
-      <form id="form">
-        <input
-          type="text"
-          id="text"
-          autocomplete="off"
-          placeholder="Type a message..."
-        />
-        <button type="submit" id="sendBtn">Send</button>
-      </form>
-    </div>
+            <span>Search</span>
+          </a>
+        </li>
+        <li>
+          <a href="#formPost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="38"
+              height="38"
+              style="color: #1c74e4"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="size-6"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-badge-plus-icon lucide-badge-plus"
+            >
+              <path
+                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+              />
+              <line x1="12" x2="12" y1="8" y2="16" />
+              <line x1="8" x2="16" y1="12" y2="12" />
+            </svg>
 
-    <script>
-      let currentUser = null;
+            <span>Post</span>
+          </a>
+        </li>
+        <li>
+          <a href="/matchup">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              class="size-6"
+              style="color: #1c74e4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-heart-handshake-icon lucide-heart-handshake"
+            >
+              <path
+                d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"
+              />
+            </svg>
 
-      function onSignIn(googleUser) {
-        const profile = googleUser.getBasicProfile();
-        currentUser = {
-          id: profile.getId(),
-          name: profile.getName(),
-          email: profile.getEmail(),
-        };
-        console.log("User signed in:", currentUser);
+            <span>Matchup</span>
+          </a>
+        </li>
+        <li>
+          <a href="/profile">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              style="color: #1c74e4"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="size-6"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-circle-user-icon lucide-circle-user"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="10" r="3" />
+              <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+            </svg>
 
-        // Show chat UI and sign out button
-        document.getElementById("chatContainer").style.display = "block";
-        document.getElementById("signOutBtn").style.display = "inline-block";
-        // Hide sign in button
-        document.querySelector(".g-signin2").style.display = "none";
+            <span>Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="/journal">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              style="color: #1c74e4"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="size-6"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-notebook-pen-icon lucide-notebook-pen"
+            >
+              <path
+                d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+              />
+              <path d="M2 6h4" />
+              <path d="M2 10h4" />
+              <path d="M2 14h4" />
+              <path d="M2 18h4" />
+              <path
+                d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+              />
+            </svg>
+            <span>Journal</span>
+          </a>
+        </li>
+        <li>
+          <a href="/feed">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              style="color: #1c74e4"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="size-6"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-newspaper-icon lucide-newspaper"
+            >
+              <path d="M15 18h-5" />
+              <path d="M18 14h-8" />
+              <path
+                d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"
+              />
+              <rect width="8" height="4" x="10" y="6" rx="1" />
+            </svg>
 
-        addSystemMessage(`Welcome, ${currentUser.name}! You can now chat.`);
-      }
-
-      function signOut() {
-        const auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(() => {
-          console.log("User signed out.");
-          currentUser = null;
-          document.getElementById("chatContainer").style.display = "none";
-          document.getElementById("signOutBtn").style.display = "none";
-          document.querySelector(".g-signin2").style.display = "block";
-          clearMessages();
+            <span>Feed</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <div id="loader" class="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <script>
+        window.addEventListener("load", function () {
+          const loader = document.getElementById("loader");
+          loader.style.opacity = 0; // fade out
+          setTimeout(() => {
+            loader.style.display = "none"; // remove from DOM flow
+          }, 400); // match with CSS transition
         });
-      }
+      </script>
+      <section class="posts">
+        <% const p = post; %>
 
-      // Chat message handling
-      const form = document.getElementById("form");
-      const messageList = document.getElementById("messageList");
-      const input = document.getElementById("text");
+        <section id="post">
+          <section id="upper">
+            <section id="left">
+              <div class="account">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  style="color: #fff"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-user-icon lucide-user"
+                >
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+              <div class="time">
+                <span
+                  ><span><%= post.userId?.name || 'Unknown User' %> </span>
+                </span>
+                <span><%= post.timeago || 'N/A' %></span>
+              </div>
+            </section>
+          </section>
+          <section id="down">
+            <section id="text">
+              <p><%= post.message %></p>
+            </section>
+            <section id="engagements"></section>
+          </section>
+        </section>
+      </section>
+      <section class="comment">
+        <section id="comment-area">
+          <h1>Note:</h1>
+          <form action="/comments/<%= post._id %>/comment" method="post">
+            <input type="text" name="message" id="message" />
+            <input type="submit" value="Submit" id="submit" />
+          </form>
+        </section>
 
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (!currentUser) {
-          alert("Please sign in first!");
-          return;
-        }
-        const msg = input.value.trim();
-        if (msg === "") return;
-        addMessage(currentUser.name, msg);
-        input.value = "";
-      });
+        <section id="comments">
+          <h1>Discussions:</h1>
+          <%comments.forEach(comment=>{%>
 
-      function addMessage(user, text) {
-        const li = document.createElement("li");
-        li.textContent = `${user}: ${text}`;
-        messageList.appendChild(li);
-        messageList.scrollTop = messageList.scrollHeight;
-      }
-
-      function addSystemMessage(text) {
-        const li = document.createElement("li");
-        li.textContent = text;
-        li.style.fontStyle = "italic";
-        li.style.color = "#555";
-        messageList.appendChild(li);
-        messageList.scrollTop = messageList.scrollHeight;
-      }
-
-      function clearMessages() {
-        messageList.innerHTML = "";
-      }
-    </script>
+          <div class="comment-fetch">
+            <h1><%= comment.userId.name%></h1>
+            <p><%= comment.message%></p>
+          </div>
+          <%})%>
+        </section>
+      </section>
+    </main>
   </body>
 </html>

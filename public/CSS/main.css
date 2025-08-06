@@ -146,30 +146,35 @@ li {
 ;
     justify-content: flex-start;
 }
-#slide-bar li a{
-   width: 300px;
-    border-radius: 40px;
-    padding: 10px;
+#slide-bar li a {
+ width: 100%;
+   border-radius: 40px;
+   padding: 10px;
+   transition: all 0.3s ease; /* smooth hover effect */
 }
-#slide-bar li a:hover{
-color: var(--White--);
-background-color: var(--Blue--);
-transition: 1s all ease-in-out;
+
+#slide-bar li a:hover {
+  color: white;
+   background-color: var(--Blue--);
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* box shadow on hover */
 }
-#slide-bar li a:hover svg{
-    color: white;
-    transition: 1s all ease-in-out;
+
+#slide-bar li a:hover .size-6 {
+   color: white  !important;
 }
 
 main {
-  margin-left: 250px; /* shift main content right to avoid sidebar overlap */
-  min-height: 100vh;
-  padding: 20px; /* optional: add some inner spacing */
-  box-sizing: border-box;
+   margin-left: 250px; /* shift main content right to avoid sidebar overlap */
+   min-height: 100vh;
+   padding: 20px; /* optional: add some inner spacing */
+   box-sizing: border-box;
 }
-ul{
-         padding-top:28px !important
+
+ul {
+   padding-top: 28px !important;
+   padding-left: 30px;
 }
+
 /* Responsive: on smaller screens, remove the margin-left and adjust sidebar */
 
 @media (max-width: 900px) {
