@@ -38,7 +38,7 @@
 
   gtag('config', 'G-MM8VSWME23');
 </script>
-<head>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -52,16 +52,18 @@
       },
     };
   </script>
-</head>
+
 
   </head>
   <body>
     <nav>
-      <span>Ciphree</span>
+      <span><img src="/Images/ciphry.png" alt="" style="width: 50px;
+    height: 50px;"></span>
       <a href="/register" class="cta">Get Started</a>
     </nav>
 
     <header>
+      
       <div
         class="content"
         aria-label="Hero content with heading and description"
@@ -70,18 +72,25 @@
         <p>
           From happiness to heartbreak, Ciphree helps you share and explore
           every feeling with people who understand.
+           <p style="padding-top: 10px;">Scroll down to see more!</p>
         </p>
-        <a
-          href="#what-is"
-          class="btn-primary"
-          id="btn-primary"
-          aria-label="Learn more about Ciphree"
-          >Discover More</a
-        >
+ 
+       
       </div>
     </header>
 
     <main class="container" role="main">
+       <div id="happening">
+      <h2 style="font-weight: bold;
+    padding: 10px;
+    font-size: 33px;">See what is happening</h2>
+    <div id="get-started-popup" class="popup-hidden">Click Get Started →</div>
+
+<div id="status">
+  <p><span id="online-count">42</span> people online</p>
+  <p>Latest post: <span id="latest-post">"Just dropped a new article!"</span></p>
+</div>
+     </div>
       <section id="idea" aria-label="Idea Behind Ciphree" tabindex="-1">
         <h2>About us - Ciphree</h2>
         <div class="inner-content">
@@ -101,23 +110,104 @@
         
       </section>
      
+
+
+    
+
+
+<script>
+  const onlineCountElem = document.getElementById('online-count');
+  const latestPostElem = document.getElementById('latest-post');
+
+  // Fake online counts
+  const minOnline = 30;
+  const maxOnline = 100;
+
+  // Fake recent posts pool
+  
+   const fakePosts = [
+  "I finally feel like someone gets me.",
+  "It’s okay to not be okay.",
+  "Sharing my story helped me heal.",
+  "Sometimes all you need is a listening ear.",
+  "I’m not alone anymore, thanks to this space.",
+  "It feels good to express what I’m feeling.",
+  "hope is the light I hold on to today.",
+  "opening up here was the first step for me.",
+  "Finding peace, one word at a time.",
+  "This place makes me feel safe.",
+  "i never knew how much I needed this.",
+  "talking helps more than i thought it would.",
+  "Thankful for people who understand.",
+  "Every emotion is valid here.",
+  "Here’s to healing and new beginnings.",
+  "You’re not alone in your struggles.",
+  "Taking one day at a time with support.",
+  "This community feels like a warm hug.",
+  "Letting go of the weight I carried alone.",
+  "Ready to start my journey of self-love.",
+   "I yelled at my best friend today and i hate myself for it. wish i could take it back.",
+  "spent all night scrolling but couldn’t sleep. feel so stuck in my own head.",
+  "My mom doesn’t get it and i don’t know how to explain what’s wrong.",
+  "had a good day for once but still can’t shake this heaviness inside.",
+  "I tried talking about my anxiety but it just came out as awkward silence.",
+  "i’m tired of pretending i’m okay when i’m not. nobody really notices anyway.",
+  "Sometimes i just want to disappear but then i remember my little sister needs me.",
+  "i’m scared to ask for help. what if they think i’m just complaining?",
+  "It’s dumb but that tiny compliment today made me smile for hours.",
+  "i wrote a poem last night about feeling invisible. no one’s seen it yet.",
+];
+
+  
+
+  // Update fake data every 5 seconds
+  setInterval(() => {
+    // Random online count
+    const randomOnline = Math.floor(Math.random() * (maxOnline - minOnline + 1)) + minOnline;
+    onlineCountElem.textContent = randomOnline;
+
+    // Random latest post
+    const randomPost = fakePosts[Math.floor(Math.random() * fakePosts.length)];
+    latestPostElem.textContent = `"${randomPost}"`;
+  }, 5000);
+</script>
+<script>
+const textarea = document.getElementById("chat");
+const popup = document.getElementById("get-started-popup");
+
+textarea.addEventListener("input", () => {
+  if (textarea.value.trim().length > 0) {
+    const rect = textarea.getBoundingClientRect();
+
+    popup.style.position = 'absolute';
+    popup.style.top = `${textarea.offsetTop + textarea.offsetHeight + 8}px`;
+    popup.style.left = `${textarea.offsetLeft}px`;
+    popup.classList.add("popup-visible");
+    popup.classList.remove("popup-hidden");
+  } else {
+    popup.classList.remove("popup-visible");
+    popup.classList.add("popup-hidden");
+  }
+});
+</script>
+
    
       <section id="feature" aria-label="Key Features of Ciphree" tabindex="-1">
         <h2>Key Features</h2>
         <ul>
           
           <li><strong>Match Up:</strong> 
-              <span style="font-size: 4rem; display: flex;justify-content: center;">🤝 </span>
+              <span style="font-size: 4rem; display: flex;justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handshake-icon lucide-handshake"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg> </span>
             Connect emotionally similar users</li>
           <li>
             <strong>Monami:</strong> 
-             <span style="font-size: 4rem; display: flex;justify-content: center;">💬 </span>
+             <span style="font-size: 4rem; display: flex;justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg> </span>
             Emotional AI chat that talks with you based
             on EQ, not IQ.
           </li>
           <li>
             <strong>Journaling</strong> 
-              <span style="font-size: 4rem; display: flex;justify-content: center;">✍️ </span>
+              <span style="font-size: 4rem; display: flex;justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg> </span>
             Private diary to write feelings,
             auto-tagged and summarized.
           </li>
@@ -490,7 +580,7 @@ padding: 1rem 4rem;
   }
   section p {
     max-width: 410px;
-    text-align: left;
+    text-align: justify;
     margin: 1.5rem auto;
     font-size: 1.25rem;
     color: #475569;
@@ -521,6 +611,7 @@ padding: 1rem 4rem;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-weight: normal;
   }
   ul li:hover,
   ul li:focus-within {
@@ -876,4 +967,121 @@ iframe {
     width: 100%;
     max-width: 514px;
 }
+ #chat {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 2px solid #1c74e4;
+    border-radius: 8px;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease;
+    resize: none;
+  }
+  #chat:focus {
+    border-color: #155db2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(28, 116, 228, 0.5);
+  }
+
+ #status {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 8px;
+    font-family: 'Poppins', sans-serif;
+    color: #1c74e4;
+    font-weight: 600;
+    display: flex
+;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    resize: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    height: 160px;
+    /* flex-direction: column; */}
+  #status p {
+    margin: 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  #status span#online-count {
+    color: #155db2;
+  }
+
+  #status span#latest-post {
+    font-style: italic;
+    color: #0d3a71;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    #status {
+      flex-direction: column;
+      gap: 4px;
+      color: #0d3a71;
+      font-weight: 500;
+    }
+    #status span#latest-post {
+      max-width: 100%;
+    }
+  }
+  #happening{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+      position: relative; 
+  }
+  #happening{
+    font-size: 20px;
+  }
+  #status p {
+    margin: 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    display: flex
+;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+}
+#get-started-popup {
+  position: absolute;
+  background-color: #1c74e4;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(28, 116, 228, 0.6);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.popup-visible {
+  opacity: 1;
+  pointer-events: none;
+  transform: translateY(0);
+}
+
+.popup-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 </style>
