@@ -5,6 +5,8 @@ const express = require("express");
 const app = express();
 const User = require("./models/user");
 const jwt = require("jsonwebtoken");
+require("dns").setServers(["8.8.8.8"]);
+
 const http = require("http").createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(http);
@@ -54,6 +56,7 @@ async function connectDB() {
   }
 }
 connectDB();
+console.log(process.env.MONGO_URI);
 // create token
 const maxAge = 3 * 24 * 60 * 60 * 100;
 const createToken = (id) => {
@@ -177,9 +180,12 @@ app.get("/profile", async (req, res) => {
   const postId = req.params.postId;
   const user = await User.findById(userId);
   // Fetch posts created by this user
-  const posts = await Post.find({ userId: userId });
-  const fetchJournal = await journal.find({ userId });
-  const comments = await comment.find({ userId }).populate("userId", "name");
+  const posts = await Post.find({ userId: userId }).sort({ createdAt: -1 });
+  const fetchJournal = await journal.find({ userId }).sort({ date: -1 });
+  const comments = await comment
+    .find({ userId })
+    .populate("userId", "name")
+    .sort({ createdAt: -1 });
   res.render("profile", {
     user,
     posts,

@@ -164,13 +164,11 @@ section#comment-area {
   justify-content: left;
   align-items: baseline;
   gap: 7px;
-  padding: 37px;
 }
 section#comments {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+
 }
 form {
   display: flex;

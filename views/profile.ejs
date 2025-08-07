@@ -376,4 +376,77 @@
  </main>
     <script src="/js/loading2.js"></script>
     </body>
+    <style>
+.mention {
+  background-color: var(--Blue--);
+  color: var(--White--);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mention-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #111;
+  border: 2px solid #1c74e4;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-family: Poppins, sans-serif;
+  animation: fadeIn 0.2s ease-in-out;
+}
+section#text {
+    flex-wrap: wrap;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -30%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0%);
+  }
+}
+
+</style>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const commentParagraphs = document.querySelectorAll('#comments .comment-fetch p');
+
+    commentParagraphs.forEach(p => {
+      const text = p.textContent;
+
+      // Turn @mentions into span.mention
+      const formatted = text.replace(/(@\w+)/g, '<span class="mention">$1</span>');
+      p.innerHTML = formatted;
+    });
+
+    // Add click event to all mentions
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('mention')) {
+        showMentionPopup();
+      }
+    });
+
+    function showMentionPopup() {
+      // Remove any existing popup first
+      const existing = document.querySelector('.mention-popup');
+      if (existing) existing.remove();
+
+      const popup = document.createElement('div');
+      popup.classList.add('mention-popup');
+      popup.textContent = 'Ciphree is anonymous — no profiles for mentions.';
+
+      document.body.appendChild(popup);
+
+      // Auto-hide after 3 seconds
+      setTimeout(() => popup.remove(), 3000);
+    }
+  });
+</script>
 </html>
