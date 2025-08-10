@@ -317,7 +317,18 @@
 
         </form>
       </section>
-      
+      <section id="comment-area">
+  <h1>Note:</h1>
+  <% if (userLoggedIn) { %>
+    <form action="/comments/<%= post._id %>/comment" method="post">
+      <input type="text" name="message" id="message" />
+      <input type="submit" value="Submit" id="submit" />
+    </form>
+  <% } else { %>
+    <p>Please <a href="/signin">sign in</a> to post a comment.</p>
+  <% } %>
+</section>
+
      <script>
   const textarea = document.getElementById("monami-input");
   const charCount = document.getElementById("char-count");

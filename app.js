@@ -384,6 +384,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
+// POST route to add a comment — login required
 app.post("/comments/:postId/comment", async (req, res) => {
   const postId = req.params.postId;
   const { message } = req.body;
@@ -401,32 +402,45 @@ app.post("/comments/:postId/comment", async (req, res) => {
     });
     await newComment.save();
     console.log("New comment saved:", newComment);
-    res.redirect(`/comments/${postId}`); // Use actual postId here
+    res.redirect(`/comments/${postId}`); // redirect back to comments page
   } catch (error) {
     console.error("Error saving comment:", error);
     res.status(500).send("Failed to save comment");
   }
 });
+
+// GET route to view comments — NO login required (allow indexing)
 app.get("/comments/:postId", async (req, res) => {
   try {
     const postId = req.params.postId;
     const token = req.cookies.User;
-    // if (!token) return res.redirect("/signin");
 
-    // const decoded = jwt.verify(token, "sec");
-    // const userId = decoded.id;
+    // Decode token if present, to detect login
+    let userLoggedIn = false;
+    let userId = null;
+    if (token) {
+      try {
+        const decoded = jwt.verify(token, "sec");
+        userLoggedIn = true;
+        userId = decoded.id;
+      } catch {
+        userLoggedIn = false;
+      }
+    }
 
     const post = await Post.findById(postId).populate("userId", "name");
     if (!post) return res.redirect("/error");
 
     const comments = await comment.find({ postId }).populate("userId", "name");
 
-    res.render("comments", { postId, post, comments });
+    // Render with info about login status
+    res.render("comments", { postId, post, comments, userLoggedIn });
   } catch (err) {
     console.error(err);
     res.render("error");
   }
 });
+
 app.post("/comments/:id/like", async (req, res) => {
   try {
     const userId = req.cookies.User;
