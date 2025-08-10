@@ -196,24 +196,21 @@ app.get("/profile", async (req, res) => {
     comments,
   });
 });
-app.get("/comments", (req, res) => {
-  res.render("comments");
-});
 app.get("/comment/:postId", async (req, res) => {
   const postId = req.params.postId;
   const posts = await Post.findById(postId).populate("userId", "name");
 
-  const token = req.cookies.User;
-  if (!token) {
-    return res.redirect("/signin");
-  }
-  const decoded = jwt.verify(token, "sec");
-  const userId = decoded.id;
+  // const token = req.cookies.User;
+  // if (!token) {
+  //   return res.redirect("/signin");
+  // }
+  // const decoded = jwt.verify(token, "sec");
+  // const userId = decoded.id;
   const comments = await comment.find({ postId }).populate("userId", "name");
   console.log(postId);
-  console.log(userId);
+  // console.log(userId);
   console.log(comments);
-  res.render("comments", { postId, userId, posts, comments });
+  res.render("comments", { postId, posts, comments });
 });
 app.get("/admin", async (req, res) => {
   let feedbacks = await feedback.find();
@@ -414,17 +411,17 @@ app.get("/comments/:postId", async (req, res) => {
   try {
     const postId = req.params.postId;
     const token = req.cookies.User;
-    if (!token) return res.redirect("/signin");
+    // if (!token) return res.redirect("/signin");
 
-    const decoded = jwt.verify(token, "sec");
-    const userId = decoded.id;
+    // const decoded = jwt.verify(token, "sec");
+    // const userId = decoded.id;
 
     const post = await Post.findById(postId).populate("userId", "name");
     if (!post) return res.redirect("/error");
 
     const comments = await comment.find({ postId }).populate("userId", "name");
 
-    res.render("comments", { postId, userId, post, comments });
+    res.render("comments", { postId, post, comments });
   } catch (err) {
     console.error(err);
     res.render("error");
