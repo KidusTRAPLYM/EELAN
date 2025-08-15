@@ -216,6 +216,24 @@ app.get("/admin", async (req, res) => {
   let feedbacks = await feedback.find();
   res.render("admin", { feedbacks });
 });
+// Route for subdomain
+app.use((req, res, next) => {
+  if (req.hostname === "monami.ciphree.com") {
+    // Option 1: render the monami page directly
+    return res.render("monamipure", {
+      response: null,
+      error: null,
+      userMessage: null,
+      chatHistory: "There is no chat history for now!",
+    });
+
+    // Option 2: redirect to the same route
+    // return res.redirect("/monami");
+  }
+  next();
+});
+
+// Normal /monami route
 app.get("/monami", (req, res) => {
   res.render("monamipure", {
     response: null,
@@ -223,19 +241,6 @@ app.get("/monami", (req, res) => {
     userMessage: null,
     chatHistory: "There is no chat history for now!",
   });
-});
-
-app.get("*", (req, res, next) => {
-  // Check if the request is coming from the subdomain monami.ciphree.com
-  if (req.hostname === "monami.ciphree.com") {
-    return res.render("monamipure", {
-      response: null,
-      error: null,
-      userMessage: null,
-      chatHistory: "There is no chat history for now!",
-    });
-  }
-  next(); // Continue to other routes for non-subdomain requests
 });
 
 const WIKI_API_URL = "https://en.wikipedia.org/w/api.php";
