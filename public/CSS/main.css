@@ -136,7 +136,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 25px;
+    gap: 19px;
     /* align-items: center; */
 
     padding-left: 8px;
@@ -201,7 +201,7 @@ ul {
     padding-left: 0;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    gap: 10px;
+    gap: 0px;
   }
 
   #slide-bar li a {

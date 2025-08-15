@@ -2,51 +2,158 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ciphree | Monami</title>
-    <link rel="stylesheet" href="/CSS/variables.css" />
-    <link rel="stylesheet" href="/CSS/monami.css">
-    <link rel="stylesheet" href="/CSS/main.css" />
-      <link rel="icon" href="/Images/ciphry.png">
-   
-    <!--FONT FAMILY-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Monami</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body>
-    <div id="loader" class="loader"> 
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-</div>
-<script>
-  window.addEventListener("load", function () {
-    const loader = document.getElementById("loader");
-    loader.style.opacity = 0; // fade out
-    setTimeout(() => {
-      loader.style.display = "none"; // remove from DOM flow
-    }, 400); // match with CSS transition
-  });
-</script>
 
-    <section id="body" class="body">
-      <h1>Monami</h1>
-        <h2>We are out of order</h2>
-        <p>Monami2 is arriving with higher speed and greater efficiency.
-For privacy and security reasons, Monami 1.5 has been officially discontinued. </p>
-      </section>
-      
-    </section>
+  <body class="font-poppins bg-white flex flex-col items-center">
+    <!-- Title -->
+    <h1 class="text-blue-500 text-3xl font-bold p-4">Monami</h1>
+
+    <!-- Note -->
+    <div class="flex justify-center w-full p-4">
+      <p class="text-gray-500 text-sm text-center">
+        Note: Monami is still in development and may give inaccurate answers.
+        Use it to check facts, not as a friend.
+      </p>
+    </div>
+
+    <!-- Chat Content -->
+    <div id="content" class="w-full max-w-2xl flex-1 overflow-y-auto p-5 pb-28">
+      <% chatHistory.forEach((chat, index) => { %>
+      <!-- User message -->
+      <div class="flex justify-end p-5">
+        <div class="p-4 rounded-lg bg-gray-200 text-left">
+          <p><%= chat.user %></p>
+        </div>
+      </div>
+
+      <!-- Bot message -->
+      <div class="flex w-full">
+        <div class="text-black p-4 rounded-lg w-full">
+          <p
+            class="chat-response <%= index === chatHistory.length - 1 ? 'latest-response' : '' %>"
+          >
+            <%= chat.bot %>
+          </p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <!-- Form -->
+    <form
+      action="/chat"
+      method="POST"
+      class="fixed bottom-3 w-[90%] max-w-[700px] flex justify-center items-center p-4 bg-white border border-gray-300 rounded-lg"
+    >
+      <div class="px-4 w-full flex gap-5 justify-between items-center">
+        <!-- Input -->
+        <input
+          type="text"
+          name="message"
+          placeholder="Ask me anything..."
+          required
+          autocomplete="off"
+          class="focus:outline-none w-full p-4"
+        />
+
+        <!-- Clear Button -->
+        <button type="submit" formaction="/clear">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="0.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-badge-x-icon lucide-badge-x"
+          >
+            <path
+              d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+            />
+            <line x1="15" x2="9" y1="9" y2="15" />
+            <line x1="9" x2="15" y1="9" y2="15" />
+          </svg>
+        </button>
+
+        <!-- Send Button -->
+        <button type="submit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-send-horizontal-icon lucide-send-horizontal"
+          >
+            <path
+              d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"
+            />
+            <path d="M6 12h16" />
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <!-- Typing effect script -->
+    <script>
+      function typeTextWithDot(element, text, speed = 50) {
+        let index = 0;
+        element.innerHTML = "";
+
+        const dot = document.createElement("span");
+        dot.classList.add(
+          "inline-block",
+          "w-2",
+          "h-2",
+          "bg-black",
+          "rounded-full",
+          "ml-1"
+        );
+        element.appendChild(dot);
+
+        const interval = setInterval(() => {
+          if (index < text.length) {
+            element.insertBefore(document.createTextNode(text[index]), dot);
+            index++;
+          } else {
+            clearInterval(interval);
+            dot.remove();
+          }
+        }, speed);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const latest = document.querySelector(".latest-response");
+        if (latest) {
+          const text = latest.textContent;
+          typeTextWithDot(latest, text, 30);
+        }
+      });
+    </script>
   </body>
 </html>
-<style>
-  h1,p,h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  h1{
-    font-size: 50px;
-  }
-</style>

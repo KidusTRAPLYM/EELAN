@@ -14,8 +14,7 @@ const io = new Server(http);
 const axios = require("axios");
 const dotenv = require("dotenv");
 const feedback = require("./models/feedback.js");
-const { InferenceClient } = require("@huggingface/inference");
-const monami = require("./models/monami.js");
+
 const { OAuth2Client } = require("google-auth-library");
 
 dotenv.config();
@@ -32,6 +31,7 @@ const URL = process.env.MONGO_URI;
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const journal = require("./models/journal.js");
+
 // middleware
 
 app.use(cors());
@@ -217,30 +217,70 @@ app.get("/admin", async (req, res) => {
   res.render("admin", { feedbacks });
 });
 app.get("/monami", async (req, res) => {
-  const token = req.cookies.User;
-  if (!token) {
-    console.log("No token found in cookies");
-    return res.redirect("/signin"); // or send error page
-  }
+  res.render("monamipure", {
+    response: null,
+    error: null,
+    userMessage: null,
+    chatHistory: "There is no chat history for now!",
+  });
+});
+
+const WIKI_API_URL = "https://en.wikipedia.org/w/api.php";
+async function searchWikipedia(query) {
   try {
-    const decoded = jwt.verify(token, "sec");
-    const userId = decoded.id;
+    const searchResponse = await axios.get(WIKI_API_URL, {
+      params: {
+        action: "query",
+        format: "json",
+        list: "search",
+        srsearch: query,
+      },
+    });
 
-    const userChats = await monami.find({ userId }).limit(30);
-    console.log(userId);
-    res.render("monami", { userChats });
+    const pageTitle = searchResponse.data.query.search[0].title;
+
+    const pageResponse = await axios.get(WIKI_API_URL, {
+      params: {
+        action: "query",
+        format: "json",
+        prop: "extracts",
+        exintro: true,
+        explaintext: true,
+        titles: pageTitle,
+      },
+    });
+
+    const pages = pageResponse.data.query.pages;
+    const page = pages[Object.keys(pages)[0]];
+
+    let text = page.extract || "No information found.";
+
+    // Extract only the first paragraph
+    const firstParagraph = text.split("\n")[0]; // split by line breaks
+
+    return firstParagraph;
   } catch (err) {
-    console.error("Error fetching user chats:", err);
-    console.log(token);
-    res.render("error");
+    console.error(err);
+    return "An error has occured! Please try again";
   }
+}
+
+const chatHistory = []; // this stays in memory
+
+app.post("/chat", async (req, res) => {
+  const userMessage = req.body.message;
+
+  // Get Wikipedia answer
+  const response = await searchWikipedia(userMessage);
+
+  // Store in memory
+  chatHistory.push({ user: userMessage, bot: response });
+
+  res.render("monami", {
+    chatHistory,
+  });
 });
 
-// Post functions
-app.post("/chat", (req, res) => {
-  const { username, tagInput } = req.body;
-  res.render("chat", { username, tag: tagInput });
-});
 io.on("connection", (socket) => {
   // When user sets username & tag, join the tag room
   socket.on("setUser", ({ username, tag }) => {

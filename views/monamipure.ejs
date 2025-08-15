@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Monami</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-poppins bg-white">
+    <h1 class="text-blue-500 flex justify-center text-3xl p-4">
+      <b>Monami</b>
+    </h1>
+    <div class="note flex justify-center items-center w-full p-4">
+      <p class="text-gray-500 text-sm">
+        Note: Monami is still in development and may give inaccurate answers.
+        Use it to check facts, not as a friend.
+      </p>
+    </div>
+
+    <form
+      action="/chat"
+      method="POST"
+      class="fixed bottom-3 flex justify-center items-center p-4 bg-white border border-gray-300 flex justify-center align-center rounded-lg place-center"
+    >
+      <div class="w-full flex gap-5 justify-between items-center">
+        <textarea
+          type="text"
+          name="message"
+          placeholder="Ask me anything..."
+          required=""
+          autocomplete="off"
+          class="focus:outline-none w-full p-4"
+        >
+Ask your question</textarea
+        >
+
+        <button type="submit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-send-horizontal-icon lucide-send-horizontal"
+          >
+            <path
+              d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"
+            ></path>
+            <path d="M6 12h16"></path>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </body>
+</html>
+<style>
+  #chat-response {
+    white-space: pre-wrap;
+    color: black;
+    padding: 1rem;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .typing-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: black; /* solid dot */
+    border-radius: 50%;
+    margin-left: 2px;
+  }
+</style>
+<script>
+  function typeTextWithDot(element, text, speed = 50) {
+    let index = 0;
+    element.innerHTML = ""; // clear previous content
+
+    // Create the typing dot dynamically
+    const dot = document.createElement("span");
+    dot.classList.add("typing-dot");
+    element.appendChild(dot);
+
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        element.insertBefore(document.createTextNode(text[index]), dot);
+        index++;
+      } else {
+        clearInterval(interval);
+        dot.remove(); // remove dot after typing
+      }
+    }, speed);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const responseElement = document.getElementById("chat-response");
+    if (responseElement) {
+      const fullText = responseElement.textContent;
+      typeTextWithDot(responseElement, fullText, 30);
+    }
+  });
+</script>
+
+<style>
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+    width: 90%;
+    display: flex;
+    bottom: 3%;
+    transform: translate(50%);
+    right: 50%;
+    height: 100px;
+    max-width: 700px;
+  }
+  textarea {
+    resize: none;
+  }
+</style>
