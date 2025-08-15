@@ -216,13 +216,26 @@ app.get("/admin", async (req, res) => {
   let feedbacks = await feedback.find();
   res.render("admin", { feedbacks });
 });
-app.get("/monami", async (req, res) => {
+app.get("/monami", (req, res) => {
   res.render("monamipure", {
     response: null,
     error: null,
     userMessage: null,
     chatHistory: "There is no chat history for now!",
   });
+});
+
+app.get("*", (req, res, next) => {
+  // Check if the request is coming from the subdomain monami.ciphree.com
+  if (req.hostname === "monami.ciphree.com") {
+    return res.render("monamipure", {
+      response: null,
+      error: null,
+      userMessage: null,
+      chatHistory: "There is no chat history for now!",
+    });
+  }
+  next(); // Continue to other routes for non-subdomain requests
 });
 
 const WIKI_API_URL = "https://en.wikipedia.org/w/api.php";
@@ -280,7 +293,10 @@ app.post("/chat", async (req, res) => {
     chatHistory,
   });
 });
-
+app.post("/clear", (req, res) => {
+  chatHistory = []; // reset chat history
+  res.redirect("/monami"); // reload page with empty chat
+});
 io.on("connection", (socket) => {
   // When user sets username & tag, join the tag room
   socket.on("setUser", ({ username, tag }) => {
