@@ -22,7 +22,7 @@ const comment = require("./models/comment.js");
 const Post = require("./models/post-traply");
 const journals = require("./models/journal.js");
 
-const PORT = 9999;
+const PORT = process.env.PORT || 9999;
 require("dotenv").config();
 
 // 2. MongoDB connection URL from .env
