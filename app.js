@@ -217,19 +217,6 @@ app.get("/admin", async (req, res) => {
   res.render("admin", { feedbacks });
 });
 // Route for subdomain
-// Subdomain route
-app.get("*", (req, res, next) => {
-  const host = req.hostname.split(":")[0]; // remove port if any
-  if (host === "monami.ciphree.com") {
-    return res.render("monamipure", {
-      response: null,
-      error: null,
-      userMessage: null,
-      chatHistory: "There is no chat history for now!",
-    });
-  }
-  next(); // continue to normal routes
-});
 
 // Normal /monami route
 app.get("/monami", (req, res) => {
