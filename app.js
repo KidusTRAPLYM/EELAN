@@ -228,65 +228,65 @@ app.get("/monami", (req, res) => {
   });
 });
 
-const WIKI_API_URL = "https://en.wikipedia.org/w/api.php";
-async function searchWikipedia(query) {
-  try {
-    const searchResponse = await axios.get(WIKI_API_URL, {
-      params: {
-        action: "query",
-        format: "json",
-        list: "search",
-        srsearch: query,
-      },
-    });
+// const WIKI_API_URL = "https://en.wikipedia.org/w/api.php";
+// async function searchWikipedia(query) {
+//   try {
+//     const searchResponse = await axios.get(WIKI_API_URL, {
+//       params: {
+//         action: "query",
+//         format: "json",
+//         list: "search",
+//         srsearch: query,
+//       },
+//     });
 
-    const pageTitle = searchResponse.data.query.search[0].title;
+//     const pageTitle = searchResponse.data.query.search[0].title;
 
-    const pageResponse = await axios.get(WIKI_API_URL, {
-      params: {
-        action: "query",
-        format: "json",
-        prop: "extracts",
-        exintro: true,
-        explaintext: true,
-        titles: pageTitle,
-      },
-    });
+//     const pageResponse = await axios.get(WIKI_API_URL, {
+//       params: {
+//         action: "query",
+//         format: "json",
+//         prop: "extracts",
+//         exintro: true,
+//         explaintext: true,
+//         titles: pageTitle,
+//       },
+//     });
 
-    const pages = pageResponse.data.query.pages;
-    const page = pages[Object.keys(pages)[0]];
+//     const pages = pageResponse.data.query.pages;
+//     const page = pages[Object.keys(pages)[0]];
 
-    let text = page.extract || "No information found.";
+//     let text = page.extract || "No information found.";
 
-    // Extract only the first paragraph
-    const firstParagraph = text.split("\n")[0]; // split by line breaks
+//     // Extract only the first paragraph
+//     const firstParagraph = text.split("\n")[0]; // split by line breaks
 
-    return firstParagraph;
-  } catch (err) {
-    console.error(err);
-    return "An error has occured! Please try again";
-  }
-}
+//     return firstParagraph;
+//   } catch (err) {
+//     console.error(err);
+//     return "An error has occured! Please try again";
+//   }
+// }
 
-const chatHistory = []; // this stays in memory
+// const chatHistory = []; // this stays in memory
 
-app.post("/chat", async (req, res) => {
-  const userMessage = req.body.message;
+// app.post("/chat", async (req, res) => {
+//   const userMessage = req.body.message;
 
-  // Get Wikipedia answer
-  const response = await searchWikipedia(userMessage);
+//   // Get Wikipedia answer
+//   const response = await searchWikipedia(userMessage);
 
-  // Store in memory
-  chatHistory.push({ user: userMessage, bot: response });
+//   // Store in memory
+//   chatHistory.push({ user: userMessage, bot: response });
 
-  res.render("monami", {
-    chatHistory,
-  });
-});
-app.post("/clear", (req, res) => {
-  chatHistory = []; // reset chat history
-  res.redirect("/monami"); // reload page with empty chat
-});
+//   res.render("monami", {
+//     chatHistory,
+//   });
+// });
+// app.post("/clear", (req, res) => {
+//   chatHistory = []; // reset chat history
+//   res.redirect("/monami"); // reload page with empty chat
+// });
 io.on("connection", (socket) => {
   // When user sets username & tag, join the tag room
   socket.on("setUser", ({ username, tag }) => {
