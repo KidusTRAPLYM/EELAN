@@ -71,12 +71,15 @@
       </p>
       <p class="mb-4 font-semibold">Are you ready to explore?</p>
       <div class="flex justify-center items-center gap-2">
-        <button
-          id="nahBtn1"
-          class="bg-gray-300 hover:bg-gray-400 px-3 py-2 rounded"
-        >
-          Nah I am good
-        </button>
+        <a href="/morerror">
+          <button
+            id="nahBtn1"
+            class="bg-gray-300 hover:bg-gray-400 px-3 py-2 rounded"
+          >
+            Nah I am good
+          </button>
+        </a>
+
         <button
           id="yesBtn1"
           class="bg-blue-600 text-white hover:bg-blue-700 px-3 py-2 rounded"
@@ -193,11 +196,6 @@
       const signupBtn = document.getElementById("signupBtn");
 
       // Section1 buttons
-      document.getElementById("nahBtn1").addEventListener("click", () => {
-        // Show section 3, hide section 1 immediately
-        section1.classList.remove("active");
-        section3.classList.add("active");
-      });
 
       document.getElementById("yesBtn1").addEventListener("click", () => {
         section1.classList.remove("active");
@@ -255,8 +253,9 @@
         section3.classList.remove("active");
       });
     </script>
-
     <style>
+      /* Add this to your */
+
       body {
         position: relative;
         min-height: 100vh;
