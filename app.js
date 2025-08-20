@@ -58,7 +58,8 @@ async function connectDB() {
 connectDB();
 console.log(process.env.MONGO_URI);
 // create token
-const maxAge = 3 * 24 * 60 * 60 * 100;
+const maxAge = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
+
 const createToken = (id) => {
   return jwt.sign({ id }, "sec", { expiresIn: maxAge });
 };
@@ -66,17 +67,33 @@ const createToken = (id) => {
 // Get route functions
 
 app.get("/", async (req, res) => {
-  res.render("more");
+  const token = req.cookies.User;
+  if (!token) return res.render("more", { section4Active: false });
+
+  try {
+    const decoded = jwt.verify(token, "sec");
+    const user = await User.findById(decoded.id);
+    if (!user) return res.render("more", { section4Active: false });
+    res.redirect("/landing");
+  } catch {
+    res.render("more", { section4Active: false });
+  }
 });
+
 app.get("/landing", async (req, res) => {
   const token = req.cookies.User;
-  if (!token) {
-    return res.redirect("/signin"); // Redirect if not authenticated
+  if (!token) return res.redirect("/signin");
+
+  try {
+    const decoded = jwt.verify(token, "sec");
+    const user = await User.findById(decoded.id);
+    if (!user) return res.redirect("/signin");
+
+    res.render("landing", { user, posts: [], PORT }); // ensure EJS template exists
+  } catch (err) {
+    console.error(err);
+    res.redirect("/signin");
   }
-  const decoded = jwt.verify(token, "sec");
-  const userId = decoded.id;
-  const user = await User.findById(userId);
-  res.render("landing", { user });
 });
 
 app.get("/feed", async (req, res) => {
@@ -195,6 +212,9 @@ app.get("/profile", async (req, res) => {
     fetchJournal,
     comments,
   });
+});
+app.get("/guest", (req, res) => {
+  res.render("landing2");
 });
 app.get("/comment/:postId", async (req, res) => {
   const postId = req.params.postId;
@@ -408,25 +428,33 @@ app.post("/signin", async (req, res) => {
     console.log(err);
   }
 });
+app.get("/check-name", async (req, res) => {
+  const { name } = req.query;
+  const user = await User.findOne({ name });
+  res.json({ exists: !!user });
+});
+app.get("/morerror", (req, res) => {
+  res.render("morerror");
+});
 app.post("/register", async (req, res) => {
   const { name, password } = req.body;
   try {
     const user = await User.create({ name, password });
     const token = createToken(user._id);
+
     res.cookie("User", token, {
-      maxAge: maxAge,
+      maxAge,
       httpOnly: true,
       secure: false,
+      sameSite: "lax",
     });
-    res.redirect("/home");
+
+    // Redirect to landing, where token is verified
+    res.redirect("/landing");
   } catch (err) {
     let errorMessage = "The name is taken";
-    if (err.code === 11000) {
-      errorMessage = "The name is taken ";
-    }
-    console.log(`An error has occurred. ${err}`);
-    res.render("registererr", { errorMessage });
-    console.log(errorMessage);
+    if (err.code === 11000) errorMessage = "The name is taken";
+    res.render("morerror", { errorMessage });
   }
 });
 

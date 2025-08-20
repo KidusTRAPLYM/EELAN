@@ -26,19 +26,6 @@
       src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"
     ></script>
     <title>Ciphree | Home</title>
-    <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            poppins: ["Poppins", "sans-serif"],
-          },
-        },
-      },
-    };
-  </script>
   </head>
   <body>
    <nav id="slide-bar">
@@ -107,7 +94,7 @@
       </ul>
     </nav>
     <main class="main-content" id="main-content">
-      <div class="greeting" id="greeting">Hi, <%=user.name%></div>
+      <div class="greeting" id="greeting">Hi there, </div>
       <div class="question">What do you want to do today?</div>
       <section id="actions">
         <div class="actions">
@@ -157,30 +144,6 @@
 
         </form>
       </section>
-      <!-- Video Popup Modal -->
-<!-- Video Popup Modal -->
-<!-- Video Popup Modal -->
-<div id="videoPopup" class="modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-  <div class="popup-content bg-white p-6 rounded-lg max-w-lg w-full text-center relative">
-    <button id="closePopup" style="position:absolute; top:10px; right:10px; font-size: 1.5rem; background:none; border:none; cursor:pointer;">×</button>
-    <h2 class="text-lg font-bold mb-4 text-blue-500">
-      If you are confused where to start, we have a YouTube video for you
-    </h2>
-    <img src="/Images/how to get started.png" id="imgg" alt="" />
-    <div class="flex justify-center gap-2 mt-4">
-      <button id="nahBtn3" class="bg-gray-300 hover:bg-gray-400 text-black px-3 py-2 rounded w-full">
-        Nah, I’m good
-      </button>
-      <button id="videoBtn" class="bg-blue-600 text-white hover:bg-blue-700 text-white px-3 py-2 rounded w-full">
-        See the video
-      </button>
-    </div>
-  </div>
-</div>
-
-</div>
-
-
   </body>
   <script>
   const textarea = document.getElementById("monami-input");
@@ -220,30 +183,6 @@
       typeInput.setCustomValidity("");
     }
   });
-document.addEventListener("DOMContentLoaded", () => {
-  const videoPopup = document.getElementById("videoPopup");
-  const closePopup = document.getElementById("closePopup");
-  const nahBtn3 = document.getElementById("nahBtn3");
-  const videoBtn = document.getElementById("videoBtn");
-
-  // The popup is visible by default on page load
-
-  // Close popup when "×" button clicked
-  closePopup.addEventListener("click", () => {
-    videoPopup.style.display = "none";
-  });
-
-  // Close popup when "Nah, I'm good" clicked
-  nahBtn3.addEventListener("click", () => {
-    videoPopup.style.display = "none";
-  });
-
-  // Open video link in new tab when "See the video" clicked
-  videoBtn.addEventListener("click", () => {
-    window.open("https://www.youtube.com/watch?v=UAFe9Msnv5E", "_blank");
-  });
-});
-
 </script>
 </html>
 <style>
@@ -356,40 +295,4 @@ document.addEventListener("DOMContentLoaded", () => {
     padding: 0 5vw; /* optional: side spacing for large screens */
     box-sizing: border-box;
   }
- .modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.popup-content {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-}
-img.max-w-xsm.w-full
- {
-    width: 100%;
-    max-width: 450px;
-}
-#imgg{
-    display: flex
-;
-    /* flex-wrap: wrap; */
-    width: 100%;
-    gap: 20px;
-    padding: 20px;
-}
-#slide-bar li a{
-  padding: 16px;
-}
-
 </style>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/Images/ciphry.png" />
+
+    <title>Ciphree — Share Your True Feelings, Connect, and Heal</title>
+    <link rel="canonical" href="https://ciphree.com/" />
+
+    <meta
+      name="description"
+      content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
+    />
+  <!-- Open Graph / Facebook -->
+<meta property="og:title" content="Ciphree — Share Your True Feelings, Connect, and Heal" />
+<meta property="og:description" content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people." />
+<meta property="og:url" content="https://ciphree.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://ciphree.com/Images/ciphry.png" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ciphree — Share Your True Feelings, Connect, and Heal" />
+<meta name="twitter:description" content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people." />
+<meta name="twitter:image" content="https://ciphree.com/Images/ciphry.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MM8VSWME23');
+</script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ["Poppins", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+
+  </head>
+<body class="font-poppins h-screen  rounded box-shadow flex flex-col justify-center items-center   ">
+
+
+
+<!-- Section 2 -->
+<section id="section1" class="container border p-10 w-full max-w-lg rounded-lg gap-4">
+  <h2 class="text-2xl font-bold mb-4 text-blue-500">So let’s get started</h2>
+
+  <form action="/register" method="post" class="flex flex-col justify-center items-center gap-4">
+    <p class="mb-2">What shall we call you?</p>
+    <span class="name">
+      <input type="text" name="name" id="name" placeholder="Name" class="w-full border focus:outline-blue-500" />
+    </span>
+
+    <span class="password">
+      <input type="text" name="password" id="password" placeholder="Password" class="w-full border focus:outline-blue-500" />
+    </span>
+    <p>The name is taken</p>
+    <span class="flex flex-wrap w-full justify-center items-center gap-2">
+      <button id="signupBtn" type="submit" class="bg-gray-300 hover:bg-gray-400 w-full">Sign-up</button>
+      <a href="/guest" class="w-full">
+        <button id="guestBtn" type="button" class="bg-blue-600 text-white hover:bg-blue-700 w-full">Guest login</button>
+      </a>
+    </span>
+  </form>
+</section>
+
+<script>
+  const nameInput = document.getElementById("name");
+  const form = document.querySelector("form");
+
+  // Function to check name with server
+  async function checkName(name) {
+    if (!name) return false; // ignore empty
+    const res = await fetch(`/check-name?name=${encodeURIComponent(name)}`);
+    const data = await res.json();
+    return data.exists; // true if name exists
+  }
+
+  // Live feedback while typing
+  nameInput.addEventListener("input", async () => {
+    const exists = await checkName(nameInput.value.trim());
+    if (exists) {
+      nameInput.style.borderColor = "red";
+    } else {
+      nameInput.style.borderColor = "";
+    }
+  });
+
+  // Check again on submit
+  form.addEventListener("submit", async (e) => {
+    const exists = await checkName(nameInput.value.trim());
+    if (exists) {
+      e.preventDefault();
+      alert("This name is already taken. Please choose another.");
+      nameInput.focus();
+    }
+  });
+</script>
+
+
+<!-- Section 3 -->
+<section id="section2"class=" container border  p-10 w-full  max-w-lg rounded-lg">
+  <h2 class="text-2xl font-bold mb-4 text-blue-500">If you are confused where to start, we have a YouTube video for you</h2>
+  <img src="/Images/how to get started.png" alt="">
+  <a href="/landing"> <button id="nahBtn3" class="bg-gray-300 hover:bg-gray-400">Nah, I’m good</button></a>
+ 
+  <button id="videoBtn" class="bg-blue-600 text-white hover:bg-blue-700">See the video</button>
+</section>
+<!-- Section 4 -->
+<div id="exitPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"> 
+  <div class="bg-white text-black p-6 rounded-xl max-w-md w-full shadow-lg text-center space-y-4"> 
+    <h2 class="text-xl font-bold">Wait! Before you go...</h2> 
+    <p>Could you share a quick thought about your experience on Ciphree?</p> 
+    <form action="/feedback" method="post">
+    <textarea class="w-full border border-gray-300 rounded p-2" rows="3" placeholder="Type here..." name="message"></textarea>
+    <div class="flex justify-end gap-4">
+      <button type="button" onclick="closePopup()" class="text-sm px-4 py-2 rounded bg-gray-200">Close</button>
+      <button id="sendFeedback" type="submit" class="text-sm px-4 py-2 rounded bg-blue-600 text-white">Send</button>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+<script>
+const section1 = document.getElementById('section1');
+const section2 = document.getElementById('section2');
+const exitPopup = document.getElementById("exitPopup");
+
+// Show feedback popup when user clicks "Nah I am good"
+document.getElementById('nahBtn1').addEventListener('click', () => {
+  section1.classList.remove('active'); // hide section1
+  exitPopup.classList.remove('hidden'); 
+  exitPopup.classList.add('show'); // show popup
+});
+
+// Close popup function
+function closePopup() {
+  exitPopup.classList.remove('show');
+  section1.classList.add('active'); // go back to section1 if needed
+}
+
+// Show section2 if they click "Hell yeah"
+document.getElementById('yesBtn1').addEventListener('click', () => {
+  section1.classList.remove('active');
+  section2.classList.add('active');
+});
+
+// Move to section3 after signup or guest login
+const goToSection3 = () => {
+
+  section2.classList.remove('active');
+  section3.classList.add('active');
+};
+
+document.getElementById('signupBtn').addEventListener('click', goToSection3);
+document.getElementById('guestBtn').addEventListener('click', goToSection3);
+
+// Section3 buttons
+document.getElementById('nahBtn3').addEventListener('click', () => {
+  alert("Alright, maybe explore later!");
+  section3.classList.remove('active');
+});
+
+document.getElementById('videoBtn').addEventListener('click', () => {
+  window.open('https://www.youtube.com/watch?v=UAFe9Msnv5E', '_blank');
+});
+
+// Show "Message sent!" after sending feedback
+document.getElementById('sendFeedback').addEventListener('click', () => {
+  alert("Message sent! Thank you for your feedback.");
+  exitPopup.classList.remove('show');
+});
+</script>
+
+<style>
+#exitPopup { display: none; }
+#exitPopup.show { display: flex; }
+</style>
+</html>
+<style>
+  section { display: none; margin-top: 2rem; text-align: center; background-color: white; }
+  section.active { display: block; }
+  input { padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.3rem; }
+  button { padding: 0.8rem 1.5rem; margin: 0.5rem; cursor: pointer; font-size: 1rem; border-radius: 0.3rem; }
+  #exitPopup { display: none; } /* keep popup hidden by default */
+  #exitPopup.show { display: flex; }
+
+body {
+  position: relative;
+  height: 100vh;
+  background: url(/Images/background.png) center center / cover no-repeat fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+  overflow: hidden;
+  perspective: 1500px;
+}
+
+/* Overlay */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 101, 234, 0.612); /* blue tint */
+  mix-blend-mode: multiply;
+  backdrop-filter: blur(6px);
+  transition: background-color 0.5s ease;
+  z-index: 0; /* 👈 stays behind */
+}
+
+/* Sections must sit above */
+section {
+  position: relative;
+  z-index: 1; /* 👈 ensures content is above overlay */
+  display: none;
+  margin-top: 2rem;
+  text-align: center;
+  background-color: white;
+}
+section.active {
+  display: block;
+}
+</style>

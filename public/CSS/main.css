@@ -206,7 +206,7 @@ ul {
 
   #slide-bar li a {
     width: auto !important;
-    padding: 10px 15px;
+    padding: 10px 9px;
     border-radius: 20px !important;
   }
   #slide-bar li a span {
@@ -257,7 +257,7 @@ ul {
 
   #slide-bar li a {
     width: auto !important;
-    padding: 8px 12px;
+    padding: 8px 9px;
     border-radius: 16px !important;
     white-space: nowrap;
   }

@@ -4,1084 +4,309 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/Images/ciphry.png" />
-
     <title>Ciphree — Share Your True Feelings, Connect, and Heal</title>
     <link rel="canonical" href="https://ciphree.com/" />
-
     <meta
       name="description"
       content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
     />
-  <!-- Open Graph / Facebook -->
-<meta property="og:title" content="Ciphree — Share Your True Feelings, Connect, and Heal" />
-<meta property="og:description" content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people." />
-<meta property="og:url" content="https://ciphree.com/" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://ciphree.com/Images/ciphry.png" />
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Ciphree — Share Your True Feelings, Connect, and Heal" />
-<meta name="twitter:description" content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people." />
-<meta name="twitter:image" content="https://ciphree.com/Images/ciphry.png" />
+    <!-- Open Graph / Facebook -->
+    <meta
+      property="og:title"
+      content="Ciphree — Share Your True Feelings, Connect, and Heal"
+    />
+    <meta
+      property="og:description"
+      content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
+    />
+    <meta property="og:url" content="https://ciphree.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://ciphree.com/Images/ciphry.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Ciphree — Share Your True Feelings, Connect, and Heal"
+    />
+    <meta
+      name="twitter:description"
+      content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ciphree.com/Images/ciphry.png"
+    />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MM8VSWME23');
-</script>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            poppins: ["Poppins", "sans-serif"],
-          },
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { fontFamily: { poppins: ["Poppins", "sans-serif"] } },
         },
-      },
-    };
-  </script>
-
-
+      };
+    </script>
   </head>
-  <body>
-    <nav>
-      <span><img src="/Images/ciphry.png" alt="" style="width: 50px;
-    height: 50px;"></span>
-      <a href="/register" class="cta">Get Started</a>
-    </nav>
-
-    <header>
-      
-      <div
-        class="content"
-        aria-label="Hero content with heading and description"
-      >
-        <h1>This Is Your Emotional Space.</h1>
-        <p>
-          From happiness to heartbreak, Ciphree helps you share and explore
-          every feeling with people who understand.
-           <p style="padding-top: 10px;">Scroll down to see more!</p>
-        </p>
- 
-       
-      </div>
-    </header>
-
-    <main class="container" role="main">
-       <div id="happening">
-      <h2 style="font-weight: bold;
-    padding: 10px;
-    font-size: 33px;">See what is happening</h2>
-    <div id="get-started-popup" class="popup-hidden">Click Get Started →</div>
-
-<div id="status">
-  <p><span id="online-count">42</span> people online</p>
-  <p>Latest post: <span id="latest-post">"Just dropped a new article!"</span></p>
-</div>
-     </div>
-      <section id="idea" aria-label="Idea Behind Ciphree" tabindex="-1">
-        <h2>About us - Ciphree</h2>
-        <div class="inner-content">
-<div class="text">
-            <p>
-              Ciphree was created with one goal: to give people a safe, honest space to share how they feel. Our AI connects you with others who feel the same through Match Up, while journaling lets you privately track your emotions.
-          </p>
-          <p>
-          Your privacy matters. We collect no personal data beyond a username and password, never sell your info, and keep your journals secure. With Monami—our emotion-focused AI in development—you’ll soon be able to explore your feelings in deeper, more personal ways.
-          </p>
-        </div>
-       <div class="see-how-it-works">
-          <iframe src="https://www.youtube.com/embed/UAFe9Msnv5E?si=fJ2ZHu9grTPNNtVF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <h3>See how it works</h3>
-       </div>
-      </div>
-        
-      </section>
-     
-
-
-    
-
-
-<script>
-  const onlineCountElem = document.getElementById('online-count');
-  const latestPostElem = document.getElementById('latest-post');
-
-  // Fake online counts
-  const minOnline = 30;
-  const maxOnline = 100;
-
-  // Fake recent posts pool
-  
-   const fakePosts = [
-  "I finally feel like someone gets me.",
-  "It’s okay to not be okay.",
-  "Sharing my story helped me heal.",
-  "Sometimes all you need is a listening ear.",
-  "I’m not alone anymore, thanks to this space.",
-  "It feels good to express what I’m feeling.",
-  "hope is the light I hold on to today.",
-  "opening up here was the first step for me.",
-  "Finding peace, one word at a time.",
-  "This place makes me feel safe.",
-  "i never knew how much I needed this.",
-  "talking helps more than i thought it would.",
-  "Thankful for people who understand.",
-  "Every emotion is valid here.",
-  "Here’s to healing and new beginnings.",
-  "You’re not alone in your struggles.",
-  "Taking one day at a time with support.",
-  "This community feels like a warm hug.",
-  "Letting go of the weight I carried alone.",
-  "Ready to start my journey of self-love.",
-   "I yelled at my best friend today and i hate myself for it. wish i could take it back.",
-  "spent all night scrolling but couldn’t sleep. feel so stuck in my own head.",
-  "My mom doesn’t get it and i don’t know how to explain what’s wrong.",
-  "had a good day for once but still can’t shake this heaviness inside.",
-  "I tried talking about my anxiety but it just came out as awkward silence.",
-  "i’m tired of pretending i’m okay when i’m not. nobody really notices anyway.",
-  "Sometimes i just want to disappear but then i remember my little sister needs me.",
-  "i’m scared to ask for help. what if they think i’m just complaining?",
-  "It’s dumb but that tiny compliment today made me smile for hours.",
-  "i wrote a poem last night about feeling invisible. no one’s seen it yet.",
-];
-
-  
-
-  // Update fake data every 5 seconds
-  setInterval(() => {
-    // Random online count
-    const randomOnline = Math.floor(Math.random() * (maxOnline - minOnline + 1)) + minOnline;
-    onlineCountElem.textContent = randomOnline;
-
-    // Random latest post
-    const randomPost = fakePosts[Math.floor(Math.random() * fakePosts.length)];
-    latestPostElem.textContent = `"${randomPost}"`;
-  }, 5000);
-</script>
-<script>
-const textarea = document.getElementById("chat");
-const popup = document.getElementById("get-started-popup");
-
-textarea.addEventListener("input", () => {
-  if (textarea.value.trim().length > 0) {
-    const rect = textarea.getBoundingClientRect();
-
-    popup.style.position = 'absolute';
-    popup.style.top = `${textarea.offsetTop + textarea.offsetHeight + 8}px`;
-    popup.style.left = `${textarea.offsetLeft}px`;
-    popup.classList.add("popup-visible");
-    popup.classList.remove("popup-hidden");
-  } else {
-    popup.classList.remove("popup-visible");
-    popup.classList.add("popup-hidden");
-  }
-});
-</script>
-
-   
-      <section id="feature" aria-label="Key Features of Ciphree" tabindex="-1">
-        <h2>Key Features</h2>
-        <ul>
-          
-          <li><strong>Match Up:</strong> 
-              <span style="font-size: 4rem; display: flex;justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handshake-icon lucide-handshake"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg> </span>
-            Connect emotionally similar users</li>
-          <li>
-            <strong>Monami:</strong> 
-             <span style="font-size: 4rem; display: flex;justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg> </span>
-            Emotional AI chat that talks with you based
-            on EQ, not IQ.
-          </li>
-          <li>
-            <strong>Journaling</strong> 
-              <span style="font-size: 4rem; display: flex;justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-icon lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg> </span>
-            Private diary to write feelings,
-            auto-tagged and summarized.
-          </li>
-        </ul>
-      </section>
-
-
-
-      <section
-        id="call-to-action"
-        aria-label="Call to Action"
-        style="text-align: center; margin-top: 3rem"
-      >
-        <a
-          href="/register"
-          class="btn-primary"
-          style="font-size: 1.4rem; padding: 1.1rem 4.5rem"
-          tabindex="0"
-          aria-label="Join Ciphree today — Be real, be heard"
+  <body
+    class="font-poppins h-screen flex flex-col justify-center items-center relative bg-gray-100"
+  >
+    <!-- Section 1 -->
+    <section
+      id="section1"
+      class="active container border p-10 w-full max-w-lg rounded-lg text-center bg-white z-10"
+    >
+      <h1 class="text-3xl font-bold mb-4 text-blue-500">
+        Step Into Your Emotional Haven
+      </h1>
+      <h2 class="text-2xl font-bold mb-4 text-blue-500">Hello there!</h2>
+      <p class="mb-2">
+        We all carry feelings that can feel too heavy to share. Ciphree is your
+        safe space to be understood. Journaling, AI chats, and connecting with
+        people who get you, all in one place.
+      </p>
+      <p class="mb-4 font-semibold">Are you ready to explore?</p>
+      <div class="flex justify-center items-center gap-2">
+        <button
+          id="nahBtn1"
+          class="bg-gray-300 hover:bg-gray-400 px-3 py-2 rounded"
         >
-          Join Ciphree Today — Be Real, Be Heard
-        </a>
-      </section>
-    </main>
+          Nah I am good
+        </button>
+        <button
+          id="yesBtn1"
+          class="bg-blue-600 text-white hover:bg-blue-700 px-3 py-2 rounded"
+        >
+          Hell yeah!
+        </button>
+      </div>
+    </section>
 
-    <button id="backToTop" aria-label="Back to top" title="Back to top">
-      ↑
-    </button>
-
-    <footer>
-       <span>&copy; 2025 Ciphree — Emotional Connection in a Digital Age</span>
-  <h3 class="sr-only">Social Media</h3>
-        <ul class="socials">
-          <li><a href="https://x.com/Ciphree_" rel="nofollow" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a></li>
-          <li>
-            <a href="https://www.instagram.com/ciphree_" rel="nofollow"
-              ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a
-            >
-          </li>
-          <li class="hover:shadow-lg bg-white p-4 transition-shadow duration-300">
-            <a href="https://www.youtube.com/@ciphree_where_your_mind_speaks" rel="nofollow"
-              ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a
-            >
-          </li>
-          <li>
-            <a href="mailto:ciphreous@ciphree.com" rel="nofollow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
-          </li>
-        </ul></span
+    <!-- Section 2: Signup Form -->
+    <section
+      id="section2"
+      class="container border p-10 w-full max-w-lg rounded-lg gap-4 bg-white z-10"
+    >
+      <h2 class="text-2xl font-bold mb-4 text-blue-500">
+        So let’s get started
+      </h2>
+      <form
+        action="/register"
+        method="post"
+        class="flex flex-col justify-center items-center gap-4 w-full max-w-lg mx-auto"
       >
-    </footer>
-<!-- Feedback Popup -->
- <form action="/feedback" method="post">
-<div id="exitPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" >
-  <div class="bg-white text-black p-6 rounded-xl max-w-md w-full shadow-lg text-center space-y-4">
-    <h2 class="text-xl font-bold">Wait! Before you go...</h2>
-    <p>Could you share a quick thought about your experience on Ciphree?</p>
-    <textarea class="w-full border border-gray-300 rounded p-2" rows="3" placeholder="Type here..." name="message"></textarea>
-    <div class="flex justify-end gap-4">
-      <button onclick="closePopup()" class="text-sm px-4 py-2 rounded bg-gray-200" type="button">Close</button>
-      <button class="text-sm px-4 py-2 rounded bg-blue-600 text-white" type="submit">Send</button>
+        <p class="mb-2">What shall we call you?</p>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+          class="w-full border focus:outline-blue-500 p-4"
+        />
+        <p
+          id="nameError"
+          class="w-full text-left text-red-500 text-sm mt-1 hidden"
+        >
+          Name is either taken or contains spaces.
+        </p>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          class="w-full border focus:outline-blue-500 p-4"
+        />
+
+        <div class="flex flex-wrap w-full justify-center items-center gap-2">
+          <button
+            id="signupBtn"
+            type="submit"
+            class="bg-blue-600 text-white hover:bg-blue-700 px-6 py-2 rounded"
+          >
+            Sign-up
+          </button>
+          <a href="/guest"
+            ><button
+              type="button"
+              class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded"
+            >
+              Guest login
+            </button></a
+          >
+        </div>
+      </form>
+    </section>
+
+    <!-- Section 3: YouTube Video -->
+
+    <!-- Section 4: Testimonials -->
+
+    <!-- Exit Popup -->
+    <div
+      id="exitPopup"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white text-black p-6 rounded-xl max-w-md w-full shadow-lg text-center space-y-4"
+      >
+        <h2 class="text-xl font-bold">Wait! Before you go...</h2>
+        <p>Could you share a quick thought about your experience on Ciphree?</p>
+        <form action="/feedback" method="post">
+          <textarea
+            class="w-full border border-gray-300 rounded p-2"
+            rows="3"
+            placeholder="Type here..."
+            name="message"
+          ></textarea>
+          <div class="flex justify-end gap-4 mt-2">
+            <button
+              type="button"
+              onclick="closePopup()"
+              class="bg-gray-200 px-4 py-2 rounded"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-4 py-2 rounded"
+            >
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-</div>
- </form>
-
-<script>
-  let popupShown = false;
-  let scrolledToBottom = false;
-  let lastScrollY = window.scrollY;
-
-  function showPopup() {
-    if (!popupShown) {
-      document.getElementById("exitPopup").classList.remove("hidden");
-      popupShown = true;
-    }
-  }
-
-  function closePopup() {
-    document.getElementById("exitPopup").classList.add("hidden");
-  }
-
-  // Exit intent — top of screen
-  document.addEventListener("mouseout", function (e) {
-    if (e.clientY < 10) {
-      showPopup();
-    }
-  });
-
-  // Scroll detection
-  window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
-    const scrollHeight = document.documentElement.scrollHeight;
-    const windowHeight = window.innerHeight;
-
-    // User has scrolled down far enough
-    if (currentScrollY > 100) {
-      scrolledToBottom = true;
-    }
-
-    // Scrolled down and now scrolling up → show popup
-    if (
-      scrolledToBottom &&
-      currentScrollY < lastScrollY
-    ) {
-      showPopup();
-    }
-
-    lastScrollY = currentScrollY;
-  });
-</script>
-
 
     <script>
-      // Animate sections on scroll
-      const sections = document.querySelectorAll("main section");
-      const options = {
-        threshold: 0.15,
-      };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, options);
-      sections.forEach((section) => observer.observe(section));
+      const section1 = document.getElementById("section1");
+      const section2 = document.getElementById("section2");
+      const section3 = document.getElementById("section3");
 
-      // Back to Top Button
-      const backToTop = document.getElementById("backToTop");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 400) {
-          backToTop.style.display = "block";
+      const exitPopup = document.getElementById("exitPopup");
+      const form = section2.querySelector("form");
+      const nameInput = document.getElementById("name");
+      const nameError = document.getElementById("nameError");
+      const signupBtn = document.getElementById("signupBtn");
+
+      // Section1 buttons
+      document.getElementById("nahBtn1").addEventListener("click", () => {
+        // Show section 3, hide section 1 immediately
+        section1.classList.remove("active");
+        section3.classList.add("active");
+      });
+
+      document.getElementById("yesBtn1").addEventListener("click", () => {
+        section1.classList.remove("active");
+        section2.classList.add("active");
+      });
+
+      // Close popup
+      function closePopup() {
+        exitPopup.classList.remove("show");
+      }
+
+      // Section3 buttons
+      document.getElementById("nahBtn3").addEventListener("click", () => {
+        section3.classList.remove("active");
+      });
+      document.getElementById("videoBtn").addEventListener("click", () => {
+        window.open("https://www.youtube.com/watch?v=UAFe9Msnv5E", "_blank");
+      });
+
+      // Name validation
+      async function checkName(name) {
+        if (!name) return false;
+        const res = await fetch(`/check-name?name=${encodeURIComponent(name)}`);
+        const data = await res.json();
+        return data.exists;
+      }
+      async function validateName() {
+        const value = nameInput.value.trim();
+        const hasSpace = value.includes(" ");
+        const exists = await checkName(value);
+        if (!value || hasSpace || exists) {
+          nameInput.style.borderColor = "red";
+          nameError.classList.remove("hidden");
+          signupBtn.disabled = true;
+          return false;
         } else {
-          backToTop.style.display = "none";
+          nameInput.style.borderColor = "";
+          nameError.classList.add("hidden");
+          signupBtn.disabled = false;
+          return true;
         }
-      });
-      backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      nameInput.addEventListener("input", validateName);
+
+      // Form submit
+
+      document.getElementById("videoBtn").addEventListener("click", () => {
+        window.open("https://www.youtube.com/watch?v=UAFe9Msnv5E", "_blank");
+
+        // after video click, show testimonials
+        section3.classList.remove("active");
       });
 
-      // Parallax effect on header background (subtle)
-      const header = document.querySelector("header");
-      window.addEventListener("scroll", () => {
-        let offset = window.pageYOffset;
-        header.style.backgroundPositionY = offset * 0.5 + "px";
+      document.getElementById("nahBtn3").addEventListener("click", () => {
+        section3.classList.remove("active");
       });
     </script>
+
+    <style>
+      body {
+        position: relative;
+        min-height: 100vh;
+        background: url(/Images/background.png) center center / cover no-repeat
+          fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1rem;
+        overflow: hidden;
+        perspective: 1500px;
+      }
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(40, 101, 234, 0.612);
+        mix-blend-mode: multiply;
+        backdrop-filter: blur(6px);
+        z-index: 0;
+      }
+      section {
+        position: relative;
+        z-index: 1;
+        display: none;
+        margin-top: 2rem;
+        text-align: center;
+      }
+      section.active {
+        display: block;
+      }
+      #exitPopup {
+        display: none;
+      }
+      #exitPopup.show {
+        display: flex;
+      }
+      input {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.3rem;
+        width: 100%;
+      }
+      button {
+        padding: 0.8rem 1.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        border-radius: 0.3rem;
+      }
+    </style>
   </body>
 </html>
-<style>
-  /* Reset */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-  body,
-  h1,
-  h2,
-  h3,
-  p,
-  ul,
-  li,
-  nav,
-  header,
-  main,
-  section,
-  footer {
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #d9e2ff 0%, #f0f4ff 100%);
-    color: #1e293b;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-  }
-  a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s ease;
-  }
-  a:hover,
-  a:focus {
-    background-color: white;
-    color: #1d4ed8;
-    outline: none;
-    padding: 10px;
-  }
-  /* Container */
-  .container {
-   
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  /* Navigation */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
-    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
-    z-index: 9999;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    font-weight: 600;
-    font-size: 1.05rem;
-    letter-spacing: 0.03em;
-  }
-  nav span {
-    font-weight: 900;
-    font-size: 1.7rem;
-    color: #2563eb;
-    cursor: default;
-    user-select: none;
-  }
-  nav a.cta {
-    background: linear-gradient(45deg, #2563eb, #1c74e4);
-    color: #fff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 30px;
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-    transition: all 0.3s ease;
-    font-weight: 700;
-    user-select: none;
-  }
-  nav a.cta:hover,
-  nav a.cta:focus-visible {
-    background: linear-gradient(45deg, #1c74e4, #145dbf);
-    box-shadow: 0 12px 30px rgba(28, 116, 228, 0.6);
-    color: white;
-    transform: translateY(-2px);
-    outline-offset: 4px;
-    outline: 2px solid #1c74e4;
-  }
-  /* Hero Section */
-  header {
-    position: relative;
-    height: 100vh;
-    background: url("/Images/background.png")
-      center center/cover no-repeat fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 1rem;
-    overflow: hidden;
-    perspective: 1500px;
-  }
-  header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(37, 99, 235, 0.75);
-    mix-blend-mode: multiply;
-    z-index: 1;
-    backdrop-filter: blur(6px);
-    transition: background-color 0.5s ease;
-  }
-  header .content {
-    position: relative;
-    z-index: 2;
-    max-width: 700px;
-    color: #fff;
-    animation: fadeInUp 1.6s ease forwards;
-    will-change: transform;
-  }
-  header h1 {
-    font-weight: 900;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
-    letter-spacing: 0.07em;
-  }
-  header p {
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 1.6;
-    margin-bottom: 3rem;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  }
-  .btn-primary {
-    display: inline-block;
-    background: linear-gradient(45deg, #2563eb, #1c74e4);
-    color: white;
-    padding: 1rem 4rem;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 1.35rem;
-    cursor: pointer;
-    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.6);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease,
-      transform 0.3s ease;
-    user-select: none;
-    position: relative;
-    overflow: hidden;
-  }
-  #btn-primary:hover{
-color: white;
-padding: 1rem 4rem;
- }
-  .btn-primary::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -100%;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent
-    );
-    transform: translateY(-50%) skewX(-20deg);
-    transition: left 0.5s ease;
-    pointer-events: none;
-  }
-  .btn-primary:hover::after,
-  .btn-primary:focus-visible::after {
-    left: 100%;
-  }
-  .btn-primary:hover,
-  .btn-primary:focus-visible {
-    background: linear-gradient(45deg, #1c74e4, #145dbf);
-    box-shadow: 0 18px 40px rgba(28, 116, 228, 0.8);
-    transform: translateY(-5px);
-    outline-offset: 5px;
-    
-  }
-  /* Sections */
-  main {
-    padding: 6rem 0 10rem;
-  }
-  section {
-    margin-bottom: 6rem;
-    padding: 0 1rem;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  section h2 {
-    font-size: 2.9rem;
-    font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    position: relative;
-    letter-spacing: 0.04em;
-    user-select: none;
-  }
-  section h2::after {
-    content: "";
-    display: block;
-    width: 75px;
-    height: 6px;
-    background: #2563eb;
-    margin: 0.75rem auto 0;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.5);
-  }
-  section p {
-    max-width: 410px;
-    text-align: justify;
-    margin: 1.5rem auto;
-    font-size: 1.25rem;
-    color: #475569;
-    line-height: 1.9;
-    user-select: text;
-  }
-  ul {
-    margin: 2.5rem auto 0;
-    list-style: none;
-    padding-left: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  ul li {
-    background: #fff;
-    padding: 2.25rem 3rem;
-    border-radius: 24px;
-    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.12);
-    color: #1e293b;
-    font-weight: 700;
-    font-size: 1.15rem;
-    cursor: default;
-    transition: transform 0.3s ease, box-shadow 0.3s ease,
-      background-color 0.3s ease, color 0.3s ease;
-    position: relative;
-    user-select: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-weight: normal;
-  }
-  ul li:hover,
-  ul li:focus-within {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 60px rgba(37, 99, 235, 0.45);
-    background: #2563eb;
-    color: #fff;
-    outline: none;
-  }
-
-  /* Footer */
-  footer {
-    background: #2563eb;
-    color: white;
-    text-align: center;
-    padding: 3rem 1rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    user-select: none;
-    box-shadow: inset 0 4px 6px rgb(0 0 0 / 0.15);
-  }
-  /* Animations */
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  /* Responsive */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 3.3rem;
-    }
-    header p {
-      font-size: 1.3rem;
-    }
-    ul {
-      grid-template-columns: 1fr;
-    }
-    ul li {
-      font-size: 1.2rem;
-      padding: 1.8rem 2.4rem;
-    }
-  }
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 2.4rem;
-      letter-spacing: 0.03em;
-    }
-    header p {
-      font-size: 1.1rem !important;
-    }
-    main p{
-      font-size: 13px !important;
-    }
-    ul li  {
-        font-size: 13px !important;
-        padding: 1.8rem 2.4rem;
-    }
-    ul li span {
-        display: none !important;
-    }
-    iframe{
-      max-height: 231px !important;
-    }
-    .btn-primary{
-   font-size: 1rem !important; 
-   }
-}
-   
-  
-
-  /* Back to Top Button */
-  #backToTop {
-    position: fixed;
-    bottom: 2.5rem;
-    right: 2.5rem;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: none;
-    user-select: none;
-    z-index: 10000;
-  }
-  #backToTop:hover,
-  #backToTop:focus-visible {
-    background: #1c74e4;
-    transform: translateY(-4px);
-    outline-offset: 3px;
-    outline: 3px solid #1c74e4;
-  }
-</style>
-<style>
-  /* Base container spacing */
-  main.container {
-    padding: 4rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    width: 100%;
-  }
-
-  /* Section headers */
-  main h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-
-  /* Text paragraphs */
-  main p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #333;
-  }
-
-  /* General section box style */
-  main section {
-    padding: 2.5rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    background-color: #fff;
-    transition: all 0.3s ease;
-  }
-
-  /* IDEA section */
-  #idea {
-    background: linear-gradient(to right, #e0f7fa, #f1f8ff);
-  }
-
-  /* FEATURES section */
-  #features {
-    background: #fefefe;
-    border-left: 5px solid #90caf9;
-  }
-
-  #features ul li {
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
-  }
-
-  /* SECURITY section */
-  #security,
-  #feature {
-    background: #f3f4f6;
-    border-left: 5px solid #66bb6a;
-  }
-
-  /* UNIQUE section */
-  #unique {
-    background: #fff3e0;
-    border-left: 5px solid #ffb74d;
-  }
-
-  /* ABOUT section */
-  #about {
-    background: #ede7f6;
-    border-left: 5px solid #ab47bc;
-  }
-
-  /* WHAT IS section */
-  #what-is {
-    background: #e3f2fd;
-    border-left: 5px solid #42a5f5;
-  }
-
-  /* CTA Button section */
-  #call-to-action {
-    background: #ffffff;
-    box-shadow: none;
-  }
-
-  #call-to-action a.btn-primary {
-    background: #5c6bc0;
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: background 0.3s ease;
-  }
-
-  #call-to-action a.btn-primary:hover {
-    background: #3f51b5;
-  }
-
-  /* Responsive tweaks */
-  @media (max-width: 768px) {
-    main.container {
-      padding: 2rem 1.2rem;
-    }
-
-    main h2 {
-      font-size: 1.8rem;
-    }
-
-    #call-to-action a.btn-primary {
-      font-size: 1.1rem;
-      padding: 0.8rem 2rem;
-    }
-    
-  }
-</style>
-<style>
-  #feature,
-  #security,
-  #unique {
-    width: 80vw;
-    margin-left: 50%; /* Shift right by half container */
-    transform: translateX(-50%); /* Pull left by half container width */
-    padding-left: 2rem; /* Optional: Padding to offset from edges */
-    padding-right: 2rem;
-    border-left-width: 8px; /* Thicker accent line for full width */
-    box-shadow: none; /* Optional: remove shadow if too wide */
-  }
-  #features ul {
-    display: flex;
-    gap: 1.5rem; /* spacing between items */
-    overflow-x: auto; /* horizontal scrolling */
-    padding-bottom: 1rem; /* space below for scroll bar */
-    scroll-padding: 1rem;
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-  }
-
-  #features ul li {
-    min-width: 280px; /* fixed minimum width */
-    flex: 0 0 auto; /* prevent shrinking/growing */
-  }
-  #feature,
-  #security,
-  #unique {
-    width: 80vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    padding-left: 2rem;
-    padding-right: 2rem;
-    border-left-width: 8px;
-    box-shadow: none;
-  }
-
-  #features ul {
-    display: flex !important;
-    gap: 1.5rem !important;
-    overflow-x: auto !important;
-    padding-bottom: 1rem !important;
-    scroll-padding: 1rem !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  #features ul li {
-    min-width: 280px;
-    flex: 0 0 auto;
-  }
-  ul {
-    width: 100% !important;
-  }
-</style>
-<style>
-  img {
-    width: 393px;
-    height: 218px;
-    border-radius: 24px;
-  }
-  ul.socials {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    height: auto;
-    width: auto;
-  }
-  ul.socials li {
-    width: 10px;
-    height: 10px;
-    padding: 20px;
-    border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-ul.socials li a {
-    color: black;
-    display: flex
-;
-    align-items: center;
-}
-  ul.socials li:hover {
-    background-color: white;
-  }
-  ul.socials li a:hover {
-    width: auto !important;
-    height: auto !important;
-  }
-  ul.socials li a:hover {
-    padding: 0;
-  }
-  .sr-only {
-  position: absolute;
-  width: 1px; 
-  height: 1px; 
-  padding: 0; 
-  margin: -1px; 
-  overflow: hidden; 
-  clip: rect(0,0,0,0); 
-  border: 0;
-}
-iframe {
-    max-width: 538px;
-    width: 100%;
-    max-height: 320px;
-    height: 100vh;
-}
-.inner-content {
-    display: flex
-;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.see-how-it-works {
-    display: flex
-;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-.see-how-it-works {
-    display: flex
-;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 587px;
-}
-.text {
-    display: flex
-;
-    flex-direction: column;
-    width: 100%;
-    max-width: 514px;
-}
- #chat {
-    width: 100%;
-    max-width: 600px;
-    padding: 12px 16px;
-    font-size: 1rem;
-    border: 2px solid #1c74e4;
-    border-radius: 8px;
-    resize: vertical;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    transition: border-color 0.3s ease;
-    resize: none;
-  }
-  #chat:focus {
-    border-color: #155db2;
-    outline: none;
-    box-shadow: 0 0 8px rgba(28, 116, 228, 0.5);
-  }
-
- #status {
-    width: 100%;
-    max-width: 600px;
-    margin-top: 8px;
-    font-family: 'Poppins', sans-serif;
-    color: #1c74e4;
-    font-weight: 600;
-    display: flex
-;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    resize: none;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    height: 160px;
-    /* flex-direction: column; */}
-  #status p {
-    margin: 0;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-
-  #status span#online-count {
-    color: #155db2;
-  }
-
-  #status span#latest-post {
-    font-style: italic;
-    color: #0d3a71;
-    max-width: 70%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* Responsive */
-  @media (max-width: 480px) {
-    #status {
-      flex-direction: column;
-      gap: 4px;
-      color: #0d3a71;
-      font-weight: 500;
-    }
-    #status span#latest-post {
-      max-width: 100%;
-    }
-  }
-  #happening{
-    display: flex;
-    justify-self: center;
-    align-items: center;
-    flex-direction: column;
-      position: relative; 
-  }
-  #happening{
-    font-size: 20px;
-  }
-  #status p {
-    margin: 0;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    display: flex
-;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 10px;
-}
-#get-started-popup {
-  position: absolute;
-  background-color: #1c74e4;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  box-shadow: 0 2px 8px rgba(28, 116, 228, 0.6);
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(5px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  user-select: none;
-  white-space: nowrap;
-  z-index: 100;
-}
-
-.popup-visible {
-  opacity: 1;
-  pointer-events: none;
-  transform: translateY(0);
-}
-
-.popup-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-</style>
