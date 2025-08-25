@@ -222,7 +222,7 @@ main{
 }
 
 #submit:hover {
-  background-color: #0046bb;
+  background-color: var(--Blue--);
 }
 
 /* Comments display */

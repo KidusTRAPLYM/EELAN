@@ -12,6 +12,8 @@ const newUser = new Schema({
     type: String,
     unique: true,
   },
+  passwordHint: { type: String },
+  avatar: { type: String, default: "/Images/avatar3.png" }
 });
 newUser.pre("save", async function (next) {
   if (!this.isModified("password")) {

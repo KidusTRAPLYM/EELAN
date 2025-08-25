@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <title>Sign-in</title>
     <link rel="stylesheet" href="/CSS/main.css" />
     <link rel="stylesheet" href="/CSS/variables.css" />
-    <link rel="icon" href="/Images/ciphry.png" />
     <link rel="stylesheet" href="/CSS/register.css" />
+    <link rel="icon" href="/Images/ciphry.png" />
     <!--FONT FAMILY-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,46 +32,63 @@
         }, 400); // match with CSS transition
       });
     </script>
-      <div class="themeToggle">
-        <button id="themeToggle" class="toggle">
-          <span class="switch"></span>
-        </button>
-      </div>
-      <section id="register">
-        <div class="logo" style="display: flex; justify-content: center">
-          <img src="/Images/ciphry.png" alt="" style="width: 100px !important" />
-        </div>
-        <br />
-        <section id="signup">
-          <form action="/signin" method="Post">
-            <span class="name"
-              ><input type="text" name="name" id="name" placeholder="Name" />
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                minlength="8"
-                maxlength="16"
-              />
-            </span>
-             <p class="text-sm text-blue-500"><a href="/forgot">Forgot password?</a>
-              
-            </p>
-            <p>Already have an account? <a href="/signin">Sign in</a></p>
-          <a href=""><button>Register</button></a>
-            <button>Sign-in</button>
-            
-            
-          </form>
-       
-        </section>
-      </section>
+ <div class="themeToggle" style="
+ position: absolute;
+ top: 20px;
+ right: 20px;
+ z-index: 20;
+">
+ <button id="themeToggle" class="toggle">
+   <span class="switch"></span>
+ </button>
+</div>
+
+   <!-- Insert this anywhere inside <body> where you want the form to appear -->
+<div class="form-container" style="
+position: relative;
+    z-index: 10;
+    max-width: 400px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex
+;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--Black--);
+    margin: 2rem auto;
+    align-items: center;
+">
+<h1 class="text-2xl font-bold mb-2">Forgot Password</h1>
+<p class="mb-4">Enter your name below and we will provide your password hint.</p>
+
+<% if (typeof error !== "undefined") { %>
+<div class="bg-red-500/20 text-red-700 p-3 rounded-lg shadow-sm">
+  <%= error %>
+</div>
+<% } %>
+
+<% if (typeof success !== "undefined") { %>
+<div class="bg-green-500/20 text-green-700 p-3 rounded-lg shadow-sm">
+  <%= success %>
+</div>
+<% } %>
+
+<form action="/forgot-password-hint" method="POST" class="flex flex-col gap-3">
+<input type="text" name="name" placeholder="Your name" required />
+<button type="submit">Get Hint</button>
+</form>
+
+<a href="/signin">Back to Sign In</a>
+</div>
 
     <script src="/Js/loading.js"></script>
-
-    <!-- Google Sign-In button -->
-
     <script>
       function handleCredentialResponse(response) {
         console.log("Encoded JWT ID token: " + response.credential);
@@ -165,15 +182,16 @@ window.addEventListener('resize', ()=>{
    
    </script>
    <style>
-     body{
-       background-color: var(--White--);
-     }
-     .themeToggle {
-   display: flex;
-   align-items: center;
-   justify-content: flex-end !important;
-   padding: 10px;
- }
+     body {
+  display: flex;
+  flex-direction: column; /* keeps theme toggle at top */
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--White--);
+}
+
  
  #themeToggle {
    width: 60px;
@@ -235,5 +253,7 @@ canvas {
 }
    
  
-   
+input{
+  max-width: 300px;
+}
    </style>

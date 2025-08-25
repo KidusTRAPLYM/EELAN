@@ -6,7 +6,7 @@ const app = express();
 const User = require("./models/user");
 const jwt = require("jsonwebtoken");
 require("dns").setServers(["8.8.8.8"]);
-
+const nodemailer = require("nodemailer");
 const http = require("http").createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(http);
@@ -60,9 +60,7 @@ console.log(process.env.MONGO_URI);
 // create token
 const maxAge = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
 
-const createToken = (id) => {
-  return jwt.sign({ id }, "sec", { expiresIn: maxAge });
-};
+const createToken = (id, name) => jwt.sign({ id, name }, "sec", { expiresIn: maxAge });
 //routing
 // Get route functions
 
@@ -79,6 +77,9 @@ app.get("/", async (req, res) => {
     res.render("more", { section4Active: false });
   }
 });
+
+
+
 
 app.get("/landing", async (req, res) => {
   const token = req.cookies.User;
@@ -103,15 +104,24 @@ app.get("/feed", async (req, res) => {
     const hydratedPosts = postData.map((doc) => new Post(doc));
     const populatedPostData = await Post.populate(hydratedPosts, {
       path: "userId",
-      select: "name",
+      select: "name avatar",
     });
-    console.log(populatedPostData.map((post) => post.timeago));
-    res.render("feed", { populatedPostData, PORT, messages });
+
+    // Count comments for each post
+    const postsWithComments = await Promise.all(
+      populatedPostData.map(async (post) => {
+        const commentCount = await comment.countDocuments({ postId: post._id });
+        return { ...post.toObject(), commentCount }; // add commentCount field
+      })
+    );
+
+    res.render("feed", { populatedPostData: postsWithComments, PORT, messages });
   } catch (err) {
     console.log(`An error has occurred. ${err}`);
     res.render("error");
   }
 });
+
 app.get("/about", (req, res) => {
   res.render("about");
 });
@@ -136,7 +146,9 @@ app.get("/dashboard/:id", async (req, res) => {
   }
 });
 app.get("/signin", (req, res) => {
-  res.render("Signin");
+  const user = User.find()
+  console.log(user);
+  res.render("Signin", { user });
 });
 app.get("/register", (req, res) => {
   res.render("register");
@@ -165,7 +177,22 @@ app.get("/journal", async (req, res) => {
     .limit(3);
   res.render("journal", { messages, fetchJournal });
 });
+app.get("/forgot" , (req,res)=>{
+  res.render("forgot")
+})
 // Adjust path accordingly
+app.post("/forgot-password-hint", async (req, res) => {
+  const { name } = req.body; // get username
+  const user = await User.findOne({ name });
+
+  if (!user || !user.passwordHint) {
+    return res.render("forgot", { error: "No hint found for this user." });
+  }
+
+  res.render("forgot", { success: `Password hint: ${user.passwordHint}` });
+});
+
+
 
 app.get("/search", async (req, res) => {
   let messages = "The message field is empty";
@@ -196,6 +223,7 @@ app.get("/profile", async (req, res) => {
   const userId = decoded.id;
   const postId = req.params.postId;
   const user = await User.findById(userId);
+
   // Fetch posts created by this user
   const posts = await Post.find({ userId: userId }).sort({ createdAt: -1 });
   const fetchJournal = await journal.find({ userId }).sort({ date: -1 });
@@ -213,9 +241,8 @@ app.get("/profile", async (req, res) => {
     comments,
   });
 });
-app.get("/guest", (req, res) => {
-  res.render("landing2");
-});
+
+
 app.get("/comment/:postId", async (req, res) => {
   const postId = req.params.postId;
   const posts = await Post.findById(postId).populate("userId", "name");
@@ -307,6 +334,28 @@ app.get("/monami", (req, res) => {
 //   chatHistory = []; // reset chat history
 //   res.redirect("/monami"); // reload page with empty chat
 // });
+app.get("/chat/:tag", (req, res) => {
+  const token = req.cookies.User;
+  if (!token) return res.redirect("/signin");
+
+  try {
+    const decoded = jwt.verify(token, "sec");
+    const username = decoded.name || req.query.username; // <-- fallback to query
+    const tag = req.params.tag;
+    res.render("chat", { username, tag });
+  } catch (err) {
+    console.error(err);
+    res.redirect("/signin");
+  }
+});
+
+app.post("/chat", (req, res) => {
+  const { username, tagInput } = req.body;
+  if (!username || !tagInput) return res.redirect("/"); // basic validation
+  // redirect to your chat page with query params
+  res.redirect(`/chat/${encodeURIComponent(tagInput)}?username=${encodeURIComponent(username)}`);
+});
+
 io.on("connection", (socket) => {
   // When user sets username & tag, join the tag room
   socket.on("setUser", ({ username, tag }) => {
@@ -383,7 +432,7 @@ app.post("/journal", (req, res) => {
       userId,
     });
     newJournal.save();
-    res.redirect("/home");
+    res.redirect("/profile");
   } catch (err) {
     console.log(`An error has occured , ${err}`);
     res.redirect("/error");
@@ -404,17 +453,17 @@ app.post("/post", async (req, res) => {
       type,
     });
     await newPost.save();
-    res.redirect("/home");
+    res.redirect("/profile");
   } catch (err) {
     console.log("An error has occured. ");
     res.render("error");
   }
 });
 app.post("/signin", async (req, res) => {
-  const { name, password } = req.body;
+  const { name, password, passwordHint } = req.body;
   try {
-    const user = await User.login(password, name);
-    const token = createToken(user._id);
+    const user = await User.login(password, name, passwordHint);
+    const token = createToken(user._id, user.name);
     console.log(user);
     res.cookie("User", token, {
       maxAge: maxAge,
@@ -436,11 +485,38 @@ app.get("/check-name", async (req, res) => {
 app.get("/morerror", (req, res) => {
   res.render("morerror");
 });
+app.get("/choose-avatar", async (req, res) => {
+  const token = req.cookies.User;
+  if (!token) return res.redirect("/signin");
+  res.render("choose-avatar");
+});
+
+app.post("/choose-avatar", async (req, res) => {
+  const token = req.cookies.User;
+  if (!token) return res.redirect("/signin");
+
+  const decoded = jwt.verify(token, "sec");
+  const userId = decoded.id;
+  const { avatar } = req.body;
+
+  await User.findByIdAndUpdate(userId, { avatar });
+  res.redirect("/landing"); // or profile page
+});
+
 app.post("/register", async (req, res) => {
-  const { name, password } = req.body;
+  const { name, password, passwordHint, avatar } = req.body;
+
   try {
-    const user = await User.create({ name, password });
-    const token = createToken(user._id);
+    // Use avatar or fallback to default
+    const user = await User.create({
+      name,
+      password,
+      passwordHint,
+      avatar: avatar || "/Images/avatar3.png",
+    });
+
+    // Include name in token
+    const token = createToken(user._id, user.name);
 
     res.cookie("User", token, {
       maxAge,
@@ -449,14 +525,16 @@ app.post("/register", async (req, res) => {
       sameSite: "lax",
     });
 
-    // Redirect to landing, where token is verified
     res.redirect("/landing");
   } catch (err) {
     let errorMessage = "The name is taken";
     if (err.code === 11000) errorMessage = "The name is taken";
+    console.log(err);
     res.render("morerror", { errorMessage });
   }
 });
+
+
 
 // POST route to add a comment — login required
 app.post("/comments/:postId/comment", async (req, res) => {
@@ -635,3 +713,6 @@ app.use((req, res) => {
 http.listen(PORT, "0.0.0.0", () => {
   console.log(`PORT IS RUNNING ON PORT ${PORT}`);
 });
+
+
+

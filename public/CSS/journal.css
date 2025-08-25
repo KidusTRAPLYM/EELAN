@@ -101,7 +101,7 @@ section#journal {
   flex: 1 1 320px;
   min-width: 280px;
   max-width: 400px;
-  background: #fff;
+  background: var(--White--);
   border-radius: 10px;
   padding: 20px;
   display: flex;

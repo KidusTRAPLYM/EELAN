@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background: #fff;
+  background: var(--White--);
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@
   flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
-.profilepic {
+profilepic {
   width: 80px;
   height: 80px;
   background: #1c5fef;
@@ -32,13 +32,23 @@
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
-  margin-bottom: 10px; /* spacing when wrapped */
+  margin-bottom: 10px;
+  display: flex
+;
+  justify-content: center;
+  align-items: center;
 }
-
+img {
+  width: 60px;
+  display: flex
+;
+  justify-content: center;
+  align-items: center;
+}
 .engagements h1 {
   margin: 0;
   font-size: 1.8rem;
-  color: #222;
+  color: var(--Black--);
 }
 
 .engagements h4 {
@@ -58,8 +68,8 @@
 }
 
 .actions button {
-  background-color: #1c5fef;
-  color: white;
+  background-color: var(--Blue--);
+  color: var(--White--);
   border: none;
   padding: 10px 22px;
   border-radius: 6px;
@@ -70,7 +80,7 @@
 }
 
 .actions button:hover {
-  background-color: #1554cc;
+  background-color: var(--Blue--);
 }
 
 /* Container centers content and uses full width */
@@ -106,7 +116,7 @@ section#posts-list {
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
-    background: white;
+    background: var(--White--);
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -155,10 +165,15 @@ section#posts-list {
 #text p {
   margin: 0;
   font-size: 1rem;
-  color: #222;
+  color: var(--Black--);
   word-wrap: break-word;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
 }
-
+.chooser{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* Engagements: likes, dislikes, share, comment */
 #engagements {
   display: flex;

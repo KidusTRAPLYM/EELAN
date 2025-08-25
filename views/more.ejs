@@ -1,315 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/Images/ciphry.png" />
-    <title>Ciphree — Share Your True Feelings, Connect, and Heal</title>
-    <link rel="canonical" href="https://ciphree.com/" />
-    <meta
-      name="description"
-      content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciphree — Share Your True Feelings, Connect, and Heal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: white;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-    <!-- Open Graph / Facebook -->
-    <meta
-      property="og:title"
-      content="Ciphree — Share Your True Feelings, Connect, and Heal"
-    />
-    <meta
-      property="og:description"
-      content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
-    />
-    <meta property="og:url" content="https://ciphree.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://ciphree.com/Images/ciphry.png" />
+    /* Background glowing dots */
+    canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* <- allow clicks through canvas */
+}
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Ciphree — Share Your True Feelings, Connect, and Heal"
-    />
-    <meta
-      name="twitter:description"
-      content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
-    />
-    <meta
-      name="twitter:image"
-      content="https://ciphree.com/Images/ciphry.png"
-    />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: { fontFamily: { poppins: ["Poppins", "sans-serif"] } },
-        },
-      };
-    </script>
-  </head>
-  <body
-    class="font-poppins h-screen flex flex-col justify-center items-center relative bg-gray-100"
-  >
-    <!-- Section 1 -->
-    <section
-      id="section1"
-      class="active container border p-10 w-full max-w-lg rounded-lg text-center bg-white z-10"
-    >
-      <h1 class="text-[clamp(21px,5vw,36px)] font-bold mb-4 text-blue-500">
-        Step Into Your Emotional Haven
-      </h1>
-      <h2 class="text-[clamp(18px,4vw,28px)] font-bold mb-4 text-blue-500">
-        Hello there!
-      </h2>
-      <p class="mb-2 text-[clamp(12px,2.5vw,16px)]">
-        We all carry feelings that can feel too heavy to share. Ciphree is your
-        safe space to be understood. Journaling, AI chats, and connecting with
-        people who get you, all in one place.
-      </p>
-      <p class="mb-4 font-semibold text-[clamp(14px,2.5vw,18px)]">
-        Are you ready to explore?
-      </p>
-      <div class="flex justify-center items-center gap-2">
-        <a href="/morerror">
-          <button
-            id="nahBtn1"
-            class="bg-gray-300 hover:bg-gray-400 px-3 py-2 rounded text-[clamp(12px,2vw,16px)]"
-          >
-            Nah I am good
-          </button>
-        </a>
+    section {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 6rem 2rem;
+  
+}
+   #intro{
+    height: 100vh;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+    .shadow-neon {
+      box-shadow: 0 0 10px rgba(59,130,246,0.5), 0 0 20px rgba(59,130,246,0.3), 0 0 30px rgba(59,130,246,0.2);
+    }
 
-        <button
-          id="yesBtn1"
-          class="bg-blue-600 text-white hover:bg-blue-700 px-3 py-2 rounded text-[clamp(12px,2vw,16px)]"
-        >
-          Hell yeah!
-        </button>
+    button {
+      transition: all 0.3s ease;
+    }
+    .emoji-neon {
+  font-size: 2.5rem; /* adjust size */
+  text-shadow: 
+    0 0 5px #3b82f6,
+    0 0 10px #3b82f6,
+    0 0 20px #3b82f6,
+    0 0 40px #3b82f6;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { text-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 40px #3b82f6; }
+  100% { text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6, 0 0 50px #3b82f6; }
+}
+
+    .testimonial {
+      background: #111;
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 600px;
+      margin: 1rem auto;
+      box-shadow: 0 0 15px rgba(59,130,246,0.7);
+    }
+
+    footer a:hover {
+      color: #3b82f6;
+    }
+  </style>
+    <meta
+    name="description"
+    content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
+  />
+
+  <!-- Open Graph / Facebook -->
+  <meta
+    property="og:title"
+    content="Ciphree — Share Your True Feelings, Connect, and Heal"
+  />
+  <meta
+    property="og:description"
+    content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
+  />
+  <meta property="og:url" content="https://ciphree.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://ciphree.com/Images/ciphry.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="Ciphree — Share Your True Feelings, Connect, and Heal"
+  />
+  <meta
+    name="twitter:description"
+    content="Ciphree is your emotional outlet. Share joy or pain anonymously and connect with others who understand. Real feelings. Real people."
+  />
+  <meta
+    name="twitter:image"
+    content="https://ciphree.com/Images/ciphry.png"
+  />
+
+  <!-- Fonts and Tailwind -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: { fontFamily: { poppins: ["Poppins", "sans-serif"] } },
+      },
+    };
+  </script>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <!-- Section 1: Hook -->
+  <section id="intro">
+    <h1 class="text-[clamp(28px,6vw,48px)] font-bold text-blue-400 drop-shadow-[0_0_20px_rgba(59,130,246,0.7)] mb-4">
+      Step Into Your Emotional Haven
+    </h1>
+    <p class="text-[clamp(16px,3vw,20px)] mb-6">
+      Share your feelings. Connect with others. Be understood.<br/>
+      
+      <span class="text-[clamp(16px,3vw,20px)] mb-6">Journaling, AI Chat, and Community… and yes, it won’t cost you a thing!</span>
+      <p class="text-[clamp(16px,3vw,20px)] mb-6">So, are you interested?</p>
+    </p>
+    <div class="flex gap-4 justify-center">
+      <a href="/register"><button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg shadow-neon">Hell yeah!</button></a>
+      <a href="/morerror"><button class="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg text-lg shadow-neon">Nah, I’m good</button></a>
+    </div>
+  </section>
+  <!-- Section 2: Testimonials -->
+<!-- Section 2: Testimonials -->
+<section>
+  <h2 class="text-3xl font-bold text-blue-400 mb-12 drop-shadow-[0_0_15px_rgba(59,130,246,0.7)]">
+    What Our Users Say
+  </h2>
+  <div class="testimonial-container overflow-hidden relative w-full">
+    <div class="testimonial-track flex gap-6">
+      <div class="testimonial">
+        <p class="italic mb-3">“Overall, it’s a great experience. The ability to connect with others and share your experiences is amazing. Plus, the clean UI and friendly atmosphere make it even better.”</p>
+        <p class="font-semibold">— Kidus Yosef | Rating: 4/5</p>
       </div>
-    </section>
+      <div class="testimonial">
+        <p class="italic mb-3">“Ciphree is really interesting! I love the AI chat that responds like a friend, and the platform’s focus on sharing thoughts and emotions makes it feel unique.”</p>
+        <p class="font-semibold">— Piyush Patra | Rating: 4.5/5</p>
+      </div>
+      <div class="testimonial">
+        <p class="italic mb-3">“Beautiful and friendly user interface and experience.”</p>
+        <p class="font-semibold">— Jonathan Fekadu | Rating: 4/5</p>
+      </div>
+      <div class="testimonial">
+        <p class="italic mb-3">“It's amazing, keep up the good work.”</p>
+        <p class="font-semibold">— Tedros | Rating: 4/5</p>
+      </div>
 
-    <!-- Section 2: Signup Form -->
-    <section
-      id="section2"
-      class="container border p-10 w-full max-w-lg rounded-lg gap-4 bg-white z-10"
-    >
-      <h2 class="text-2xl font-bold mb-4 text-blue-500">
-        So let’s get started
-      </h2>
-      <form
-        action="/register"
-        method="post"
-        class="flex flex-col justify-center items-center gap-4 w-full max-w-lg mx-auto"
-      >
-        <p class="mb-2">What shall we call you?</p>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Name"
-          class="w-full border focus:outline-blue-500 p-4"
-        />
-        <p
-          id="nameError"
-          class="w-full text-left text-red-500 text-sm mt-1 hidden"
-        >
-          Name is either taken or contains spaces.
-        </p>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-          class="w-full border focus:outline-blue-500 p-4"
-        />
-
-        <div class="flex flex-wrap w-full justify-center items-center gap-2">
-          <button
-            id="signupBtn"
-            type="submit"
-            class="bg-blue-600 text-white hover:bg-blue-700 px-6 py-2 rounded"
-          >
-            Sign-up
-          </button>
-          <a href="/guest"
-            ><button
-              type="button"
-              class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded"
-            >
-              Guest login
-            </button></a
-          >
-        </div>
-      </form>
-    </section>
-
-    <!-- Section 3: YouTube Video -->
-
-    <!-- Section 4: Testimonials -->
-
-    <!-- Exit Popup -->
-    <div
-      id="exitPopup"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
-    >
-      <div
-        class="bg-white text-black p-6 rounded-xl max-w-md w-full shadow-lg text-center space-y-4"
-      >
-        <h2 class="text-xl font-bold">Wait! Before you go...</h2>
-        <p>Could you share a quick thought about your experience on Ciphree?</p>
-        <form action="/feedback" method="post">
-          <textarea
-            class="w-full border border-gray-300 rounded p-2"
-            rows="3"
-            placeholder="Type here..."
-            name="message"
-          ></textarea>
-          <div class="flex justify-end gap-4 mt-2">
-            <button
-              type="button"
-              onclick="closePopup()"
-              class="bg-gray-200 px-4 py-2 rounded"
-            >
-              Close
-            </button>
-            <button
-              type="submit"
-              class="bg-blue-600 text-white px-4 py-2 rounded"
-            >
-              Send
-            </button>
-          </div>
-        </form>
+      <!-- duplicate for smooth infinite scroll -->
+      <div class="testimonial">
+        <p class="italic mb-3">“Overall, it’s a great experience. The ability to connect with others and share your experiences is amazing. Plus, the clean UI and friendly atmosphere make it even better.”</p>
+        <p class="font-semibold">— Kidus Yosef | Rating: 4/5</p>
+      </div>
+      <div class="testimonial">
+        <p class="italic mb-3">“Ciphree is really interesting! I love the AI chat that responds like a friend, and the platform’s focus on sharing thoughts and emotions makes it feel unique.”</p>
+        <p class="font-semibold">— Piyush Patra | Rating: 4.5/5</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <script>
-      const section1 = document.getElementById("section1");
-      const section2 = document.getElementById("section2");
-      const section3 = document.getElementById("section3");
+<style>
+.testimonial-container {
+  height: 200px; 
+}
+.testimonial-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
 
-      const exitPopup = document.getElementById("exitPopup");
-      const form = section2.querySelector("form");
-      const nameInput = document.getElementById("name");
-      const nameError = document.getElementById("nameError");
-      const signupBtn = document.getElementById("signupBtn");
 
-      // Section1 buttons
+  <!-- Footer -->
+  <footer class="bg-black py-6 text-center text-gray-400 text-sm">
+    <div class="flex justify-center gap-6 mb-2">
+      <a href="https://twitter.com/Ciphree_" target="_blank" class="hover:text-blue-400 transition-colors duration-300">Twitter</a>
+      <a href="https://instagram.com/Ciphree_" target="_blank" class="hover:text-blue-400 transition-colors duration-300">Instagram</a>
+      <a href="https://www.threads.net/Ciphree_" target="_blank" class="hover:text-blue-400 transition-colors duration-300">Threads</a>
+      <a href="https://www.youtube.com/@ciphree_where_your_mind_speaks" target="_blank" class="hover:text-blue-400 transition-colors duration-300">YouTube</a>
+    </div>
+    &copy; 2025 Ciphree. All rights reserved.
+  </footer>
+  
+  <script>
+   const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
 
-      document.getElementById("yesBtn1").addEventListener("click", () => {
-        section1.classList.remove("active");
-        section2.classList.add("active");
-      });
+const dots = [];
+const dotCount = 150; // more dots
+function random(min,max){ return Math.random()*(max-min)+min; }
 
-      // Close popup
-      function closePopup() {
-        exitPopup.classList.remove("show");
-      }
+for(let i=0;i<dotCount;i++){
+  dots.push({
+    x: random(0,w),
+    y: random(0,h),
+    r: random(1,4),       // varying radius
+    dx: random(-0.5,0.5), // faster movement
+    dy: random(-0.5,0.5),
+    alpha: random(0.3,0.8), // varying brightness
+  });
+}
 
-      // Section3 buttons
-      document.getElementById("nahBtn3").addEventListener("click", () => {
-        section3.classList.remove("active");
-      });
-      document.getElementById("videoBtn").addEventListener("click", () => {
-        window.open("https://www.youtube.com/watch?v=UAFe9Msnv5E", "_blank");
-      });
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  dots.forEach(d=>{
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(59,130,246,${d.alpha})`;
+    ctx.shadowColor = '#3b82f6';
+    ctx.shadowBlur = 15;
+    ctx.fill();
+    d.x += d.dx;
+    d.y += d.dy;
+    if(d.x<0||d.x>w)d.dx*=-1;
+    if(d.y<0||d.y>h)d.dy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
 
-      // Name validation
-      async function checkName(name) {
-        if (!name) return false;
-        const res = await fetch(`/check-name?name=${encodeURIComponent(name)}`);
-        const data = await res.json();
-        return data.exists;
-      }
-      async function validateName() {
-        const value = nameInput.value.trim();
-        const hasSpace = value.includes(" ");
-        const exists = await checkName(value);
-        if (!value || hasSpace || exists) {
-          nameInput.style.borderColor = "red";
-          nameError.classList.remove("hidden");
-          signupBtn.disabled = true;
-          return false;
-        } else {
-          nameInput.style.borderColor = "";
-          nameError.classList.add("hidden");
-          signupBtn.disabled = false;
-          return true;
-        }
-      }
-      nameInput.addEventListener("input", validateName);
+window.addEventListener('resize', ()=>{
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+});
 
-      // Form submit
-
-      document.getElementById("videoBtn").addEventListener("click", () => {
-        window.open("https://www.youtube.com/watch?v=UAFe9Msnv5E", "_blank");
-
-        // after video click, show testimonials
-        section3.classList.remove("active");
-      });
-
-      document.getElementById("nahBtn3").addEventListener("click", () => {
-        section3.classList.remove("active");
-      });
-    </script>
-    <style>
-      /* Add this to your */
-
-      body {
-        position: relative;
-        min-height: 100vh;
-        background: url(/Images/background.png) center center / cover no-repeat
-          fixed;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 1rem;
-        overflow: hidden;
-        perspective: 1500px;
-      }
-      body::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(40, 101, 234, 0.612);
-        mix-blend-mode: multiply;
-        backdrop-filter: blur(6px);
-        z-index: 0;
-      }
-      section {
-        position: relative;
-        z-index: 1;
-        display: none;
-        margin-top: 2rem;
-        text-align: center;
-      }
-      section.active {
-        display: block;
-      }
-      #exitPopup {
-        display: none;
-      }
-      #exitPopup.show {
-        display: flex;
-      }
-      input {
-        padding: 0.5rem;
-        font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 0.3rem;
-        width: 100%;
-      }
-      button {
-        padding: 0.8rem 1.5rem;
-        cursor: pointer;
-        font-size: 1rem;
-        border-radius: 0.3rem;
-      }
-    </style>
-  </body>
+  </script>
+</body>
 </html>

@@ -15,8 +15,49 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <meta name="description" content="Access your Ciphree account to connect, journal, and share your emotions safely.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://ciphree.com/login">
+
+<!-- Keywords -->
+<meta name="keywords" content="Ciphree, login, sign in, secure login, account access">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="Ciphree — Login">
+<meta property="og:description" content="Access your Ciphree account to connect, journal, and share your emotions safely.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ciphree.com/login">
+<meta property="og:image" content="https://ciphree.com/Images/ciphry.png">
+<meta property="og:site_name" content="Ciphree">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ciphree — Login">
+<meta name="twitter:description" content="Access your Ciphree account to connect, journal, and share your emotions safely.">
+<meta name="twitter:image" content="https://ciphree.com/Images/ciphry.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Ciphree Login",
+  "url": "https://ciphree.com/login",
+  "description": "Access your Ciphree account to connect, journal, and share your emotions safely."
+}
+</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MM8VSWME23');
+</script>
   </head>
   <body>
+    <canvas id="bg"></canvas>
     <div id="loader" class="loader">
       <div class="dot"></div>
       <div class="dot"></div>
@@ -31,7 +72,11 @@
         }, 400); // match with CSS transition
       });
     </script>
-
+ <div class="themeToggle">
+  <button id="themeToggle" class="toggle">
+    <span class="switch"></span>
+  </button>
+</div>
     <section id="register">
       <div class="logo" style="display: flex; justify-content: center">
         <img src="/Images/ciphry.png" alt="" style="width: 100px !important" />
@@ -40,17 +85,22 @@
       <section id="signup">
         <form action="/signin" method="Post">
           <span class="name"
-            ><input type="name" name="name" id="name" placeholder="Name" />
+            ><input type="text" name="name" id="name" placeholder="Name" />
             <input
-              type="text"
+              type="password"
               name="password"
               id="password"
               placeholder="Password"
+              minlength="8"
+              maxlength="16"
             />
           </span>
-          <p>Don't have an account? <a href="/register">Sign up</a></p>
+           <p class="text-sm text-blue-500"><a href="/forgot">Forgot password?</a></p>
           <button>Sign-in</button>
+          
+          
         </form>
+     
       </section>
     </section>
     <script src="/Js/loading.js"></script>
@@ -81,3 +131,141 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
   </body>
 </html>
+<script>
+  const themeToggle = document.getElementById("themeToggle");
+ const themeIcon = themeToggle.querySelector("span");
+ 
+ // Load saved theme on page load
+ const savedTheme = localStorage.getItem("theme");
+ if (savedTheme) {
+     document.documentElement.setAttribute("data-theme", savedTheme);
+     themeIcon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+ }
+ 
+ // Toggle function
+ themeToggle.addEventListener("click", () => {
+     const currentTheme = document.documentElement.getAttribute("data-theme");
+     const newTheme = currentTheme === "dark" ? "light" : "dark";
+     document.documentElement.setAttribute("data-theme", newTheme);
+     localStorage.setItem("theme", newTheme); // Save theme for all pages
+     themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+ });
+
+   const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+
+const dots = [];
+const dotCount = 150; // more dots
+function random(min,max){ return Math.random()*(max-min)+min; }
+
+for(let i=0;i<dotCount;i++){
+  dots.push({
+    x: random(0,w),
+    y: random(0,h),
+    r: random(1,4),       // varying radius
+    dx: random(-0.5,0.5), // faster movement
+    dy: random(-0.5,0.5),
+    alpha: random(0.3,0.8), // varying brightness
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  dots.forEach(d=>{
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(59,130,246,${d.alpha})`;
+    ctx.shadowColor = '#3b82f6';
+    ctx.shadowBlur = 15;
+    ctx.fill();
+    d.x += d.dx;
+    d.y += d.dy;
+    if(d.x<0||d.x>w)d.dx*=-1;
+    if(d.y<0||d.y>h)d.dy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize', ()=>{
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+});
+
+   
+   </script>
+   <style>
+     body{
+       background-color: var(--White--);
+     }
+     .themeToggle {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end !important;
+   padding: 10px;
+ }
+ 
+ #themeToggle {
+   width: 60px;
+   height: 30px;
+   border-radius: 30px;
+   border: 1px solid var(--Black--) !important;
+   background-color: var(--White--);
+   position: relative;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+ }
+ 
+ #themeToggle .switch {
+   position: absolute;
+   top: 3px;
+   left: 3px;
+   width: 24px;
+   height: 24px;
+   background-color: var(--White--);
+   border-radius: 50%;
+   transition: transform 0.3s ease;
+ }
+ 
+ [data-theme="dark"] #themeToggle {
+   background-color: var(--Blue--);
+ }
+ 
+ [data-theme="dark"] #themeToggle .switch {
+   transform: translateX(30px);
+ }
+ .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  padding-bottom: 26px;
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* <- allow clicks through canvas */
+}
+
+.container #post {
+  background: var(--White--) !important;
+  padding: 20px !important;
+  border-radius: 15px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container #post:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(28, 116, 228, 0.25);
+}
+   
+ 
+   
+   </style>

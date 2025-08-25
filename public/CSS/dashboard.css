@@ -31,7 +31,7 @@ justify-content: center;
 align-items: center;
 }
 .account svg.size-6 {
-    color: white;
+    color: var(--White--);
     justify-content: center;
     align-items: center;
     display: flex
@@ -188,7 +188,7 @@ input#message:focus{
 }
 input#submit {
   background-color: var(--Blue--);
-  color: white;
+  color: var(--White--);
  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
   width: 140px;
 }
@@ -199,8 +199,14 @@ h1 {
 }
 #body{
   padding-bottom: 80px; 
+ 
 }
 
+@media(max-width:1024){
+  #body{
+    padding-left: 70px;
+  }
+}
 @media (max-width: 900px) {
  ul{
   padding-bottom: none !important;
