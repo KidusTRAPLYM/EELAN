@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #000;
+      background: #1f2937;
       color: white;
       margin: 0;
       overflow-x: hidden;
@@ -146,61 +146,100 @@
   </section>
   <!-- Section 2: Testimonials -->
 <!-- Section 2: Testimonials -->
-<section>
+<section id="testimonials">
   <h2 class="text-3xl font-bold text-blue-400 mb-12 drop-shadow-[0_0_15px_rgba(59,130,246,0.7)]">
     What Our Users Say
   </h2>
-  <div class="testimonial-container overflow-hidden relative w-full">
-    <div class="testimonial-track flex gap-6">
-      <div class="testimonial">
-        <p class="italic mb-3">“Overall, it’s a great experience. The ability to connect with others and share your experiences is amazing. Plus, the clean UI and friendly atmosphere make it even better.”</p>
-        <p class="font-semibold">— Kidus Yosef | Rating: 4/5</p>
-      </div>
-      <div class="testimonial">
-        <p class="italic mb-3">“Ciphree is really interesting! I love the AI chat that responds like a friend, and the platform’s focus on sharing thoughts and emotions makes it feel unique.”</p>
-        <p class="font-semibold">— Piyush Patra | Rating: 4.5/5</p>
-      </div>
-      <div class="testimonial">
-        <p class="italic mb-3">“Beautiful and friendly user interface and experience.”</p>
-        <p class="font-semibold">— Jonathan Fekadu | Rating: 4/5</p>
-      </div>
-      <div class="testimonial">
-        <p class="italic mb-3">“It's amazing, keep up the good work.”</p>
-        <p class="font-semibold">— Tedros | Rating: 4/5</p>
-      </div>
 
-      <!-- duplicate for smooth infinite scroll -->
-      <div class="testimonial">
-        <p class="italic mb-3">“Overall, it’s a great experience. The ability to connect with others and share your experiences is amazing. Plus, the clean UI and friendly atmosphere make it even better.”</p>
-        <p class="font-semibold">— Kidus Yosef | Rating: 4/5</p>
-      </div>
-      <div class="testimonial">
-        <p class="italic mb-3">“Ciphree is really interesting! I love the AI chat that responds like a friend, and the platform’s focus on sharing thoughts and emotions makes it feel unique.”</p>
-        <p class="font-semibold">— Piyush Patra | Rating: 4.5/5</p>
-      </div>
-    </div>
+  <div class="flex flex-wrap gap-6 justify-center">
+    <article class="testimonial flex-1 min-w-[250px] max-w-[350px]">
+      <p class="italic mb-3">“Overall, it’s a great experience. The ability to connect with others and share your experiences is amazing. Plus, the clean UI and friendly atmosphere make it even better.”</p>
+      <p class="font-semibold">— Kidus Yosef | Rating: 4/5</p>
+    </article>
+
+    <article class="testimonial flex-1 min-w-[250px] max-w-[350px]">
+      <p class="italic mb-3">“Ciphree is really interesting! I love the AI chat that responds like a friend, and the platform’s focus on sharing thoughts and emotions makes it feel unique.”</p>
+      <p class="font-semibold">— Piyush Patra | Rating: 4.5/5</p>
+    </article>
+
+    <article class="testimonial flex-1 min-w-[250px] max-w-[350px]">
+      <p class="italic mb-3">“Beautiful and friendly user interface and experience.”</p>
+      <p class="font-semibold">— Jonathan Fekadu | Rating: 4/5</p>
+    </article>
+
+    <article class="testimonial flex-1 min-w-[250px] max-w-[350px]">
+      <p class="italic mb-3">“It's amazing, keep up the good work.”</p>
+      <p class="font-semibold">— Tedros | Rating: 4/5</p>
+    </article>
   </div>
 </section>
 
+
 <style>
-.testimonial-container {
-  height: 200px; 
+/* Testimonials – responsive infinite marquee */
+/* FIX 1: intro should shrink instead of hard locking */
+#intro {
+  min-height: 100vh;     /* instead of height */
+  height: auto;          /* let it expand */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-.testimonial-track {
+
+/* FIX 2: Testimonials loop */
+.t-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.t-scroller {
+  display: flex;
+  animation: t-marquee 40s linear infinite;
+  width: max-content;    /* prevents overlap */
+}
+
+.t-group {
   display: flex;
   gap: 2rem;
-  animation: scroll 30s linear infinite;
-  width: max-content;
 }
-@keyframes scroll {
-  0% { transform: translateX(0); }
+
+/* Testimonials sizing */
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;      /* allows wrapping */
+  gap: 20px;            /* space between cards */
+  justify-content: center; /* centers them */
+}
+
+.testimonial-card {
+  flex: 1 1 300px;      /* grows, shrinks, minimum width */
+  max-width: 350px;     /* don’t get too wide */
+  min-width: 250px;     /* don’t shrink too small */
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .testimonial { flex: 0 0 45%; }
+}
+@media (min-width: 1024px) {
+  .testimonial { flex: 0 0 30%; }
+}
+
+/* Looping keyframes */
+@keyframes t-marquee {
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+
 </style>
 
 
   <!-- Footer -->
-  <footer class="bg-black py-6 text-center text-gray-400 text-sm">
+  <footer class="bg-[#1f2937] py-6 text-center text-gray-400 text-sm">
     <div class="flex justify-center gap-6 mb-2">
       <a href="https://twitter.com/Ciphree_" target="_blank" class="hover:text-blue-400 transition-colors duration-300">Twitter</a>
       <a href="https://instagram.com/Ciphree_" target="_blank" class="hover:text-blue-400 transition-colors duration-300">Instagram</a>
