@@ -14,6 +14,11 @@ const io = new Server(http);
 const axios = require("axios");
 const dotenv = require("dotenv");
 const feedback = require("./models/feedback.js");
+const fs = require("fs");
+const stringSimilarity = require("string-similarity");
+
+// Load JSON
+const monamiData = JSON.parse(fs.readFileSync('monami_data.json', 'utf-8'));
 
 const { OAuth2Client } = require("google-auth-library");
 
@@ -263,17 +268,117 @@ app.get("/admin", async (req, res) => {
   let feedbacks = await feedback.find();
   res.render("admin", { feedbacks });
 });
-// Route for subdomain
+let chatHistory = [];
+let mode = "listen";
 
-// Normal /monami route
+const responses = {
+  // existing ones...
+  value: ["You are valuable, don't forget that.", "Your worth is not defined by others."],
+  loneliness: ["You are not alone, I am here with you.", "Many people feel this way sometimes."],
+  stress: ["Take a deep breath, it’s okay to feel stressed.", "Try to relax, you deserve peace."],
+  sadness: ["I’m sorry you feel sad, things will get better.", "It’s okay to feel sad sometimes."],
+  
+  // new single-word categories
+  gratitude: ["Notice the little things you are grateful for.", "Appreciation brings peace to the mind."],
+  hope: ["Even small hope matters.", "Keep moving forward, step by step."],
+  courage: ["Courage is acting despite fear.", "You are braver than you think."],
+  selflove: ["You deserve your own kindness.", "Treat yourself with care and respect."],
+  irritation: ["Take a moment to pause.", "Breathe and let the feeling pass."],
+  despair: ["Even when it seems dark, there is hope.", "Take one small step, it counts."],
+  overwhelm: ["Take one thing at a time.", "You can handle this slowly, step by step."],
+  confusion: ["Take time to clarify your thoughts.", "It’s okay not to have all the answers now."],
+  fatigue: ["Rest is essential, give yourself permission.", "You can recharge, it’s okay to pause."],
+  embarrassment: ["Everyone makes mistakes, it’s human.", "You are still worthy, no matter what."],
+  trauma: ["You survived, that is strength.", "Healing is possible, step by step."],
+  panic: ["It’s okay, breathe slowly.", "You are safe, this will pass."],
+  insecurity: ["You are enough as you are.", "Believe in your unique strengths."],
+  rejection: ["It doesn’t define you.", "New opportunities await."],
+  disappointment: ["It’s okay to feel let down.", "Use it to grow, not punish yourself."],
+  worry: ["Focus on what you can control.", "Let thoughts pass without judgment."]
+};
+
+
+const initialMessage = [
+  { user: "AI", text: "Hey there! I am Monami and I am here to help you." },
+  { user: "AI", text: "First you tell me how you feel and after you let your feelings out you can click /response to see my overall response." },
+  { user: "AI", text: "So tell me, how are you feeling?" }
+];
+const keywordMap = {
+  value: ["valuable", "worth", "worthy"],
+  loneliness: ["lonely", "alone", "isolated"],
+  stress: ["stress", "tired", "burnt", "pressure"],
+  sadness: ["sad", "unhappy", "down"],
+  anxiety: ["anxious", "worried", "fear", "panic"],
+  depression: ["depressed", "hopeless", "empty"],
+  ptsd: ["trauma", "flashback", "nightmare", "trigger"]
+};
+function detectCategoryFuzzy(text) {
+  text = text.toLowerCase();
+  let bestMatch = { category: null, score: 0 };
+
+  for (const [category, keywords] of Object.entries(keywordMap)) {
+    for (const word of keywords) {
+      const similarity = stringSimilarity.compareTwoStrings(text, word);
+      if (similarity > bestMatch.score) {
+        bestMatch = { category, score: similarity };
+      }
+    }
+  }
+
+  // Only return if similarity is decent enough, e.g., > 0.3
+  return bestMatch.score > 0.3 ? bestMatch.category : null;
+}
+
+
+// Render initial Monami page
 app.get("/monami", (req, res) => {
-  res.render("monamipure", {
-    response: null,
-    error: null,
-    userMessage: null,
-    chatHistory: "There is no chat history for now!",
-  });
+  chatHistory = [...initialMessage]; // reset session
+  mode = "listen";
+  res.render("monami", { chatHistory }); // send to EJS
 });
+
+// Listen mode: user types freely
+app.post("/monami/listen", (req, res) => {
+  if (mode !== "listen") return res.redirect("/monami");
+
+  const { text } = req.body;
+  const replies = ["Sorry to hear that, dear.", "Woah!", "Ouch!", "I hear you, is there anything you want to add?", "Sorry"];
+  const randomReply = replies[Math.floor(Math.random() * replies.length)];
+   chatHistory.push({ user: "User", text });
+  chatHistory.push({ user: "AI", text: randomReply });
+  
+    res.render("monami", { chatHistory }); // render in EJS
+    if (!text || text.trim() === "") {
+      return res.render("monami", { chatHistory });
+    }
+});
+
+// Respond mode: user types /response
+app.post("/monami/respond", (req, res) => {
+  mode = "respond";
+
+  const userText = chatHistory
+    .filter(c => c.user === "User")
+    .map(c => c.text)
+    .join(" ");
+
+  const category = detectCategoryFuzzy(userText);
+
+  let finalResponses = [];
+  if (category && responses[category]) {
+    finalResponses = responses[category];
+  } else {
+    finalResponses.push(
+      "Ouch… that sounds tough. I’m really sorry you had to go through that. I may not have all the answers, but here’s my thought: maybe try reaching out and talking with people you trust. You don’t have to go through this alone."
+    );
+  }
+
+  chatHistory.push({ user: "AI", text: finalResponses.join(" ") });
+
+  res.render("monami", { chatHistory }); // render in EJS
+});
+
+
 
 // const WIKI_API_URL = "https://en.wikipedia.org/w/api.php";
 // async function searchWikipedia(query) {
