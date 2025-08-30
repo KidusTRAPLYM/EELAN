@@ -644,6 +644,24 @@
     {"text": "User: vibing\nAI: Sounds good! Enjoy the vibe."},
     {"text": "User: good chilling\nAI: Nice! Hope your day’s going well."},
     {"text": "User: just vibing\nAI: That’s great! Sometimes it’s good to just chill."},
+    
+      {
+        "text": "User: I’m not sure if they like me\nAI: It’s normal to feel uncertain. Maybe try spending some time talking to them and see how they react."
+      },
+      {
+        "text": "User: We had a fight, and I don’t know how to fix it\nAI: Conflicts happen. Try to calmly talk about your feelings and listen to theirs too."
+      },
+      {
+        "text": "User: I miss them so much\nAI: Missing someone can be tough. Maybe send them a kind message or think about what made your connection strong."
+      },
+      {
+        "text": "User: I think I’m falling in love\nAI: That’s exciting! Take it slow, enjoy the feelings, and see where things naturally go."
+      },
+      {
+        "text": "User: They don’t reply for hours, and I feel ignored\nAI: That can feel frustrating. People have different schedules, so try not to jump to conclusions too quickly."
+      },
+    
+    
      {"text": "User: my friend betrayed me\nAI: I’m really sorry to hear that. That must hurt a lot. Do you want to talk about it?"},
     {"text": "User: i feel lonely\nAI: Feeling lonely can be tough. Sharing your thoughts or talking to someone you trust can help."},
  {"text": "User: What do you want to talk about?\nAI: I’m here to listen to you. We can talk about how you feel, your day, or anything on your mind."},

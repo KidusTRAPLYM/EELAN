@@ -14,11 +14,11 @@ const io = new Server(http);
 const axios = require("axios");
 const dotenv = require("dotenv");
 const feedback = require("./models/feedback.js");
-const fs = require("fs");
-const stringSimilarity = require("string-similarity");
+
+
 
 // Load JSON
-const monamiData = JSON.parse(fs.readFileSync('monami_data.json', 'utf-8'));
+
 
 const { OAuth2Client } = require("google-auth-library");
 
@@ -36,6 +36,14 @@ const URL = process.env.MONGO_URI;
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const journal = require("./models/journal.js");
+const session = require("express-session");
+
+app.use(session({
+  secret: "monamiSecretKey", // change this
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 24 * 60 * 60 * 1000 } // 1 day
+}));
 
 // middleware
 
@@ -268,114 +276,158 @@ app.get("/admin", async (req, res) => {
   let feedbacks = await feedback.find();
   res.render("admin", { feedbacks });
 });
-let chatHistory = [];
-let mode = "listen";
+const fs = require("fs");
 
-const responses = {
-  // existing ones...
-  value: ["You are valuable, don't forget that.", "Your worth is not defined by others."],
-  loneliness: ["You are not alone, I am here with you.", "Many people feel this way sometimes."],
-  stress: ["Take a deep breath, it’s okay to feel stressed.", "Try to relax, you deserve peace."],
-  sadness: ["I’m sorry you feel sad, things will get better.", "It’s okay to feel sad sometimes."],
-  
-  // new single-word categories
-  gratitude: ["Notice the little things you are grateful for.", "Appreciation brings peace to the mind."],
-  hope: ["Even small hope matters.", "Keep moving forward, step by step."],
-  courage: ["Courage is acting despite fear.", "You are braver than you think."],
-  selflove: ["You deserve your own kindness.", "Treat yourself with care and respect."],
-  irritation: ["Take a moment to pause.", "Breathe and let the feeling pass."],
-  despair: ["Even when it seems dark, there is hope.", "Take one small step, it counts."],
-  overwhelm: ["Take one thing at a time.", "You can handle this slowly, step by step."],
-  confusion: ["Take time to clarify your thoughts.", "It’s okay not to have all the answers now."],
-  fatigue: ["Rest is essential, give yourself permission.", "You can recharge, it’s okay to pause."],
-  embarrassment: ["Everyone makes mistakes, it’s human.", "You are still worthy, no matter what."],
-  trauma: ["You survived, that is strength.", "Healing is possible, step by step."],
-  panic: ["It’s okay, breathe slowly.", "You are safe, this will pass."],
-  insecurity: ["You are enough as you are.", "Believe in your unique strengths."],
-  rejection: ["It doesn’t define you.", "New opportunities await."],
-  disappointment: ["It’s okay to feel let down.", "Use it to grow, not punish yourself."],
-  worry: ["Focus on what you can control.", "Let thoughts pass without judgment."]
-};
-
-
+// Initial messages
 const initialMessage = [
-  { user: "AI", text: "Hey there! I am Monami and I am here to help you." },
-  { user: "AI", text: "First you tell me how you feel and after you let your feelings out you can click /response to see my overall response." },
-  { user: "AI", text: "So tell me, how are you feeling?" }
+  { user: "AI", text: "Hey there! I am Monami and I am here to help you." }
 ];
-const keywordMap = {
-  value: ["valuable", "worth", "worthy"],
-  loneliness: ["lonely", "alone", "isolated"],
-  stress: ["stress", "tired", "burnt", "pressure"],
-  sadness: ["sad", "unhappy", "down"],
-  anxiety: ["anxious", "worried", "fear", "panic"],
-  depression: ["depressed", "hopeless", "empty"],
-  ptsd: ["trauma", "flashback", "nightmare", "trigger"]
-};
-function detectCategoryFuzzy(text) {
-  text = text.toLowerCase();
-  let bestMatch = { category: null, score: 0 };
 
-  for (const [category, keywords] of Object.entries(keywordMap)) {
-    for (const word of keywords) {
-      const similarity = stringSimilarity.compareTwoStrings(text, word);
-      if (similarity > bestMatch.score) {
-        bestMatch = { category, score: similarity };
-      }
+// GET /monami - render page
+app.get("/monami", (req, res) => {
+  if (!req.session.chatHistory) req.session.chatHistory = [...initialMessage];
+
+  // Load JSON data from file into session if not already loaded
+  if (!req.session.monamiData) {
+    try {
+      req.session.monamiData = JSON.parse(fs.readFileSync("monami_data.json", "utf-8"));
+      console.log(`Loaded ${req.session.monamiData.length} responses from JSON file`);
+    } catch (err) {
+      console.error("Failed to load JSON:", err);
+      req.session.monamiData = [];
     }
   }
 
-  // Only return if similarity is decent enough, e.g., > 0.3
-  return bestMatch.score > 0.3 ? bestMatch.category : null;
+  res.render("monami", { chatHistory: req.session.chatHistory });
+});
+
+const stringSimilarity = require("string-similarity");
+
+function cleanText(s) {
+  return s.toLowerCase().replace(/[^\w\s]/gi, "").trim();
 }
 
+const natural = require("natural");
+const stemmer = natural.PorterStemmer;
 
-// Render initial Monami page
-app.get("/monami", (req, res) => {
-  chatHistory = [...initialMessage]; // reset session
-  mode = "listen";
-  res.render("monami", { chatHistory }); // send to EJS
-});
-
-// Listen mode: user types freely
-app.post("/monami/listen", (req, res) => {
-  if (mode !== "listen") return res.redirect("/monami");
-
+app.post("/monami", (req, res) => {
+  if (!req.session.chatHistory) req.session.chatHistory = [...initialMessage];
   const { text } = req.body;
-  const replies = ["Sorry to hear that, dear.", "Woah!", "Ouch!", "I hear you, is there anything you want to add?", "Sorry"];
-  const randomReply = replies[Math.floor(Math.random() * replies.length)];
-   chatHistory.push({ user: "User", text });
-  chatHistory.push({ user: "AI", text: randomReply });
-  
-    res.render("monami", { chatHistory }); // render in EJS
-    if (!text || text.trim() === "") {
-      return res.render("monami", { chatHistory });
-    }
-});
-
-// Respond mode: user types /response
-app.post("/monami/respond", (req, res) => {
-  mode = "respond";
-
-  const userText = chatHistory
-    .filter(c => c.user === "User")
-    .map(c => c.text)
-    .join(" ");
-
-  const category = detectCategoryFuzzy(userText);
-
-  let finalResponses = [];
-  if (category && responses[category]) {
-    finalResponses = responses[category];
-  } else {
-    finalResponses.push(
-      "Ouch… that sounds tough. I’m really sorry you had to go through that. I may not have all the answers, but here’s my thought: maybe try reaching out and talking with people you trust. You don’t have to go through this alone."
-    );
+  if (!text || text.trim() === "") {
+    console.log("Empty input received");
+    return res.render("monami", { chatHistory: req.session.chatHistory });
   }
 
-  chatHistory.push({ user: "AI", text: finalResponses.join(" ") });
+  req.session.chatHistory.push({ user: "User", text });
+  console.log(`User input: "${text}"`);
 
-  res.render("monami", { chatHistory }); // render in EJS
+  const data = req.session.monamiData || [];
+  console.log(`Processing ${data.length} responses from session data`);
+
+  let bestMatches = [];
+  let bestScore = 0;
+  let topSimilarEntries = [];
+
+  // Stem input words
+  const inputWords = new Set(cleanText(text).split(/\s+/).filter(word => word.length > 2).map(word => stemmer.stem(word)));
+  console.log(`Stemmed input words: ${[...inputWords]}`);
+
+  for (const item of data) {
+    if (!item.text) {
+      console.log(`Skipping invalid item: ${JSON.stringify(item)}`);
+      continue;
+    }
+
+    const lines = item.text.split("\n");
+    const userLine = lines.find(l => l.toLowerCase().startsWith("user:"));
+    const aiLine = lines.find(l => l.toLowerCase().startsWith("ai:"));
+    if (!userLine || !aiLine) {
+      console.log(`Skipping item with missing user/ai line: ${item.text}`);
+      continue;
+    }
+
+    const userText = userLine.replace(/User:/i, "").trim();
+    const aiText = aiLine.replace(/AI:/i, "").trim();
+    const cleanedUserText = cleanText(userText);
+    const userWords = new Set(cleanedUserText.split(/\s+/).filter(word => word.length > 2).map(word => stemmer.stem(word)));
+
+    // Check for any stemmed word match
+    let hasWordMatch = false;
+    for (const inputWord of inputWords) {
+      if (userWords.has(inputWord)) {
+        hasWordMatch = true;
+        break;
+      }
+    }
+
+    // Calculate similarity for tie-breaking
+    let similarity = stringSimilarity.compareTwoStrings(cleanText(text), cleanedUserText);
+    if (hasWordMatch) {
+      similarity = Math.max(similarity, 0.4); // Boost for stemmed word match
+      console.log(`Stemmed word match found for "${text}" with "${userText}" (Similarity: ${similarity})`);
+    }
+
+    // Update best matches
+    if (similarity > bestScore) {
+      bestScore = similarity;
+      bestMatches = [aiText];
+      topSimilarEntries = [{ user: userText, ai: aiText }];
+    } else if (Math.abs(similarity - bestScore) < 0.01) { // Allow near-ties
+      bestMatches.push(aiText);
+      topSimilarEntries.push({ user: userText, ai: aiText });
+    }
+
+    // Collect top 5 for fallback
+    if (topSimilarEntries.length < 5 && similarity > 0.05) {
+      topSimilarEntries.push({ user: userText, ai: aiText });
+    }
+  }
+
+  // Fallback for specific keywords
+  const lowerText = text.toLowerCase();
+  if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
+    bestMatches = ["Hey! How's your day going?"];
+    bestScore = 0.5;
+    console.log("Matched greeting keyword");
+  } else if (lowerText.includes('how are you') || lowerText.includes('how do you feel')) {
+    bestMatches = ["I'm doing fine, thank you for asking!"];
+    bestScore = 0.5;
+    console.log("Matched 'how are you' keyword");
+  } else if (lowerText.includes('who') && (lowerText.includes('made') || lowerText.includes('created'))) {
+    bestMatches = ["I’m Monami, created by the folks at Ciphree to be your empathetic chat buddy!"];
+    bestScore = 0.5;
+    console.log("Matched 'who made you' keyword");
+  } else if (lowerText.includes('stuck') || lowerText.includes('career')) {
+    bestMatches = ["Feeling stuck is tough, especially in your career. Maybe try exploring a new skill or connecting with someone in your field?"];
+    bestScore = 0.5;
+    console.log("Matched 'stuck' or 'career' keyword");
+  } else if (lowerText.includes('tired') || lowerText.includes('tiredness') || lowerText.includes('tireless')) {
+    bestMatches = ["I hear you. Rest is important, even a short break can help."];
+    bestScore = 0.5;
+    console.log("Matched 'tired/tiredness/tireless' keyword");
+  }
+
+  let aiResponse;
+
+// If we have good matches, pick one randomly
+if (bestMatches.length > 0) {
+  aiResponse = bestMatches[Math.floor(Math.random() * bestMatches.length)];
+  console.log(`Selected response: "${aiResponse}" (Score: ${bestScore})`);
+} else {
+  // No match found → generate minimal response instead of fallback from JSON
+  const minimalResponses = ["Hmm.", "I see.", "…", "Okay.", "Go on..."];
+  aiResponse = minimalResponses[Math.floor(Math.random() * minimalResponses.length)];
+  console.log(`No match found, using minimal response: "${aiResponse}"`);
+}
+
+  req.session.chatHistory.push({ user: "AI", text: aiResponse });
+  res.render("monami", { chatHistory: req.session.chatHistory });
+});
+
+// Add a clear route to reset the chat
+app.post("/monami/clear", (req, res) => {
+  req.session.chatHistory = [...initialMessage];
+  res.redirect("/monami");
 });
 
 
