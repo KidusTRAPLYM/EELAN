@@ -423,3 +423,15 @@ body {
   background-color: var(--Clear-white--) !important;
   color: var(--Black--) !important;
 }
+::-webkit-scrollbar{
+  width: 10px;
+  color: var(--Black--);
+  background-color: var(--Blue--);
+
+}
+::-webkit-scrollbar-thumb{
+  width: 10px;
+  background-color: var(--Black--);
+  color: var(--Black--);
+  border-radius: 20px;
+}

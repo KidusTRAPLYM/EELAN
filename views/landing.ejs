@@ -81,136 +81,6 @@
 
   gtag('config', 'G-MM8VSWME23');
 </script>
-  </head>
-  <body>
-<%- include('partials/navigation', { currentPage: 'landing' }) %>
-<canvas id="bg" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
-
-    <div class="themeToggle">
-      <button id="themeToggle" class="toggle">
-        <span class="switch"></span>
-      </button>
-    </div>
-    <main class="main-content" id="main-content">
-      
-      
-      <div class="greeting" id="greeting">Hi, <%=user.name%></div>
-      <section id="text">
-        <div class="question">What do you want to do today?</div>
-        <section id="message" class="w-full bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg my-6 text-center max-w-3xl mx-auto shadow-sm">
-          <p class="text-gray-800 text-lg md:text-xl">
-            <a href="https://www.youtube.com/watch?v=UAFe9Msnv5E" target="_blank" class="text-gray-800 hover:text-blue-600 hover:underline">
-            If you are new to this website, click here to watch a video about it.
-          </a>
-          </p>
-          
-          
-        </section>
-      </section>
-      
-      
-      <section id="actions">
-        <div class="actions">
-
-          <a href="/journal">
-            <button class="action-btn" data-section="journal">
-              Journal
-            </button>
-           
-          </a>
-          <a href="#formPost">
-            <button class="action-btn" data-section="talk">
-              Create a post
-            </button>
-          </a>
-          <a href="/monami">
-            <button class="action-btn" data-section="find">Talk to AI</button>
-          </a>
-          <a href="/matchup">
-            <button class="action-btn" data-section="profile">Find a person</button>
-          </a>
-        </div>
-      </section>
-    </main>
-    <section id="formPost">
-        <form action="/post" method="Post" class="formPost">
-          <div class="up">
-            <h1>Create a post</h1>
-          </div>
-          <div class="down">
-            <textarea
-              name="message"
-              id="monami-input"
-              maxlength="500"
-              placeholder="Write your post here."
-            ></textarea>
-            <span>  <p id="char-count">0 / 500</p></span>
-          
-            <!-- Character counter display -->
-          <input list="post-types" name="type" placeholder="Choose the post type" />
-<datalist id="post-types">
-  <option value="Articles">
-  <option value="Posts">
-</datalist>
-<div class="btns">
-     <button>Post</button>
-    <a href="#"><button class="cancel" type="button">Cancel</button></a>
-</div>
-
-        </form>
-      </section>
-      <!-- Video Popup Modal -->
-<!-- Video Popup Modal -->
-<!-- Video Popup Modal -->
-
-
-
-</div>
-
-
-  </body>
-  <script src="/Js/post.js" defer></script>
-  <script>
-  const textarea = document.getElementById("monami-input");
-  const charCount = document.getElementById("char-count");
-  const typeInput = document.querySelector('input[name="type"]');
-
-  // Initial character counter
-  textarea.addEventListener("input", () => {
-    charCount.textContent = textarea.maxLength
-      ? `${textarea.value.length} / ${textarea.maxLength}`
-      : `${textarea.value.length} characters`;
-  });
-
-  // Change maxlength based on post type
-  typeInput.addEventListener("input", () => {
-    if (typeInput.value === "Articles") {
-      textarea.removeAttribute("maxlength");
-    } else {
-      textarea.setAttribute("maxlength", "500");
-      if (textarea.value.length > 500) {
-        textarea.value = textarea.value.slice(0, 500); // trim it instantly
-      }
-    }
-
-    // Force update count when switching type
-    charCount.textContent = textarea.maxLength
-      ? `${textarea.value.length} / ${textarea.maxLength}`
-      : `${textarea.value.length} characters`;
-  });
-</script>
-<script>
-  const allowed = ["Articles", "Posts"];
-  typeInput.addEventListener("input", () => {
-    if (!allowed.includes(typeInput.value)) {
-      typeInput.setCustomValidity("Choose one of the allowed post types.");
-    } else {
-      typeInput.setCustomValidity("");
-    }
-  });
-
-</script>
-</html>
 <style>
   .menu-item {
     padding: 15px 10px;
@@ -342,6 +212,137 @@ img.max-w-xsm.w-full
 }
 
 </style>
+  </head>
+  <body>
+<%- include('partials/navigation', { currentPage: 'landing' }) %>
+<canvas id="bg" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+    <div class="themeToggle">
+      <button id="themeToggle" class="toggle">
+        <span class="switch"></span>
+      </button>
+    </div>
+    <main class="main-content" id="main-content">
+      
+      
+      <div class="greeting" id="greeting">Hi, <%=user.name%></div>
+      <section id="text">
+        <div class="question">What do you want to do today?</div>
+        <section id="message" class="w-full bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg my-6 text-center max-w-3xl mx-auto shadow-sm">
+          <p class="text-gray-800 text-lg md:text-xl">
+            <a href="https://www.youtube.com/watch?v=UAFe9Msnv5E" target="_blank" class="text-gray-800 hover:text-blue-600 hover:underline">
+            If you are new to this website, click here to watch a video about it.
+          </a>
+          </p>
+          
+          
+        </section>
+      </section>
+      
+      
+      <section id="actions">
+        <div class="actions">
+
+          <a href="/journal">
+            <button class="action-btn" data-section="journal">
+              Journal
+            </button>
+           
+          </a>
+          <a href="#formPost">
+            <button class="action-btn" data-section="talk">
+              Create a post
+            </button>
+          </a>
+          <a href="/monami">
+            <button class="action-btn" data-section="find">Talk to AI</button>
+          </a>
+          <a href="/matchup">
+            <button class="action-btn" data-section="profile">Find a person</button>
+          </a>
+        </div>
+      </section>
+    </main>
+    <section id="formPost">
+        <form action="/post" method="Post" class="formPost">
+          <div class="up">
+            <h1>Create a post</h1>
+          </div>
+          <div class="down">
+            <textarea
+              name="message"
+              id="monami-input"
+              maxlength="500"
+              placeholder="Write your post here."
+            ></textarea>
+            <span>  <p id="char-count">0 / 500</p></span>
+          
+            <!-- Character counter display -->
+          <input list="post-types" name="type" placeholder="Choose the post type" />
+<datalist id="post-types">
+  <option value="Articles">
+  <option value="Posts">
+</datalist>
+<div class="btns">
+     <button>Post</button>
+    <a href="#"><button class="cancel" type="button">Cancel</button></a>
+</div>
+
+        </form>
+      </section>
+      <!-- Video Popup Modal -->
+<!-- Video Popup Modal -->
+<!-- Video Popup Modal -->
+
+
+
+</div>
+
+
+  </body>
+  <script src="/Js/post.js" defer></script>
+  <script>
+  const textarea = document.getElementById("monami-input");
+  const charCount = document.getElementById("char-count");
+  const typeInput = document.querySelector('input[name="type"]');
+
+  // Initial character counter
+  textarea.addEventListener("input", () => {
+    charCount.textContent = textarea.maxLength
+      ? `${textarea.value.length} / ${textarea.maxLength}`
+      : `${textarea.value.length} characters`;
+  });
+
+  // Change maxlength based on post type
+  typeInput.addEventListener("input", () => {
+    if (typeInput.value === "Articles") {
+      textarea.removeAttribute("maxlength");
+    } else {
+      textarea.setAttribute("maxlength", "500");
+      if (textarea.value.length > 500) {
+        textarea.value = textarea.value.slice(0, 500); // trim it instantly
+      }
+    }
+
+    // Force update count when switching type
+    charCount.textContent = textarea.maxLength
+      ? `${textarea.value.length} / ${textarea.maxLength}`
+      : `${textarea.value.length} characters`;
+  });
+</script>
+<script>
+  const allowed = ["Articles", "Posts"];
+  typeInput.addEventListener("input", () => {
+    if (!allowed.includes(typeInput.value)) {
+      typeInput.setCustomValidity("Choose one of the allowed post types.");
+    } else {
+      typeInput.setCustomValidity("");
+    }
+  });
+
+</script>
+</html>
+
 <script>
   const themeToggle = document.getElementById("themeToggle");
  const themeIcon = themeToggle.querySelector("span");
