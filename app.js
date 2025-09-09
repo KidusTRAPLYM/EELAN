@@ -15,10 +15,7 @@ const axios = require("axios");
 const dotenv = require("dotenv");
 const feedback = require("./models/feedback.js");
 
-
-
 // Load JSON
-
 
 const { OAuth2Client } = require("google-auth-library");
 
@@ -38,12 +35,14 @@ const cors = require("cors");
 const journal = require("./models/journal.js");
 const session = require("express-session");
 
-app.use(session({
-  secret: "monamiSecretKey", // change this
-  resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: 24 * 60 * 60 * 1000 } // 1 day
-}));
+app.use(
+  session({
+    secret: "monamiSecretKey", // change this
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 1 day
+  })
+);
 
 // middleware
 
@@ -73,7 +72,8 @@ console.log(process.env.MONGO_URI);
 // create token
 const maxAge = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
 
-const createToken = (id, name) => jwt.sign({ id, name }, "sec", { expiresIn: maxAge });
+const createToken = (id, name) =>
+  jwt.sign({ id, name }, "sec", { expiresIn: maxAge });
 //routing
 // Get route functions
 
@@ -91,19 +91,43 @@ app.get("/", async (req, res) => {
   }
 });
 
-
-
-
 app.get("/landing", async (req, res) => {
   const token = req.cookies.User;
   if (!token) return res.redirect("/signin");
 
   try {
+    let messages = "The message field is empty";
+
     const decoded = jwt.verify(token, "sec");
     const user = await User.findById(decoded.id);
     if (!user) return res.redirect("/signin");
 
-    res.render("landing", { user, posts: [], PORT }); // ensure EJS template exists
+    // Get 100 random posts
+    const postData = await Post.aggregate([{ $sample: { size: 100 } }]);
+
+    // Properly hydrate to get Mongoose docs with virtuals
+    const hydratedPosts = postData.map((doc) => Post.hydrate(doc));
+
+    // Populate user info
+    const populatedPostData = await Post.populate(hydratedPosts, {
+      path: "userId",
+      select: "name avatar",
+    });
+
+    // Add comment count
+    const postsWithComments = await Promise.all(
+      populatedPostData.map(async (post) => {
+        const commentCount = await comment.countDocuments({ postId: post._id });
+        return { ...post.toObject({ virtuals: true }), commentCount };
+      })
+    );
+
+    res.render("landing", {
+      user,
+      populatedPostData: postsWithComments,
+      PORT,
+      messages,
+    });
   } catch (err) {
     console.error(err);
     res.redirect("/signin");
@@ -128,7 +152,11 @@ app.get("/feed", async (req, res) => {
       })
     );
 
-    res.render("feed", { populatedPostData: postsWithComments, PORT, messages });
+    res.render("feed", {
+      populatedPostData: postsWithComments,
+      PORT,
+      messages,
+    });
   } catch (err) {
     console.log(`An error has occurred. ${err}`);
     res.render("error");
@@ -159,7 +187,7 @@ app.get("/dashboard/:id", async (req, res) => {
   }
 });
 app.get("/signin", (req, res) => {
-  const user = User.find()
+  const user = User.find();
   console.log(user);
   res.render("Signin", { user });
 });
@@ -190,9 +218,9 @@ app.get("/journal", async (req, res) => {
     .limit(3);
   res.render("journal", { messages, fetchJournal });
 });
-app.get("/forgot" , (req,res)=>{
-  res.render("forgot")
-})
+app.get("/forgot", (req, res) => {
+  res.render("forgot");
+});
 // Adjust path accordingly
 app.post("/forgot-password-hint", async (req, res) => {
   const { name } = req.body; // get username
@@ -204,8 +232,6 @@ app.post("/forgot-password-hint", async (req, res) => {
 
   res.render("forgot", { success: `Password hint: ${user.passwordHint}` });
 });
-
-
 
 app.get("/search", async (req, res) => {
   let messages = "The message field is empty";
@@ -255,7 +281,6 @@ app.get("/profile", async (req, res) => {
   });
 });
 
-
 app.get("/comment/:postId", async (req, res) => {
   const postId = req.params.postId;
   const posts = await Post.findById(postId).populate("userId", "name");
@@ -280,7 +305,7 @@ const fs = require("fs");
 
 // Initial messages
 const initialMessage = [
-  { user: "AI", text: "Hey there! I am Monami and I am here to help you." }
+  { user: "AI", text: "Hey there! I am Monami and I am here to help you." },
 ];
 
 // GET /monami - render page
@@ -290,8 +315,12 @@ app.get("/monami", (req, res) => {
   // Load JSON data from file into session if not already loaded
   if (!req.session.monamiData) {
     try {
-      req.session.monamiData = JSON.parse(fs.readFileSync("monami_data.json", "utf-8"));
-      console.log(`Loaded ${req.session.monamiData.length} responses from JSON file`);
+      req.session.monamiData = JSON.parse(
+        fs.readFileSync("monami_data.json", "utf-8")
+      );
+      console.log(
+        `Loaded ${req.session.monamiData.length} responses from JSON file`
+      );
     } catch (err) {
       console.error("Failed to load JSON:", err);
       req.session.monamiData = [];
@@ -304,7 +333,10 @@ app.get("/monami", (req, res) => {
 const stringSimilarity = require("string-similarity");
 
 function cleanText(s) {
-  return s.toLowerCase().replace(/[^\w\s]/gi, "").trim();
+  return s
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, "")
+    .trim();
 }
 
 const natural = require("natural");
@@ -329,7 +361,12 @@ app.post("/monami", (req, res) => {
   let topSimilarEntries = [];
 
   // Stem input words
-  const inputWords = new Set(cleanText(text).split(/\s+/).filter(word => word.length > 2).map(word => stemmer.stem(word)));
+  const inputWords = new Set(
+    cleanText(text)
+      .split(/\s+/)
+      .filter((word) => word.length > 2)
+      .map((word) => stemmer.stem(word))
+  );
   console.log(`Stemmed input words: ${[...inputWords]}`);
 
   for (const item of data) {
@@ -339,8 +376,8 @@ app.post("/monami", (req, res) => {
     }
 
     const lines = item.text.split("\n");
-    const userLine = lines.find(l => l.toLowerCase().startsWith("user:"));
-    const aiLine = lines.find(l => l.toLowerCase().startsWith("ai:"));
+    const userLine = lines.find((l) => l.toLowerCase().startsWith("user:"));
+    const aiLine = lines.find((l) => l.toLowerCase().startsWith("ai:"));
     if (!userLine || !aiLine) {
       console.log(`Skipping item with missing user/ai line: ${item.text}`);
       continue;
@@ -349,7 +386,12 @@ app.post("/monami", (req, res) => {
     const userText = userLine.replace(/User:/i, "").trim();
     const aiText = aiLine.replace(/AI:/i, "").trim();
     const cleanedUserText = cleanText(userText);
-    const userWords = new Set(cleanedUserText.split(/\s+/).filter(word => word.length > 2).map(word => stemmer.stem(word)));
+    const userWords = new Set(
+      cleanedUserText
+        .split(/\s+/)
+        .filter((word) => word.length > 2)
+        .map((word) => stemmer.stem(word))
+    );
 
     // Check for any stemmed word match
     let hasWordMatch = false;
@@ -361,10 +403,15 @@ app.post("/monami", (req, res) => {
     }
 
     // Calculate similarity for tie-breaking
-    let similarity = stringSimilarity.compareTwoStrings(cleanText(text), cleanedUserText);
+    let similarity = stringSimilarity.compareTwoStrings(
+      cleanText(text),
+      cleanedUserText
+    );
     if (hasWordMatch) {
       similarity = Math.max(similarity, 0.4); // Boost for stemmed word match
-      console.log(`Stemmed word match found for "${text}" with "${userText}" (Similarity: ${similarity})`);
+      console.log(
+        `Stemmed word match found for "${text}" with "${userText}" (Similarity: ${similarity})`
+      );
     }
 
     // Update best matches
@@ -372,7 +419,8 @@ app.post("/monami", (req, res) => {
       bestScore = similarity;
       bestMatches = [aiText];
       topSimilarEntries = [{ user: userText, ai: aiText }];
-    } else if (Math.abs(similarity - bestScore) < 0.01) { // Allow near-ties
+    } else if (Math.abs(similarity - bestScore) < 0.01) {
+      // Allow near-ties
       bestMatches.push(aiText);
       topSimilarEntries.push({ user: userText, ai: aiText });
     }
@@ -385,40 +433,61 @@ app.post("/monami", (req, res) => {
 
   // Fallback for specific keywords
   const lowerText = text.toLowerCase();
-  if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
+  if (
+    lowerText.includes("hello") ||
+    lowerText.includes("hi") ||
+    lowerText.includes("hey")
+  ) {
     bestMatches = ["Hey! How's your day going?"];
     bestScore = 0.5;
     console.log("Matched greeting keyword");
-  } else if (lowerText.includes('how are you') || lowerText.includes('how do you feel')) {
+  } else if (
+    lowerText.includes("how are you") ||
+    lowerText.includes("how do you feel")
+  ) {
     bestMatches = ["I'm doing fine, thank you for asking!"];
     bestScore = 0.5;
     console.log("Matched 'how are you' keyword");
-  } else if (lowerText.includes('who') && (lowerText.includes('made') || lowerText.includes('created'))) {
-    bestMatches = ["I’m Monami, created by the folks at Ciphree to be your empathetic chat buddy!"];
+  } else if (
+    lowerText.includes("who") &&
+    (lowerText.includes("made") || lowerText.includes("created"))
+  ) {
+    bestMatches = [
+      "I’m Monami, created by the folks at Ciphree to be your empathetic chat buddy!",
+    ];
     bestScore = 0.5;
     console.log("Matched 'who made you' keyword");
-  } else if (lowerText.includes('stuck') || lowerText.includes('career')) {
-    bestMatches = ["Feeling stuck is tough, especially in your career. Maybe try exploring a new skill or connecting with someone in your field?"];
+  } else if (lowerText.includes("stuck") || lowerText.includes("career")) {
+    bestMatches = [
+      "Feeling stuck is tough, especially in your career. Maybe try exploring a new skill or connecting with someone in your field?",
+    ];
     bestScore = 0.5;
     console.log("Matched 'stuck' or 'career' keyword");
-  } else if (lowerText.includes('tired') || lowerText.includes('tiredness') || lowerText.includes('tireless')) {
-    bestMatches = ["I hear you. Rest is important, even a short break can help."];
+  } else if (
+    lowerText.includes("tired") ||
+    lowerText.includes("tiredness") ||
+    lowerText.includes("tireless")
+  ) {
+    bestMatches = [
+      "I hear you. Rest is important, even a short break can help.",
+    ];
     bestScore = 0.5;
     console.log("Matched 'tired/tiredness/tireless' keyword");
   }
 
   let aiResponse;
 
-// If we have good matches, pick one randomly
-if (bestMatches.length > 0) {
-  aiResponse = bestMatches[Math.floor(Math.random() * bestMatches.length)];
-  console.log(`Selected response: "${aiResponse}" (Score: ${bestScore})`);
-} else {
-  // No match found → generate minimal response instead of fallback from JSON
-  const minimalResponses = ["Hmm.", "I see.", "…", "Okay.", "Go on..."];
-  aiResponse = minimalResponses[Math.floor(Math.random() * minimalResponses.length)];
-  console.log(`No match found, using minimal response: "${aiResponse}"`);
-}
+  // If we have good matches, pick one randomly
+  if (bestMatches.length > 0) {
+    aiResponse = bestMatches[Math.floor(Math.random() * bestMatches.length)];
+    console.log(`Selected response: "${aiResponse}" (Score: ${bestScore})`);
+  } else {
+    // No match found → generate minimal response instead of fallback from JSON
+    const minimalResponses = ["Hmm.", "I see.", "…", "Okay.", "Go on..."];
+    aiResponse =
+      minimalResponses[Math.floor(Math.random() * minimalResponses.length)];
+    console.log(`No match found, using minimal response: "${aiResponse}"`);
+  }
 
   req.session.chatHistory.push({ user: "AI", text: aiResponse });
   res.render("monami", { chatHistory: req.session.chatHistory });
@@ -429,8 +498,6 @@ app.post("/monami/clear", (req, res) => {
   req.session.chatHistory = [...initialMessage];
   res.redirect("/monami");
 });
-
-
 
 // const WIKI_API_URL = "https://en.wikipedia.org/w/api.php";
 // async function searchWikipedia(query) {
@@ -510,7 +577,11 @@ app.post("/chat", (req, res) => {
   const { username, tagInput } = req.body;
   if (!username || !tagInput) return res.redirect("/"); // basic validation
   // redirect to your chat page with query params
-  res.redirect(`/chat/${encodeURIComponent(tagInput)}?username=${encodeURIComponent(username)}`);
+  res.redirect(
+    `/chat/${encodeURIComponent(tagInput)}?username=${encodeURIComponent(
+      username
+    )}`
+  );
 });
 
 io.on("connection", (socket) => {
@@ -691,8 +762,6 @@ app.post("/register", async (req, res) => {
   }
 });
 
-
-
 // POST route to add a comment — login required
 app.post("/comments/:postId/comment", async (req, res) => {
   const postId = req.params.postId;
@@ -870,6 +939,3 @@ app.use((req, res) => {
 http.listen(PORT, "0.0.0.0", () => {
   console.log(`PORT IS RUNNING ON PORT ${PORT}`);
 });
-
-
-

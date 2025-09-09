@@ -34,8 +34,8 @@ const newSchema = new Schema({
 });
 newSchema.virtual("timeago").get(function () {
   const now = Date.now();
-  const timeDifference = now - this.createdAt;
-  const seconds = Math.floor(timeDifference / 1000);
+  const diff = now - this.createdAt;
+  const seconds = Math.floor(diff / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
@@ -43,36 +43,22 @@ newSchema.virtual("timeago").get(function () {
   const months = Math.floor(days / 30);
   const years = Math.floor(days / 365);
 
-  if (seconds === 1) {
-    return `Just now`;
-  } else if (seconds < 60) {
-    return `${seconds} seconds ago`;
-  } else if (minutes === 1) {
-    return `One minute ago`;
-  } else if (minutes < 60) {
-    return `${minutes} minutes ago`;
-  } else if (hours === 1) {
-    return `One hour ago`;
-  } else if (hours < 60) {
-    return `${hours} hours ago`;
-  } else if (days === 1) {
-    return `One day ago`;
-  } else if (days < 24) {
-    return `${days} days ago`;
-  } else if (weeks === 1) {
-    return `One week ago`;
-  } else if (weeks < 7) {
-    return `${weeks} weeks ago`;
-  } else if (months === 1) {
-    return `One month ago`;
-  } else if (months < 30) {
-    return `${months} months ago`;
-  } else if (years === 1) {
-    return `One year ago`;
-  } else if (years < 365) {
-    return `${years} years ago`;
-  }
+  if (seconds < 10) return "Just now";
+  if (seconds < 60) return `${seconds} seconds ago`;
+  if (minutes < 2) return "one minute ago";
+  if (minutes < 60) return `${minutes} minutes ago`;
+  if (hours < 2) return "one hour ago";
+  if (hours < 24) return `${hours} hours ago`;
+  if (days < 2) return "one day ago";
+  if (days < 7) return `${days} days ago`;
+  if (weeks < 2) return "one week ago";
+  if (weeks < 5) return `${weeks} weeks ago`;
+  if (months < 2) return "one month ago";
+  if (months < 12) return `${months} months ago`;
+  if (years < 2) return "one year ago";
+  return `${years} years ago`;
 });
+
 // Add text index on message for text search
 newSchema.index({ message: "text" });
 

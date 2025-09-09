@@ -10,6 +10,7 @@ section#formPost {
   bottom: 0;
     background: rgba(77, 77, 77, 0.7);
     width: 100%;
+    z-index: 10000;
 }
 section#formPost:target {
   display: flex;

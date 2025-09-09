@@ -27,443 +27,665 @@
     ></script>
     <title>Ciphree | Home</title>
     <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            poppins: ["Poppins", "sans-serif"],
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
           },
         },
-      },
-    };
-  </script>
-  <!-- Canonical URL -->
-<link rel="canonical" href="https://ciphree.com/">
+      };
+    </script>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ciphree.com/" />
 
-<!-- Keywords (optional but sometimes helpful) -->
-<meta name="keywords" content="Ciphree, emotional platform, share feelings, journal, AI chat, mental health, connect with people">
+    <!-- Keywords (optional but sometimes helpful) -->
+    <meta
+      name="keywords"
+      content="Ciphree, emotional platform, share feelings, journal, AI chat, mental health, connect with people"
+    />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="Ciphree — Connect, Share, and Heal">
-<meta property="og:description" content="Ciphree is a human-centered platform built to express emotion, connect deeply, and reflect reality through AI, design, and heart.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ciphree.com/">
-<meta property="og:image" content="https://ciphree.com/Images/ciphry.png">
-<meta property="og:site_name" content="Ciphree">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Ciphree — Connect, Share, and Heal" />
+    <meta
+      property="og:description"
+      content="Ciphree is a human-centered platform built to express emotion, connect deeply, and reflect reality through AI, design, and heart."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ciphree.com/" />
+    <meta property="og:image" content="https://ciphree.com/Images/ciphry.png" />
+    <meta property="og:site_name" content="Ciphree" />
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ciphree — Connect, Share, and Heal">
-<meta name="twitter:description" content="Ciphree is a human-centered platform built to express emotion, connect deeply, and reflect reality through AI, design, and heart.">
-<meta name="twitter:image" content="https://ciphree.com/Images/ciphry.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ciphree — Connect, Share, and Heal" />
+    <meta
+      name="twitter:description"
+      content="Ciphree is a human-centered platform built to express emotion, connect deeply, and reflect reality through AI, design, and heart."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ciphree.com/Images/ciphry.png"
+    />
 
-<!-- Structured Data (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Ciphree",
-  "url": "https://ciphree.com/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://ciphree.com/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ciphree",
+        "url": "https://ciphree.com/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://ciphree.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=G-MM8VSWME23"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-MM8VSWME23');
-</script>
-<style>
-  .menu-item {
-    padding: 15px 10px;
-    cursor: pointer;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    transition: background 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .menu-item:hover,
-  .menu-item.active {
-    background: #334155;
-  }
-  .menu-item i {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.2rem;
-    width: 25px;
-    text-align: center;
-    user-select: none;
-  }
+      gtag("config", "G-MM8VSWME23");
+    </script>
+    <style>
+      .menu-item {
+        padding: 15px 10px;
+        cursor: pointer;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        transition: background 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .menu-item:hover,
+      .menu-item.active {
+        background: #334155;
+      }
+      .menu-item i {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.2rem;
+        width: 25px;
+        text-align: center;
+        user-select: none;
+      }
 
-  /* Main content */
-  .main-content {
-    flex-grow: 1;
-    
-    background: var(--White--);
-    display: flex;
-    flex-direction: column;
-    margin-top: 0 !important;
-    justify-content: center;
-    align-items: center; /* This centers the actions box */
-  }
+      /* Main content */
+      .main-content {
+        flex-grow: 1;
 
-  .greeting {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: var(--Black--);
-  }
+        background: var(--White--);
+        display: flex;
+        flex-direction: column;
+        margin-top: 0 !important;
+        justify-content: center;
+        align-items: center; /* This centers the actions box */
+      }
 
-  .question {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    color: #555;
-  }
-  .actions {
-    background: #e0e7ff;
-    border-radius: 20px;
-    padding: 50px 60px;
-    width: 100%;
-    max-width: 900px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      .greeting {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--Black--);
+      }
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px 40px;
-    justify-items: center;
-  }
+      .question {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        color: #555;
+      }
 
-  .action-btn {
-    background: var(--Blue--, #2563eb);
-    color: white;
-    border: none;
-    padding: 22px 0;
-    border-radius: 14px;
-    cursor: pointer;
-    font-size: 1.25rem;
-    font-weight: 700;
-    transition: background 0.3s, box-shadow 0.3s;
-    width: 100%;
-    max-width: 320px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
-  }
-
-  .action-btn:hover {
-    background: var(--White--);
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.5);
-  }
-
-  @media (max-width: 700px) {
-    .actions {
-      grid-template-columns: 1fr;
-      padding: 40px 30px;
-    }
-        .question{
-      font-size: 1rem;
-    }
-      .action-btn{
-      padding: 10px;
-    }
-
-  }
-  #actions .actions a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  
-  section#actions {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 0 5vw; /* optional: side spacing for large screens */
-    box-sizing: border-box;
-  }
-
-img.max-w-xsm.w-full
- {
-    width: 100%;
-    max-width: 450px;
-}
-#imgg{
-    display: flex
-;
-    /* flex-wrap: wrap; */
-    width: 100%;
-    gap: 20px;
-    padding: 20px;
-}
-#slide-bar li a{
-  padding: 16px;
-}
-
-</style>
+      img.max-w-xsm.w-full {
+        width: 100%;
+        max-width: 450px;
+      }
+      #imgg {
+        display: flex;
+        /* flex-wrap: wrap; */
+        width: 100%;
+        gap: 20px;
+        padding: 20px;
+      }
+      #slide-bar li a {
+        padding: 16px;
+      }
+    </style>
   </head>
   <body>
-<%- include('partials/navigation', { currentPage: 'landing' }) %>
-<canvas id="bg" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
+    <%- include('partials/navigation', { currentPage: 'landing' }) %>
 
+    <canvas
+      id="bg"
+      class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
+    ></canvas>
     <div class="themeToggle">
       <button id="themeToggle" class="toggle">
         <span class="switch"></span>
       </button>
     </div>
     <main class="main-content" id="main-content">
-      
-      
-      <div class="greeting" id="greeting">Hi, <%=user.name%></div>
-      <section id="text">
-        <div class="question">What do you want to do today?</div>
-        <section id="message" class="w-full bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg my-6 text-center max-w-3xl mx-auto shadow-sm">
-          <p class="text-gray-800 text-lg md:text-xl">
-            <a href="https://www.youtube.com/watch?v=UAFe9Msnv5E" target="_blank" class="text-gray-800 hover:text-blue-600 hover:underline">
-            If you are new to this website, click here to watch a video about it.
-          </a>
-          </p>
-          
-          
-        </section>
-      </section>
-      
-      
-      <section id="actions">
-        <div class="actions">
+      <div class="greeting" id="greeting">Hi, <%= user.name %></div>
 
-          <a href="/journal">
-            <button class="action-btn" data-section="journal">
-              Journal
-            </button>
-           
-          </a>
-          <a href="#formPost">
-            <button class="action-btn" data-section="talk">
-              Create a post
-            </button>
-          </a>
-          <a href="/monami">
-            <button class="action-btn" data-section="find">Talk to AI</button>
-          </a>
-          <a href="/matchup">
-            <button class="action-btn" data-section="profile">Find a person</button>
-          </a>
+      <!-- Optional popup -->
+      <div class="flex flex-col w-full gap-4 justify-center items-center">
+        <h2>Are you not sure where to start?</h2>
+        <button
+          id="openActionsPopup"
+          class="open-popup-btn w-1/2 flex justify-center items-center border"
+        >
+          Offer me guide
+        </button>
+      </div>
+
+      <section
+        id="actionsPopup"
+        class="popup hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      >
+        <div
+          class="popup-content bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-11/12 max-w-lg p-8 relative animate-fadeIn"
+        >
+          <h3
+            class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center"
+          >
+            Where do you want to start?
+          </h3>
+
+          <ul class="flex flex-col gap-4 mb-6">
+            <li>
+              <a href="/journal" class="popup-link">📝 I want to journal</a>
+            </li>
+            <li>
+              <a href="/matchup" class="popup-link">🤝 I want to find people</a>
+            </li>
+            <li><a href="/monami" class="popup-link">💬 Talk to AI</a></li>
+            <li>
+              <a href="#formPost" class="popup-link"
+                >✍️ I want to create a post</a
+              >
+            </li>
+          </ul>
+
+          <div class="text-center mb-6">
+            <a
+              href="https://www.youtube.com/watch?v=UAFe9Msnv5E"
+              class="popup-video-link"
+              >▶ Watch guide video</a
+            >
+          </div>
+
+          <button
+            id="closePopup"
+            class="close-btn absolute top-4 right-4 text-gray-500 hover:text-gray-900 dark:hover:text-white text-2xl font-bold"
+          >
+            &times;
+          </button>
         </div>
       </section>
-    </main>
-    <section id="formPost">
-        <form action="/post" method="Post" class="formPost">
-          <div class="up">
-            <h1>Create a post</h1>
+
+      <!-- Feed posts -->
+      <section id="posts">
+        <% populatedPostData.forEach(post => { %>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+              <section id="post">
+                <section id="upper">
+                  <section id="left">
+                    <div
+                      class="account"
+                      style="background-color: var(--White--)"
+                    >
+                      <img
+                        src="<%= post.userId?.avatar ? post.userId.avatar : '/Images/avatar3.png' %>"
+                        alt="avatar"
+                        style="width: 30px"
+                      />
+                    </div>
+                    <div class="time">
+                      <span><%= post.userId?.name || 'Unknown User' %></span>
+                      <span>Posted <%= post.timeago || 'N/A' %></span>
+                    </div>
+                  </section>
+                </section>
+                <section id="down">
+                  <section id="text">
+                    <h1><%=post.type%></h1>
+                    <p><%= post.message %></p>
+                  </section>
+                  <section id="engagements">
+                    <div class="comment flex gap-4">
+                      <p>Comments: <%= post.commentCount %></p>
+                      <a href="/comments/<%=post._id%>">
+                        <button id="comment-<%=post._id%>" class="comment-btn">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="36"
+                            height="36"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            style="color: #17e"
+                            stroke="currentColor"
+                            stroke-width="1"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-message-circle-icon lucide-message-circle"
+                          >
+                            <path
+                              d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
+                            />
+                          </svg>
+                        </button>
+                      </a>
+                    </div>
+                  </section>
+                </section>
+              </section>
+            </div>
           </div>
-          <div class="down">
-            <textarea
-              name="message"
-              id="monami-input"
-              maxlength="500"
-              placeholder="Write your post here."
-            ></textarea>
-            <span>  <p id="char-count">0 / 500</p></span>
-          
-            <!-- Character counter display -->
-          <input list="post-types" name="type" placeholder="Choose the post type" />
-<datalist id="post-types">
-  <option value="Articles">
-  <option value="Posts">
-</datalist>
-<div class="btns">
-     <button>Post</button>
-    <a href="#"><button class="cancel" type="button">Cancel</button></a>
-</div>
+        </div>
 
-        </form>
+        <% }) %>
       </section>
-      <!-- Video Popup Modal -->
-<!-- Video Popup Modal -->
-<!-- Video Popup Modal -->
+    </main>
 
+    <!-- Post Form -->
+    <section id="formPost">
+      <form action="/post" method="POST" class="formPost">
+        <div class="up"><h1>Create a post</h1></div>
+        <div class="down">
+          <textarea
+            name="message"
+            id="monami-input"
+            maxlength="500"
+            placeholder="Write your post here."
+          ></textarea>
+          <p id="char-count">0 / 500</p>
+          <input
+            list="post-types"
+            name="type"
+            placeholder="Choose the post type"
+          />
+          <datalist id="post-types">
+            <option value="Articles"></option>
+            <option value="Posts"></option>
+          </datalist>
 
-
-</div>
-
-
+          <div class="btns">
+            <button>Post</button>
+            <button type="button" class="cancel" id="cancelPost">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </section>
   </body>
   <script src="/Js/post.js" defer></script>
   <script>
-  const textarea = document.getElementById("monami-input");
-  const charCount = document.getElementById("char-count");
-  const typeInput = document.querySelector('input[name="type"]');
+    const textarea = document.getElementById("monami-input");
+    const charCount = document.getElementById("char-count");
+    const typeInput = document.querySelector('input[name="type"]');
 
-  // Initial character counter
-  textarea.addEventListener("input", () => {
-    charCount.textContent = textarea.maxLength
-      ? `${textarea.value.length} / ${textarea.maxLength}`
-      : `${textarea.value.length} characters`;
-  });
+    // Initial character counter
+    textarea.addEventListener("input", () => {
+      charCount.textContent = textarea.maxLength
+        ? `${textarea.value.length} / ${textarea.maxLength}`
+        : `${textarea.value.length} characters`;
+    });
 
-  // Change maxlength based on post type
-  typeInput.addEventListener("input", () => {
-    if (typeInput.value === "Articles") {
-      textarea.removeAttribute("maxlength");
-    } else {
-      textarea.setAttribute("maxlength", "500");
-      if (textarea.value.length > 500) {
-        textarea.value = textarea.value.slice(0, 500); // trim it instantly
+    // Change maxlength based on post type
+    typeInput.addEventListener("input", () => {
+      if (typeInput.value === "Articles") {
+        textarea.removeAttribute("maxlength");
+      } else {
+        textarea.setAttribute("maxlength", "500");
+        if (textarea.value.length > 500) {
+          textarea.value = textarea.value.slice(0, 500); // trim it instantly
+        }
       }
-    }
 
-    // Force update count when switching type
-    charCount.textContent = textarea.maxLength
-      ? `${textarea.value.length} / ${textarea.maxLength}`
-      : `${textarea.value.length} characters`;
-  });
-</script>
-<script>
-  const allowed = ["Articles", "Posts"];
-  typeInput.addEventListener("input", () => {
-    if (!allowed.includes(typeInput.value)) {
-      typeInput.setCustomValidity("Choose one of the allowed post types.");
-    } else {
-      typeInput.setCustomValidity("");
-    }
-  });
-
-</script>
+      // Force update count when switching type
+      charCount.textContent = textarea.maxLength
+        ? `${textarea.value.length} / ${textarea.maxLength}`
+        : `${textarea.value.length} characters`;
+    });
+  </script>
+  <script>
+    const allowed = ["Articles", "Posts"];
+    typeInput.addEventListener("input", () => {
+      if (!allowed.includes(typeInput.value)) {
+        typeInput.setCustomValidity("Choose one of the allowed post types.");
+      } else {
+        typeInput.setCustomValidity("");
+      }
+    });
+  </script>
 </html>
 
 <script>
   const themeToggle = document.getElementById("themeToggle");
- const themeIcon = themeToggle.querySelector("span");
- 
- // Load saved theme on page load
- const savedTheme = localStorage.getItem("theme");
- if (savedTheme) {
-     document.documentElement.setAttribute("data-theme", savedTheme);
-     themeIcon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
- }
- 
- // Toggle function
- themeToggle.addEventListener("click", () => {
-     const currentTheme = document.documentElement.getAttribute("data-theme");
-     const newTheme = currentTheme === "dark" ? "light" : "dark";
-     document.documentElement.setAttribute("data-theme", newTheme);
-     localStorage.setItem("theme", newTheme); // Save theme for all pages
-     themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
- });
- 
-   
-   </script>
-   <style>
-     body{
-       background-color: var(--White--);
-     }
-     .themeToggle {
-   display: flex;
-   align-items: center;
-   justify-content: flex-end !important;
-   padding: 10px;
- }
- 
- #themeToggle {
-   width: 60px;
-   height: 30px;
-   border-radius: 30px;
-   border: 1px solid var(--Black--) !important;
-   background-color: var(--White--);
-   position: relative;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
- }
- 
- #themeToggle .switch {
-   position: absolute;
-   top: 3px;
-   left: 3px;
-   width: 24px;
-   height: 24px;
-   background-color: var(--White--);
-   border-radius: 50%;
-   transition: transform 0.3s ease;
- }
- 
- [data-theme="dark"] #themeToggle {
-   background-color: var(--Blue--);
- }
- 
- [data-theme="dark"] #themeToggle .switch {
-   transform: translateX(30px);
- }
- 
- main{
-  min-height: 0vh;
- }
-   
-   </style>
-   <script>
-    function checkConnection() {
-  if (navigator.onLine) {
-    console.log("✅ You are online!");
-    document.body.style.background = "lightgreen";
-  } else {
-    console.log("⚠️ You are offline! Retrying...");
-    document.body.style.background = "lightcoral";
-    
-    // Try again every 5 seconds
-    setTimeout(checkConnection, 5000);
+  const themeIcon = themeToggle.querySelector("span");
+
+  // Load saved theme on page load
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    themeIcon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
   }
-}
 
-// Listen for connection changes
-window.addEventListener("online", () => {
-  console.log("🔌 Connection restored!");
-  location.reload(); // reload or sync
-});
+  // Toggle function
+  themeToggle.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme); // Save theme for all pages
+    themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+  });
+</script>
+<script>
+  const openPopupBtn = document.getElementById("openActionsPopup");
+  const actionsPopup = document.getElementById("actionsPopup");
+  const closePopupBtn = document.getElementById("closePopup");
 
-window.addEventListener("offline", () => {
-  console.log("📴 Lost connection...");
+  openPopupBtn.addEventListener("click", () => {
+    actionsPopup.classList.remove("hidden");
+  });
+
+  closePopupBtn.addEventListener("click", () => {
+    actionsPopup.classList.add("hidden");
+  });
+</script>
+<style>
+  body {
+    background-color: var(--White--);
+  }
+  .themeToggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end !important;
+    padding: 10px;
+  }
+
+  #themeToggle {
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    border: 1px solid var(--Black--) !important;
+    background-color: var(--White--);
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #themeToggle .switch {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--White--);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+
+  [data-theme="dark"] #themeToggle {
+    background-color: var(--Blue--);
+  }
+
+  [data-theme="dark"] #themeToggle .switch {
+    transform: translateX(30px);
+  }
+
+  main {
+    min-height: 0vh;
+  }
+</style>
+<script>
+  function checkConnection() {
+    if (navigator.onLine) {
+      console.log("✅ You are online!");
+      document.body.style.background = "lightgreen";
+    } else {
+      console.log("⚠️ You are offline! Retrying...");
+      document.body.style.background = "lightcoral";
+
+      // Try again every 5 seconds
+      setTimeout(checkConnection, 5000);
+    }
+  }
+
+  // Listen for connection changes
+  window.addEventListener("online", () => {
+    console.log("🔌 Connection restored!");
+    location.reload(); // reload or sync
+  });
+
+  window.addEventListener("offline", () => {
+    console.log("📴 Lost connection...");
+    checkConnection();
+  });
+
+  // Initial check
   checkConnection();
-});
 
-// Initial check
-checkConnection();
+  // Canvas background
+</script>
+<script>
+  const canvas = document.getElementById("bg");
+  const ctx = canvas.getContext("2d");
+  let w = (canvas.width = window.innerWidth);
+  let h = (canvas.height = window.innerHeight);
 
-    // Canvas background
-    const canvas = document.getElementById('bg');
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
-    const dots = [];
-    for (let i=0;i<150;i++){
-      dots.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*3+1, dx:(Math.random()-0.5), dy:(Math.random()-0.5), alpha:Math.random()*0.5+0.3});
+  const dots = [];
+  const totalDots = 150; // you can increase if you want more
+
+  for (let i = 0; i < totalDots; i++) {
+    dots.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.5 + 0.5, // small size
+      dx: (Math.random() - 0.5) * 0.3, // slow X movement
+      dy: (Math.random() - 0.5) * 0.3, // slow Y movement
+      alpha: Math.random() * 0.5 + 0.2, // lighter transparency
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+
+    dots.forEach((d) => {
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(59,130,246,${d.alpha})`;
+      ctx.shadowColor = "#3b82f6";
+      ctx.shadowBlur = 10;
+      ctx.fill();
+
+      d.x += d.dx;
+      d.y += d.dy;
+
+      if (d.x < 0 || d.x > w) d.dx *= -1;
+      if (d.y < 0 || d.y > h) d.dy *= -1;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  window.addEventListener("resize", () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  });
+</script>
+<style>
+  .themeToggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end !important;
+    padding: 10px;
+  }
+
+  #themeToggle {
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    border: 1px solid var(--Black--) !important;
+    background-color: var(--White--);
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #themeToggle .switch {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--White--);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  section#actionsPopup {
+    z-index: 1000;
+  }
+  [data-theme="dark"] #themeToggle {
+    background-color: var(--Blue--);
+  }
+
+  [data-theme="dark"] #themeToggle .switch {
+    transform: translateX(30px);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding-bottom: 26px;
+  }
+
+  .container #post {
+    background: var(--White--) !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .container #post:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(28, 116, 228, 0.25);
+  }
+  h1,
+  p {
+    font-size: clamp(13px, 16px, 16px);
+  }
+  .guidance-box {
+    background: #f0f4ff;
+    padding: 20px 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 25px;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .guidance-box p {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  .guidance-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .guidance-btn {
+    background: var(--Blue--, #2563eb);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .guidance-btn:hover {
+    background: #1c5fd6;
+    transform: translateY(-2px);
+  }
+  .popup {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.25s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
     }
-    function animate(){
-      ctx.clearRect(0,0,w,h);
-      dots.forEach(d=>{
-        ctx.beginPath();
-        ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
-        ctx.fillStyle = `rgba(59,130,246,${d.alpha})`;
-        ctx.shadowColor='#3b82f6';
-        ctx.shadowBlur=10;
-        ctx.fill();
-        d.x+=d.dx; d.y+=d.dy;
-        if(d.x<0||d.x>w) d.dx*=-1;
-        if(d.y<0||d.y>h) d.dy*=-1;
-      });
-      requestAnimationFrame(animate);
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
-    animate();
-    window.addEventListener('resize', ()=>{ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; });
+  }
 
-   </script>
+  .popup-content {
+    transition: all 0.3s ease;
+  }
+
+  .popup-link {
+    display: block;
+    background: #2563eb; /* Tailwind Blue */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .popup-link:hover {
+    background: #1c5fd6;
+    transform: translateY(-2px);
+  }
+
+  .popup-video-link {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+
+  .popup-video-link:hover {
+    color: #1c5fd6;
+  }
+
+  button.close-btn {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+</style>

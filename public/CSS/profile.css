@@ -167,7 +167,7 @@ section#posts-list {
   font-size: 1rem;
   color: var(--Black--);
   word-wrap: break-word;
-  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
 .chooser{
   display: flex;

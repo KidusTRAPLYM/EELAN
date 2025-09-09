@@ -114,7 +114,7 @@ main{
 }
 
 #text p {
-  font-size: 1.15rem;
+  font-size: 1rem;
   color: var(--Black--);
   line-height: 1.6;
   white-space: pre-wrap;
