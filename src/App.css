@@ -1,0 +1,208 @@
+body{
+background-color: #0F1A1B !important;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('./fonts/ClashDisplay-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('./fonts/ClashDisplay-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('./fonts/ClashDisplay-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Tailwind class override for CDN */
+.font-clash {
+  font-family: 'Clash Display', sans-serif;
+}
+#getStarted{
+height: 50px;
+box-shadow: 10px 10px rgb(28,115,228, 36%);
+}
+#getStarted:hover{
+transform: translateY(10px);
+transform: translateX(10px);
+transition: .2s ease-in-out ;
+box-shadow: 0px 0px 0px ;
+}
+.home{
+height: 85vh;
+}
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  padding: 20px;
+  background: #1C2526;; /* or a dark/gradient background */
+  
+  /* glowing shadow */
+  box-shadow: 0 0 15px rgba(28, 115, 228, 0.5), 
+              0 0 30px rgba(28, 115, 228, 0.3), 
+              0 0 60px rgba(28, 115, 228, 0.2);
+
+  /* smooth hover effect */
+  transition: all 0.3s ease-in-out;
+}
+
+.feature:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 25px rgba(28, 115, 228, 0.8), 
+              0 0 50px rgba(28, 115, 228, 0.5), 
+              0 0 100px rgba(28, 115, 228, 0.3);
+}
+/* Base animations */
+.animate-slideFadeLeft {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideFadeLeft 1s ease-out forwards;
+}
+
+.animate-slideFadeRight {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideFadeRight 1s ease-out forwards;
+}
+
+/* Staggered animation for left content children */
+.left h1 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.left p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.left button {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+/* Right image */
+.right img {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideFadeRight 1s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+/* Keyframes */
+@keyframes slideFadeLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFadeRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Optional: smooth hover for button & image */
+.left button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 16px 40px rgb(28,115,228, 36%)
+}
+
+.right img:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+}
+.footer{
+  background-color: #0F1A1B;
+}
+/* Slide + Fade Down for top description */
+@keyframes slideFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideFadeDown {
+  animation: slideFadeDown 1s ease-out forwards;
+}
+
+/* Slide + Fade Up for bottom stats */
+@keyframes slideFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideFadeUp {
+  animation: slideFadeUp 1s ease-out forwards;
+  animation-delay: 0.3s; /* small delay for smooth stagger */
+}
+/* FAQ answer slide + fade */
+.faq-answer {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.5s ease;
+  max-height: 0;
+}
+
+.faq-answer.open {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 200px; /* adjust if answer is longer */
+}
+
+/* FAQ question hover */
+.question:hover {
+  background-color: #162122; /* subtle highlight */
+}
+
+/* Plus/minus icon transition */
+.question span {
+  transition: transform 0.3s ease;
+}
+
+.question span.open {
+  transform: rotate(180deg); /* optional rotation effect */
+}
+/* solid-ish colored shadow that won’t look pink */
+.btn-shadow {
+
+  transition: all 0.3s ease;
+}
+
+.btn-shadow:hover {
+  box-shadow: none;
+
+}
