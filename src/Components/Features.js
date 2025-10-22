@@ -1,6 +1,6 @@
-import AIfriendMatcher from "./image3.png";
-import MiniGames from "./image4.png";
-import Journaling from "./image5.png";
+import AIfriendMatcher from "../image3.png";
+import MiniGames from "../image4.png";
+import Journaling from "../image5.png";
 
 function Features() {
   const featureData = [

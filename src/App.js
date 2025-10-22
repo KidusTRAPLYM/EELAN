@@ -1,12 +1,12 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Header from "./header";
-import Home from "./home";
-import Middle from "./middle";
-import FAQ from "./FAQ";
-import Features from "./Features";
-import Footer from "./footer";
-import Form from "./Form";
+import Header from "./Components/header";
+import Home from "./Components/home";
+import Middle from "./Components/middle";
+import FAQ from "./Components/FAQ";
+import Features from "./Components/Features";
+import Footer from "./Components/footer";
+import Form from "./Components/Form";
 
 function App() {
   return (

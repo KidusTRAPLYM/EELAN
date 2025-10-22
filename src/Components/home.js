@@ -1,4 +1,4 @@
-import HomeImage from "./peopleTalking.png";
+import HomeImage from "../peopleTalking.png";
 import { Link } from "react-router-dom";
 function Home() {
   return (
