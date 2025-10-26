@@ -25,22 +25,24 @@ function Header() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8">
         {/* Logo */}
-        <div className="flex items-center">
-          <img
-            src={logo}
-            alt="Ciphree Logo"
-            className={`h-8 md:h-12 transition-all duration-500 ${
-              scrolled ? "brightness-0 invert" : ""
-            }`}
-          />
-          <h1
-            className={`ml-2 text-xl md:text-2xl font-bold transition-colors duration-500 ${
-              scrolled ? "text-primary" : "text-white"
-            }`}
-          >
-            Ciphree
-          </h1>
-        </div>
+        <Link to="/">
+          <div className="flex items-center cursor-pointer">
+            <img
+              src={logo}
+              alt="Ciphree Logo"
+              className={`h-8 md:h-12 transition-all duration-500 ${
+                scrolled ? "brightness-0 invert" : ""
+              }`}
+            />
+            <h1
+              className={`ml-2 text-xl md:text-2xl font-bold transition-colors duration-500 ${
+                scrolled ? "text-primary" : "text-white"
+              }`}
+            >
+              Ciphree
+            </h1>
+          </div>
+        </Link>
 
         {/* Button */}
         <div className="flex items-center">

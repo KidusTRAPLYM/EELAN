@@ -7,6 +7,7 @@ import FAQ from "./Components/FAQ";
 import Features from "./Components/Features";
 import Footer from "./Components/footer";
 import Form from "./Components/Form";
+import Admin from "./Components/admin";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
 
         {/* Register page */}
         <Route path="/register" element={<Form />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>
   );
